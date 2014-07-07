@@ -1,0 +1,665 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+
+ @import "variables";
+
+ @mixin border-radius($radius) {
+ 	-webkit-border-radius: $radius;
+ 	-moz-border-radius: $radius;
+ 	-ms-border-radius: $radius;
+ 	border-radius: $radius;
+ }
+
+
+ .upSection{
+ 	width:85%;
+ 	height:45px;
+ 	/*border:1px solid #000;*/
+ 	overflow:hidden;
+ 	position:fixed;
+ 	top:57px;
+ 	padding-top:25px;
+ 	background-color:white;
+ 	z-index: 3;
+
+ 	h1{
+
+ 		/*width: 150px;*/
+
+ 		background-color: $redColor;
+ 		padding: 3px 0px;
+ 		padding-right:15px;
+ 		padding-left: $contentLeftMargin;
+ 		float: left;
+
+ 	}
+
+ 	a{
+ 		float: right;
+ 		margin-right: 1%;
+
+ 		img{
+ 			margin-right:7px;
+ 			float: left;
+ 		}
+ 		h4{
+ 			float: left;
+ 			margin-top: 7px;
+
+ 		}
+ 	}
+
+ 	form{
+ 		position: absolute;
+
+ 		top: 100px;
+ 		right: 4%;
+ 		float: right;
+
+ 		opacity: 0;
+ 		label{
+ 			display: none;
+ 		}
+ 		input[type="file"] {
+ 			width:300px;
+ 		}
+
+
+ 	}
+ 	#form{
+
+
+ 		div{
+ 			float: right !important;
+ 		}
+ 	}
+
+ }
+
+
+ .downSection{
+ 	width:100%;
+ 	margin-top:83px;
+ 	padding-bottom:80px;
+ 	/*border:1px solid #000;*/
+
+
+
+ }
+ .practicantesTableHead, .generalTableHead{
+
+ 	width: 100%;
+ 	padding-left: $contentLeftMargin;
+
+ 	.tableHead{
+ 		background-color: $softGray;
+ 		height: 38px;
+ 		position:relative;
+ 		top: 0;
+ 		left: 0;
+ 		width: 100%;
+ 		padding-top:5px;
+ 		z-index: 3;
+
+ 	}
+ }
+ .practicantesTable{
+
+ 	width: 100%;
+ 	padding-left: $contentLeftMargin;
+ 	height:auto;
+ 	table-border:collapse;
+
+ 	.tableHead{
+ 		background-color: $softGray;
+ 		height: 35px;
+ 		position:relative;
+ 		top: 0;
+ 		left: 0;
+ 		width: 100%;
+ 		padding-top:5px;
+ 		z-index: 3;
+
+ 	}
+ 	.tableItem{
+ 		margin: 10px 0px;
+ 		/*border:2px solid $darkGray;*/
+ 		height: 20px;
+ 		color: black;
+ 		position:relative;
+
+
+ 	}
+
+
+ 	.tableItem:hover{
+ 		color:white !important;
+ 	}
+
+
+
+
+
+
+ 	#hoverDiv{
+ 		height: 55px;
+ 		width: 100%;
+ 		position: absolute;
+ 		margin-top: 25px;
+ 		border-top:1px solid $softGray;
+ 		border-bottom:1px solid $softGray;
+ 		z-index: 2;
+
+ 	}
+
+ 	.opciones{
+
+ 		position:absolute;
+ 		opacity: 0;
+
+
+ 		padding:5px 10px;
+ 		background-color: $darkGray;
+ 		top:26px;
+ 		right: 36%;
+ 		z-index:10;
+ 		overflow: hidden;
+
+ 		@include border-radius(3px);
+
+ 		td{
+ 			padding: 1px 6px;
+ 			min-width: 120px;
+ 			float: left;
+ 		}
+
+ 		td:hover{
+ 			background-color: $darkRed;
+ 		}
+ 		img{
+ 			float: left;
+ 		}
+
+ 		h3{
+ 			color: white;
+ 			float: left;
+ 			margin-top: 9px;
+ 			margin-left: 5px;
+ 		}
+
+
+ 		} /* practicantesTable */
+
+
+
+
+ 		.spacer{
+ 			height: 40px;
+ 		}
+
+ 		img{
+ 			position:relative;
+ 			margin:0 auto;
+
+ 		}
+
+
+ 		td{
+ 			position:relative;
+ 			font-family:  helvetica;
+ 			font-size: 14px;
+
+
+ 			z-index: 2;
+
+ 		}
+
+
+ 		h2{
+ 			color: $softGray;
+ 			margin-left: $contentLeftMargin;
+ 			font-weight: bold;
+ 		}
+
+ 		.itemImgContainer{
+ 			width: 100px;
+ 			height: 100px;
+ 			border:3px solid $darkGray;
+ 			@include border-radius(50%);
+ 			overflow: hidden;
+ 			.foto{
+
+ 				top: -5px;
+ 			}
+ 		}
+ 		} /* practicantes Table style */
+
+ 		.imgContainer{
+ 			width: 150px;
+ 			height: 150px;
+ 			border:3px solid $darkGray;
+ 			@include border-radius(50%);
+ 			overflow: hidden;
+
+ 			.foto{
+ 				position:relative;
+ 				top: -5px;
+ 			}
+ 		}
+ 		.profileContainer{
+ 			padding-left: 30px;
+ 			padding-top: 42px;
+ 		}
+ 		.profilePictureContainer{
+ 			width: 400px;
+ 			float: left;
+ 			margin-bottom: 10px;
+ 			/*border: 1px solid #000;*/
+
+
+ 		}
+ 		.profileFormContainer{
+ 			width: 800px;
+ 			float: left;
+ 			/*border: 1px solid #000;*/
+ 		}
+
+ 		.inputContainer{
+ 			display: inline-block;
+ 			margin-bottom: 20px;
+ 			width: 390px;
+ 			float: left;
+ 			/*height: 40px;*/
+
+ 			h2, label{
+ 				color: black;
+ 				font-family:helveticaNBold;
+ 				font-size:17px;
+ 				float: left;
+ 				margin-top: 5px;
+ 				margin-right: 15px;
+ 				width: 120px;
+ 			}
+ 			.input{
+ 				float: left;
+ 			}
+
+
+ 		}
+ 		.selFile{
+ 			width:300px;
+ 		}
+ 		.selFile label{
+ 			display: none;
+ 		}
+
+ 		.profileData{
+ 			/*border:1px solid #000;*/
+ 			height: 85px;
+ 			margin-bottom: 14px;
+
+ 			h1,h2{
+
+ 				color:$darkGray;
+ 				margin-left: 125px;
+ 				margin-top: 5px;
+ 			}
+ 			.imgContainer{
+ 				width: 80px;
+ 				height: 80px;
+ 				position:absolute;
+
+ 			}
+ 		}
+ 		.tabla{
+ 			width: 100%;
+ 			/*border:1px solid #000;*/
+ 			overflow: auto;
+
+ 			.tableHeader , .tableHeader:hover {
+ 				color: #fff;
+ 				background-color:$softGray;
+ 				font-family:  helvetica;
+ 				font-size: 18px;
+ 				z-index: 2;
+ 				height: 30px;
+ 			}
+ 			td{
+ 				position: relative;
+ 				font-family:  helvetica;
+ 				font-size: 15px;
+ 				z-index: 2;
+ 				padding: 5px 0;
+ 				padding-top: 10px;
+ 				width: 120px;
+ 			}
+ 			tr{
+ 				margin-top: 10px;
+
+ 			}
+ 			tr:hover{
+ 				background-color: $redColor;
+ 				color: #fff;
+ 			}
+ 			tr:hover td:first-child{
+
+ 				color: #fff;
+ 			}
+ 			th:first-child{
+ 				padding-left:30px;
+ 			}
+ 			tr td:first-child{
+ 				padding-left:30px;
+ 				width: 285px;
+ 				font-weight: bold;
+ 				color: $darkGray;
+ 			}
+ 		}
+
+ 		.generalTable{
+
+ 			width: 100%;
+ 			padding-left: $contentLeftMargin;
+ 			height:auto;
+ 			table-border:colapse;
+
+ 			.tableHead{
+ 				background-color: $softGray;
+ 				height: 35px;
+ 				position:relative;
+ 				top: 0;
+ 				left: 0;
+ 				width: 100%;
+ 				padding-top:5px;
+ 				z-index: 3;
+
+ 			}
+ 			.tableItem{
+ 				margin: 10px 0px;
+ 				/*border:2px solid $darkGray;*/
+ 				padding-top: 20px;
+ 				height: 40px;
+ 				color: black;
+ 				position:relative;
+
+
+ 			}
+
+
+ 			.tableItem:hover{
+ 				color:white !important;
+ 				background-color: $redColor;
+ 			}
+
+
+
+
+
+
+ 			#hoverDiv{
+ 				height: 65px;
+ 				width: 100%;
+ 				position: absolute;
+ 				margin-top: -30px;
+ 				z-index: 2;
+
+ 			}
+
+ 			.opciones{
+
+ 				position:absolute;
+ 				opacity: 0;
+
+ 				float: right;
+ 				padding:5px 10px;
+ 				background-color: $darkGray;
+ 				top:0;
+ 				right: 160px;
+ 				z-index:10;
+ 				overflow: hidden;
+
+ 				@include border-radius(3px);
+
+ 				td{
+ 					padding: 1px 6px !important;
+ 					float: left;
+ 					width: 80px;
+ 				}
+ 				td:first-child{
+ 					padding: 1px 6px !important;
+
+ 				}
+
+ 				td:hover{
+ 					background-color: $darkRed;
+ 				}
+ 				img{
+ 					float: left;
+ 				}
+
+ 				h3{
+ 					color: white;
+ 					float: left;
+ 					margin-top: 9px;
+ 					margin-left: 5px;
+ 				}
+
+
+ 				} /* generalTable */
+
+
+
+
+ 				.spacer{
+ 					height: 40px;
+ 				}
+
+ 				img{
+ 					position:relative;
+ 					margin:0 auto;
+
+ 				}
+
+
+ 				td{
+ 					position:relative;
+ 					font-family:  helvetica;
+ 					font-size: 14px;
+
+
+
+ 					z-index: 2;
+
+ 				}
+
+
+ 				h2{
+ 					color: $softGray;
+ 					margin-left: $contentLeftMargin;
+ 					font-weight: bold;
+ 				}
+
+ 				.itemImgContainer{
+ 					width: 100px;
+ 					height: 100px;
+ 					border:3px solid $darkGray;
+ 					@include border-radius(50%);
+ 					overflow: hidden;
+ 					.foto{
+
+ 						top: -5px;
+ 					}
+ 				}
+ 				} /* general Table style */
+
+ 				#centro_direccion{
+ 					width:170px;
+ 					font-family: helvetica;
+ 					font-family:12px;
+ 				}
+
+ 				#externo_cargo{
+ 					width:170px;
+ 				}
+ 				#cargo div{
+ 					float:left;
+ 				}
+
+ 				#cargo div:last-child{
+ 					margin-left:53px;
+ 				}
+ 				.nomodificable{
+ 					border: none !important;
+ 				}
+
+ 				.inform{
+
+ 					width:100%;
+ 					overflow: auto;
+ 					height:650px;
+
+
+
+ 					.activity{
+ 						margin-top: 30px;
+ 						width: 100%;
+ 						float: left;
+ 						border-top: 3px solid $softGray;
+ 						padding-top: 30px;
+
+ 						
+ 						.indicadores{
+ 							float: left;
+ 							width: 350px;
+ 							margin-top: 25px;
+ 							margin-left:15px;
+
+ 							.inputContainer{
+ 								width: 200px !important;
+ 								
+ 							}
+ 						}
+
+ 						.inputContainer{
+ 							float: left;
+ 							width: 435px;
+ 							margin-left: 30px;
+
+ 							h2{
+ 								margin-bottom: 10px;
+ 								width: 100% !important;
+ 							}
+
+ 							.input{
+ 								margin-top: 20px;
+ 								width: 350px;
+ 								margin-left: 10px;
+ 							}
+
+ 							.radio{
+ 								width: 380px;
+ 								label{
+ 									width: auto;
+ 								}
+ 							}
+
+
+ 						}
+
+ 						h1 label{
+ 							width: 243px;
+ 							margin-bottom: 10px;
+ 						}
+
+ 					} /*activity*/
+
+
+ 						h1{
+ 							font-family: helvetica;
+ 							font-size: 24px;
+ 							color: $darkGray;
+ 							margin-left: 30px;
+ 						}
+
+ 						textarea
+ 						{
+
+ 							@include border-radius(3px);
+ 							width:400px;
+ 							height: 150px;
+ 							border: #242021 solid 1px;
+ 							color:#242424;
+ 							font-size: 0.8em;
+ 							padding-left: 5%;
+ 							padding-top:20px;
+ 							/*margin-right:50px;*/
+ 							font-family: helvetica;
+ 						}
+
+ 						textarea:hover{
+ 							border-color:$redColor;
+ 						}
+ 						textarea:focus{
+ 							border-color:$redColor;
+ 						}
+
+ 						textarea.nomodificable{
+ 								
+ 								background-color:#ececec;
+ 							}
+ 						input.nomodificable{
+ 								
+ 								background-color:#ececec;
+ 							}
+ 						.nomodificable{
+ 							pointer-events:none;
+ 							
+ 							textarea{
+ 								border: none !important;
+ 								line-height: 150%;
+ 								height: 300px;
+ 								background-color:#ececec;
+ 							}
+ 							.input{
+ 								background-color:#ececec;
+ 							}
+ 							input{
+ 								background-color:#ececec;
+ 							}
+ 						}
+
+ 				}/*inform*/
+
+ 					
+
+ 						.bold{
+ 							font-weight: bold;
+ 							font-size: 19px;
+ 							color: #7b7b7b !important;
+ 						}
+
+ 						.largeh2{
+ 							color: $darkGray;
+ 							width: 400px !important;
+ 							font-family: helvetica !important;
+ 						}
+ 						.extraLarge{
+ 								color: $darkGray;
+ 							width: 80% !important;
+ 						}
+
+ 						#warning{
+ 							width: 90%;
+ 							border-top:none;
+ 							background-color:$redColor;
+ 							padding:10px;
+ 							margin-left: 30px;
+ 							
+ 							font-weight:bold;
+ 							color: #fff;
+ 							line-height: 130%;
+
+ 						}

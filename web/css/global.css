@@ -1,0 +1,1041 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* line 5, ../../../../../RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/compass-core-1.0.0.alpha.19/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* line 22, ../../../../../RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/compass-core-1.0.0.alpha.19/stylesheets/compass/reset/_utilities.scss */
+html {
+  line-height: 1;
+}
+
+/* line 24, ../../../../../RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/compass-core-1.0.0.alpha.19/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 26, ../../../../../RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/compass-core-1.0.0.alpha.19/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 28, ../../../../../RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/compass-core-1.0.0.alpha.19/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 30, ../../../../../RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/compass-core-1.0.0.alpha.19/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 103, ../../../../../RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/compass-core-1.0.0.alpha.19/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 32, ../../../../../RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/compass-core-1.0.0.alpha.19/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 116, ../../../../../RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/compass-core-1.0.0.alpha.19/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
+
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* line 12, globalsass/sass/global.scss */
+html, body {
+  overflow-x: hidden;
+  overflow-y: hidden;
+  text-rendering: optimizeLegibility !important;
+  font-smoothing: antialiased !important;
+  -webkit-font-smoothing: antialiased !important;
+  min-width: 700px;
+  height: 100%;
+}
+
+@font-face {
+  font-family: helveticaN;
+  src: url("../fonts/helvetica/helveticaneueltstd-lt.woff"), url("../fonts/helvetica/helveticaneueltstd-lt.eot");
+}
+@font-face {
+  font-family: helveticaNBold;
+  src: url("../fonts/helvetica/HelveticaNeueLTStd-Md.otf");
+}
+/* line 44, globalsass/sass/global.scss */
+a {
+  text-decoration: none;
+}
+
+/* line 48, globalsass/sass/global.scss */
+h1 {
+  font-family: helveticaN;
+  font-size: 23px;
+  color: white;
+}
+
+/* line 55, globalsass/sass/global.scss */
+h2 {
+  color: white;
+  font-family: helveticaN;
+  font-size: 17px;
+}
+
+/* line 60, globalsass/sass/global.scss */
+h3 {
+  color: white;
+  font-family: helvetica;
+  font-size: 13px;
+  margin-top: 2px;
+}
+
+/* line 66, globalsass/sass/global.scss */
+h4 {
+  font-family: helvetica;
+  font-size: 13px;
+  margin-top: 2px;
+  font-weight: bold;
+}
+
+/* line 73, globalsass/sass/global.scss */
+span {
+  font-weight: bold;
+}
+
+/* line 76, globalsass/sass/global.scss */
+#mainHeader {
+  width: 100%;
+  height: 23px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #242021;
+  border-bottom: 1px solid black;
+  padding-top: 7px;
+  color: #b5b5b5;
+  min-width: 700px;
+  z-index: 10;
+}
+
+/* line 89, globalsass/sass/global.scss */
+#secondHeader {
+  position: fixed;
+  top: 31px;
+  left: 241px;
+  width: 100%;
+  height: 20px;
+  background-color: #242021;
+  margin-top: 0.2px;
+  padding-top: 6px;
+  border-bottom: 1px solid black;
+  border-top: 1px solid #353133;
+  color: #b5b5b5;
+  z-index: 10;
+}
+
+/* line 104, globalsass/sass/global.scss */
+#cerrarSesionButton {
+  width: 120px;
+  float: right;
+  margin-right: 10px;
+  padding: 0 5px;
+}
+
+/* line 112, globalsass/sass/global.scss */
+#cerrarSesionButton:hover {
+  background-color: #72030b;
+}
+
+/* line 116, globalsass/sass/global.scss */
+a#cerrarButtonLink {
+  font-family: helveticaNBold;
+  font-size: 14px;
+  color: white;
+  text-shadow: 1px 1px 0px black;
+  height: 27px;
+  margin-top: 9px;
+  float: left;
+}
+
+/* line 127, globalsass/sass/global.scss */
+#sideBar {
+  background-color: #242021;
+  position: fixed;
+  z-index: 10;
+  top: 31px;
+  left: 0;
+  width: 210px;
+  height: 100%;
+  float: left;
+  border-right: 1px solid black;
+  border-top: 1px solid #353133;
+  padding-left: 33px;
+}
+/* line 140, globalsass/sass/global.scss */
+#sideBar h1#userName {
+  position: absolute;
+  top: 30px;
+}
+/* line 146, globalsass/sass/global.scss */
+#sideBar h2#userRole {
+  position: absolute;
+  top: 60px;
+  color: #b5b5b5;
+}
+/* line 153, globalsass/sass/global.scss */
+#sideBar #imgContainer {
+  position: absolute;
+  top: 100px;
+  width: 140px;
+  height: 140px;
+  overflow: hidden;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  border-radius: 50%;
+  border: none;
+  border: 1px solid #b5b5b5;
+}
+/* line 163, globalsass/sass/global.scss */
+#sideBar #imgContainer img {
+  position: absolute;
+  top: -4px;
+}
+
+/*sideBar */
+/* line 171, globalsass/sass/global.scss */
+#menu {
+  position: absolute;
+  top: 270px;
+  left: 0;
+  width: 100%;
+  z-index: 3;
+}
+/* line 178, globalsass/sass/global.scss */
+#menu a {
+  width: 100%;
+  height: 40px;
+  border-bottom: 1px solid black;
+  color: white;
+  float: left;
+  padding: 5px 0;
+  box-shadow: 0px 1px 1px #353133;
+}
+/* line 188, globalsass/sass/global.scss */
+#menu a:first-child {
+  border-top: 1px solid black;
+}
+/* line 191, globalsass/sass/global.scss */
+#menu a:hover {
+  background-color: #72030b;
+}
+/* line 194, globalsass/sass/global.scss */
+#menu h3 {
+  float: left;
+  margin-top: 11px;
+  text-shadow: 1px 1px 1px black;
+}
+/* line 199, globalsass/sass/global.scss */
+#menu img {
+  width: 35px;
+  height: 35px;
+  float: left;
+  margin-left: 25px;
+  margin-right: 7px;
+}
+/* line 210, globalsass/sass/global.scss */
+#menu .unable img {
+  opacity: 0.15;
+}
+/* line 214, globalsass/sass/global.scss */
+#menu .unable h3 {
+  color: #3f3a3c !important;
+  box-shadow: none !important;
+  text-shadow: none  !important;
+}
+/* line 220, globalsass/sass/global.scss */
+#menu .unable:hover {
+  cursor: default;
+  background-color: #242021;
+  pointer-events: none !important;
+}
+/* line 226, globalsass/sass/global.scss */
+#menu .active {
+  background-color: black;
+}
+
+/* line 232, globalsass/sass/global.scss */
+.content {
+  width: 84.5%;
+  /*border:1px solid #000;*/
+  position: absolute;
+  top: 60px;
+  left: 245px;
+  min-width: 680px;
+  overflow: hidden;
+}
+
+/* line 244, globalsass/sass/global.scss */
+.button {
+  background-color: #242021;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  border-radius: 5px;
+  padding: 6px 15px;
+  color: white;
+  font-family: helveticaNBold;
+  font-size: 14px;
+  margin: 0 8px;
+  border: none;
+}
+
+/* line 259, globalsass/sass/global.scss */
+.button:hover {
+  background-color: #ec1c24;
+  cursor: pointer;
+}
+
+/* line 268, globalsass/sass/global.scss */
+input[type="text"], input[type="password"], #academico_perfil, #centro_direccion, input[type="email"], input[type="textarea"], input[type="password"] {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  border-radius: 3px;
+  width: 190px;
+  height: 30px;
+  border: #242021 solid 1px;
+  background-color: #fff;
+  color: #242424;
+  font-size: 0.8em;
+  padding-left: 5%;
+  /*margin-right:50px;*/
+  line-height: 150%;
+  font-family: helvetica;
+}
+
+/* line 283, globalsass/sass/global.scss */
+input[type="radio"] {
+  float: left;
+}
+
+/* line 286, globalsass/sass/global.scss */
+.nomodificable {
+  border: none !important;
+}
+
+/* line 290, globalsass/sass/global.scss */
+.nomodificable input {
+  border: none !important;
+}
+
+/* line 293, globalsass/sass/global.scss */
+#centro_direccion {
+  max-height: 50px;
+}
+
+/* line 296, globalsass/sass/global.scss */
+#academico_perfil {
+  height: 150px;
+  width: 100%;
+  max-height: 300px;
+  padding-top: 15px;
+}
+
+/* line 303, globalsass/sass/global.scss */
+select {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  border-radius: 3px;
+  appearance: none;
+  -moz-appearance: none;
+  /* Firefox */
+  -webkit-appearance: none;
+  /* Safari and Chrome */
+  width: 205px;
+  height: 30px;
+  border: #242021 solid 1px;
+  background-color: #242021;
+  border: #b5b5b5 1px solid;
+  padding-left: 2%;
+  color: #b5b5b5;
+  background: url("../img/arrow.png") #242021 no-repeat;
+}
+
+/* line 318, globalsass/sass/global.scss */
+select:hover {
+  background: url("../img/arrow.png") #ec1c24 no-repeat;
+}
+
+/* line 323, globalsass/sass/global.scss */
+input[type="text"]:focus, #academico_perfil:focus, #centro_direccion:focus, input[type="password"]:focus, select:focus, input[type="email"]:focus {
+  outline: none;
+  border: #af0000 solid 1px;
+}
+
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* line 17, globalsass/sass/contentStyle.scss */
+.upSection {
+  width: 85%;
+  height: 45px;
+  /*border:1px solid #000;*/
+  overflow: hidden;
+  position: fixed;
+  top: 57px;
+  padding-top: 25px;
+  background-color: white;
+  z-index: 3;
+}
+/* line 28, globalsass/sass/contentStyle.scss */
+.upSection h1 {
+  /*width: 150px;*/
+  background-color: #ec1c24;
+  padding: 3px 0px;
+  padding-right: 15px;
+  padding-left: 30px;
+  float: left;
+}
+/* line 40, globalsass/sass/contentStyle.scss */
+.upSection a {
+  float: right;
+  margin-right: 1%;
+}
+/* line 44, globalsass/sass/contentStyle.scss */
+.upSection a img {
+  margin-right: 7px;
+  float: left;
+}
+/* line 48, globalsass/sass/contentStyle.scss */
+.upSection a h4 {
+  float: left;
+  margin-top: 7px;
+}
+/* line 55, globalsass/sass/contentStyle.scss */
+.upSection form {
+  position: absolute;
+  top: 100px;
+  right: 4%;
+  float: right;
+  opacity: 0;
+}
+/* line 63, globalsass/sass/contentStyle.scss */
+.upSection form label {
+  display: none;
+}
+/* line 66, globalsass/sass/contentStyle.scss */
+.upSection form input[type="file"] {
+  width: 300px;
+}
+/* line 75, globalsass/sass/contentStyle.scss */
+.upSection #form div {
+  float: right !important;
+}
+
+/* line 83, globalsass/sass/contentStyle.scss */
+.downSection {
+  width: 100%;
+  margin-top: 83px;
+  padding-bottom: 80px;
+  /*border:1px solid #000;*/
+}
+
+/* line 92, globalsass/sass/contentStyle.scss */
+.practicantesTableHead, .generalTableHead {
+  width: 100%;
+  padding-left: 30px;
+}
+/* line 97, globalsass/sass/contentStyle.scss */
+.practicantesTableHead .tableHead, .generalTableHead .tableHead {
+  background-color: #b5b5b5;
+  height: 38px;
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding-top: 5px;
+  z-index: 3;
+}
+
+/* line 109, globalsass/sass/contentStyle.scss */
+.practicantesTable {
+  width: 100%;
+  padding-left: 30px;
+  height: auto;
+  table-border: collapse;
+  /* practicantesTable */
+}
+/* line 116, globalsass/sass/contentStyle.scss */
+.practicantesTable .tableHead {
+  background-color: #b5b5b5;
+  height: 35px;
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding-top: 5px;
+  z-index: 3;
+}
+/* line 127, globalsass/sass/contentStyle.scss */
+.practicantesTable .tableItem {
+  margin: 10px 0px;
+  /*border:2px solid $darkGray;*/
+  height: 20px;
+  color: black;
+  position: relative;
+}
+/* line 138, globalsass/sass/contentStyle.scss */
+.practicantesTable .tableItem:hover {
+  color: white !important;
+}
+/* line 147, globalsass/sass/contentStyle.scss */
+.practicantesTable #hoverDiv {
+  height: 55px;
+  width: 100%;
+  position: absolute;
+  margin-top: 25px;
+  border-top: 1px solid #b5b5b5;
+  border-bottom: 1px solid #b5b5b5;
+  z-index: 2;
+}
+/* line 158, globalsass/sass/contentStyle.scss */
+.practicantesTable .opciones {
+  position: absolute;
+  opacity: 0;
+  padding: 5px 10px;
+  background-color: #242021;
+  top: 26px;
+  right: 36%;
+  z-index: 10;
+  overflow: hidden;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  border-radius: 3px;
+}
+/* line 173, globalsass/sass/contentStyle.scss */
+.practicantesTable .opciones td {
+  padding: 1px 6px;
+  min-width: 120px;
+  float: left;
+}
+/* line 179, globalsass/sass/contentStyle.scss */
+.practicantesTable .opciones td:hover {
+  background-color: #72030b;
+}
+/* line 182, globalsass/sass/contentStyle.scss */
+.practicantesTable .opciones img {
+  float: left;
+}
+/* line 186, globalsass/sass/contentStyle.scss */
+.practicantesTable .opciones h3 {
+  color: white;
+  float: left;
+  margin-top: 9px;
+  margin-left: 5px;
+}
+/* line 199, globalsass/sass/contentStyle.scss */
+.practicantesTable .spacer {
+  height: 40px;
+}
+/* line 203, globalsass/sass/contentStyle.scss */
+.practicantesTable img {
+  position: relative;
+  margin: 0 auto;
+}
+/* line 210, globalsass/sass/contentStyle.scss */
+.practicantesTable td {
+  position: relative;
+  font-family: helvetica;
+  font-size: 14px;
+  z-index: 2;
+}
+/* line 221, globalsass/sass/contentStyle.scss */
+.practicantesTable h2 {
+  color: #b5b5b5;
+  margin-left: 30px;
+  font-weight: bold;
+}
+/* line 227, globalsass/sass/contentStyle.scss */
+.practicantesTable .itemImgContainer {
+  width: 100px;
+  height: 100px;
+  border: 3px solid #242021;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  border-radius: 50%;
+  overflow: hidden;
+}
+/* line 233, globalsass/sass/contentStyle.scss */
+.practicantesTable .itemImgContainer .foto {
+  top: -5px;
+}
+
+/* practicantes Table style */
+/* line 240, globalsass/sass/contentStyle.scss */
+.imgContainer {
+  width: 150px;
+  height: 150px;
+  border: 3px solid #242021;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  border-radius: 50%;
+  overflow: hidden;
+}
+/* line 247, globalsass/sass/contentStyle.scss */
+.imgContainer .foto {
+  position: relative;
+  top: -5px;
+}
+
+/* line 252, globalsass/sass/contentStyle.scss */
+.profileContainer {
+  padding-left: 30px;
+  padding-top: 42px;
+}
+
+/* line 256, globalsass/sass/contentStyle.scss */
+.profilePictureContainer {
+  width: 400px;
+  float: left;
+  margin-bottom: 10px;
+  /*border: 1px solid #000;*/
+}
+
+/* line 264, globalsass/sass/contentStyle.scss */
+.profileFormContainer {
+  width: 800px;
+  float: left;
+  /*border: 1px solid #000;*/
+}
+
+/* line 270, globalsass/sass/contentStyle.scss */
+.inputContainer {
+  display: inline-block;
+  margin-bottom: 20px;
+  width: 390px;
+  float: left;
+  /*height: 40px;*/
+}
+/* line 277, globalsass/sass/contentStyle.scss */
+.inputContainer h2, .inputContainer label {
+  color: black;
+  font-family: helveticaNBold;
+  font-size: 17px;
+  float: left;
+  margin-top: 5px;
+  margin-right: 15px;
+  width: 120px;
+}
+/* line 286, globalsass/sass/contentStyle.scss */
+.inputContainer .input {
+  float: left;
+}
+
+/* line 292, globalsass/sass/contentStyle.scss */
+.selFile {
+  width: 300px;
+}
+
+/* line 295, globalsass/sass/contentStyle.scss */
+.selFile label {
+  display: none;
+}
+
+/* line 299, globalsass/sass/contentStyle.scss */
+.profileData {
+  /*border:1px solid #000;*/
+  height: 85px;
+  margin-bottom: 14px;
+}
+/* line 304, globalsass/sass/contentStyle.scss */
+.profileData h1, .profileData h2 {
+  color: #242021;
+  margin-left: 125px;
+  margin-top: 5px;
+}
+/* line 310, globalsass/sass/contentStyle.scss */
+.profileData .imgContainer {
+  width: 80px;
+  height: 80px;
+  position: absolute;
+}
+
+/* line 317, globalsass/sass/contentStyle.scss */
+.tabla {
+  width: 100%;
+  /*border:1px solid #000;*/
+  overflow: auto;
+}
+/* line 322, globalsass/sass/contentStyle.scss */
+.tabla .tableHeader, .tabla .tableHeader:hover {
+  color: #fff;
+  background-color: #b5b5b5;
+  font-family: helvetica;
+  font-size: 18px;
+  z-index: 2;
+  height: 30px;
+}
+/* line 330, globalsass/sass/contentStyle.scss */
+.tabla td {
+  position: relative;
+  font-family: helvetica;
+  font-size: 15px;
+  z-index: 2;
+  padding: 5px 0;
+  padding-top: 10px;
+  width: 120px;
+}
+/* line 339, globalsass/sass/contentStyle.scss */
+.tabla tr {
+  margin-top: 10px;
+}
+/* line 343, globalsass/sass/contentStyle.scss */
+.tabla tr:hover {
+  background-color: #ec1c24;
+  color: #fff;
+}
+/* line 347, globalsass/sass/contentStyle.scss */
+.tabla tr:hover td:first-child {
+  color: #fff;
+}
+/* line 351, globalsass/sass/contentStyle.scss */
+.tabla th:first-child {
+  padding-left: 30px;
+}
+/* line 354, globalsass/sass/contentStyle.scss */
+.tabla tr td:first-child {
+  padding-left: 30px;
+  width: 285px;
+  font-weight: bold;
+  color: #242021;
+}
+
+/* line 362, globalsass/sass/contentStyle.scss */
+.generalTable {
+  width: 100%;
+  padding-left: 30px;
+  height: auto;
+  table-border: colapse;
+  /* generalTable */
+}
+/* line 369, globalsass/sass/contentStyle.scss */
+.generalTable .tableHead {
+  background-color: #b5b5b5;
+  height: 35px;
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding-top: 5px;
+  z-index: 3;
+}
+/* line 380, globalsass/sass/contentStyle.scss */
+.generalTable .tableItem {
+  margin: 10px 0px;
+  /*border:2px solid $darkGray;*/
+  padding-top: 20px;
+  height: 40px;
+  color: black;
+  position: relative;
+}
+/* line 392, globalsass/sass/contentStyle.scss */
+.generalTable .tableItem:hover {
+  color: white !important;
+  background-color: #ec1c24;
+}
+/* line 402, globalsass/sass/contentStyle.scss */
+.generalTable #hoverDiv {
+  height: 65px;
+  width: 100%;
+  position: absolute;
+  margin-top: -30px;
+  z-index: 2;
+}
+/* line 411, globalsass/sass/contentStyle.scss */
+.generalTable .opciones {
+  position: absolute;
+  opacity: 0;
+  float: right;
+  padding: 5px 10px;
+  background-color: #242021;
+  top: 0;
+  right: 160px;
+  z-index: 10;
+  overflow: hidden;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  border-radius: 3px;
+}
+/* line 426, globalsass/sass/contentStyle.scss */
+.generalTable .opciones td {
+  padding: 1px 6px !important;
+  float: left;
+  width: 80px;
+}
+/* line 431, globalsass/sass/contentStyle.scss */
+.generalTable .opciones td:first-child {
+  padding: 1px 6px !important;
+}
+/* line 436, globalsass/sass/contentStyle.scss */
+.generalTable .opciones td:hover {
+  background-color: #72030b;
+}
+/* line 439, globalsass/sass/contentStyle.scss */
+.generalTable .opciones img {
+  float: left;
+}
+/* line 443, globalsass/sass/contentStyle.scss */
+.generalTable .opciones h3 {
+  color: white;
+  float: left;
+  margin-top: 9px;
+  margin-left: 5px;
+}
+/* line 456, globalsass/sass/contentStyle.scss */
+.generalTable .spacer {
+  height: 40px;
+}
+/* line 460, globalsass/sass/contentStyle.scss */
+.generalTable img {
+  position: relative;
+  margin: 0 auto;
+}
+/* line 467, globalsass/sass/contentStyle.scss */
+.generalTable td {
+  position: relative;
+  font-family: helvetica;
+  font-size: 14px;
+  z-index: 2;
+}
+/* line 479, globalsass/sass/contentStyle.scss */
+.generalTable h2 {
+  color: #b5b5b5;
+  margin-left: 30px;
+  font-weight: bold;
+}
+/* line 485, globalsass/sass/contentStyle.scss */
+.generalTable .itemImgContainer {
+  width: 100px;
+  height: 100px;
+  border: 3px solid #242021;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  border-radius: 50%;
+  overflow: hidden;
+}
+/* line 491, globalsass/sass/contentStyle.scss */
+.generalTable .itemImgContainer .foto {
+  top: -5px;
+}
+
+/* general Table style */
+/* line 498, globalsass/sass/contentStyle.scss */
+#centro_direccion {
+  width: 170px;
+  font-family: helvetica;
+  font-family: 12px;
+}
+
+/* line 504, globalsass/sass/contentStyle.scss */
+#externo_cargo {
+  width: 170px;
+}
+
+/* line 507, globalsass/sass/contentStyle.scss */
+#cargo div {
+  float: left;
+}
+
+/* line 511, globalsass/sass/contentStyle.scss */
+#cargo div:last-child {
+  margin-left: 53px;
+}
+
+/* line 514, globalsass/sass/contentStyle.scss */
+.nomodificable {
+  border: none !important;
+}
+
+/* line 518, globalsass/sass/contentStyle.scss */
+.inform {
+  width: 100%;
+  overflow: auto;
+  height: 650px;
+  /*activity*/
+}
+/* line 526, globalsass/sass/contentStyle.scss */
+.inform .activity {
+  margin-top: 30px;
+  width: 100%;
+  float: left;
+  border-top: 3px solid #b5b5b5;
+  padding-top: 30px;
+}
+/* line 534, globalsass/sass/contentStyle.scss */
+.inform .activity .indicadores {
+  float: left;
+  width: 350px;
+  margin-top: 25px;
+  margin-left: 15px;
+}
+/* line 540, globalsass/sass/contentStyle.scss */
+.inform .activity .indicadores .inputContainer {
+  width: 200px !important;
+}
+/* line 546, globalsass/sass/contentStyle.scss */
+.inform .activity .inputContainer {
+  float: left;
+  width: 435px;
+  margin-left: 30px;
+}
+/* line 551, globalsass/sass/contentStyle.scss */
+.inform .activity .inputContainer h2 {
+  margin-bottom: 10px;
+  width: 100% !important;
+}
+/* line 556, globalsass/sass/contentStyle.scss */
+.inform .activity .inputContainer .input {
+  margin-top: 20px;
+  width: 350px;
+  margin-left: 10px;
+}
+/* line 562, globalsass/sass/contentStyle.scss */
+.inform .activity .inputContainer .radio {
+  width: 380px;
+}
+/* line 564, globalsass/sass/contentStyle.scss */
+.inform .activity .inputContainer .radio label {
+  width: auto;
+}
+/* line 572, globalsass/sass/contentStyle.scss */
+.inform .activity h1 label {
+  width: 243px;
+  margin-bottom: 10px;
+}
+/* line 580, globalsass/sass/contentStyle.scss */
+.inform h1 {
+  font-family: helvetica;
+  font-size: 24px;
+  color: #242021;
+  margin-left: 30px;
+}
+/* line 587, globalsass/sass/contentStyle.scss */
+.inform textarea {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  border-radius: 3px;
+  width: 400px;
+  height: 150px;
+  border: #242021 solid 1px;
+  color: #242424;
+  font-size: 0.8em;
+  padding-left: 5%;
+  padding-top: 20px;
+  /*margin-right:50px;*/
+  font-family: helvetica;
+}
+/* line 602, globalsass/sass/contentStyle.scss */
+.inform textarea:hover {
+  border-color: #ec1c24;
+}
+/* line 605, globalsass/sass/contentStyle.scss */
+.inform textarea:focus {
+  border-color: #ec1c24;
+}
+/* line 609, globalsass/sass/contentStyle.scss */
+.inform textarea.nomodificable {
+  background-color: #ececec;
+}
+/* line 613, globalsass/sass/contentStyle.scss */
+.inform input.nomodificable {
+  background-color: #ececec;
+}
+/* line 617, globalsass/sass/contentStyle.scss */
+.inform .nomodificable {
+  pointer-events: none;
+}
+/* line 620, globalsass/sass/contentStyle.scss */
+.inform .nomodificable textarea {
+  border: none !important;
+  line-height: 150%;
+  height: 300px;
+  background-color: #ececec;
+}
+/* line 626, globalsass/sass/contentStyle.scss */
+.inform .nomodificable .input {
+  background-color: #ececec;
+}
+/* line 629, globalsass/sass/contentStyle.scss */
+.inform .nomodificable input {
+  background-color: #ececec;
+}
+
+/*inform*/
+/* line 638, globalsass/sass/contentStyle.scss */
+.bold {
+  font-weight: bold;
+  font-size: 19px;
+  color: #7b7b7b !important;
+}
+
+/* line 644, globalsass/sass/contentStyle.scss */
+.largeh2 {
+  color: #242021;
+  width: 400px !important;
+  font-family: helvetica !important;
+}
+
+/* line 649, globalsass/sass/contentStyle.scss */
+.extraLarge {
+  color: #242021;
+  width: 80% !important;
+}
+
+/* line 654, globalsass/sass/contentStyle.scss */
+#warning {
+  width: 90%;
+  border-top: none;
+  background-color: #ec1c24;
+  padding: 10px;
+  margin-left: 30px;
+  font-weight: bold;
+  color: #fff;
+  line-height: 130%;
+}

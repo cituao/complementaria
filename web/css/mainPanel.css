@@ -1,0 +1,207 @@
+html, body{
+	font-size: 16px;
+	background-color: #fafbf6;
+	font-family: helveticaN;
+	min-height:100%;
+	height:100%;
+
+
+}
+
+
+h1{		font-family: helveticaNBold, Helvetica;	}
+
+h2{		font-family: helveticaN, Helvetica;	}
+
+p{		font-family: helveticaN, Helvetica	}
+
+a{		font-family: helveticaN, Helvetica }
+#wrapper{
+	
+	width: 100%;
+	border-top: 3px solid #af0000;
+	height:100%;
+}
+
+
+#header{
+width: 90%;
+/*max-width: 1200px;*/
+/*border: 1px solid #000;*/
+height: 100px;
+margin:0 auto;
+margin-top: 0.5%;
+margin-left: 5%;
+display: block;
+
+}
+
+#header img{
+	width: 200px;
+	float: left;
+}
+
+#headerTitle{
+	/*border: 1px solid #000;*/
+	max-width: 340px;
+	float: left;
+	margin-top: 1.5%;
+	font-size: 0.75em; /*12px*/
+
+}
+
+#headerError{
+	/*border: 1px solid #000;*/
+	max-width: 240px;
+	float: left;
+	margin-top: 2%;
+	font-size: 0.75em; /*12px*/
+}
+
+#headerError h2 {
+font-size: 1.2em;
+margin-top: 2%;
+font-family: "Arial";
+color: #FFF;
+}
+
+#headerTitle h1{
+font-size: 1.6em; /*19px*/
+height: 20px;
+}
+
+#headerTitle h2{
+font-size: 1.4em;
+color: #5b5b5b;
+height: 20px;
+}
+
+#headerTitle h3{
+font-size: 1.2em;
+color: #5b5b5b;
+height: 20px;
+}
+
+
+#homeButton{
+font-size: 1.2em;
+margin-top: 0;
+color: #5b5b5b;
+float: left;
+font-size: 14px;
+font-family: Helvetica;
+text-decoration: none;
+font-weight: bold;
+color: #af0000; 
+}
+#homeButton:hover{
+
+font-weight: 100;
+color: #ff0000;
+}
+#cerrarButton{
+font-family: Helvetica;
+font-size: 1.2em;
+margin-top:5%;
+color: #5b5b5b;
+float: right;
+font-size: 12px;
+text-decoration: none;
+font-weight: bold;
+color: #af0000; 
+}
+
+
+#cerrarButton:hover{
+
+font-weight: 100;
+color: #ff0000;
+}
+
+
+#infoWrapper{
+	
+	margin-top:2%;
+	margin-left: 11%;
+	/*border: 1px solid #000;*/
+	max-width: 1100px;
+	width: 80%; /*450px*/
+	
+	height: 100%;
+}
+
+h2#titlee{
+font-size: 1.6em;
+width: 73%;
+max-width: 450px;
+color: #100f0f;
+line-height: 110%;
+margin-left: 10%; /*110px*/
+margin-top: 1%;
+}
+span{
+	font-family: helveticaNBold;
+}
+
+
+#buttonsContainer{
+	
+	margin:0 auto;
+	margin-left: 10%;
+	/*border: 1px solid #000;*/
+	max-width: 1100px;
+	min-width: 480px;
+	width: 90%; /*450px*/
+	
+	height: 300px;
+	padding-top: 4%;
+}
+
+a.button{
+	width: 200px;
+	height: 200px;
+	background: #e0001a;
+	float: left;
+	margin-top: 0.1%;
+	margin-right: 0.1%;
+	text-decoration: none;
+	position: relative;
+}
+
+a.button:hover{
+	opacity:0.5;
+}
+
+a.button h2{
+	color:#fafbf6;
+	position: absolute;
+	bottom:8%;
+	left: 10%;
+	font-size: 15px;
+}
+#asesoresExternos{
+	width: 45%;
+	min-width: 400px;
+}
+#asesoresInternos{
+	width: 45%;
+		min-width: 400px;
+
+}
+#asesoresInternos h2{
+	left: 55% ;
+}
+#internoIcon{
+	margin-left: 55%;
+}
+
+#externoIcon{
+	margin-left: 10%;
+}
+
+
+a.button img{
+	margin-left:12%;
+	width: 160px;
+	position: relative;
+}

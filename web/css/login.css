@@ -1,0 +1,294 @@
+
+
+html, body{
+	font-size: 16px;
+	font-family: helveticaN, Open-sans, arial , sans-serif;
+	min-height:100%;
+	height:100%;
+
+
+}
+
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+
+
+
+h1{		font-family: helveticaNBold, Open-sans, arial , sans-serif;	}
+
+h2{		font-family: helveticaN, Open-sans, arial , sans-serif;	}
+
+p{		font-family: helveticaN, Open-sans, arial , sans-serif;	}
+
+
+
+#wrapper{
+	
+	width: 100%;
+	/*border: 3px solid #af0000;*/
+	height:100%;
+}
+
+
+#formWrapper{
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-ms-border-radius: 3px;
+	
+	width: 300px;
+	/*border: 1px solid #000;*/
+
+
+
+}
+#formWrapper h2{
+	width: 29.1%;
+
+	font-size: 1.875em;
+	color: #3f3f3f;
+	margin-left:33.3%;
+}
+form{
+	margin-top: 55px;
+}
+
+input[type="text"], input[type="password"]
+{
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-ms-border-radius: 5px;
+width:190px;
+
+margin-top: 10%; /*30px*/
+height: 40px;
+border: #242021 solid 1px;
+background-color: #fff;
+color:#242424;
+font-size: 1.12em;
+padding-left: 25%;
+}
+
+input[type="text"]:focus, input[type="password"]:focus
+{
+	outline: none;
+
+border: #af0000 solid 1px;
+
+
+}
+
+input[type="password"]{ font-size: 1.8em;}
+
+input[type="submit"]
+{
+width:150px;
+font-family: helveticaN, Open-sans, arial , sans-serif;
+margin-top: 50px; 
+margin-left: 50px;
+height: 38px;
+background-color: #242021;
+color:#fff;
+font-size: 16px;
+border: none;
+border-radius: 5px;
+-moz-border-radius: 5px;
+-ms-border-radius: 5px;
+}
+input[type="submit"]:hover, input[type="submit"]:active{
+	cursor: pointer;
+	background-color: #e1001a;	
+}
+
+
+
+#userNameIcon , #passwordIcon{
+	position: absolute;
+	top: 32px;
+	left: 15px;
+	
+}
+
+/*.userNameIconPath:hover {
+    fill:#af0000;
+}*/
+
+#header{
+width: 700px;
+/*max-width: 1200px;*/
+/*border: 1px solid #000;*/
+height: 100px;
+margin:0 auto;
+margin-top: 180px;
+
+
+}
+
+#uaoLogo{
+	width: 230px;
+	float: left;
+}
+.logoContainer{
+	width: 230px;
+	/*border: 1px solid #000;*/
+	float: left;
+}
+
+.side{
+	width: 430px;
+	/*border: 1px solid #000;*/
+		float: left;
+		color: #fff;
+		margin-left: 20px;
+		margin-top: 20px;
+}
+.side h1{
+	font-size: 17px;
+	font-family: helveticaNBold, Open-sans, arial , sans-serif;
+	padding: 5px;
+	width: 200px;
+	background-color: #242021;
+}
+.side h2{
+	font-size: 16px;
+	font-family: helveticaN , Open-sans, arial , sans-serif;
+	padding: 5px;
+	width: 200px;
+	background-color: #242021;
+	margin-top: 1px;
+}
+
+.side h3{
+	font-size: 16px;
+	font-family: helveticaN, Open-sans, arial , sans-serif;
+	padding: 5px;
+	width: 400px;
+	background-color: #e1001a;
+	margin-top: 1px;
+}
+
+#headerError{
+	/*border: 1px solid #000;*/
+	
+	
+	margin-top: 2%;
+	font-size: 0.75em; /*12px*/
+	width: 100%;
+}
+
+#headerError h3 {
+font-size: 1.2em;
+margin-top: 2%;
+font-family: "Arial";
+color: #FFF;
+clear: both;
+height: 25px;
+padding-top: 15px;
+border-radius: 5px;
+opacity: 0.8;
+width: 70%
+}
+
+
+#homeButton{
+font-size: 1.2em;
+margin-top: 0;
+color: #5b5b5b;
+float: left;
+font-size: 12px;
+font-family: Helvetica;
+text-decoration: none;
+font-weight: bold;
+color: #af0000; 
+}
+#homeButton:hover{
+
+font-weight: 100;
+color: #ff0000;
+}
+#cerrarButton{
+font-family: Helvetica;
+font-size: 1.2em;
+margin-top:5%;
+color: #5b5b5b;
+float: right;
+font-size: 12px;
+text-decoration: none;
+font-weight: bold;
+color: #af0000; 
+}
+
+
+#cerrarButton:hover{
+
+font-weight: 100;
+color: #ff0000;
+}
+#infoWrapper{
+	
+	margin-top:5%;
+	margin-left: 11%;
+	/*border: 1px solid #000;*/
+	max-width: 845px;
+	width: 50%; /*450px*/
+	
+	height: 70%;
+}
+
+h2#titlee{
+font-size: 1.875em;
+width: 73%;
+max-width: 450px;
+color: #100f0f;
+line-height: 110%;
+margin-left: 13%; /*110px*/
+margin-top: 1%;
+}
+span{
+	font-family: helveticaNBold, Open-sans, arial , sans-serif;
+}
+
+p#text{
+	color:#000;
+	font-size: 16px;
+	margin-top: 3%;
+	margin-left: 13%; /*110px*/
+	width: 78.6%; /*600px*/
+	max-width: 600px; 
+	line-height: 130%;
+}
+
+#vidContainer{
+ position: relative;
+ width: 79%; /*580PX */
+ max-width: 580px; 
+ margin-top: 4%;
+ margin-left: 13%;
+
+}
+video{
+	margin-top: 1%;
+	
+}
+
+video:hover{
+	cursor:pointer;
+}
+ #playB{
+ 	width: 20%;
+ 	height: 40%;
+ 	
+position: absolute;
+background-image: url('../img/playButton.png');
+background-repeat:no-repeat;
+background-size:100%;
+top:0;
+left:38%;
+top:37%;
+ }
+ #playB:hover {
+ 	cursor:pointer;
+ 	background-image: url('../img/playButtonh.png');
+ }
