@@ -5,6 +5,7 @@ namespace Ingenieria\UsuarioBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Security\Core\SecurityContext;
 use Ingenieria\UsuarioBundle\Entity\Director;
+use Ingenieria\UsuarioBundle\Form\Type\DirectorType;
 
 class DefaultController extends Controller
 {
@@ -72,5 +73,66 @@ class DefaultController extends Controller
 		}
 		return $this->render('IngenieriaUsuarioBundle:Default:directores.html.twig',  array('listaDirectores' => $directores, 'msgerr' => $msgerr));
 	}
+	
+	/********************************************************/
+	// Registra y modifica un programa academico
+	/********************************************************/		
+	public function registrarDirectorAction(){
+
+		$peticion = $this->getRequest();
+		$em = $this->getDoctrine()->getManager();
+
+		$director = new Director();
+
+		$formulario = $this->createForm(new DirectorType(), $director);
+		$formulario->handleRequest($peticion);
+
+		if ($formulario->isValid()) {
+			//validamos que no existe el director
+			$repository = $this->getDoctrine()->getRepository('IngenieriaUsuarioBundle:Director');
+			$d = $repository->findOneBy(array('nombre' => $director->getCi()));
+
+			if ($p != NULL){
+				throw $this->createNotFoundException('ERR_PROGRAMA_REGISTRADO');
+			}
+
+		   // Completar las propiedades que el usuario no rellena en el formulario
+
+			$em->persist($d);
+
+			//los roles fueron cargados de forma manual en la base de datos
+			//buscamos una instancia role tipo coordinador 
+			/*
+			$codigo = 1; //codigo corresponde a coordinador		
+			$repository = $this->getDoctrine()->getRepository('CituaoUsuarioBundle:Role');
+			$role = $repository->findOneBy(array('id' => $codigo));
+
+			if ($role == NULL){
+				throw $this->createNotFoundException('ERR_ROLE_NO_ENCONTRADO');
+			}
+			$usuario = new Usuario();
+			//cargamos todos los atributos al usuario
+			$usuario->setUsername($programa->getCoordinador());
+			$usuario->setPassword($formulario->get('password')->getData());
+			$usuario->setSalt(md5(time()));
+			$usuario->addRole($role);  //cargamos el rol al coordinador
+
+			//codificamos el password			
+			$encoder = $this->get('security.encoder_factory')->getEncoder($usuario);
+			$passwordCodificado = $encoder->encodePassword($usuario->getPassword(), $usuario->getSalt());
+			$usuario->setPassword($passwordCodificado);
+			$em->persist($usuario);
+			*/
+
+			$em->flush();
+			return $this->redirect($this->generateUrl('usuario_adm_homepage'));
+		}
+
+		return $this->render('IngenieriaUsuarioBundle:Default:registrardirector.html.twig', array(
+			'formulario' => $formulario->createView()
+			));		
+
+	}		
+	
 	
 }
