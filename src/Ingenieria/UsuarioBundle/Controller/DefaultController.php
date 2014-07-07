@@ -3,12 +3,13 @@
 namespace Ingenieria\UsuarioBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Security\Core\SecurityContext;
 
 class DefaultController extends Controller
 {
    public function indexAction()
     {
-
+		/*
 		if ($this->get('security.context')->isGranted('ROLE_COORDINADOR')) {
         	return $this->redirect($this->generateUrl('cituao_coord_homepage'));
     	}
@@ -28,7 +29,8 @@ class DefaultController extends Controller
 			}
 		}			
 		}
-	}
+		
+	}*/
      return $this->render('IngenieriaUsuarioBundle:Default:portal.html.twig', array("error"=>array("message"=>"")));
     }
 
