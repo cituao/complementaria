@@ -1,0 +1,13 @@
+usuario_login:
+    pattern:   /login
+    defaults:  { _controller: IngenieriaUsuarioBundle:Default:login }
+
+usuario_logout:
+    pattern:   /logout
+
+usuario_login_check:
+    pattern:   /login_check
+
+usuario_inicio:
+    pattern:  /
+    defaults: { _controller: IngenieriaUsuarioBundle:Default:index }

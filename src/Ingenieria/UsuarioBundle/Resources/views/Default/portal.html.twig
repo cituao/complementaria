@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Login::Práctica Profesional UAO</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="stylesheet" type="text/css" href="{{ asset('css/reset.css') }}" />
+		<link rel="stylesheet" type="text/css" href="{{ asset('css/global.css') }}" />
+		<link rel="stylesheet" type="text/css" href="{{ asset('css/login.css') }}"/>
+		<link rel="agregar-participante" href="{{ asset('images/agregar_participante.png') }}" />
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.js"></script> 
+		<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+		<?php include '{{ asset('userNameIcon.svg') }}'; ?>
+		<style>
+			@font-face{
+				font-family: helveticaN;
+				src: url(' {{ asset('fonts/helvetica/HelveticaNeueLTStd-Lt.otf') }} '),
+				url(' {{ asset('fonts/helvetica/helveticaneueltstd-lt.woff') }} '),
+				url(' {{ asset('fonts/helvetica/helveticaneueltstd-lt.eot') }} ');
+			}
+			@font-face{
+				font-family: helveticaNBold;
+				src: url(' {{ asset('fonts/helvetica/HelveticaNeueLTStd-Md.otf') }} ');
+			}
+		</style>
+	</head>
+	
+   <body>
+		<div id="wrapper">
+			<div id="header">
+				<div class="logoContainer">
+					<img id="uaoLogo" src="{{ asset('img/headerLogo.png') }}">
+				</div>
+				<div class="side">
+					<h1>Prácticas Profesionales</h1>
+					<h2>Facultad de Comunicación Social</h2>
+					<h3>Aplicación Web para la gestión del proceso</h3>
+
+					<div id="formWrapper">
+						<form action="{{ path('usuario_login_check') }}" method="post">
+							{% if error %}
+								{% if error.message != '' %}
+									<div id="headerError"> <h3>
+									{{ error.message | replace ({"Bad credentials":"Usuario o contraseña inválida"})}}
+									</h3></div>
+								{% endif %}
+							{% endif %} 
+							<div style="position:relative;"><input onfocus="activateTextField(this.id)" onblur="disableTextField(this.id)" id="usernameField" type="text" name="_username">
+								<img id="userNameIcon" src=" {{ asset('img/userNameIcon.png') }}" />
+							</div>
+							<div style="position:relative;"><input id="passwordField" onfocus="activateTextField(this.id)" onblur="disableTextField(this.id)" type="password" name="_password">
+								<img id="passwordIcon" src=" {{ asset('img/passwordIcon.png') }}" />
+							</div>
+							<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+							
+							<input type="submit" value="Ingresar"></input>
+						</form>
+					</div>
+				</div><!-- side -->
+			</div><!-- cierra header -->
+		</div><!-- wrapper -->
+	</body>
+			
+	<script src="script/FitText.js-master/jquery.fittext.js"></script>
+	<script>
+		var userIcon = document.getElementById("userNameIcon");
+		var passwordIcon = document.getElementById("passwordIcon");
+
+		/*$("#titlee").fitText(1.1, { minFontSize: '30px', maxFontSize: '31px' });
+		$("#loginTitle").fitText(0.1, { minFontSize: '15px', maxFontSize: '30px' });*/
+
+		function activateTextField(id)
+		{
+			if(id=="usernameField"){
+				userIcon.setAttribute("style", "fill: #af0000");
+			}
+
+			if(id=="passwordField"){
+				passwordIcon.setAttribute("style", "fill: #af0000");
+			}
+
+		}
+
+		function disableTextField(id)
+		{
+			if(id=="usernameField"){
+				userIcon.setAttribute("style", "fill: #000");
+			}
+
+			if(id=="passwordField"){
+				passwordIcon.setAttribute("style", "fill: #000");
+			}
+		}
+		</script>
+</html>
