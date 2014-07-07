@@ -1,0 +1,108 @@
+{% extends 'IngenieriaUsuarioBundle::layout.html.twig' %}
+
+{% block js  %}
+<script>
+$( "#programas" ).css("background-color","#000");
+$( "#programas img" ).css("opacity","0.4");
+$( "#programas h3" ).css("opacity","0.4");
+</script>
+
+{% endblock %}
+
+{% block content  %}
+{{ parent() }}
+<div class="content">
+		{% block upSection  %}
+			<div class = "upSection">
+			<h1 class ="sectionTitle">Directores</h2>
+				<a href="{{ path('usuario_registrar_director') }}" class = "button"><img src="{{ asset('img/academicosBoton.png') }}"/><h4>Nuevo director</h4></a>
+			</div>
+		{% endblock  %}
+
+		{% block downSection  %}
+			<div class = "downSection">
+				{% if msgerr.id == '1' %}
+					<div id = "error">{{ msgerr.descripcion }}</div>	
+				{% else %}
+					<table class="generalTableHead">
+						<tbody>
+							<tr class="tableHead">
+								<th width="5%"></th> 
+								<th width="6%"></th> 
+								<th width="7%"></th>	
+								<th width="16%"></th>	
+								<th width="17%"></th>
+								<th width="28%"><img style="margin-left:28%;" src="{{ asset('img/idLabel.png') }}"/></th>	
+								<th><img style="margin-left:38px;" src="{{ asset('img/mailLabel.png') }}"/></th> 
+								<th><h3><span></span></h3></th>
+							</tr><!--tablehead -->
+						</tbody>
+					</table><!-- gnrral tableHead -->
+					<div style="width: 100%; height: 750px; overflow: auto; position:relative; padding-bottom:30px;">
+						<table class="generalTable">
+							<tbody>
+								{% set id = 1 %}
+								<tr class="spacer"></tr>
+								{% for programa in listaProgramas %}
+									<tr class="tableItem">
+										<td id="hoverDiv">
+										<td><h2>{{ id }}</h2></td>
+											<td style=" width:40%"><span style="margin-left:20px; ">{{ programa.nombre }}</span></td>
+											<td width="5%"></td>
+											<td>{{ programa.coordinador }}</td>
+											<td>
+												<div>
+													<table class="opciones">
+													<td><a href="{{ path('usuario_actualizar_programa', { 'id': programa.id}) }}"><img src="{{ asset('img/editar.png') }}"><h3> Editar </h3></a></td>
+													<td style ="width: 90px;"><a href="{{ path('usuario_actualizar_programa', { 'id': programa.id}) }}"><img src="{{ asset('img/editar.png') }}"><h3> Eliminar</h3></a></td>
+													</table> <!-- opciones -->
+												</div>
+												{{ programa.email }}
+											</td>
+										</td> <!-- hoverDir -->
+									</tr><!-- tableitem -->
+									{% set id = id + 1 %}
+									<tr class="spacer"></tr>
+								{% endfor %}
+								<tr class="spacer"></tr>
+								<tr class="spacer"></tr>
+								<tr class="spacer"></tr>
+								<tr class="spacer"></tr>
+								<tr class="spacer"></tr>
+							</tbody>
+						</table>
+					</div><!-- scroll div-->					
+					
+				{% endif %}
+			</div><!--downsection -->
+		{% endblock  %}
+	</div><!-- content -->
+
+	<script>
+		$( ".tableItem" ).mouseenter(function() {
+				var opciones = $('.opciones', this);
+				var itemPicture = $('.itemImgContainer', this);
+				$(itemPicture).css("border-color","#ec1c24");
+
+				$( opciones).animate({
+					opacity: 1,
+					top: "-30px",
+				}, 300, function() {
+				// Animation complete.
+			});
+			});
+
+			$( ".tableItem" ).mouseleave(function() {
+				var itemPicture = $('.itemImgContainer', this);
+				var opciones = $('.opciones', this);
+				$(itemPicture).css("border-color","#242021");
+				$( opciones).animate({
+					opacity: 0,
+					top: "0px",
+				}, 300, function() {
+				// Animation complete.
+			});
+			});
+
+	</script>
+{% endblock %}

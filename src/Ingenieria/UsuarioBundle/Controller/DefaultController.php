@@ -4,12 +4,13 @@ namespace Ingenieria\UsuarioBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Security\Core\SecurityContext;
+use Ingenieria\UsuarioBundle\Entity\Director;
 
 class DefaultController extends Controller
 {
    public function indexAction()
     {
-		/*
+		
 		if ($this->get('security.context')->isGranted('ROLE_COORDINADOR')) {
         	return $this->redirect($this->generateUrl('cituao_coord_homepage'));
     	}
@@ -30,7 +31,7 @@ class DefaultController extends Controller
 		}			
 		}
 		
-	}*/
+	}
      return $this->render('IngenieriaUsuarioBundle:Default:portal.html.twig', array("error"=>array("message"=>"")));
     }
 
@@ -52,6 +53,24 @@ class DefaultController extends Controller
                 'error'         => $error
             )
         );
-
     }
+	
+	//******************************************************
+	// Home del administrador de la aplicacion
+	//******************************************************
+	public function homeAdmAction(){
+	
+		$repository = $this->getDoctrine()->getRepository('IngenieriaUsuarioBundle:Director');
+		$directores = $repository->findAll();
+		
+		
+		if (!$directores) {
+			//throw $this->createNotFoundException('ERR_NO_HAY_PROGRAMA');
+			$msgerr = array('id'=>1, 'descripcion' => 'No hay directores registrados en el sistema');
+		}else{
+			$msgerr = array('id'=>0, 'descripcion' => 'Ok');
+		}
+		return $this->render('IngenieriaUsuarioBundle:Default:directores.html.twig',  array('listaDirectores' => $directores, 'msgerr' => $msgerr));
+	}
+	
 }

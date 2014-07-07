@@ -1,0 +1,28 @@
+Ingenieria\UsuarioBundle\Entity\Director:
+    type: entity
+    table: null
+    repositoryClass: Ingenieria\UsuarioBundle\Entity\DirectorRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nombres:
+            type: string
+            length: '50'
+        apellidos:
+            type: string
+            length: '50'
+        ci:
+            type: string
+            length: '12'
+        email:
+            type: string
+            length: '50'
+        emailInstitucional:
+            type: string
+            length: '50'
+            column: email_institucional
+    lifecycleCallbacks: {  }

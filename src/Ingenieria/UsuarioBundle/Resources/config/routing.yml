@@ -11,3 +11,11 @@ usuario_login_check:
 usuario_inicio:
     pattern:  /
     defaults: { _controller: IngenieriaUsuarioBundle:Default:index }
+    
+usuario_adm_homepage:
+    pattern:  /administrador
+    defaults: { _controller: IngenieriaUsuarioBundle:Default:homeAdm }
+
+usuario_registrar_director:
+    pattern:  /registrar-director
+    defaults: { _controller: IngenieriaUsuarioBundle:Default:registrarDirector }
