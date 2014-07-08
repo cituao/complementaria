@@ -54,7 +54,7 @@ $( "#programas h3" ).css("opacity","0.4");
 												<div>
 													<table class="opciones">
 													<td><a href="{{ path('usuario_actualizar_director', { 'id': director.id}) }}"><img src="{{ asset('img/editar.png') }}"><h3> Editar </h3></a></td>
-													<td style ="width: 90px;"><a href="{{ path('usuario_eliminar_director', { 'id': director.id}) }}"><img src="{{ asset('img/editar.png') }}"><h3> Eliminar</h3></a></td>
+													<td style ="width: 90px;"><a href="{{ path('usuario_actualizar_programa', { 'id': programa.id}) }}"><img src="{{ asset('img/editar.png') }}"><h3> Eliminar</h3></a></td>
 													</table> <!-- opciones -->
 												</div>
 												{{ director.email }}

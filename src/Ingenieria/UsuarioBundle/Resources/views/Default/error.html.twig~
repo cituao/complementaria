@@ -1,0 +1,33 @@
+{% extends 'CituaoCoordBundle::layout.html.twig' %}
+
+{% block js  %}
+	<script>
+	$( "#cronograma" ).css("background-color","#000");
+	$( "#cronograma img" ).css("opacity","0.4");
+	$( "#cronograma h3" ).css("opacity","0.4");
+	</script>
+{% endblock %}
+
+
+{% block content  %}
+	<div class="content">
+	{{ parent() }}
+
+		{% block upSection  %}
+			<div class = "upSection">
+				<h1 class="sectionTitle">Notificación!</h1>
+				<a href="javascript:history.back()" class = "button"><img src="{{ asset('img/regresar.png') }}"/><h4>Regresar</h4></a>
+			</div>
+		{% endblock  %}
+
+		{% block downSection  %}
+			<div class = "downSection">
+				<div class="activity">
+				<div class="inputContainer">
+				 <h2 class="largeh2"> {{ exception.message }} </h2>
+				</div>
+				</div>
+			</div>
+		{% endblock %}
+	</div> <!-- content -->
+{% endblock %}

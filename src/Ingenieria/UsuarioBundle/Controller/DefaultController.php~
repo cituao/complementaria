@@ -98,7 +98,7 @@ class DefaultController extends Controller
 
 		   // Completar las propiedades que el usuario no rellena en el formulario
 
-			$em->persist($director);
+			$em->persist($d);
 
 			//los roles fueron cargados de forma manual en la base de datos
 			//buscamos una instancia role tipo coordinador 
