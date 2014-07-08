@@ -1,0 +1,22 @@
+Ingenieria\UsuarioBundle\Entity\Role:
+    type: entity
+    table: null
+    repositoryClass: Ingenieria\UsuarioBundle\Entity\RoleRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: '30'
+        role:
+            type: string
+            length: '20'
+    manyToMany:
+        users:
+            targetEntity: Usuario
+            mappedBy: roles
+    lifecycleCallbacks: {  }

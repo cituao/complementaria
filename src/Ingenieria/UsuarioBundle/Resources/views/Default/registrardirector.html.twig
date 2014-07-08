@@ -5,12 +5,68 @@ Programa
 {% endblock %}
 
 {% block js  %}
+{{ parent() }}
 <script>
 $( "#asesoresInternos" ).css("background-color","#000");
 $( "#asesoresInternos img" ).css("opacity","0.4");
 $( "#asesoresInternos h3" ).css("opacity","0.4");
 </script>
+<script type = "text/javascript">
+$(document).ready(function() {
+	var password1 		= $('#director_password'); //id of first password field
+	var password2		= $('#director_passwordr'); //id of second password field
+	var passwordsInfo 	= $('#pass-info'); //id of indicator element
+	
+	passwordStrengthCheck(password1,password2,passwordsInfo); //call password check function
+	
+});
 
+function passwordStrengthCheck(password1, password2, passwordsInfo)
+{
+	//Must contain 5 characters or more
+	var WeakPass = /(?=.{5,}).*/; 
+	//Must contain lower case letters and at least one digit.
+	var MediumPass = /^(?=\S*?[a-z])(?=\S*?[0-9])\S{5,}$/; 
+	//Must contain at least one upper case letter, one lower case letter and one digit.
+	var StrongPass = /^(?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9])\S{5,}$/; 
+	//Must contain at least one upper case letter, one lower case letter and one digit.
+	var VryStrongPass = /^(?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9])(?=\S*?[^\w\*])\S{5,}$/; 
+	
+	$(password1).on('keyup', function(e) {
+		if(VryStrongPass.test(password1.val()))
+		{
+			passwordsInfo.removeClass().addClass('vrystrongpass').html("Very Strong! (Muy fuerte! (Por favor no olvide!))");
+		}	
+		else if(StrongPass.test(password1.val()))
+		{
+			passwordsInfo.removeClass().addClass('strongpass').html("Fuerte! (Con caracter especial mas fuerte!");
+		}	
+		else if(MediumPass.test(password1.val()))
+		{
+			passwordsInfo.removeClass().addClass('goodpass').html("Bien! (Coloque mayusculas para mas seguridad)");
+		}
+		else if(WeakPass.test(password1.val()))
+    	{
+			passwordsInfo.removeClass().addClass('stillweakpass').html("Es débil! (Enter digits to make good password)");
+    	}
+		else
+		{
+			passwordsInfo.removeClass().addClass('weakpass').html("Muy débil! (Debe tener 5 o más caracteres!)");
+		}
+	});
+	
+	$(password2).on('keyup', function(e) {
+		
+		if(password1.val() !== password2.val())
+		{
+			passwordsInfo.removeClass().addClass('weakpass').html("Contraseñas no son iguales!");	
+		}else{
+			passwordsInfo.removeClass().addClass('goodpass').html("Contraseñas son iguales!");	
+		}
+			
+	});
+}
+</script>
 {% endblock %}
 
 {% block content  %}
@@ -78,7 +134,21 @@ $( "#asesoresInternos h3" ).css("opacity","0.4");
 				</div>
 			</div>
 
-			
+			<div class="inputContainer">	
+				<h2>{{ form_label(formulario.password) }}</h2>
+				<div class="input"> 
+				{{ form_errors(formulario.password) }}
+				{{ form_widget(formulario.password, {'attr': {'class':'corto'}} ) }}
+				</div>
+			</div>
+			<div class="inputContainer">	
+				<h2>{{ form_label(formulario.passwordr) }}</h2>
+				<div class="input"> 
+				{{ form_errors(formulario.passwordr) }}
+				{{ form_widget(formulario.passwordr, {'attr': {'class':'corto'}} ) }}
+				</div>
+			</div>
+			<div id="pass-info">Fortaleza</div>
 				{{ form_rest(formulario) }}
 				<div class="inputContainer" style="position:relative; width:auto; margin-top:20px; top:70px !important; left:-405px;">
 					<div style="position:relative; float:right">

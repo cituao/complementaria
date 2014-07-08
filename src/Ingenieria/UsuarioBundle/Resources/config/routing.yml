@@ -17,7 +17,7 @@ usuario_adm_homepage:
     defaults: { _controller: IngenieriaUsuarioBundle:Default:homeAdm }
 
 usuario_registrar_director:
-    pattern:  /registrar-director
+    pattern:  /administrador/registrar-director
     defaults: { _controller: IngenieriaUsuarioBundle:Default:registrarDirector }
 
 usuario_actualizar_director:

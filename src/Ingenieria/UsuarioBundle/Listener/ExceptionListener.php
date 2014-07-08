@@ -36,6 +36,11 @@ class ExceptionListener
 					$message = sprintf('Los datos ya estan registrados en el sistema!');
 					$tmperror = 'IngenieriaUsuarioBundle:Default:error.html.twig';
 					break;
+				case "ERR_ROLE_NO_ENCONTRADO":
+					$message = sprintf('El rol director no esta registrado en el sistema!');
+					$tmperror = 'IngenieriaUsuarioBundle:Default:error.html.twig';
+					break;
+
 				default:
 					//$message = sprintf('Error no identificado!');
 					$message = $exception->getMessage();

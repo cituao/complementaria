@@ -15,7 +15,9 @@ class DirectorType extends AbstractType
 		->add('nombres','text', array('label' => 'Nombres:', 'required' => true))
         ->add('apellidos','text', array('label' => 'Apellidos:', 'required' => true))
  		->add('emailInstitucional', 'email',  array('required' => false, 'label' => 'Email institucional:'))
-        ->add('email', 'email',  array('required' => false, 'label' => 'Email personal:'));
+        ->add('email', 'email',  array('required' => false, 'label' => 'Email personal:'))
+		->add('password','password', array('label' => 'Contraseña',   'mapped' => false))
+		->add('passwordr','password', array('label' => 'Repetir contraseña',   'mapped' => false));
 		}
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)

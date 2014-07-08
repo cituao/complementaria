@@ -5,6 +5,7 @@ namespace Ingenieria\UsuarioBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Security\Core\SecurityContext;
 use Ingenieria\UsuarioBundle\Entity\Director;
+use Ingenieria\UsuarioBundle\Entity\Usuario;
 use Ingenieria\UsuarioBundle\Form\Type\DirectorType;
 
 class DefaultController extends Controller
@@ -22,7 +23,7 @@ class DefaultController extends Controller
 				if ($this->get('security.context')->isGranted('ROLE_ASESOR_EXT')) {
 					return $this->redirect($this->generateUrl('cituao_externo_homepage'));
 				}else {
-				if ($this->get('security.context')->isGranted('ROLE_ASESOR_ACA')) {
+				if ($this->get('security.context')->isGranted('ROLE_DIRECTOR')) {
 					return $this->redirect($this->generateUrl('cituao_academico_homepage'));
 				}else {
 					if ($this->get('security.context')->isGranted('ROLE_ADMIN')) {
@@ -36,7 +37,9 @@ class DefaultController extends Controller
      return $this->render('IngenieriaUsuarioBundle:Default:portal.html.twig', array("error"=>array("message"=>"")));
     }
 
-
+	//*******************************************************
+	//Proceso de autenticación 
+	//*******************************************************
     public function loginAction()
     {
         $peticion = $this->getRequest();
@@ -75,7 +78,7 @@ class DefaultController extends Controller
 	}
 	
 	/********************************************************/
-	// Registra y modifica un programa academico
+	// Registra y modifica un director academico
 	/********************************************************/		
 	public function registrarDirectorAction(){
 
@@ -101,10 +104,10 @@ class DefaultController extends Controller
 			$em->persist($director);
 
 			//los roles fueron cargados de forma manual en la base de datos
-			//buscamos una instancia role tipo coordinador 
-			/*
-			$codigo = 1; //codigo corresponde a coordinador		
-			$repository = $this->getDoctrine()->getRepository('CituaoUsuarioBundle:Role');
+			//buscamos una instancia role tipo DIRECTOR 
+			
+			$codigo = 1; //codigo ID q corresponde al director
+			$repository = $this->getDoctrine()->getRepository('IngenieriaUsuarioBundle:Role');
 			$role = $repository->findOneBy(array('id' => $codigo));
 
 			if ($role == NULL){
@@ -112,7 +115,7 @@ class DefaultController extends Controller
 			}
 			$usuario = new Usuario();
 			//cargamos todos los atributos al usuario
-			$usuario->setUsername($programa->getCoordinador());
+			$usuario->setUsername($director->getCi());
 			$usuario->setPassword($formulario->get('password')->getData());
 			$usuario->setSalt(md5(time()));
 			$usuario->addRole($role);  //cargamos el rol al coordinador
@@ -122,7 +125,7 @@ class DefaultController extends Controller
 			$passwordCodificado = $encoder->encodePassword($usuario->getPassword(), $usuario->getSalt());
 			$usuario->setPassword($passwordCodificado);
 			$em->persist($usuario);
-			*/
+			
 
 			$em->flush();
 			return $this->redirect($this->generateUrl('usuario_adm_homepage'));

@@ -1,0 +1,37 @@
+Ingenieria\UsuarioBundle\Entity\Usuario:
+    type: entity
+    table: null
+    repositoryClass: Ingenieria\UsuarioBundle\Entity\UsuarioRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        username:
+            type: string
+            length: '25'
+            unique: true
+        salt:
+            type: string
+            length: '255'
+        password:
+            type: string
+            length: '255'
+        isActive:
+            type: boolean
+            column: is_active
+    manyToMany:
+        roles:
+            targetEntity: Role
+            inversedBy: users
+            joinTable:
+              name: usuario_role
+              joinColumns:
+                usuario_id:
+                  referencedColumnName: id
+              inverseJoinColumns:
+                role_id:
+                  referencedColumnName: id
+    lifecycleCallbacks: {  }
