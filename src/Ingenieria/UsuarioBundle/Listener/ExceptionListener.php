@@ -41,6 +41,12 @@ class ExceptionListener
 					$tmperror = 'IngenieriaUsuarioBundle:Default:error.html.twig';
 					break;
 
+				case "ERR_PROFESOR_REGISTRADO":
+					$message = sprintf('El profesor ya esta registrado en el sistema!');
+					$tmperror = 'IngenieriaDirectorBundle:Default:error.html.twig';
+					break;
+
+					
 				default:
 					//$message = sprintf('Error no identificado!');
 					$message = $exception->getMessage();
