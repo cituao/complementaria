@@ -69,12 +69,13 @@ $( "#asesoresExternos h3" ).css("opacity","0.4");
 							<td></td>
 							<td style=" width:8%"></td>
 							<td style=" width:8%"> {{ profesor.emailInstitucional }}</td>
+							<td style=" width:8%"></td>
 							<td>{{ profesor.email }}</td>
 
 							<td>
 								<table class="opciones" style="right:129px">
 									<td>
-									<a href="{{ path('ingenieria_director_homepage') }}"><img src="{{ asset('img/editar.png') }}" ><h3> Editar </h3></a>
+									<a href="{{ path('ingenieria_director_profesor' , { 'ci': profesor.ci}) }}"><img src="{{ asset('img/editar.png') }}" ><h3> Editar </h3></a>
 									</td>
 								</table>
 							</td>

@@ -110,6 +110,38 @@ class DefaultController extends Controller
 			'formulario' => $formulario->createView()
 			));		
 
-	}		
-	
+	}	
+
+	public function profesorAction($ci){
+		$peticion = $this->getRequest();
+		$em = $this->getDoctrine()->getManager();
+		
+		$repository = $this->getDoctrine()->getRepository('IngenieriaProfesorBundle:Profesor');
+		$profesor = $repository->findOneBy(array('ci' => $ci));
+		$formulario = $this->createForm(new ProfesorType(), $profesor);
+
+		$formulario->handleRequest($peticion);
+
+		if ($formulario->isValid()) {
+			
+            // Completar las propiedades que el usuario no rellena en el formulario
+			$em->persist($profesor);
+			$em->flush();
+
+            // Crear un mensaje flash para notificar al usuario que se ha registrado correctamente
+			$this->get('session')->getFlashBag()->add('info',
+				'¡Enhorabuena! Te has registrado correctamente en Practicas profesionales'
+				);
+			return $this->redirect($this->generateUrl('ingenieria_director_homepage'));
+		}
+		/*
+				//buscamos el programa
+		$user = $this->get('security.context')->getToken()->getUser();
+		$coordinador =  $user->getUsername();
+		$repository = $this->getDoctrine()->getRepository('CituaoUsuarioBundle:Programa');
+		$programa = $repository->findOneByCoordinador($coordinador);
+		*/
+		return $this->render('IngenieriaDirectorBundle:Default:profesor.html.twig', array('formulario' => $formulario->createView(), 'profesor' => $profesor ));
+			
+	}
 }

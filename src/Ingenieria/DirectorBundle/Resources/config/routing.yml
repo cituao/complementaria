@@ -13,3 +13,7 @@ ingenieria_director_profesores:
 ingenieria_director_registrarprofesor:
     path:     /director/registrar-profesor
     defaults: { _controller: IngenieriaDirectorBundle:Default:registrarProfesor }
+
+ingenieria_director_profesor:
+    pattern:  /director/profesor/{ci}
+    defaults: { _controller: IngenieriaDirectorBundle:Default:profesor }
