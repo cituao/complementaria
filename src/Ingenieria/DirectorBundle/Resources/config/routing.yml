@@ -1,0 +1,3 @@
+ingenieria_director_homepage:
+    path:     /director
+    defaults: { _controller: IngenieriaDirectorBundle:Default:index }

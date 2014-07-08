@@ -44,7 +44,7 @@ class ExceptionListener
 				default:
 					//$message = sprintf('Error no identificado!');
 					$message = $exception->getMessage();
-					$tmperror = 'IngenieriaUsuarioBundle:Default:error.html.twig';
+					$tmperror = '::error.html.twig';
 					break;
 				
 			}

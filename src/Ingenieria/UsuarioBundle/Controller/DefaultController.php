@@ -24,7 +24,7 @@ class DefaultController extends Controller
 					return $this->redirect($this->generateUrl('cituao_externo_homepage'));
 				}else {
 				if ($this->get('security.context')->isGranted('ROLE_DIRECTOR')) {
-					return $this->redirect($this->generateUrl('cituao_academico_homepage'));
+					return $this->redirect($this->generateUrl('ingenieria_director_homepage'));
 				}else {
 					if ($this->get('security.context')->isGranted('ROLE_ADMIN')) {
 						return $this->redirect($this->generateUrl('usuario_adm_homepage'));
