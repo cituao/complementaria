@@ -1,3 +1,15 @@
 ingenieria_director_homepage:
     path:     /director
     defaults: { _controller: IngenieriaDirectorBundle:Default:index }
+
+ingenieria_director_profesores:
+    path:     /director
+    defaults: { _controller: IngenieriaDirectorBundle:Default:profesores }
+    
+ingenieria_director_profesores:
+    path:     /director/profesores
+    defaults: { _controller: IngenieriaDirectorBundle:Default:profesores }
+    
+ingenieria_director_registrarprofesor:
+    path:     /director/registrar-profesor
+    defaults: { _controller: IngenieriaDirectorBundle:Default:profesores }
