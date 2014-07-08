@@ -1,7 +1,7 @@
-Ingenieria\UsuarioBundle\Entity\Director:
+Ingenieria\ProfesorBundle\Entity\Profesor:
     type: entity
     table: null
-    repositoryClass: Ingenieria\UsuarioBundle\Entity\DirectorRepository
+    repositoryClass: Ingenieria\ProfesorBundle\Entity\ProfesorRepository
     id:
         id:
             type: integer

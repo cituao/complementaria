@@ -1,3 +1,7 @@
+ingenieria_profesor:
+    resource: "@IngenieriaProfesorBundle/Resources/config/routing.yml"
+    prefix:   /
+
 ingenieria_director:
     resource: "@IngenieriaDirectorBundle/Resources/config/routing.yml"
     prefix:   /

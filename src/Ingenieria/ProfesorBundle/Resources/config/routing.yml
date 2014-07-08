@@ -1,0 +1,3 @@
+ingenieria_profesor_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: IngenieriaProfesorBundle:Default:index }
