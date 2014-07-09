@@ -1,0 +1,30 @@
+Ingenieria\EstudianteBundle\Entity\Estudiante:
+    type: entity
+    table: null
+    repositoryClass: Ingenieria\EstudianteBundle\Entity\EstudianteRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        codigo:
+            type: string
+            length: '20'
+        ci:
+            type: string
+            length: '15'
+        nombres:
+            type: string
+            length: '50'
+        apellidos:
+            type: string
+            length: '50'
+        email:
+            type: string
+            length: '50'
+        emailInstitucional:
+            type: string
+            length: '50'
+    lifecycleCallbacks: {  }

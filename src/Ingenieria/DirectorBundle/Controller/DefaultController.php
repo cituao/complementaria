@@ -31,6 +31,9 @@ class DefaultController extends Controller
 		return $this->render('IngenieriaDirectorBundle:Default:profesores.html.twig', array('listaProfesores' => $listaProfesores, 'msgerr' => $msgerr));
     }
 	
+	//********************************************************
+	// Muestra un listado de profesores
+	//******************************************************** 	
 	public function profesoresAction(){
 		$repository = $this->getDoctrine()->getRepository('IngenieriaProfesorBundle:Profesor');
 		$listaProfesores = $repository->findAll();

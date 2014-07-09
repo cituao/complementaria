@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new Ingenieria\UsuarioBundle\IngenieriaUsuarioBundle(),
             new Ingenieria\DirectorBundle\IngenieriaDirectorBundle(),
             new Ingenieria\ProfesorBundle\IngenieriaProfesorBundle(),
+            new Ingenieria\EstudianteBundle\IngenieriaEstudianteBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

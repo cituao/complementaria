@@ -1,3 +1,11 @@
 ingenieria_profesor_homepage:
     path:     /profesor
     defaults: { _controller: IngenieriaProfesorBundle:Default:index }
+
+ingenieria_profesor_estudiantes:
+    path:     /profesor/sus-estudiantes
+    defaults: { _controller: IngenieriaProfesorBundle:Default:estudiantes }
+
+ingenieria_profesor_registrarestudiante:
+    path:     /profesor/sus-estudiantes
+    defaults: { _controller: IngenieriaProfesorBundle:Default:registrarEstudiante }
