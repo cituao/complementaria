@@ -1,0 +1,109 @@
+{% extends 'IngenieriaProfesorBundle::layout.html.twig' %}
+
+{% block programa %}
+Aplicación WEB : [Profesor]
+{% endblock %}
+
+{% block js  %}
+<script>  /*Deja activo la sesion Practicantes en la menu sidebar*/
+$( "#actividades" ).css("background-color","#000");
+$( "#actividades img" ).css("opacity","0.4");
+$( "#actividades h3" ).css("opacity","0.4");
+</script>
+
+{% endblock %}
+
+{% block content  %}
+{{ parent() }}
+	<div class="content">
+		{% block upSection  %}
+
+		<div class="upSection">
+			<h1 class="sectionTitle">Nueva actividad</h1>
+
+			<a href="{{ path('ingenieria_profesor_homepage') }}" class = "button"><img src="{{ asset('img/regresar.png') }}"/><h4>Regresar</h4></a>
+			
+			
+		</div><!-- upSection -->
+		{% endblock  %}
+	
+	{% block downSection  %}
+	<div class="downSection">
+		<div class="profileContainer">
+			<form action="{{ path('ingenieria_profesor_registraractividad') }}" method="post" {{ form_enctype(formulario) }}>
+				<div>{{ form_errors(formulario) }}</div>
+				
+				<div class="profilePictureContainer">	
+					<div class="imgContainer" style="margin: 0 auto;">
+						<img class = "foto" border="0" src="{{ asset('img/defaultPicture.png') }}" alt="Foto estudiante" width="100%">
+					</div>
+					<div class="selFile" style="margin:0 auto; margin-top:30px;">{{ form_row(formulario.file) }}</div>
+				</div><!-- profile PictureContainer -->
+				<div class="profileFormContainer">
+
+					<div class="inputContainer">	
+						<h2>{{ form_label(formulario.nombre) }}</h2>
+						<div class="input"> 
+							{{ form_widget(formulario.nombre, {'attr': {'class':'mediano'}} ) }}
+							{{ form_errors(formulario.nombre) }}
+						</div>
+					</div>
+					
+					<div class="inputContainer">	
+						<h2>{{ form_label(formulario.url) }}</h2>
+						<div class="input"> 
+							{{ form_widget(formulario.url, {'attr': {'class':'mediano'}} ) }}
+							{{ form_errors(formulario.url) }}
+						</div>
+					</div>
+
+					<div class="inputContainer">	
+						<h2>{{ form_label(formulario.categoria) }}</h2>
+						<div class="input"> 
+							{{ form_widget(formulario.categoria) }}
+							{{ form_errors(formulario.categoria) }}
+						</div>
+					</div>					
+					
+					<div class="inputContainer">	
+						<h2>{{ form_label(formulario.numeroCupos) }}</h2>
+						<div class="input">
+							{{ form_widget(formulario.numeroCupos, {'attr': {'class':'corto'}} ) }}
+							{{ form_errors(formulario.numeroCupos) }}
+						</div>
+					</div>
+
+					<div class="inputContainer" style="width:389px;
+					height:34px;">	
+						
+					</div>
+
+					<div class="inputContainer" style="margin-top:20px; margin-left:-10px; width:auto !important">
+						<div style="position:relative; float:right">
+
+						<img style="position:absolute; left:15px; float:left; pointer-events:none;" src="{{ asset('img/guardar.png') }}" />
+						<input style="padding-left:38px" class="button" type="submit" value="Guardar" />
+						</div>
+					</div>
+
+					
+				</div><!--profileForContainer -->
+				{{ form_rest(formulario) }}
+			</form>
+		</div><!-- profileContainer -->
+		{% endblock  %}
+	</div><!--downsection -->
+	</div> <!-- cierra content -->
+{% endblock %}
+
+{% block aside %}
+	<section>
+		<div id = "barratitulo">
+			<h2>Opciones</h2>
+		</div>
+		<div>
+			<a href="{{ path('cituao_coord_cronograma') }}">Cronograma de actividades</a>
+			<a href="{{ path('logout') }}">Enviar correo</a>
+		</div>
+	</section>
+{% endblock %}

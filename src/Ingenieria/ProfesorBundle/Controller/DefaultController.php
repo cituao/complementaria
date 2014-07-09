@@ -3,8 +3,9 @@
 namespace Ingenieria\ProfesorBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Ingenieria\Estudiante\Entity\Estudiante;
-use Ingenieria\Profesor\Entity\Actividad;
+use Ingenieria\EstudianteBundle\Entity\Estudiante;
+use Ingenieria\ProfesorBundle\Entity\Actividad;
+use Ingenieria\ProfesorBundle\Form\Type\ActividadType;
 
 class DefaultController extends Controller
 {
@@ -77,5 +78,28 @@ class DefaultController extends Controller
 		return $this->render('IngenieriaProfesorBundle:Default:actividades.html.twig', array('listaActividades' => $listaActividades, 'msgerr' => $msgerr));
 	}
 
-	
+	/********************************************************/
+	// Registra una actividad
+	/********************************************************/		
+	public function registrarActividadAction(){
+
+		$peticion = $this->getRequest();
+		$em = $this->getDoctrine()->getManager();
+
+		$actividad = new Actividad();
+
+		$formulario = $this->createForm(new ActividadType(), $actividad);
+		$formulario->handleRequest($peticion);
+
+		if ($formulario->isValid()) {
+			$em->persist($profesor);
+
+			$em->flush();
+			return $this->redirect($this->generateUrl('ingenieria_director_homepage'));
+		}
+
+		return $this->render('IngenieriaProfesorBundle:Default:registraractividades.html.twig', array(
+			'formulario' => $formulario->createView()
+			));		
+	}	
 }

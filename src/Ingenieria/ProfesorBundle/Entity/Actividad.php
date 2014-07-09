@@ -3,6 +3,7 @@
 namespace Ingenieria\ProfesorBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * Actividad
@@ -44,7 +45,23 @@ class Actividad
      */
     private $numeroCupos;
 
+	private $file;
+		
+    public function setFile(UploadedFile $file = null)
+    {
+        $this->file = $file;
+    }
 
+    /**
+     * Get file.
+     *
+     * @return UploadedFile
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+		
     /**
      * Get id
      *
