@@ -1,0 +1,27 @@
+Ingenieria\ProfesorBundle\Entity\Actividad:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nombre:
+            type: string
+            length: '250'
+        descripcion:
+            type: text
+        url:
+            type: string
+            length: '250'
+        imagen:
+            type: string
+            length: '50'
+        categoria:
+            type: integer
+        numeroCupos:
+            type: integer
+            column: numero_cupos
+    lifecycleCallbacks: {  }
