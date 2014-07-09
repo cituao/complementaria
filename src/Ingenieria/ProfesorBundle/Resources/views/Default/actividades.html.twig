@@ -6,9 +6,9 @@ Aplicación WEB - [Profesor]
 
 {% block js  %}
 <script>
-$( "#estudiantes" ).css("background-color","#000");
-$( "#estudiantes img" ).css("opacity","0.4");
-$( "#estudiantes h3" ).css("opacity","0.4");
+$( "#actividades" ).css("background-color","#000");
+$( "#actividades img" ).css("opacity","0.4");
+$( "#actividades h3" ).css("opacity","0.4");
 </script>
 
 {% endblock %}
@@ -20,8 +20,8 @@ $( "#estudiantes h3" ).css("opacity","0.4");
 	<div class="content">
 		{% block upSection  %}
 		<div class = "upSection">
-			<h1 class ="sectionTitle">Estudiantes</h1>
-			<a href="{{ path('ingenieria_profesor_registrarestudiante') }}"  class = "button"><img src="{{ asset('img/externosBoton.png') }}"/><h4>Nuevo estudiante</h4></a>
+			<h1 class ="sectionTitle">Actividades</h1>
+			<a href="{{ path('ingenieria_profesor_registraractividad') }}"  class = "button"><img src="{{ asset('img/externosBoton.png') }}"/><h4>Nueva actividad</h4></a>
 		</div>
 		{% endblock  %}
 
@@ -56,21 +56,21 @@ $( "#estudiantes h3" ).css("opacity","0.4");
 			
 					{% set id = 1 %}
 					<tr class="spacer"></tr>
-					{% for profesor in listaProfesores %}
+					{% for actividad in listaActividades %}
 					<tr class="tableItem">
 						<td id="hoverDiv">
 						
 							<td><h2>{{ id }}</h2></td>
 							
-							<td style=" width:15%"><span style="margin-left:20px; ">{{ profesor.nombres }}</span></td>
-							<td style=" width:12%"><span>{{ profesor.apellidos }}</span></td>
-							<td style=" width:8%">{{ profesor.ci }}</td>
+							<td style=" width:15%"><span style="margin-left:20px; ">{{ actividad.nombre }}</span></td>
+							<td style=" width:12%"><span>{{ actividad.url }}</span></td>
+							<td style=" width:8%">{{ actividad.numeroCupos }}</td>
 							<td></td>
 							<td></td>
 							<td style=" width:8%"></td>
-							<td style=" width:8%"> {{ profesor.emailInstitucional }}</td>
 							<td style=" width:8%"></td>
-							<td>{{ profesor.email }}</td>
+							<td style=" width:8%"></td>
+							<td></td>
 
 							<td>
 								<table class="opciones" style="right:129px">

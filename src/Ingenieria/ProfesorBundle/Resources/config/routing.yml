@@ -9,3 +9,11 @@ ingenieria_profesor_estudiantes:
 ingenieria_profesor_registrarestudiante:
     path:     /profesor/sus-estudiantes
     defaults: { _controller: IngenieriaProfesorBundle:Default:registrarEstudiante }
+
+ingenieria_profesor_actividades:
+    path:     /profesor/actividades
+    defaults: { _controller: IngenieriaProfesorBundle:Default:actividades }
+
+ingenieria_profesor_registraractividad:
+    path:     /profesor/registrar-actividad
+    defaults: { _controller: IngenieriaProfesorBundle:Default:registrarActividad }
