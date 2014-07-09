@@ -27,12 +27,9 @@ $( "#programas h3" ).css("opacity","0.4");
 					<table class="generalTableHead">
 						<tbody>
 							<tr class="tableHead">
-								<th width="5%"></th> 
-								<th width="6%"></th> 
-								<th width="7%"></th>	
-								<th width="16%"></th>	
 								<th width="17%"></th>
 								<th width="28%"><img style="margin-left:28%;" src="{{ asset('img/idLabel.png') }}"/></th>	
+								<th width="17%"></th>
 								<th><img style="margin-left:38px;" src="{{ asset('img/mailLabel.png') }}"/></th> 
 								<th><h3><span></span></h3></th>
 							</tr><!--tablehead -->
@@ -47,7 +44,8 @@ $( "#programas h3" ).css("opacity","0.4");
 									<tr class="tableItem">
 										<td id="hoverDiv">
 										<td><h2>{{ id }}</h2></td>
-											<td style=" width:40%"><span style="margin-left:20px; ">{{ director.nombres }}</span></td>
+											<td style=" width:20%"><span style="margin-left:20px; ">{{ director.nombres }}</span></td>
+											<td style=" width:20%"><span style="margin-left:20px; ">{{ director.apellidos }}</span></td>
 											<td width="5%"></td>
 											<td></td>
 											<td>
