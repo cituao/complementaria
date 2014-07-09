@@ -1,1 +1,17 @@
-Hello {{ name }}!
+{% extends 'IngenieriaProfesorBundle::layout.html.twig' %}
+
+{% block content  %}
+	<div class="content">
+	{{ parent() }}
+
+		{% block upSection  %}
+			<div class = "upSection">
+			</div>
+		{% endblock  %}
+
+		{% block downSection  %}
+			<div class = "downSection">
+			</div>
+		{% endblock %}
+	</div> <!-- content -->
+{% endblock %}

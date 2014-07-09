@@ -20,8 +20,8 @@ class DefaultController extends Controller
 			if ($this->get('security.context')->isGranted('ROLE_PRACTICANTE')) {
 				return $this->redirect($this->generateUrl('cituao_practicante_homepage'));
 			}else{
-				if ($this->get('security.context')->isGranted('ROLE_ASESOR_EXT')) {
-					return $this->redirect($this->generateUrl('cituao_externo_homepage'));
+				if ($this->get('security.context')->isGranted('ROLE_PROFESOR')) {
+					return $this->redirect($this->generateUrl('ingenieria_profesor_homepage'));
 				}else {
 				if ($this->get('security.context')->isGranted('ROLE_DIRECTOR')) {
 					return $this->redirect($this->generateUrl('ingenieria_director_homepage'));
