@@ -86,7 +86,7 @@ class DefaultController extends Controller
 			$role = $repository->findOneBy(array('id' => $codigo));
 
 			if ($role == NULL){
-				throw $this->createNotFoundException('ERR_ROLE_NO_ENCONTRADO');
+				throw $this->createNotFoundException('ERR_ROLE_PROFESOR_NOREGISTRADO');
 			}
 			$usuario = new Usuario();
 			//cargamos todos los atributos al usuario

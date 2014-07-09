@@ -37,12 +37,17 @@ class ExceptionListener
 					$tmperror = 'IngenieriaUsuarioBundle:Default:error.html.twig';
 					break;
 				case "ERR_ROLE_NO_ENCONTRADO":
-					$message = sprintf('El rol director no esta registrado en el sistema!');
+					$message = sprintf('El rol no esta registrado en el sistema!');
 					$tmperror = 'IngenieriaUsuarioBundle:Default:error.html.twig';
 					break;
 
 				case "ERR_PROFESOR_REGISTRADO":
 					$message = sprintf('El profesor ya esta registrado en el sistema!');
+					$tmperror = 'IngenieriaDirectorBundle:Default:error.html.twig';
+					break;
+
+				case "ERR_ROLE_PROFESOR_NOREGISTRADO":
+					$message = sprintf('El rol profesor no esta registrado en el sistema!');
 					$tmperror = 'IngenieriaDirectorBundle:Default:error.html.twig';
 					break;
 

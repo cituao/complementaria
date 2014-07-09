@@ -32,14 +32,25 @@ class ExceptionListener
 			
 			
 			switch ($exception->getMessage()){
-				case "ERR_ASESORIA_NO_INICIADA":
-					$message = sprintf('El asesor académico aun no ha realizado la asesoria!');
+				case "ERR_DIRECTOR_REGISTRADO":
+					$message = sprintf('Los datos ya estan registrados en el sistema!');
 					$tmperror = 'IngenieriaUsuarioBundle:Default:error.html.twig';
 					break;
+				case "ERR_ROLE_NO_ENCONTRADO":
+					$message = sprintf('El rol no esta registrado en el sistema!');
+					$tmperror = 'IngenieriaUsuarioBundle:Default:error.html.twig';
+					break;
+
+				case "ERR_PROFESOR_REGISTRADO":
+					$message = sprintf('El profesor ya esta registrado en el sistema!');
+					$tmperror = 'IngenieriaDirectorBundle:Default:error.html.twig';
+					break;
+
+					
 				default:
 					//$message = sprintf('Error no identificado!');
 					$message = $exception->getMessage();
-					$tmperror = 'IngenieriaUsuarioBundle:Default:error.html.twig';
+					$tmperror = '::error.html.twig';
 					break;
 				
 			}
