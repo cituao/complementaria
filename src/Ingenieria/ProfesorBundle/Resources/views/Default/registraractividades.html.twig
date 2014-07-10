@@ -23,7 +23,6 @@ $( "#actividades h3" ).css("opacity","0.4");
 
 			<a href="{{ path('ingenieria_profesor_homepage') }}" class = "button"><img src="{{ asset('img/regresar.png') }}"/><h4>Regresar</h4></a>
 			
-			
 		</div><!-- upSection -->
 		{% endblock  %}
 	
@@ -32,13 +31,7 @@ $( "#actividades h3" ).css("opacity","0.4");
 		<div class="profileContainer">
 			<form action="{{ path('ingenieria_profesor_registraractividad') }}" method="post" {{ form_enctype(formulario) }}>
 				<div>{{ form_errors(formulario) }}</div>
-				
-				<div class="profilePictureContainer">	
-					<div class="imgContainer" style="margin: 0 auto;">
-						<img class = "foto" border="0" src="{{ asset('img/defaultPicture.png') }}" alt="Foto estudiante" width="100%">
-					</div>
-					<div class="selFile" style="margin:0 auto; margin-top:30px;">{{ form_row(formulario.file) }}</div>
-				</div><!-- profile PictureContainer -->
+
 				<div class="profileFormContainer">
 
 					<div class="inputContainer">	
@@ -49,6 +42,14 @@ $( "#actividades h3" ).css("opacity","0.4");
 						</div>
 					</div>
 					
+					<div class="inputContainer">	
+						<h2>{{ form_label(formulario.descripcion) }}</h2>
+						<div class="input"> 
+							{{ form_widget(formulario.descripcion, {'attr': {'class':'mediano'}} ) }}
+							{{ form_errors(formulario.descripcion) }}
+						</div>
+					</div>
+
 					<div class="inputContainer">	
 						<h2>{{ form_label(formulario.url) }}</h2>
 						<div class="input"> 

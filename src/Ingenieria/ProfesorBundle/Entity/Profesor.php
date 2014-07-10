@@ -39,6 +39,7 @@ class Profesor
      */
     private $emailInstitucional;
 
+	protected $actividades;
 
     /**
      * Get id
@@ -163,5 +164,45 @@ class Profesor
     public function getEmailInstitucional()
     {
         return $this->emailInstitucional;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->actividades = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add actividades
+     *
+     * @param \Ingenieria\ProfesorBundle\Entity\Actividad $actividades
+     * @return Profesor
+     */
+    public function addActividade(\Ingenieria\ProfesorBundle\Entity\Actividad $actividades)
+    {
+        $this->actividades[] = $actividades;
+
+        return $this;
+    }
+
+    /**
+     * Remove actividades
+     *
+     * @param \Ingenieria\ProfesorBundle\Entity\Actividad $actividades
+     */
+    public function removeActividade(\Ingenieria\ProfesorBundle\Entity\Actividad $actividades)
+    {
+        $this->actividades->removeElement($actividades);
+    }
+
+    /**
+     * Get actividades
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getActividades()
+    {
+        return $this->actividades;
     }
 }

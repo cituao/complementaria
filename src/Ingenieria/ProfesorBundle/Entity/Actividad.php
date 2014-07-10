@@ -46,6 +46,8 @@ class Actividad
     private $numeroCupos;
 
 	private $file;
+
+	protected $profesor;
 		
     public function setFile(UploadedFile $file = null)
     {
@@ -208,5 +210,84 @@ class Actividad
     public function getNumeroCupos()
     {
         return $this->numeroCupos;
+    }
+
+	public function getAbsolutePath()
+    {
+        return null === $this->path
+            ? null
+            : $this->getUploadRootDir().'/'.$this->path;
+    }
+
+    public function getWebPath()
+    {
+        return null === $this->path
+            ? null
+            : $this->getUploadDir().'/'.$this->path;
+    }
+
+    protected function getUploadRootDir()
+    {
+        // the absolute directory path where uploaded
+        // documents should be saved
+        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+    }
+
+    protected function getUploadDir()
+    {
+        // get rid of the __DIR__ so it doesn't screw up
+        // when displaying uploaded doc/image in the view.
+        return 'uploads/fotos';
+    }
+
+
+	public function upload()
+	{
+	 // the file property can be empty if the field is not required
+		if (null === $this->getFile()) {
+		    return;
+		}
+
+		// use the original file name here but you should
+		// sanitize it at least to avoid any security issues
+
+		// move takes the target directory and then the
+		// target filename to move to
+		
+		//asignamos el codigo uao a la foto
+		$nombre = $this->codigo.'.png'; 
+		$this->getFile()->move(
+		    $this->getUploadRootDir(),
+		    $nombre
+		);
+		//$this->getFile()->getClientOriginalName()
+		// set the path property to the filename where you've saved the file
+		//$this->path = $this->getFile()->getClientOriginalName();
+		$this->path = $nombre;
+		// clean up the file property as you won't need it anymore
+		$this->file = null;	
+	}
+
+    /**
+     * Set profesor
+     *
+     * @param \Ingenieria\ProfesorBundle\Entity\Profesor $profesor
+     * @return Actividad
+     */
+    public function setProfesor(\Ingenieria\ProfesorBundle\Entity\Profesor $profesor = null)
+    {
+        $this->profesor = $profesor;
+
+        return $this;
+    }
+
+    /**
+     * Get profesor
+     *
+     * @return \Ingenieria\ProfesorBundle\Entity\Profesor 
+     */
+    public function getProfesor()
+    {
+        return $this->profesor;
     }
 }

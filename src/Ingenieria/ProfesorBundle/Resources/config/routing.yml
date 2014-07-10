@@ -17,3 +17,7 @@ ingenieria_profesor_actividades:
 ingenieria_profesor_registraractividad:
     path:     /profesor/registrar-actividad
     defaults: { _controller: IngenieriaProfesorBundle:Default:registrarActividad }
+
+ingenieria_profesor_actividad:
+    pattern:  /profesor/actividad/{id}
+    defaults: { _controller: IngenieriaDirectorBundle:Default:actividad }

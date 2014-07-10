@@ -19,9 +19,17 @@ Ingenieria\ProfesorBundle\Entity\Actividad:
         imagen:
             type: string
             length: '50'
+            nullable: true
         categoria:
             type: integer
         numeroCupos:
             type: integer
             column: numero_cupos
+    manyToOne:
+        profesor:
+            targetEntity: Ingenieria\ProfesorBundle\Entity\Profesor
+            inversedBy: actividades
+            joinColumn:
+                name: profesor
+                referencedColumnName: id
     lifecycleCallbacks: {  }
