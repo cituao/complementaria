@@ -15,10 +15,10 @@ $( "#estudiantes h3" ).css("opacity","0.4");
 		{% block upSection  %}
 			<div class = "upSection">
 			<h1 class ="sectionTitle">Estudiantes</h2>
-				<a href="{{ path('usuario_registrar_estudiante') }}" class = "button"><img src="{{ asset('img/academicosBoton.png') }}"/><h4>Nuevo estudiante</h4></a>
+				<a id = "nuevoEstudiante" href="{{ path('usuario_registrar_estudiante') }}" class = "button"><img src="{{ asset('img/academicosBoton.png') }}"/><h4>Nuevo estudiante</h4></a>
 			
 			
-			<a id="anadirPracticantes" class = "button"><img src="{{ asset('img/anadirPracticantes.png') }}"/><h4>Subir estudiantes</h4></a>
+			<a id="anadirEstudiantes" class = "button"><img src="{{ asset('img/anadirPracticantes.png') }}"/><h4>Subir estudiantes</h4></a>
 
 			<form name="anadirP" action= {{ path('usuario_subirestudiantes') }} method="post" {{ form_enctype(form) }}>
 				<div style="position:relative; float:right"><input style="padding-left:38px;" class="button" type="button" value="Cancelar" id="cancelar" name="cancelar" /><img style="position:absolute; top:0px; left:13px; pointer-events:none" src="{{ asset('img/cancelar.png') }}"/></div>
@@ -99,6 +99,10 @@ $( "#estudiantes h3" ).css("opacity","0.4");
 	</div><!-- content -->
 
 	<script>
+		var form = $('form');
+		var anadirEstudiantes =  $('#anadirEstudiantes');
+		var nuevoEstudiante =  $('#nuevoEstudiante');
+		
 		$( ".tableItem" ).mouseenter(function() {
 				var opciones = $('.opciones', this);
 				var itemPicture = $('.itemImgContainer', this);
@@ -123,6 +127,55 @@ $( "#estudiantes h3" ).css("opacity","0.4");
 				// Animation complete.
 			});
 			});
+			
+			$( "#anadirEstudiantes" ).click(function() {
+				$(nuevoEstudiante).fadeOut(300);
+				//$(periodo).fadeOut(300);
+				//$(estadoPracticante).fadeOut(300);
+				$(this).fadeOut(300,function(){
+
+					$( form).animate({
+						opacity: 1,
+						top: "21px",
+					}, 300);
+				});
+
+			});
+			
+			$( "#listo" ).click(function() {
+				if(validateForm()){
+					$(nuevoEstudiante).fadeIn(300);
+					$(anadirEstudiantes).fadeIn(300,function(){
+
+						$( form).animate({
+							opacity: 0,
+							top: "100px",
+						}, 300);
+					});
+			}// validate form
+			});
+
+			$( "#cancelar" ).click(function() {
+					$(nuevoEstudiante).fadeIn(300);
+					//$(estadoPracticante).fadeIn(300);
+					//$(periodo).fadeIn(300);
+						$(anadirEstudiantes).fadeIn(80,function(){
+							$( form).animate({
+								opacity: 0,
+								top: "100px",
+							}, 100);
+						});
+			});
+			
+			function validateForm()
+			{
+				var x=document.forms["anadirP"]["listo"].value;
+				if (x==null || x=="")
+				{
+					window.alert("you");
+					return false;
+				}
+			}
 
 	</script>
 {% endblock %}

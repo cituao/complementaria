@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Security\Core\SecurityContext;
 use Ingenieria\UsuarioBundle\Entity\Director;
 use Ingenieria\UsuarioBundle\Entity\Usuario;
+use Ingenieria\UsuarioBundle\Entity\Document;
 use Ingenieria\UsuarioBundle\Form\Type\DirectorType;
 
 class DefaultController extends Controller
@@ -157,7 +158,7 @@ class DefaultController extends Controller
 		}else{
 			$msgerr = array('id'=>0, 'descripcion' => 'Ok');
 		}
-		return $this->render('IngenieriaUsuarioBundle:Default:estudiantes.html.twig',  array('listaEstudiantes' => $estudiantes, 'msgerr' => $msgerr));
+		return $this->render('IngenieriaUsuarioBundle:Default:estudiantes.html.twig',  array('listaEstudiantes' => $estudiantes,  'form' => $form->createView() , 'msgerr' => $msgerr));
 	}
 	
 }
