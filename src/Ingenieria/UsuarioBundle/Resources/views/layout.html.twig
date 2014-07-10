@@ -11,17 +11,18 @@
 {{ parent() }}
 {% endblock %}
 
-
 {% block sideBarMenu %}
 		<div id="menu">	
-
-			<a href="{{ path('usuario_adm_homepage') }}" class="menubutton"  id="programas">
+			<a href="{{ path('usuario_adm_homepage') }}" class="menubutton"  id="directores">
 				<img id="externoIcon" src="{{ asset('img/externoIcon.png') }}">
 				<h3>Directores</h3>
-
 			</a>
-
+			<a href="{{ path('usuario_estudiantes') }}" class="menubutton"  id="estudiantes">
+				<img id="externoIcon" src="{{ asset('img/externoIcon.png') }}">
+				<h3>Estudiantes</h3>
+			</a>
 		</div>
+
 {% endblock  %}
 
 {% block upSection %} 

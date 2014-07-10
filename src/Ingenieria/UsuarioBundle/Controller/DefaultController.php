@@ -137,5 +137,27 @@ class DefaultController extends Controller
 
 	}		
 	
+		//******************************************************
+	// Home del administrador de la aplicacion
+	//******************************************************
+	public function estudiantesAction(){
+		$document = new Document();
+		$form = $this->createFormBuilder($document)
+		->add('file')
+		->add('name')
+		->getForm();
+	
+		$repository = $this->getDoctrine()->getRepository('IngenieriaEstudianteBundle:Estudiante');
+		$estudiantes = $repository->findAll();
+		
+		
+		if (!$estudiantes) {
+			//throw $this->createNotFoundException('ERR_NO_HAY_PROGRAMA');
+			$msgerr = array('id'=>1, 'descripcion' => 'No hay estudiantes registrados en el sistema');
+		}else{
+			$msgerr = array('id'=>0, 'descripcion' => 'Ok');
+		}
+		return $this->render('IngenieriaUsuarioBundle:Default:estudiantes.html.twig',  array('listaEstudiantes' => $estudiantes, 'msgerr' => $msgerr));
+	}
 	
 }

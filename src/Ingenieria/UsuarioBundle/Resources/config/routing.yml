@@ -27,3 +27,23 @@ usuario_actualizar_director:
 usuario_eliminar_director:
     pattern:  /administrador/eliminar-director/id={id}
     defaults: { _controller: IngenieriaUsuarioBundle:Default:eliminarDirector }
+
+usuario_actualizar_estudiante:
+    pattern:  /administrador/actualizar-estudiante/id={id}
+    defaults: { _controller: IngenieriaUsuarioBundle:Default:actualizarEstudiante }
+
+usuario_cronograma:
+    pattern:  /administrador/cronograma-estudiante/id={id}
+    defaults: { _controller: IngenieriaUsuarioBundle:Default:cronograma }
+    
+usuario_estudiantes:
+    pattern:  /administrador/cronograma-estudiante
+    defaults: { _controller: IngenieriaUsuarioBundle:Default:estudiantes }
+    
+usuario_registrar_estudiante:
+    pattern:  /administrador/registrar-estudiante
+    defaults: { _controller: IngenieriaUsuarioBundle:Default:registrarEstudiante }
+    
+usuario_subirestudiantes:
+    pattern:  /administrador/subir-estudiante
+    defaults: { _controller: IngenieriaUsuarioBundle:Default:subirEstudiante }

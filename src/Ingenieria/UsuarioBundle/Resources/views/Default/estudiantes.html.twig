@@ -1,0 +1,128 @@
+{% extends 'IngenieriaUsuarioBundle::layout.html.twig' %}
+
+{% block js  %}
+<script>
+$( "#estudiantes" ).css("background-color","#000");
+$( "#estudiantes img" ).css("opacity","0.4");
+$( "#estudiantes h3" ).css("opacity","0.4");
+</script>
+
+{% endblock %}
+
+{% block content  %}
+{{ parent() }}
+<div class="content">
+		{% block upSection  %}
+			<div class = "upSection">
+			<h1 class ="sectionTitle">Estudiantes</h2>
+				<a href="{{ path('usuario_registrar_estudiante') }}" class = "button"><img src="{{ asset('img/academicosBoton.png') }}"/><h4>Nuevo estudiante</h4></a>
+			
+			
+			<a id="anadirPracticantes" class = "button"><img src="{{ asset('img/anadirPracticantes.png') }}"/><h4>Subir estudiantes</h4></a>
+
+			<form name="anadirP" action= {{ path('usuario_subirestudiantes') }} method="post" {{ form_enctype(form) }}>
+				<div style="position:relative; float:right"><input style="padding-left:38px;" class="button" type="button" value="Cancelar" id="cancelar" name="cancelar" /><img style="position:absolute; top:0px; left:13px; pointer-events:none" src="{{ asset('img/cancelar.png') }}"/></div>
+				<div style="position:relative; float:right"><input style="padding-left:38px;" class="button" type="submit" value="Listo" id="listo" name="listo" /><img style="position:absolute; top:0px; left:13px; pointer-events:none" src="{{ asset('img/listo.png') }}"/></div>
+				<div style="float:right;">{{ form_widget(form) }}</div>
+				<h2 style="float:right; color:#000; margin-right:15px; margin-top:8px;">Nombre de archivo</h2>
+			</form>
+
+			
+			</div> <!--up section -->
+		{% endblock  %}
+
+		{% block downSection  %}
+			<div class = "downSection">
+				{% if msgerr.id == '1' %}
+					<div id = "error">{{ msgerr.descripcion }}</div>	
+				{% else %}
+					<table class="practicantesTableHead">
+						<tbody>
+							<tr class="tableHead">
+								<th width="5%"></th>
+								<th width="10%"></th>
+								<th width="18%"></th>
+								<th width="16%"></th>
+								<th width="8%"><img src="{{ asset('img/codigoLabel.png') }}"/></th>
+								<th width="9%"><img style="margin-left:11px;" src="{{ asset('img/idLabel.png') }}"/></th>
+								<th><img style="margin-left:20px;" src="{{ asset('img/telefonoLabel.png') }}"/></th>
+								<th><img style="margin-left:70px;" src="{{ asset('img/mailLabel.png') }}"/></th>
+								<th></th>
+								<th></th>
+							</tr> <!--tablehead -->
+						</tbody>
+					</table><!-- practicantes tableHead -->
+			
+						{% set id = 1 %}
+						<div style="width: 100%; height: 750px; overflow: auto; position:relative; padding-bottom:30px;"> 
+							<table class="practicantesTable">
+							
+								{% for estudiante in listaEstudiantes %}
+								<tr class="spacer"></tr>
+								<tr height="20px" class="tableItem">
+									<td id="hoverDiv" >
+										<td><h2>{{ id }}</h2></td>
+										<td height="20px"><div class="itemImgContainer"><img class = "foto" border="0" src="{{ asset('uploads/fotos/' ~  practicante.path) }}" alt="Pulpit rock" width="100%" /></div></td>
+										<td><span>{{ estudiante.apellidos }}</span></td>
+										<td><span>{{ estudiante.nombres }}</span></td>
+										<td>{{ estudiante.codigo }}</td>
+										<td>{{ estudiante.ci }}</td>
+										<td>{{ estudiante.telefonoMovil }}</td>
+										<td>
+											<div>
+												<table class="opciones">
+													{% if id == 1 %}
+													<td><a href="{{ path('usuario_cronograma', { 'id': estudiante.id}) }}"><img src="{{ asset('img/cronograma.png') }}" /><h3>Cronograma</h3></a></td>
+													{% else %}
+													<td><img src="{{ asset('img/nocrono.png') }}" /></td>
+													{% endif %}
+													<td><a href="{{ path('usuario_practicante', { 'codigo': estudiante.codigo}) }}"><img src="{{ asset('img/editar.png') }}" ><h3>Editar</h3></a></td>
+												</table> <!-- opciones -->
+											</div>
+											{{ estudiante.emailInstitucional }} <br> {{ estudiante.emailPersonal }}</td>
+										</td> <!-- hoverDiv -->
+									</tr>
+									{% set id = id + 1 %}
+									{% endfor %}
+									<tr class="spacer"></tr>
+									<tr class="spacer"></tr>
+									<tr class="spacer"></tr>
+									<tr class="spacer"></tr>
+									<tr class="spacer"></tr>
+									<tr class="spacer"></tr>
+								</table>
+						</div> <!-- tabla con items
+					
+				{% endif %}
+			</div><!--downsection -->
+		{% endblock  %}
+	</div><!-- content -->
+
+	<script>
+		$( ".tableItem" ).mouseenter(function() {
+				var opciones = $('.opciones', this);
+				var itemPicture = $('.itemImgContainer', this);
+				$(itemPicture).css("border-color","#ec1c24");
+
+				$( opciones).animate({
+					opacity: 1,
+					top: "-30px",
+				}, 300, function() {
+				// Animation complete.
+			});
+			});
+
+			$( ".tableItem" ).mouseleave(function() {
+				var itemPicture = $('.itemImgContainer', this);
+				var opciones = $('.opciones', this);
+				$(itemPicture).css("border-color","#242021");
+				$( opciones).animate({
+					opacity: 0,
+					top: "0px",
+				}, 300, function() {
+				// Animation complete.
+			});
+			});
+
+	</script>
+{% endblock %}
