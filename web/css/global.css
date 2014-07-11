@@ -227,7 +227,7 @@ a#cerrarButtonLink {
 /* line 163, globalsass/sass/global.scss */
 #sideBar #imgContainer img {
   position: absolute;
-  top: -4px;
+  top: 2px;
 }
 
 /*sideBar */

@@ -45,5 +45,5 @@ usuario_registrar_estudiante:
     defaults: { _controller: IngenieriaUsuarioBundle:Default:registrarEstudiante }
     
 usuario_subirestudiantes:
-    pattern:  /administrador/subir-estudiante
-    defaults: { _controller: IngenieriaUsuarioBundle:Default:subirEstudiante }
+    pattern:  /administrador/subir-estudiantes
+    defaults: { _controller: IngenieriaUsuarioBundle:Default:subirEstudiantes }

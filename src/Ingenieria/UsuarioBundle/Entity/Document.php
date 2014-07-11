@@ -4,6 +4,7 @@ namespace Ingenieria\UsuarioBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Document
@@ -25,6 +26,9 @@ class Document
      */
     private $path;
 
+	/**
+     * @Assert\File(maxSize="6000000")
+     */
 	private $file;
 		
     /**
@@ -108,7 +112,7 @@ class Document
     {
         // get rid of the __DIR__ so it doesn't screw up
         // when displaying uploaded doc/image in the view.
-        return 'uploads/documents';
+        return 'uploads/csv';
     }
 	
 	    /**
@@ -130,4 +134,30 @@ class Document
     {
         return $this->file;
     }
+	
+		public function upload()
+	{
+	 // the file property can be empty if the field is not required
+		if (null === $this->getFile()) {
+		    return;
+		}
+
+		// use the original file name here but you should
+		// sanitize it at least to avoid any security issues
+
+		// move takes the target directory and then the
+		// target filename to move to
+		
+		$nombre = "est_uao_2001";
+		$this->getFile()->move(
+		    $this->getUploadRootDir(),
+		    $this->getFile()->getClientOriginalName()
+		);
+		
+		// set the path property to the filename where you've saved the file
+		$this->path = $this->getFile()->getClientOriginalName();
+
+		// clean up the file property as you won't need it anymore
+		$this->file = null;	
+	}
 }
