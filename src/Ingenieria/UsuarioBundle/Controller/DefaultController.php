@@ -208,7 +208,7 @@ class DefaultController extends Controller
 				}
 
 				$listaEstudiantes[$i] =  array("codigo"=> $sql[0], "apellidos"=>$sql[1], "nombres"=>$sql[2], "ci" => $sql[3], 	
-					"fecha" => $sql[4], "emailInstitucional" => $sql[5] );
+					 "emailInstitucional" => $sql[4] );
 				$i++;
 				$nohay = false;
 			}
