@@ -166,435 +166,432 @@
 	} /* opciones */
 
 
- 		.spacer{
- 			height: 40px;
- 		}
+	.spacer{
+		height: 40px;
+	}
 
- 		img{
- 			position:relative;
- 			margin:0 auto;
- 		}
+	img{
+		position:relative;
+		margin:0 auto;
+	}
 
- 		td{
- 			position:relative;
- 			font-family:  helvetica;
- 			font-size: 14px;
- 			z-index: 2;
- 		}
+	td{
+		position:relative;
+		font-family:  helvetica;
+		font-size: 14px;
+		z-index: 2;
+	}
 
- 		h2{
- 			color: $softGray;
- 			margin-left: $contentLeftMargin;
- 			font-weight: bold;
- 		}
+	h2{
+		color: $softGray;
+		margin-left: $contentLeftMargin;
+		font-weight: bold;
+	}
 
- 		.itemImgContainer{
- 			width: 100px;
- 			height: 100px;
- 			border:3px solid $darkGray;
- 			@include border-radius(50%);
- 			overflow: hidden;
- 			.foto{
+	.itemImgContainer{
+		width: 100px;
+		height: 100px;
+		border:3px solid $darkGray;
+		@include border-radius(50%);
+		overflow: hidden;
+		.foto{
 
- 				top: -5px;
- 			}
- 		}
- 		} /* practicantes Table style */
+			top: -5px;
+		}
+	}
+ 	} /* practicantes Table style */
 
- 		.imgContainer{
- 			width: 150px;
- 			height: 150px;
- 			border:3px solid $darkGray;
- 			@include border-radius(50%);
- 			overflow: hidden;
+	.imgContainer{
+		width: 150px;
+		height: 150px;
+		border:3px solid $darkGray;
+		@include border-radius(50%);
+		overflow: hidden;
 
- 			.foto{
- 				position:relative;
- 				top: -5px;
- 			}
- 		}
- 		.profileContainer{
- 			padding-left: 30px;
- 			padding-top: 42px;
- 		}
- 		.profilePictureContainer{
- 			width: 400px;
- 			float: left;
- 			margin-bottom: 10px;
- 			/*border: 1px solid #000;*/
- 		}
- 		.profileFormContainer{
- 			width: 800px;
- 			float: left;
- 			/*border: 1px solid #000;*/
- 		}
+		.foto{
+			position:relative;
+			top: -5px;
+		}
+	}
+	.profileContainer{
+		padding-left: 30px;
+		padding-top: 42px;
+	}
+	.profilePictureContainer{
+		width: 400px;
+		float: left;
+		margin-bottom: 10px;
+		/*border: 1px solid #000;*/
+	}
+	.profileFormContainer{
+		width: 800px;
+		float: left;
+		/*border: 1px solid #000;*/
+	}
 
- 		.inputContainer{
- 			display: inline-block;
- 			margin-bottom: 20px;
- 			width: 390px;
- 			float: left;
- 			/*height: 40px;*/
+	.inputContainer{
+		display: inline-block;
+		margin-bottom: 20px;
+		width: 390px;
+		float: left;
+		/*height: 40px;*/
 
- 			h2, label{
- 				color: black;
- 				font-family:helveticaNBold;
- 				font-size:17px;
- 				float: left;
- 				margin-top: 5px;
- 				margin-right: 15px;
- 				width: 120px;
- 			}
- 			.input{
- 				float: left;
- 			}
- 		}
- 		.selFile{
- 			width:300px;
- 		}
- 		.selFile label{
- 			display: none;
- 		}
+		h2, label{
+			color: black;
+			font-family:helveticaNBold;
+			font-size:17px;
+			float: left;
+			margin-top: 5px;
+			margin-right: 15px;
+			width: 120px;
+		}
+		.input{
+			float: left;
+		}
+	}
 
- 		.profileData{
- 			/*border:1px solid #000;*/
- 			height: 85px;
- 			margin-bottom: 14px;
+	.selFile{
+		width:300px;
+	}
+	.selFile label{
+		display: none;
+	}
 
- 			h1,h2{
+	.profileData{
+		/*border:1px solid #000;*/
+		height: 85px;
+		margin-bottom: 14px;
 
- 				color:$darkGray;
- 				margin-left: 125px;
- 				margin-top: 5px;
- 			}
- 			.imgContainer{
- 				width: 80px;
- 				height: 80px;
- 				position:absolute;
+		h1,h2{
 
- 			}
- 		}
- 		.tabla{
- 			width: 100%;
- 			/*border:1px solid #000;*/
- 			overflow: auto;
+			color:$darkGray;
+			margin-left: 125px;
+			margin-top: 5px;
+		}
+		.imgContainer{
+			width: 80px;
+			height: 80px;
+			position:absolute;
 
- 			.tableHeader , .tableHeader:hover {
- 				color: #fff;
- 				background-color:$softGray;
- 				font-family:  helvetica;
- 				font-size: 18px;
- 				z-index: 2;
- 				height: 30px;
- 			}
- 			td{
- 				position: relative;
- 				font-family:  helvetica;
- 				font-size: 15px;
- 				z-index: 2;
- 				padding: 5px 0;
- 				padding-top: 10px;
- 				width: 120px;
- 			}
- 			tr{
- 				margin-top: 10px;
+		}
+	}
 
- 			}
- 			tr:hover{
- 				background-color: $redColor;
- 				color: #fff;
- 			}
- 			tr:hover td:first-child{
+	.tabla{
+		width: 100%;
+		/*border:1px solid #000;*/
+		overflow: auto;
 
- 				color: #fff;
- 			}
- 			th:first-child{
- 				padding-left:30px;
- 			}
- 			tr td:first-child{
- 				padding-left:30px;
- 				width: 285px;
- 				font-weight: bold;
- 				color: $darkGray;
- 			}
- 		}
+		.tableHeader , .tableHeader:hover {
+			color: #fff;
+			background-color:$softGray;
+			font-family:  helvetica;
+			font-size: 18px;
+			z-index: 2;
+			height: 30px;
+		}
+		td{
+			position: relative;
+			font-family:  helvetica;
+			font-size: 15px;
+			z-index: 2;
+			padding: 5px 0;
+			padding-top: 10px;
+			width: 120px;
+		}
+		tr{
+			margin-top: 10px;
 
- 		.generalTable{
- 			width: 100%;
- 			padding-left: $contentLeftMargin;
- 			height:auto;
- 			table-border:colapse;
+		}
+		tr:hover{
+			background-color: $redColor;
+			color: #fff;
+		}
+		tr:hover td:first-child{
 
- 			.tableHead{
- 				background-color: $softGray;
- 				height: 35px;
- 				position:relative;
- 				top: 0;
- 				left: 0;
- 				width: 100%;
- 				padding-top:5px;
- 				z-index: 3;
- 			}
- 			.tableItem{
- 				margin: 10px 0px;
- 				/*border:2px solid $darkGray;*/
- 				padding-top: 20px;
- 				height: 40px;
- 				color: black;
- 				position:relative;
- 			}
+			color: #fff;
+		}
+		th:first-child{
+			padding-left:30px;
+		}
+		tr td:first-child{
+			padding-left:30px;
+			width: 285px;
+			font-weight: bold;
+			color: $darkGray;
+		}
+	} //style table
 
- 			.tableItem:hover{
- 				color:white !important;
- 				background-color: $redColor;
- 			}
+	.generalTable{
+		width: 100%;
+		padding-left: $contentLeftMargin;
+		height:auto;
+		table-border:colapse;
 
- 			#hoverDiv{
- 				height: 65px;
- 				width: 100%;
- 				position: absolute;
- 				margin-top: -30px;
- 				z-index: 2;
- 			}
+		.tableHead{
+			background-color: $softGray;
+			height: 35px;
+			position:relative;
+			top: 0;
+			left: 0;
+			width: 100%;
+			padding-top:5px;
+			z-index: 3;
+		}
+		.tableItem{
+			margin: 10px 0px;
+			/*border:2px solid $darkGray;*/
+			padding-top: 20px;
+			height: 40px;
+			color: black;
+			position:relative;
+		}
 
- 			.opciones{
- 				position:absolute;
- 				opacity: 0;
+		.tableItem:hover{
+			color:white !important;
+			background-color: $redColor;
+		}
 
- 				float: right;
- 				padding:5px 10px;
- 				background-color: $darkGray;
- 				top:0;
- 				right: 160px;
- 				z-index:10;
- 				overflow: hidden;
+		#hoverDiv{
+			height: 65px;
+			width: 100%;
+			position: absolute;
+			margin-top: -30px;
+			z-index: 2;
+		}
 
- 				@include border-radius(3px);
+		.opciones{
+			position:absolute;
+			opacity: 0;
 
- 				td{
- 					padding: 1px 6px !important;
- 					float: left;
- 					width: 80px;
- 				}
- 				td:first-child{
- 					padding: 1px 6px !important;
+			float: right;
+			padding:5px 10px;
+			background-color: $darkGray;
+			top:0;
+			right: 160px;
+			z-index:10;
+			overflow: hidden;
 
- 				}
+			@include border-radius(3px);
 
- 				td:hover{
- 					background-color: $darkRed;
- 				}
- 				img{
- 					float: left;
- 				}
+			td{
+				padding: 1px 6px !important;
+				float: left;
+				width: 80px;
+			}
+			td:first-child{
+				padding: 1px 6px !important;
 
- 				h3{
- 					color: white;
- 					float: left;
- 					margin-top: 9px;
- 					margin-left: 5px;
- 				}
+			}
 
+			td:hover{
+				background-color: $darkRed;
+			}
+			img{
+				float: left;
+			}
 
- 				} /* generalTable */
-
-
- 				.spacer{
- 					height: 40px;
- 				}
-
- 				img{
- 					position:relative;
- 					margin:0 auto;
- 				}
+			h3{
+				color: white;
+				float: left;
+				margin-top: 9px;
+				margin-left: 5px;
+			}
+		} /* opciones */
 
 
- 				td{
- 					position:relative;
- 					font-family:  helvetica;
- 					font-size: 14px;
- 					z-index: 2;
- 				}
+		.spacer{
+			height: 40px;
+		}
 
- 				h2{
- 					color: $softGray;
- 					margin-left: $contentLeftMargin;
- 					font-weight: bold;
- 				}
+		img{
+			position:relative;
+			margin:0 auto;
+		}
 
- 				.itemImgContainer{
- 					width: 100px;
- 					height: 100px;
- 					border:3px solid $darkGray;
- 					@include border-radius(50%);
- 					overflow: hidden;
- 					.foto{
+		td{
+			position:relative;
+			font-family:  helvetica;
+			font-size: 14px;
+			z-index: 2;
+		}
 
- 						top: -5px;
- 					}
- 				}
- 				} /* general Table style */
+		h2{
+			color: $softGray;
+			margin-left: $contentLeftMargin;
+			font-weight: bold;
+		}
 
- 				#centro_direccion{
- 					width:170px;
- 					font-family: helvetica;
- 					font-family:12px;
- 				}
+		.itemImgContainer{
+			width: 100px;
+			height: 100px;
+			border:3px solid $darkGray;
+			@include border-radius(50%);
+			overflow: hidden;
+			.foto{
 
- 				#externo_cargo{
- 					width:170px;
- 				}
- 				#cargo div{
- 					float:left;
- 				}
+				top: -5px;
+			}
+		}
+ 	} /* general Table style */
 
- 				#cargo div:last-child{
- 					margin-left:53px;
- 				}
- 				.nomodificable{
- 					border: none !important;
- 				}
+	#centro_direccion{
+		width:170px;
+		font-family: helvetica;
+		font-family:12px;
+	}
 
- 				.inform{
+	#externo_cargo{
+		width:170px;
+	}
+	#cargo div{
+		float:left;
+	}
 
- 					width:100%;
- 					overflow: auto;
- 					height:650px;
+	#cargo div:last-child{
+		margin-left:53px;
+	}
+	.nomodificable{
+		border: none !important;
+	}
 
- 					.activity{
- 						margin-top: 30px;
- 						width: 100%;
- 						float: left;
- 						border-top: 3px solid $softGray;
- 						padding-top: 30px;
+	.inform{
+		width:100%;
+		overflow: auto;
+		height:650px;
 
- 						
- 						.indicadores{
- 							float: left;
- 							width: 350px;
- 							margin-top: 25px;
- 							margin-left:15px;
+		.activity{
+			margin-top: 30px;
+			width: 100%;
+			float: left;
+			border-top: 3px solid $softGray;
+			padding-top: 30px;
 
- 							.inputContainer{
- 								width: 200px !important;
- 								
- 							}
- 						}
+			
+			.indicadores{
+				float: left;
+				width: 350px;
+				margin-top: 25px;
+				margin-left:15px;
 
- 						.inputContainer{
- 							float: left;
- 							width: 435px;
- 							margin-left: 30px;
+				.inputContainer{
+					width: 200px !important;
+					
+				}
+			}
 
- 							h2{
- 								margin-bottom: 10px;
- 								width: 100% !important;
- 							}
+			.inputContainer{
+				float: left;
+				width: 435px;
+				margin-left: 30px;
 
- 							.input{
- 								margin-top: 20px;
- 								width: 350px;
- 								margin-left: 10px;
- 							}
+				h2{
+					margin-bottom: 10px;
+					width: 100% !important;
+				}
 
- 							.radio{
- 								width: 380px;
- 								label{
- 									width: auto;
- 								}
- 							}
- 						}
+				.input{
+					margin-top: 20px;
+					width: 350px;
+					margin-left: 10px;
+				}
 
- 						h1 label{
- 							width: 243px;
- 							margin-bottom: 10px;
- 						}
+				.radio{
+					width: 380px;
+					label{
+						width: auto;
+					}
+				}
+			}
 
- 					} /*activity*/
+			h1 label{
+				width: 243px;
+				margin-bottom: 10px;
+			}
+
+		} /*activity*/
 
 
- 						h1{
- 							font-family: helvetica;
- 							font-size: 24px;
- 							color: $darkGray;
- 							margin-left: 30px;
- 						}
+		h1{
+			font-family: helvetica;
+			font-size: 24px;
+			color: $darkGray;
+			margin-left: 30px;
+		}
 
- 						textarea
- 						{
- 							@include border-radius(3px);
- 							width:400px;
- 							height: 150px;
- 							border: #242021 solid 1px;
- 							color:#242424;
- 							font-size: 0.8em;
- 							padding-left: 5%;
- 							padding-top:20px;
- 							/*margin-right:50px;*/
- 							font-family: helvetica;
- 						}
+		textarea
+		{
+			@include border-radius(3px);
+			width:400px;
+			height: 150px;
+			border: #242021 solid 1px;
+			color:#242424;
+			font-size: 0.8em;
+			padding-left: 5%;
+			padding-top:20px;
+			/*margin-right:50px;*/
+			font-family: helvetica;
+		}
 
- 						textarea:hover{
- 							border-color:$redColor;
- 						}
- 						textarea:focus{
- 							border-color:$redColor;
- 						}
+		textarea:hover{
+			border-color:$redColor;
+		}
+		textarea:focus{
+			border-color:$redColor;
+		}
 
- 						textarea.nomodificable{
- 								
- 								background-color:#ececec;
- 							}
- 						input.nomodificable{
- 								
- 								background-color:#ececec;
- 							}
- 						.nomodificable{
- 							pointer-events:none;
- 							
- 							textarea{
- 								border: none !important;
- 								line-height: 150%;
- 								height: 300px;
- 								background-color:#ececec;
- 							}
- 							.input{
- 								background-color:#ececec;
- 							}
- 							input{
- 								background-color:#ececec;
- 							}
- 						}
-
- 				}/*inform*/
+		textarea.nomodificable{
+				
+				background-color:#ececec;
+			}
+		input.nomodificable{
+				
+				background-color:#ececec;
+			}
+		.nomodificable{
+			pointer-events:none;
+			
+			textarea{
+				border: none !important;
+				line-height: 150%;
+				height: 300px;
+				background-color:#ececec;
+			}
+			.input{
+				background-color:#ececec;
+			}
+			input{
+				background-color:#ececec;
+			}
+		}
+	}/*inform*/
 
  					
 
- 						.bold{
- 							font-weight: bold;
- 							font-size: 19px;
- 							color: #7b7b7b !important;
- 						}
+	.bold{
+		font-weight: bold;
+		font-size: 19px;
+		color: #7b7b7b !important;
+	}
 
- 						.largeh2{
- 							color: $darkGray;
- 							width: 400px !important;
- 							font-family: helvetica !important;
- 						}
- 						.extraLarge{
- 								color: $darkGray;
- 							width: 80% !important;
- 						}
+	.largeh2{
+		color: $darkGray;
+		width: 400px !important;
+		font-family: helvetica !important;
+	}
+	.extraLarge{
+			color: $darkGray;
+		width: 80% !important;
+	}
 
- 						#warning{
- 							width: 90%;
- 							border-top:none;
- 							background-color:$redColor;
- 							padding:10px;
- 							margin-left: 30px;
- 							
- 							font-weight:bold;
- 							color: #fff;
- 							line-height: 130%;
+	#warning{
+		width: 90%;
+		border-top:none;
+		background-color:$redColor;
+		padding:10px;
+		margin-left: 30px;
+		
+		font-weight:bold;
+		color: #fff;
+		line-height: 130%;
 
- 						}
+	}
