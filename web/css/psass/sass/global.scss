@@ -7,8 +7,6 @@
  @import "variables";
  
 
-
-
  html,body{
  	overflow-x:hidden;
  	overflow-y:hidden;
@@ -250,19 +248,11 @@
  		font-size:14px;
  		margin:0 8px;
  		border:none;
-
-
-
-
  	}
 
  	.button:hover{
  		background-color: $redColor;
  		cursor: pointer;
-
-
-
-
  	}
 
  	input[type="text"], input[type="password"],#academico_perfil, #centro_direccion, input[type="email"], input[type="textarea"], input[type="password"]
@@ -317,18 +307,13 @@
 
  	select:hover {
  		background: url('../img/arrow.png') $redColor no-repeat;
-
  	}
 
  	input[type="text"]:focus, #academico_perfil:focus, #centro_direccion:focus, input[type="password"]:focus, select:focus, input[type="email"]:focus
  	{
  		outline: none;
-
  		border: #af0000 solid 1px;
-
-
  	}
-
 
 
  	@import "contentStyle";

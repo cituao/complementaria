@@ -2,7 +2,7 @@
  * In this file you should write your main styles. (or centralize your imports)
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
-/* line 17, ../../../../lib/gems/1.8/gems/compass-0.12.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 17, ../../../../../../lib/gems/1.8/gems/compass-0.12.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -24,45 +24,45 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-/* line 22, ../../../../lib/gems/1.8/gems/compass-0.12.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 22, ../../../../../../lib/gems/1.8/gems/compass-0.12.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html {
   line-height: 1;
 }
 
-/* line 24, ../../../../lib/gems/1.8/gems/compass-0.12.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 24, ../../../../../../lib/gems/1.8/gems/compass-0.12.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none;
 }
 
-/* line 26, ../../../../lib/gems/1.8/gems/compass-0.12.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 26, ../../../../../../lib/gems/1.8/gems/compass-0.12.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 28, ../../../../lib/gems/1.8/gems/compass-0.12.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 28, ../../../../../../lib/gems/1.8/gems/compass-0.12.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
-/* line 30, ../../../../lib/gems/1.8/gems/compass-0.12.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 30, ../../../../../../lib/gems/1.8/gems/compass-0.12.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
   quotes: none;
 }
-/* line 103, ../../../../lib/gems/1.8/gems/compass-0.12.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 103, ../../../../../../lib/gems/1.8/gems/compass-0.12.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
 }
 
-/* line 32, ../../../../lib/gems/1.8/gems/compass-0.12.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 32, ../../../../../../lib/gems/1.8/gems/compass-0.12.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none;
 }
 
-/* line 116, ../../../../lib/gems/1.8/gems/compass-0.12.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 116, ../../../../../../lib/gems/1.8/gems/compass-0.12.5/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
   display: block;
 }
@@ -71,7 +71,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
  * In this file you should write your main styles. (or centralize your imports)
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
-/* line 10, psass/sass/global.scss */
+/* line 12, ../sass/global.scss */
 html, body {
   overflow-x: hidden;
   overflow-y: hidden;
@@ -92,26 +92,26 @@ html, body {
   src: url("../fonts/helvetica/HelveticaNeueLTStd-Md.otf");
 }
 
-/* line 42, psass/sass/global.scss */
+/* line 44, ../sass/global.scss */
 a {
   text-decoration: none;
 }
 
-/* line 46, psass/sass/global.scss */
+/* line 48, ../sass/global.scss */
 h1 {
   font-family: helveticaN;
   font-size: 23px;
   color: white;
 }
 
-/* line 53, psass/sass/global.scss */
+/* line 55, ../sass/global.scss */
 h2 {
   color: white;
   font-family: helveticaN;
   font-size: 17px;
 }
 
-/* line 58, psass/sass/global.scss */
+/* line 60, ../sass/global.scss */
 h3 {
   color: white;
   font-family: helvetica;
@@ -119,7 +119,7 @@ h3 {
   margin-top: 2px;
 }
 
-/* line 64, psass/sass/global.scss */
+/* line 66, ../sass/global.scss */
 h4 {
   font-family: helvetica;
   font-size: 13px;
@@ -127,12 +127,12 @@ h4 {
   font-weight: bold;
 }
 
-/* line 71, psass/sass/global.scss */
+/* line 73, ../sass/global.scss */
 span {
   font-weight: bold;
 }
 
-/* line 74, psass/sass/global.scss */
+/* line 76, ../sass/global.scss */
 #mainHeader {
   width: 100%;
   height: 23px;
@@ -147,7 +147,7 @@ span {
   z-index: 10;
 }
 
-/* line 87, psass/sass/global.scss */
+/* line 89, ../sass/global.scss */
 #secondHeader {
   position: fixed;
   top: 31px;
@@ -163,7 +163,7 @@ span {
   z-index: 10;
 }
 
-/* line 102, psass/sass/global.scss */
+/* line 104, ../sass/global.scss */
 #cerrarSesionButton {
   width: 120px;
   float: right;
@@ -171,12 +171,12 @@ span {
   padding: 0 5px;
 }
 
-/* line 110, psass/sass/global.scss */
+/* line 112, ../sass/global.scss */
 #cerrarSesionButton:hover {
   background-color: #72030b;
 }
 
-/* line 114, psass/sass/global.scss */
+/* line 116, ../sass/global.scss */
 a#cerrarButtonLink {
   font-family: helveticaNBold;
   font-size: 14px;
@@ -187,7 +187,7 @@ a#cerrarButtonLink {
   float: left;
 }
 
-/* line 125, psass/sass/global.scss */
+/* line 127, ../sass/global.scss */
 #sideBar {
   background-color: #242021;
   position: fixed;
@@ -201,18 +201,18 @@ a#cerrarButtonLink {
   border-top: 1px solid #353133;
   padding-left: 33px;
 }
-/* line 138, psass/sass/global.scss */
+/* line 140, ../sass/global.scss */
 #sideBar h1#userName {
   position: absolute;
   top: 30px;
 }
-/* line 144, psass/sass/global.scss */
+/* line 146, ../sass/global.scss */
 #sideBar h2#userRole {
   position: absolute;
   top: 60px;
   color: #b5b5b5;
 }
-/* line 151, psass/sass/global.scss */
+/* line 153, ../sass/global.scss */
 #sideBar #imgContainer {
   position: absolute;
   top: 100px;
@@ -226,14 +226,14 @@ a#cerrarButtonLink {
   border: none;
   border: 1px solid #b5b5b5;
 }
-/* line 161, psass/sass/global.scss */
+/* line 163, ../sass/global.scss */
 #sideBar #imgContainer img {
   position: absolute;
   top: -4px;
 }
 
 /*sideBar */
-/* line 169, psass/sass/global.scss */
+/* line 171, ../sass/global.scss */
 #menu {
   position: absolute;
   top: 270px;
@@ -241,7 +241,7 @@ a#cerrarButtonLink {
   width: 100%;
   z-index: 3;
 }
-/* line 176, psass/sass/global.scss */
+/* line 178, ../sass/global.scss */
 #menu a {
   width: 100%;
   height: 40px;
@@ -251,21 +251,21 @@ a#cerrarButtonLink {
   padding: 5px 0;
   box-shadow: 0px 1px 1px #353133;
 }
-/* line 186, psass/sass/global.scss */
+/* line 188, ../sass/global.scss */
 #menu a:first-child {
   border-top: 1px solid black;
 }
-/* line 189, psass/sass/global.scss */
+/* line 191, ../sass/global.scss */
 #menu a:hover {
   background-color: #72030b;
 }
-/* line 192, psass/sass/global.scss */
+/* line 194, ../sass/global.scss */
 #menu h3 {
   float: left;
   margin-top: 11px;
   text-shadow: 1px 1px 1px black;
 }
-/* line 197, psass/sass/global.scss */
+/* line 199, ../sass/global.scss */
 #menu img {
   width: 35px;
   height: 35px;
@@ -273,28 +273,28 @@ a#cerrarButtonLink {
   margin-left: 25px;
   margin-right: 7px;
 }
-/* line 208, psass/sass/global.scss */
+/* line 210, ../sass/global.scss */
 #menu .unable img {
   opacity: 0.15;
 }
-/* line 212, psass/sass/global.scss */
+/* line 214, ../sass/global.scss */
 #menu .unable h3 {
   color: #3f3a3c !important;
   box-shadow: none !important;
   text-shadow: none  !important;
 }
-/* line 218, psass/sass/global.scss */
+/* line 220, ../sass/global.scss */
 #menu .unable:hover {
   cursor: default;
   background-color: #242021;
   pointer-events: none !important;
 }
-/* line 224, psass/sass/global.scss */
+/* line 226, ../sass/global.scss */
 #menu .active {
   background-color: black;
 }
 
-/* line 230, psass/sass/global.scss */
+/* line 232, ../sass/global.scss */
 .content {
   width: 84.5%;
   /*border:1px solid #000;*/
@@ -305,7 +305,7 @@ a#cerrarButtonLink {
   overflow: hidden;
 }
 
-/* line 242, psass/sass/global.scss */
+/* line 244, ../sass/global.scss */
 .button {
   background-color: #242021;
   -webkit-border-radius: 5px;
@@ -320,13 +320,13 @@ a#cerrarButtonLink {
   border: none;
 }
 
-/* line 253, psass/sass/global.scss */
+/* line 259, ../sass/global.scss */
 .button:hover {
   background-color: #ec1c24;
   cursor: pointer;
 }
 
-/* line 259, psass/sass/global.scss */
+/* line 269, ../sass/global.scss */
 input[type="text"], input[type="password"], #academico_perfil, #centro_direccion, input[type="email"], input[type="textarea"], input[type="password"] {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
@@ -344,27 +344,27 @@ input[type="text"], input[type="password"], #academico_perfil, #centro_direccion
   font-family: helvetica;
 }
 
-/* line 273, psass/sass/global.scss */
+/* line 283, ../sass/global.scss */
 input[type="radio"] {
   float: left;
 }
 
-/* line 276, psass/sass/global.scss */
+/* line 286, ../sass/global.scss */
 .nomodificable {
   border: none !important;
 }
 
-/* line 280, psass/sass/global.scss */
+/* line 290, ../sass/global.scss */
 .nomodificable input {
   border: none !important;
 }
 
-/* line 283, psass/sass/global.scss */
+/* line 293, ../sass/global.scss */
 #centro_direccion {
   max-height: 50px;
 }
 
-/* line 286, psass/sass/global.scss */
+/* line 296, ../sass/global.scss */
 #academico_perfil {
   height: 150px;
   width: 100%;
@@ -372,7 +372,7 @@ input[type="radio"] {
   padding-top: 15px;
 }
 
-/* line 293, psass/sass/global.scss */
+/* line 303, ../sass/global.scss */
 select {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
@@ -393,12 +393,12 @@ select {
   background: url("../img/arrow.png") #242021 no-repeat;
 }
 
-/* line 308, psass/sass/global.scss */
+/* line 318, ../sass/global.scss */
 select:hover {
   background: url("../img/arrow.png") #ec1c24 no-repeat;
 }
 
-/* line 313, psass/sass/global.scss */
+/* line 324, ../sass/global.scss */
 input[type="text"]:focus, #academico_perfil:focus, #centro_direccion:focus, input[type="password"]:focus, select:focus, input[type="email"]:focus {
   outline: none;
   border: #af0000 solid 1px;
@@ -412,7 +412,7 @@ input[type="text"]:focus, #academico_perfil:focus, #centro_direccion:focus, inpu
  * In this file you should write your main styles. (or centralize your imports)
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
-/* line 17, psass/sass/contentStyle.scss */
+/* line 17, ../sass/contentStyle.scss */
 .upSection {
   width: 85%;
   height: 45px;
@@ -424,7 +424,7 @@ input[type="text"]:focus, #academico_perfil:focus, #centro_direccion:focus, inpu
   background-color: white;
   z-index: 3;
 }
-/* line 28, psass/sass/contentStyle.scss */
+/* line 28, ../sass/contentStyle.scss */
 .upSection h1 {
   /*width: 150px;*/
   background-color: #ec1c24;
@@ -433,22 +433,22 @@ input[type="text"]:focus, #academico_perfil:focus, #centro_direccion:focus, inpu
   padding-left: 30px;
   float: left;
 }
-/* line 40, psass/sass/contentStyle.scss */
+/* line 40, ../sass/contentStyle.scss */
 .upSection a {
   float: right;
   margin-right: 1%;
 }
-/* line 44, psass/sass/contentStyle.scss */
+/* line 44, ../sass/contentStyle.scss */
 .upSection a img {
   margin-right: 7px;
   float: left;
 }
-/* line 48, psass/sass/contentStyle.scss */
+/* line 48, ../sass/contentStyle.scss */
 .upSection a h4 {
   float: left;
   margin-top: 7px;
 }
-/* line 55, psass/sass/contentStyle.scss */
+/* line 55, ../sass/contentStyle.scss */
 .upSection form {
   position: absolute;
   top: 100px;
@@ -456,20 +456,20 @@ input[type="text"]:focus, #academico_perfil:focus, #centro_direccion:focus, inpu
   float: right;
   opacity: 0;
 }
-/* line 63, psass/sass/contentStyle.scss */
+/* line 63, ../sass/contentStyle.scss */
 .upSection form label {
   display: none;
 }
-/* line 66, psass/sass/contentStyle.scss */
+/* line 66, ../sass/contentStyle.scss */
 .upSection form input[type="file"] {
   width: 300px;
 }
-/* line 75, psass/sass/contentStyle.scss */
+/* line 75, ../sass/contentStyle.scss */
 .upSection #form div {
   float: right !important;
 }
 
-/* line 83, psass/sass/contentStyle.scss */
+/* line 83, ../sass/contentStyle.scss */
 .downSection {
   width: 100%;
   margin-top: 83px;
@@ -477,12 +477,12 @@ input[type="text"]:focus, #academico_perfil:focus, #centro_direccion:focus, inpu
   /*border:1px solid #000;*/
 }
 
-/* line 92, psass/sass/contentStyle.scss */
+/* line 92, ../sass/contentStyle.scss */
 .practicantesTableHead, .generalTableHead {
   width: 100%;
   padding-left: 30px;
 }
-/* line 97, psass/sass/contentStyle.scss */
+/* line 97, ../sass/contentStyle.scss */
 .practicantesTableHead .tableHead, .generalTableHead .tableHead {
   background-color: #b5b5b5;
   height: 38px;
@@ -494,7 +494,7 @@ input[type="text"]:focus, #academico_perfil:focus, #centro_direccion:focus, inpu
   z-index: 3;
 }
 
-/* line 109, psass/sass/contentStyle.scss */
+/* line 109, ../sass/contentStyle.scss */
 .practicantesTable {
   width: 100%;
   padding-left: 30px;
@@ -502,7 +502,7 @@ input[type="text"]:focus, #academico_perfil:focus, #centro_direccion:focus, inpu
   table-border: collapse;
   /* practicantesTable */
 }
-/* line 114, psass/sass/contentStyle.scss */
+/* line 116, ../sass/contentStyle.scss */
 .practicantesTable .tableHead {
   background-color: #b5b5b5;
   height: 35px;
@@ -513,7 +513,7 @@ input[type="text"]:focus, #academico_perfil:focus, #centro_direccion:focus, inpu
   padding-top: 5px;
   z-index: 3;
 }
-/* line 124, psass/sass/contentStyle.scss */
+/* line 127, ../sass/contentStyle.scss */
 .practicantesTable .tableItem {
   margin: 10px 0px;
   /*border:2px solid $darkGray;*/
@@ -521,11 +521,11 @@ input[type="text"]:focus, #academico_perfil:focus, #centro_direccion:focus, inpu
   color: black;
   position: relative;
 }
-/* line 132, psass/sass/contentStyle.scss */
+/* line 138, ../sass/contentStyle.scss */
 .practicantesTable .tableItem:hover {
   color: white !important;
 }
-/* line 136, psass/sass/contentStyle.scss */
+/* line 147, ../sass/contentStyle.scss */
 .practicantesTable #hoverDiv {
   height: 55px;
   width: 100%;
@@ -535,7 +535,7 @@ input[type="text"]:focus, #academico_perfil:focus, #centro_direccion:focus, inpu
   border-bottom: 1px solid #b5b5b5;
   z-index: 2;
 }
-/* line 146, psass/sass/contentStyle.scss */
+/* line 158, ../sass/contentStyle.scss */
 .practicantesTable .opciones {
   position: absolute;
   opacity: 0;
@@ -550,50 +550,50 @@ input[type="text"]:focus, #academico_perfil:focus, #centro_direccion:focus, inpu
   -ms-border-radius: 3px;
   border-radius: 3px;
 }
-/* line 158, psass/sass/contentStyle.scss */
+/* line 173, ../sass/contentStyle.scss */
 .practicantesTable .opciones td {
   padding: 1px 6px;
   min-width: 120px;
   float: left;
 }
-/* line 164, psass/sass/contentStyle.scss */
+/* line 179, ../sass/contentStyle.scss */
 .practicantesTable .opciones td:hover {
   background-color: #72030b;
 }
-/* line 167, psass/sass/contentStyle.scss */
+/* line 182, ../sass/contentStyle.scss */
 .practicantesTable .opciones img {
   float: left;
 }
-/* line 171, psass/sass/contentStyle.scss */
+/* line 186, ../sass/contentStyle.scss */
 .practicantesTable .opciones h3 {
   color: white;
   float: left;
   margin-top: 9px;
   margin-left: 5px;
 }
-/* line 182, psass/sass/contentStyle.scss */
+/* line 199, ../sass/contentStyle.scss */
 .practicantesTable .spacer {
   height: 40px;
 }
-/* line 186, psass/sass/contentStyle.scss */
+/* line 203, ../sass/contentStyle.scss */
 .practicantesTable img {
   position: relative;
   margin: 0 auto;
 }
-/* line 191, psass/sass/contentStyle.scss */
+/* line 210, ../sass/contentStyle.scss */
 .practicantesTable td {
   position: relative;
   font-family: helvetica;
   font-size: 14px;
   z-index: 2;
 }
-/* line 198, psass/sass/contentStyle.scss */
+/* line 221, ../sass/contentStyle.scss */
 .practicantesTable h2 {
   color: #b5b5b5;
   margin-left: 30px;
   font-weight: bold;
 }
-/* line 204, psass/sass/contentStyle.scss */
+/* line 227, ../sass/contentStyle.scss */
 .practicantesTable .itemImgContainer {
   width: 100px;
   height: 100px;
@@ -604,13 +604,13 @@ input[type="text"]:focus, #academico_perfil:focus, #centro_direccion:focus, inpu
   border-radius: 50%;
   overflow: hidden;
 }
-/* line 210, psass/sass/contentStyle.scss */
+/* line 233, ../sass/contentStyle.scss */
 .practicantesTable .itemImgContainer .foto {
   top: -5px;
 }
 
 /* practicantes Table style */
-/* line 217, psass/sass/contentStyle.scss */
+/* line 240, ../sass/contentStyle.scss */
 .imgContainer {
   width: 150px;
   height: 150px;
@@ -621,19 +621,19 @@ input[type="text"]:focus, #academico_perfil:focus, #centro_direccion:focus, inpu
   border-radius: 50%;
   overflow: hidden;
 }
-/* line 224, psass/sass/contentStyle.scss */
+/* line 247, ../sass/contentStyle.scss */
 .imgContainer .foto {
   position: relative;
   top: -5px;
 }
 
-/* line 229, psass/sass/contentStyle.scss */
+/* line 252, ../sass/contentStyle.scss */
 .profileContainer {
   padding-left: 30px;
   padding-top: 42px;
 }
 
-/* line 233, psass/sass/contentStyle.scss */
+/* line 256, ../sass/contentStyle.scss */
 .profilePictureContainer {
   width: 400px;
   float: left;
@@ -641,14 +641,14 @@ input[type="text"]:focus, #academico_perfil:focus, #centro_direccion:focus, inpu
   /*border: 1px solid #000;*/
 }
 
-/* line 239, psass/sass/contentStyle.scss */
+/* line 264, ../sass/contentStyle.scss */
 .profileFormContainer {
   width: 800px;
   float: left;
   /*border: 1px solid #000;*/
 }
 
-/* line 245, psass/sass/contentStyle.scss */
+/* line 270, ../sass/contentStyle.scss */
 .inputContainer {
   display: inline-block;
   margin-bottom: 20px;
@@ -656,7 +656,7 @@ input[type="text"]:focus, #academico_perfil:focus, #centro_direccion:focus, inpu
   float: left;
   /*height: 40px;*/
 }
-/* line 252, psass/sass/contentStyle.scss */
+/* line 277, ../sass/contentStyle.scss */
 .inputContainer h2, .inputContainer label {
   color: black;
   font-family: helveticaNBold;
@@ -666,47 +666,47 @@ input[type="text"]:focus, #academico_perfil:focus, #centro_direccion:focus, inpu
   margin-right: 15px;
   width: 120px;
 }
-/* line 261, psass/sass/contentStyle.scss */
+/* line 286, ../sass/contentStyle.scss */
 .inputContainer .input {
   float: left;
 }
 
-/* line 265, psass/sass/contentStyle.scss */
+/* line 292, ../sass/contentStyle.scss */
 .selFile {
   width: 300px;
 }
 
-/* line 268, psass/sass/contentStyle.scss */
+/* line 295, ../sass/contentStyle.scss */
 .selFile label {
   display: none;
 }
 
-/* line 272, psass/sass/contentStyle.scss */
+/* line 299, ../sass/contentStyle.scss */
 .profileData {
   /*border:1px solid #000;*/
   height: 85px;
   margin-bottom: 14px;
 }
-/* line 277, psass/sass/contentStyle.scss */
+/* line 304, ../sass/contentStyle.scss */
 .profileData h1, .profileData h2 {
   color: #242021;
   margin-left: 125px;
   margin-top: 5px;
 }
-/* line 283, psass/sass/contentStyle.scss */
+/* line 310, ../sass/contentStyle.scss */
 .profileData .imgContainer {
   width: 80px;
   height: 80px;
   position: absolute;
 }
 
-/* line 290, psass/sass/contentStyle.scss */
+/* line 317, ../sass/contentStyle.scss */
 .tabla {
   width: 100%;
   /*border:1px solid #000;*/
   overflow: auto;
 }
-/* line 295, psass/sass/contentStyle.scss */
+/* line 322, ../sass/contentStyle.scss */
 .tabla .tableHeader, .tabla .tableHeader:hover {
   color: #fff;
   background-color: #b5b5b5;
@@ -715,7 +715,7 @@ input[type="text"]:focus, #academico_perfil:focus, #centro_direccion:focus, inpu
   z-index: 2;
   height: 30px;
 }
-/* line 303, psass/sass/contentStyle.scss */
+/* line 330, ../sass/contentStyle.scss */
 .tabla td {
   position: relative;
   font-family: helvetica;
@@ -725,24 +725,24 @@ input[type="text"]:focus, #academico_perfil:focus, #centro_direccion:focus, inpu
   padding-top: 10px;
   width: 120px;
 }
-/* line 312, psass/sass/contentStyle.scss */
+/* line 339, ../sass/contentStyle.scss */
 .tabla tr {
   margin-top: 10px;
 }
-/* line 316, psass/sass/contentStyle.scss */
+/* line 343, ../sass/contentStyle.scss */
 .tabla tr:hover {
   background-color: #ec1c24;
   color: #fff;
 }
-/* line 320, psass/sass/contentStyle.scss */
+/* line 347, ../sass/contentStyle.scss */
 .tabla tr:hover td:first-child {
   color: #fff;
 }
-/* line 324, psass/sass/contentStyle.scss */
+/* line 351, ../sass/contentStyle.scss */
 .tabla th:first-child {
   padding-left: 30px;
 }
-/* line 327, psass/sass/contentStyle.scss */
+/* line 354, ../sass/contentStyle.scss */
 .tabla tr td:first-child {
   padding-left: 30px;
   width: 285px;
@@ -750,7 +750,7 @@ input[type="text"]:focus, #academico_perfil:focus, #centro_direccion:focus, inpu
   color: #242021;
 }
 
-/* line 335, psass/sass/contentStyle.scss */
+/* line 362, ../sass/contentStyle.scss */
 .generalTable {
   width: 100%;
   padding-left: 30px;
@@ -758,7 +758,7 @@ input[type="text"]:focus, #academico_perfil:focus, #centro_direccion:focus, inpu
   table-border: colapse;
   /* generalTable */
 }
-/* line 341, psass/sass/contentStyle.scss */
+/* line 369, ../sass/contentStyle.scss */
 .generalTable .tableHead {
   background-color: #b5b5b5;
   height: 35px;
@@ -769,7 +769,7 @@ input[type="text"]:focus, #academico_perfil:focus, #centro_direccion:focus, inpu
   padding-top: 5px;
   z-index: 3;
 }
-/* line 351, psass/sass/contentStyle.scss */
+/* line 380, ../sass/contentStyle.scss */
 .generalTable .tableItem {
   margin: 10px 0px;
   /*border:2px solid $darkGray;*/
@@ -778,12 +778,12 @@ input[type="text"]:focus, #academico_perfil:focus, #centro_direccion:focus, inpu
   color: black;
   position: relative;
 }
-/* line 360, psass/sass/contentStyle.scss */
+/* line 392, ../sass/contentStyle.scss */
 .generalTable .tableItem:hover {
   color: white !important;
   background-color: #ec1c24;
 }
-/* line 365, psass/sass/contentStyle.scss */
+/* line 402, ../sass/contentStyle.scss */
 .generalTable #hoverDiv {
   height: 65px;
   width: 100%;
@@ -791,7 +791,7 @@ input[type="text"]:focus, #academico_perfil:focus, #centro_direccion:focus, inpu
   margin-top: -30px;
   z-index: 2;
 }
-/* line 373, psass/sass/contentStyle.scss */
+/* line 411, ../sass/contentStyle.scss */
 .generalTable .opciones {
   position: absolute;
   opacity: 0;
@@ -807,54 +807,54 @@ input[type="text"]:focus, #academico_perfil:focus, #centro_direccion:focus, inpu
   -ms-border-radius: 3px;
   border-radius: 3px;
 }
-/* line 387, psass/sass/contentStyle.scss */
+/* line 426, ../sass/contentStyle.scss */
 .generalTable .opciones td {
   padding: 1px 6px !important;
   float: left;
   width: 80px;
 }
-/* line 392, psass/sass/contentStyle.scss */
+/* line 431, ../sass/contentStyle.scss */
 .generalTable .opciones td:first-child {
   padding: 1px 6px !important;
 }
-/* line 397, psass/sass/contentStyle.scss */
+/* line 436, ../sass/contentStyle.scss */
 .generalTable .opciones td:hover {
   background-color: #72030b;
 }
-/* line 400, psass/sass/contentStyle.scss */
+/* line 439, ../sass/contentStyle.scss */
 .generalTable .opciones img {
   float: left;
 }
-/* line 404, psass/sass/contentStyle.scss */
+/* line 443, ../sass/contentStyle.scss */
 .generalTable .opciones h3 {
   color: white;
   float: left;
   margin-top: 9px;
   margin-left: 5px;
 }
-/* line 415, psass/sass/contentStyle.scss */
+/* line 456, ../sass/contentStyle.scss */
 .generalTable .spacer {
   height: 40px;
 }
-/* line 419, psass/sass/contentStyle.scss */
+/* line 460, ../sass/contentStyle.scss */
 .generalTable img {
   position: relative;
   margin: 0 auto;
 }
-/* line 425, psass/sass/contentStyle.scss */
+/* line 467, ../sass/contentStyle.scss */
 .generalTable td {
   position: relative;
   font-family: helvetica;
   font-size: 14px;
   z-index: 2;
 }
-/* line 432, psass/sass/contentStyle.scss */
+/* line 479, ../sass/contentStyle.scss */
 .generalTable h2 {
   color: #b5b5b5;
   margin-left: 30px;
   font-weight: bold;
 }
-/* line 438, psass/sass/contentStyle.scss */
+/* line 485, ../sass/contentStyle.scss */
 .generalTable .itemImgContainer {
   width: 100px;
   height: 100px;
@@ -865,47 +865,47 @@ input[type="text"]:focus, #academico_perfil:focus, #centro_direccion:focus, inpu
   border-radius: 50%;
   overflow: hidden;
 }
-/* line 444, psass/sass/contentStyle.scss */
+/* line 491, ../sass/contentStyle.scss */
 .generalTable .itemImgContainer .foto {
   top: -5px;
 }
 
 /* general Table style */
-/* line 451, psass/sass/contentStyle.scss */
+/* line 498, ../sass/contentStyle.scss */
 #centro_direccion {
   width: 170px;
   font-family: helvetica;
   font-family: 12px;
 }
 
-/* line 457, psass/sass/contentStyle.scss */
+/* line 504, ../sass/contentStyle.scss */
 #externo_cargo {
   width: 170px;
 }
 
-/* line 460, psass/sass/contentStyle.scss */
+/* line 507, ../sass/contentStyle.scss */
 #cargo div {
   float: left;
 }
 
-/* line 464, psass/sass/contentStyle.scss */
+/* line 511, ../sass/contentStyle.scss */
 #cargo div:last-child {
   margin-left: 53px;
 }
 
-/* line 467, psass/sass/contentStyle.scss */
+/* line 514, ../sass/contentStyle.scss */
 .nomodificable {
   border: none !important;
 }
 
-/* line 471, psass/sass/contentStyle.scss */
+/* line 518, ../sass/contentStyle.scss */
 .inform {
   width: 100%;
   overflow: auto;
   height: 650px;
   /*activity*/
 }
-/* line 477, psass/sass/contentStyle.scss */
+/* line 526, ../sass/contentStyle.scss */
 .inform .activity {
   margin-top: 30px;
   width: 100%;
@@ -913,55 +913,55 @@ input[type="text"]:focus, #academico_perfil:focus, #centro_direccion:focus, inpu
   border-top: 3px solid #b5b5b5;
   padding-top: 30px;
 }
-/* line 485, psass/sass/contentStyle.scss */
+/* line 534, ../sass/contentStyle.scss */
 .inform .activity .indicadores {
   float: left;
   width: 350px;
   margin-top: 25px;
   margin-left: 15px;
 }
-/* line 491, psass/sass/contentStyle.scss */
+/* line 540, ../sass/contentStyle.scss */
 .inform .activity .indicadores .inputContainer {
   width: 200px !important;
 }
-/* line 497, psass/sass/contentStyle.scss */
+/* line 546, ../sass/contentStyle.scss */
 .inform .activity .inputContainer {
   float: left;
   width: 435px;
   margin-left: 30px;
 }
-/* line 502, psass/sass/contentStyle.scss */
+/* line 551, ../sass/contentStyle.scss */
 .inform .activity .inputContainer h2 {
   margin-bottom: 10px;
   width: 100% !important;
 }
-/* line 507, psass/sass/contentStyle.scss */
+/* line 556, ../sass/contentStyle.scss */
 .inform .activity .inputContainer .input {
   margin-top: 20px;
   width: 350px;
   margin-left: 10px;
 }
-/* line 513, psass/sass/contentStyle.scss */
+/* line 562, ../sass/contentStyle.scss */
 .inform .activity .inputContainer .radio {
   width: 380px;
 }
-/* line 515, psass/sass/contentStyle.scss */
+/* line 564, ../sass/contentStyle.scss */
 .inform .activity .inputContainer .radio label {
   width: auto;
 }
-/* line 521, psass/sass/contentStyle.scss */
+/* line 572, ../sass/contentStyle.scss */
 .inform .activity h1 label {
   width: 243px;
   margin-bottom: 10px;
 }
-/* line 529, psass/sass/contentStyle.scss */
+/* line 580, ../sass/contentStyle.scss */
 .inform h1 {
   font-family: helvetica;
   font-size: 24px;
   color: #242021;
   margin-left: 30px;
 }
-/* line 537, psass/sass/contentStyle.scss */
+/* line 588, ../sass/contentStyle.scss */
 .inform textarea {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
@@ -977,64 +977,64 @@ input[type="text"]:focus, #academico_perfil:focus, #centro_direccion:focus, inpu
   /*margin-right:50px;*/
   font-family: helvetica;
 }
-/* line 550, psass/sass/contentStyle.scss */
+/* line 602, ../sass/contentStyle.scss */
 .inform textarea:hover {
   border-color: #ec1c24;
 }
-/* line 553, psass/sass/contentStyle.scss */
+/* line 605, ../sass/contentStyle.scss */
 .inform textarea:focus {
   border-color: #ec1c24;
 }
-/* line 557, psass/sass/contentStyle.scss */
+/* line 609, ../sass/contentStyle.scss */
 .inform textarea.nomodificable {
   background-color: #ececec;
 }
-/* line 561, psass/sass/contentStyle.scss */
+/* line 613, ../sass/contentStyle.scss */
 .inform input.nomodificable {
   background-color: #ececec;
 }
-/* line 565, psass/sass/contentStyle.scss */
+/* line 617, ../sass/contentStyle.scss */
 .inform .nomodificable {
   pointer-events: none;
 }
-/* line 568, psass/sass/contentStyle.scss */
+/* line 620, ../sass/contentStyle.scss */
 .inform .nomodificable textarea {
   border: none !important;
   line-height: 150%;
   height: 300px;
   background-color: #ececec;
 }
-/* line 574, psass/sass/contentStyle.scss */
+/* line 626, ../sass/contentStyle.scss */
 .inform .nomodificable .input {
   background-color: #ececec;
 }
-/* line 577, psass/sass/contentStyle.scss */
+/* line 629, ../sass/contentStyle.scss */
 .inform .nomodificable input {
   background-color: #ececec;
 }
 
 /*inform*/
-/* line 586, psass/sass/contentStyle.scss */
+/* line 638, ../sass/contentStyle.scss */
 .bold {
   font-weight: bold;
   font-size: 19px;
   color: #7b7b7b !important;
 }
 
-/* line 592, psass/sass/contentStyle.scss */
+/* line 644, ../sass/contentStyle.scss */
 .largeh2 {
   color: #242021;
   width: 400px !important;
   font-family: helvetica !important;
 }
 
-/* line 597, psass/sass/contentStyle.scss */
+/* line 649, ../sass/contentStyle.scss */
 .extraLarge {
   color: #242021;
   width: 80% !important;
 }
 
-/* line 602, psass/sass/contentStyle.scss */
+/* line 654, ../sass/contentStyle.scss */
 #warning {
   width: 90%;
   border-top: none;
