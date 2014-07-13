@@ -60,11 +60,19 @@ $( "#actividades h3" ).css("opacity","0.4");
 					<tr class="tableItem">
 						<td id="hoverDiv">
 							<td><h2>{{ id }}</h2></td>
-							<td style=" width:20%"><span style="margin-left:5px; ">{{ actividad.nombre }}</span></td>
-							<td style=" width:30%"><span>{{ actividad.url }}</span></td>
+							<td style=" width:60%"><span style="margin-left:5px; ">{{ actividad.nombre }}</span></td>
 							<td style=" width:15%"><span>{{ actividad.profesor.nombres }}</span></td>
 							<td style=" width:15%"><span>{{ actividad.profesor.apellidos }}</span></td>
-							<td style=" width:15%"><span>Inscribir!</span></td>
+							
+							<td>
+								<table class="opciones" style="right:129px">
+									<td>
+									<a href="{{ path('ingenieria_estudiante_actividad' , { 'id': actividad.id}) }}"><img src="{{ asset('img/editar.png') }}" ><h3> Ver </h3></a>
+									</td>
+								</table>
+							</td>
+
+
 							<td></td>
 						</td> <!-- hoverDiv -->
 					</tr>
@@ -86,7 +94,31 @@ $( "#actividades h3" ).css("opacity","0.4");
 </div>
 
 <script>
+$( ".tableItem" ).mouseenter(function() {
+		var opciones = $('.opciones', this);
+		var itemPicture = $('.itemImgContainer', this);
+		$(itemPicture).css("border-color","#ec1c24");
 
+		$( opciones).animate({
+			opacity: 1,
+			top: "-30px",
+		}, 300, function() {
+	    // Animation complete.
+	});
+	});
+
+	$( ".tableItem" ).mouseleave(function() {
+		var itemPicture = $('.itemImgContainer', this);
+		var opciones = $('.opciones', this);
+		$(itemPicture).css("border-color","#242021");
+		$( opciones).animate({
+			opacity: 0,
+			top: "0px",
+		}, 300, function() {
+	    // Animation complete.
+	});
+	});
+</script>
 </script>
 {% endblock %}
 
