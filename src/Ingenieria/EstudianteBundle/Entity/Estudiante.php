@@ -44,6 +44,7 @@ class Estudiante
      */
     private $emailInstitucional;
 
+	protected $actividad;
 
     /**
      * Get id

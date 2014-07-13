@@ -32,4 +32,9 @@ Ingenieria\ProfesorBundle\Entity\Actividad:
             joinColumn:
                 name: profesor
                 referencedColumnName: id
+    oneToMany:
+        estudiantes:
+            targetEntity: Ingenieria\EstudianteBundle\Entity\Estudiante
+            mappedBy: actividad
+
     lifecycleCallbacks: {  }

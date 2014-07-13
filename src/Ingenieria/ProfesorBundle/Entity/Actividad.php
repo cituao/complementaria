@@ -48,6 +48,8 @@ class Actividad
 	private $file;
 
 	protected $profesor;
+
+	protected $estudiantes;
 		
     public function setFile(UploadedFile $file = null)
     {
