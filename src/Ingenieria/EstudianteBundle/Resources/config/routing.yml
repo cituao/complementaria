@@ -11,5 +11,9 @@ ingenieria_estudiante_actividades:
     defaults: { _controller: IngenieriaEstudianteBundle:Default:actividades }
 
 ingenieria_estudiante_actividad:
-    path:     /estudiante/informacion-actividad
+    path:     /estudiante/informacion-actividad={id}
     defaults: { _controller: IngenieriaEstudianteBundle:Default:actividad }
+
+ingenieria_estudiante_inscripcion:
+    path:     /estudiante/inscripcion={id}
+    defaults: { _controller: IngenieriaEstudianteBundle:Default:inscripcion }

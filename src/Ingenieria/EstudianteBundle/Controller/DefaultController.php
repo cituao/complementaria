@@ -63,7 +63,7 @@ class DefaultController extends Controller
 
 	}
 
-		//********************************************************
+	//********************************************************
 	// Muestra un listado de actividades del profesor
 	//******************************************************** 	
 	public function actividadesAction(){
@@ -85,4 +85,16 @@ class DefaultController extends Controller
 		
 		return $this->render('IngenieriaEstudianteBundle:Default:actividades.html.twig', array('listaActividades' => $listaActividades, 'msgerr' => $msgerr));
 	}
+
+	public function actividadAction($id){
+		$em = $this->getDoctrine()->getManager();
+
+		// buscamos el ID del asesor academico
+		$repository = $this->getDoctrine()->getRepository('IngenieriaProfesorBundle:Actividad');
+		$actividad = $repository->findOneBy(array('id' => $id));
+	
+		return $this->render('IngenieriaEstudianteBundle:Default:actividad.html.twig', array('actividad' => $actividad));
+	}
+
+
 }

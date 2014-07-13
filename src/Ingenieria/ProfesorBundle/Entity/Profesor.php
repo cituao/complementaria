@@ -205,4 +205,13 @@ class Profesor
     {
         return $this->actividades;
     }
+
+	/**
+	 *
+	 * nombre completo para los select 
+	 */
+	public function getNombreCompleto(){
+
+		return sprintf('%s %s',$this->nombres, $this->apellidos);
+	}
 }
