@@ -1,0 +1,92 @@
+{% extends 'IngenieriaEstudianteBundle::layout.html.twig' %}
+
+{% block programa %}
+Aplicación WEB - [Profesor]
+{% endblock %}
+
+{% block js  %}
+<script>
+$( "#actividades" ).css("background-color","#000");
+$( "#actividades img" ).css("opacity","0.4");
+$( "#actividades h3" ).css("opacity","0.4");
+</script>
+
+{% endblock %}
+
+
+
+{% block content  %}
+{{ parent() }}
+	<div class="content">
+		{% block upSection  %}
+		<div class = "upSection">
+			<h1 class ="sectionTitle">Actividades</h1>
+			<a href="{{ path('ingenieria_profesor_registraractividad') }}"  class = "button"><img src="{{ asset('img/externosBoton.png') }}"/><h4>Nueva actividad</h4></a>
+		</div>
+		{% endblock  %}
+
+		{% block downSection  %}
+		<div class = "downSection">
+
+		{% if msgerr.id == '1' %}
+			<div id = "error">{{ msgerr.descripcion }}</div>		
+		{% else %}
+			
+			<table class = "generalTableHead">
+				<tbody>
+					<tr class="tableHead">
+						<th style=" width:15%"></th> 
+						<th style=" width:12%"></th> 
+						<th></th> 
+						<th style=" width:10%"><img src="{{ asset('img/idLabel.png') }}"/></th> 
+						<th style=" width:25%"></th> 
+						<th><img src="{{ asset('img/mailLabel.png') }}"/></th>
+						
+						<th></th>
+						<th></th>
+						
+					</tr> <!--tablehead -->
+				</tbody>
+			</table><!-- practicantes tableHead -->
+
+			<div style="width: 100%; height: 750px; overflow: auto; position:relative; padding-bottom:30px;">
+		
+				<table class = "generalTable">
+				<tbody>
+			
+					{% set id = 1 %}
+					<tr class="spacer"></tr>
+					{% for actividad in listaActividades %}
+					<tr class="tableItem">
+						<td id="hoverDiv">
+							<td><h2>{{ id }}</h2></td>
+							<td style=" width:20%"><span style="margin-left:5px; ">{{ actividad.nombre }}</span></td>
+							<td style=" width:30%"><span>{{ actividad.url }}</span></td>
+							<td style=" width:15%"><span>{{ actividad.profesor.nombres }}</span></td>
+							<td style=" width:15%"><span>{{ actividad.profesor.apellidos }}</span></td>
+							<td style=" width:15%"><span>Inscribir!</span></td>
+							<td></td>
+						</td> <!-- hoverDiv -->
+					</tr>
+					{% set id = id + 1 %}
+					<tr class="spacer"></tr>
+					{% endfor %}
+					<tr class="spacer"></tr>
+					<tr class="spacer"></tr>
+					<tr class="spacer"></tr>
+					<tr class="spacer"></tr>
+					<tr class="spacer"></tr>
+				</tbody>
+				</table><!-- generalTable -->
+			</div><!-- scrollDiv -->
+			</div><!-- downSection -->
+		{% endif %}
+		{% endblock %}
+
+</div>
+
+<script>
+
+</script>
+{% endblock %}
+

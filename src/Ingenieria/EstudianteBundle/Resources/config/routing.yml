@@ -1,3 +1,12 @@
 ingenieria_estudiante_homepage:
-    path:     /hello/{name}
+    path:     /estudiante
     defaults: { _controller: IngenieriaEstudianteBundle:Default:index }
+
+ingenieria_estudiante_cronograma:
+    path:     /estudiante/cronograma
+    defaults: { _controller: IngenieriaEstudianteBundle:Default:cronograma }
+
+ingenieria_estudiante_actividades:
+    path:     /estudiante/actividades-ofertadas
+    defaults: { _controller: IngenieriaEstudianteBundle:Default:actividades }
+

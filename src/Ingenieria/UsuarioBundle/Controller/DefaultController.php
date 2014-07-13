@@ -20,8 +20,8 @@ class DefaultController extends Controller
         	return $this->redirect($this->generateUrl('cituao_coord_homepage'));
     	}
 		else{
-			if ($this->get('security.context')->isGranted('ROLE_PRACTICANTE')) {
-				return $this->redirect($this->generateUrl('cituao_practicante_homepage'));
+			if ($this->get('security.context')->isGranted('ROLE_ESTUDIANTE')) {
+				return $this->redirect($this->generateUrl('ingenieria_estudiante_homepage'));
 			}else{
 				if ($this->get('security.context')->isGranted('ROLE_PROFESOR')) {
 					return $this->redirect($this->generateUrl('ingenieria_profesor_homepage'));
@@ -122,11 +122,12 @@ class DefaultController extends Controller
 			$usuario->setPassword($formulario->get('password')->getData());
 			$usuario->setSalt(md5(time()));
 			$usuario->addRole($role);  //cargamos el rol al coordinador
-
+		
 			//codificamos el password			
 			$encoder = $this->get('security.encoder_factory')->getEncoder($usuario);
 			$passwordCodificado = $encoder->encodePassword($usuario->getPassword(), $usuario->getSalt());
 			$usuario->setPassword($passwordCodificado);
+			$usuario->setIsActive(true);		
 			$em->persist($usuario);
 			
 
