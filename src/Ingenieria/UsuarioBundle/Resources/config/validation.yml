@@ -5,5 +5,5 @@ Ingenieria\UsuarioBundle\Entity\Document:
             - File:
                 maxSize: 6000000
                 mimeTypes: [text/plain]
-                mimeTypesMessage: Por favor suba un TXT válido
+                mimeTypesMessage: Por favor suba un CSV válido
                 uploadErrorMessage: El archivo no puede ser cargado!

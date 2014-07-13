@@ -50,6 +50,11 @@ class ExceptionListener
 					$message = sprintf('El rol profesor no esta registrado en el sistema!');
 					$tmperror = 'IngenieriaDirectorBundle:Default:error.html.twig';
 					break;
+				
+				case "ERR_CSV_FORMATO_INVALIDO":
+					$message = sprintf('El formato CSV es inválido!');
+					$tmperror = 'IngenieriaUsuarioBundle:Default:error.html.twig';
+					break;
 
 					
 				default:

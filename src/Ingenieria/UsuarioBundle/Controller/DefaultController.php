@@ -8,6 +8,7 @@ use Ingenieria\UsuarioBundle\Entity\Director;
 use Ingenieria\UsuarioBundle\Entity\Usuario;
 use Ingenieria\UsuarioBundle\Entity\Document;
 use Ingenieria\UsuarioBundle\Form\Type\DirectorType;
+use Ingenieria\EstudianteBundle\Entity\Estudiante;
 use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
@@ -178,26 +179,22 @@ class DefaultController extends Controller
 		if ($form->isValid()) {
 			//levantar servicios de doctrine base de datos
 			$em = $this->getDoctrine()->getManager();
-
 			//se copia el archivo al directorio del servidor			
 			$document->upload();
-
 			$em->persist($document);
 		    //$em->flush();
-
 			$archivo= $document->getAbsolutePath();		
 			//bajamos el archivo a una matriz para procesar registro a registro y bajarlo a base de datos		    
 			$filas = file($archivo);
 			$i=0;
 			$numero_fila= count($filas);	
-
 			//para buscar si ya se encuentra en la base de datos
 			$repository = $this->getDoctrine()->getRepository('IngenieriaEstudianteBundle:Estudiante');
-
 			$nohay = true;			
 			//procesamos la matriz separando los campos por medio del separador putno y coma
 			while($i <= $numero_fila -1){
 				$row = $filas[$i];
+				//validamos que tenga el numero de columnas correctas
 				$sql = explode(";",$row);
 
 				$e = $repository->findOneBy(array('ci' => $sql[3]));
@@ -213,25 +210,26 @@ class DefaultController extends Controller
 				$nohay = false;
 			}
 			
-			/*
+			
 			if (!$nohay){
 				
 				//los roles fueron cargados de forma manual en la base de datos
 				//buscamos una instancia role tipo practicante 
-				$codigo = 2; //1 corresponde a practicantes		
-				$repository = $this->getDoctrine()->getRepository('CituaoUsuarioBundle:Role');
+				$codigo = 3; //1 corresponde a practicantes		
+				$repository = $this->getDoctrine()->getRepository('IngenieriaUsuarioBundle:Role');
 				$role = $repository->findOneBy(array('id' => $codigo));
 
-					//buscamos el programa
+				/*buscamos el programa
 				$user = $this->get('security.context')->getToken()->getUser();
 				$coordinador =  $user->getUsername();
-				$repository = $this->getDoctrine()->getRepository('CituaoUsuarioBundle:Programa');
-				$programa = $repository->findOneByCoordinador($coordinador);
+				$repository = $this->getDoctrine()->getRepository('IngenieriaUsuarioBundle:Programa');
+				$programa = $repository->findOneByCoordinador($coordinador);*/
 						
-				$repository = $this->getDoctrine()->getRepository('CituaoCoordBundle:Area');
-				$area = $repository->findOneById($id_area);
+				/*				
+				$repository = $this->getDoctrine()->getRepository('IngenieriaUsuarioBundle:Area');
+				$area = $repository->findOneById($id_area);*/
 				
-				//buscamos los periodos y el periodo actual
+				/*buscamos los periodos y el periodo actual
 				$repository = $this->getDoctrine()->getRepository('CituaoUsuarioBundle:Periodo');
 				$query = $repository->createQueryBuilder('p')
 						->orderBy('p.id','DESC')
@@ -240,28 +238,27 @@ class DefaultController extends Controller
 				foreach ($periodos as $periodoActual){
 					break;
 				}
-
 				*/
 				
 				//procesamos la matriz  fila a fila creando practicantes y usuarios
 				$i=0;				
 				$sad = "";	
-		/*
+		
 				while($i <= $numero_fila -1){
 					//creamos una instancia Practicante para descargar datos del CSV y guardar en la base de datos
-					$practicante = new Practicante();
+					$estudiante = new Estudiante();
 					//creamos una instancia de usuario para darle entrada a los practicantes como usuarios en el sistema
 					$usuario = new Usuario();
 
 					//viene del archivo .csv	
 					//cargamos todos los atributos al practicante
-					$practicante->setCodigo($listaEstudiantes[$i]['codigo']);
-					$practicante->setNombres($listaEstudiantes[$i]['nombres']);
-					$practicante->setApellidos($listaEstudiantes[$i]['apellidos']);
-					$practicante->setEmailInstitucional($listaEstudiantes[$i]['emailInstitucional']);
-					$practicante->setCi($listaEstudiantes[$i]['ci']);
-					$practicante->setPrograma($programa);
-					$practicante->setPeriodo($periodoActual);
+					$estudiante->setCodigo($listaEstudiantes[$i]['codigo']);
+					$estudiante->setNombres($listaEstudiantes[$i]['nombres']);
+					$estudiante->setApellidos($listaEstudiantes[$i]['apellidos']);
+					$estudiante->setEmailInstitucional($listaEstudiantes[$i]['emailInstitucional']);
+					$estudiante->setCi($listaEstudiantes[$i]['ci']);
+					//$practicante->setPrograma($programa);
+					//$practicante->setPeriodo($periodoActual);
 					
 					//cargamos todos los atributos al usuario
 					$usuario->setUsername($listaEstudiantes[$i]['codigo']) ;
@@ -274,36 +271,14 @@ class DefaultController extends Controller
 		            $passwordCodificado = $encoder->encodePassword($usuario->getPassword(), $usuario->getSalt());
 					$usuario->setPassword($passwordCodificado);
 
-
 					 $em->persist($usuario);
 
-					 //convertimos la fecha de matricula a un objeto Date				
-					$fecha = $listaEstudiantes[$i]['fecha'];
-					$separa = explode("/",$fecha);
-					$dia = $separa[0];
-					$mes = $separa[1];
-					$ano = $separa[2];
-
-					$f = new \DateTime();
-					$f->setDate($ano,$mes,$dia);
-
-					$practicante->setFechaMatriculacion($f);
-
-					//cargamos los demas datos
-					//$practicante->setTelefonoMovil($sad);
-
-					$practicante->setArea($area);
-
-
-					$practicante->setEstado(false);
-
-					$practicante->setPath('defaultPicture.png');
-					$em->persist($practicante);
+					$em->persist($estudiante);
 					$em->flush();
 					$i++;
 				}
 			}
-		*/
+		
 			$msgerr = array('id'=>'0', 'descripcion'=>' ');
 			return $this->render('IngenieriaUsuarioBundle:Default:subirestudiantes.html.twig', array('listaEstudiantes' => $listaEstudiantes , 'msgerr' => $msgerr));
 			
@@ -312,13 +287,14 @@ class DefaultController extends Controller
 		
 		$msgerr = array('id'=>'0', 'descripcion'=>' ');
 		/*
-				//buscamos el programa
+		//buscamos el programa
 		$user = $this->get('security.context')->getToken()->getUser();
 		$coordinador =  $user->getUsername();
 		$repository = $this->getDoctrine()->getRepository('CituaoUsuarioBundle:Programa');
 		$programa = $repository->findOneByCoordinador($coordinador);
 		*/
-		
+		$listaEstudiantes= null;
+
 		return $this->render('IngenieriaUsuarioBundle:Default:subirestudiantes.html.twig', array('listaEstudiantes' => $listaEstudiantes , 'msgerr' => $msgerr));
 	}
 }

@@ -27,7 +27,9 @@ class Document
     private $path;
 
 	/**
-     * @Assert\File(maxSize="6000000")
+     * @Assert\File(maxSize="6000000",
+					mimeTypes = "text/plain",
+					mimeTypesMessage = "Por favor suba un CSV válido")
      */
 	private $file;
 		

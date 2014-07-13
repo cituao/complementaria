@@ -24,6 +24,7 @@ Ingenieria\EstudianteBundle\Entity\Estudiante:
         email:
             type: string
             length: '50'
+            nullable: true
         emailInstitucional:
             type: string
             length: '50'
