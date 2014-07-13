@@ -9,14 +9,23 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        $repository = $this->getDoctrine()->getRepository('IngenieriaProfesorBundle:Actividad');
-		$listaActividades = $repository->findAll();
-		
+
+		$nohaycupo = 0;
+		//obtenemos las actividad complementarias con cupos
+		$repository = $this->getDoctrine()->getRepository('IngenieriaProfesorBundle:Actividad');
+		$query = $repository->createQueryBuilder('a')
+				->where('a.numeroCupos > :nohaycupo')
+				->setParameter('nohaycupo', $nohaycupo)
+				->getQuery();
+				
+		//->setParameter('id_programa', $programa->getId())
+		$listaActividades = $query->getResult();
+
 		if (!$listaActividades) {
 			$msgerr = array('descripcion'=>'No hay actividades registradas!','id'=>'1');
 		}else{
 			$msgerr = array('descripcion'=>'','id'=>'0');
-		}	
+		}
 		/*
 				//buscamos el programa
 		$user = $this->get('security.context')->getToken()->getUser();
@@ -64,12 +73,21 @@ class DefaultController extends Controller
 	}
 
 	//********************************************************
-	// Muestra un listado de actividades del profesor
+	// Muestra un listado de actividades con cupos disponibles
 	//******************************************************** 	
 	public function actividadesAction(){
+
+		$nohaycupo = 0;
+		//obtenemos las actividad complementarias con cupos
 		$repository = $this->getDoctrine()->getRepository('IngenieriaProfesorBundle:Actividad');
-		$listaActividades = $repository->findAll();
-		
+		$query = $repository->createQueryBuilder('a')
+				->where('a.numeroCupos > :nohaycupo')
+				->setParameter('nohaycupo', $nohaycupo)
+				->getQuery();
+				
+		//->setParameter('id_programa', $programa->getId())
+		$listaActividades = $query->getResult();
+
 		if (!$listaActividades) {
 			$msgerr = array('descripcion'=>'No hay actividades registradas!','id'=>'1');
 		}else{
