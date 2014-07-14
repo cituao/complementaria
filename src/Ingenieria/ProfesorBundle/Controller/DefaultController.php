@@ -60,10 +60,17 @@ class DefaultController extends Controller
 	// Muestra un listado de actividades del profesor
 	//******************************************************** 	
 	public function actividadesAction(){
-		$repository = $this->getDoctrine()->getRepository('IngenieriaProfesorBundle:Actividad');
-		$listaActividades = $repository->findAll();
+		//localizamos al profesor
+		$user = $this->get('security.context')->getToken()->getUser();
+		$ci =  $user->getUsername();
+		$repository = $this->getDoctrine()->getRepository('IngenieriaProfesorBundle:Profesor');
+		$profesor = $repository->findOneBy(array('ci' => $ci));
+
+		//$repository = $this->getDoctrine()->getRepository('IngenieriaProfesorBundle:Actividad');
+		//$listaActividades = $repository->findAll();
 		
-		if (!$listaActividades) {
+		$listaActividades =  $profesor->getActividades();
+		if ( $listaActividades == null) {
 			$msgerr = array('descripcion'=>'No hay actividades registradas!','id'=>'1');
 		}else{
 			$msgerr = array('descripcion'=>'','id'=>'0');
