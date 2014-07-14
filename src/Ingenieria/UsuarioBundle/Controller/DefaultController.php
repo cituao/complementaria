@@ -8,6 +8,7 @@ use Ingenieria\UsuarioBundle\Entity\Director;
 use Ingenieria\UsuarioBundle\Entity\Usuario;
 use Ingenieria\UsuarioBundle\Entity\Document;
 use Ingenieria\UsuarioBundle\Form\Type\DirectorType;
+use Ingenieria\ProfesorBundle\Entity\Profesor;
 use Ingenieria\EstudianteBundle\Entity\Estudiante;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -298,4 +299,28 @@ class DefaultController extends Controller
 
 		return $this->render('IngenieriaUsuarioBundle:Default:subirestudiantes.html.twig', array('listaEstudiantes' => $listaEstudiantes , 'msgerr' => $msgerr));
 	}
+	
+		//********************************************************
+	// Muestra un listado de profesores
+	//******************************************************** 	
+	public function profesoresAction(){
+		$repository = $this->getDoctrine()->getRepository('IngenieriaProfesorBundle:Profesor');
+		$listaProfesores = $repository->findAll();
+		
+		if (!$listaProfesores) {
+			$msgerr = array('descripcion'=>'No hay profesores registrados!','id'=>'1');
+		}else{
+			$msgerr = array('descripcion'=>'','id'=>'0');
+		}
+		/*
+				//buscamos el programa
+		$user = $this->get('security.context')->getToken()->getUser();
+		$coordinador =  $user->getUsername();
+		$repository = $this->getDoctrine()->getRepository('CituaoUsuarioBundle:Programa');
+		$programa = $repository->findOneByCoordinador($coordinador);
+		*/
+		
+		return $this->render('IngenieriaUsuarioBundle:Default:profesores.html.twig', array('listaProfesores' => $listaProfesores, 'msgerr' => $msgerr));
+	}
+	
 }

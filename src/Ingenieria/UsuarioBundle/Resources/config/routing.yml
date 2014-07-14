@@ -47,3 +47,7 @@ usuario_registrar_estudiante:
 usuario_subirestudiantes:
     pattern:  /administrador/subir-estudiantes
     defaults: { _controller: IngenieriaUsuarioBundle:Default:subirEstudiantes }
+
+usuario_profesores:
+    path:     /administrador/profesores
+    defaults: { _controller: IngenieriaUsuarioBundle:Default:profesores }
