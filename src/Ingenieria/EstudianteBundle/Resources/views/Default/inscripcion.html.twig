@@ -26,7 +26,7 @@ $( "#cronograma h3" ).css("opacity","0.4");
 	{% block downSection  %}
 	<div class = "downSection"> 
 		<div class="profileContainer">
-		<h2 style="color : black;">Confirme su inscripcion en la actividad complementaria <a href="javascript:history.back()" class = "button"><h4>Confimar!</h4></a></h2>
+		<h2 style="color : black;">Confirme su inscripcion en la actividad complementaria <a href="{{ path('ingenieria_estudiante_confirmar' , { 'id': datos.idActividad }) }}" class = "button"><h4>Confimar!</h4></a></h2>
 		
 		</div>
 	</div><!--downsection -->

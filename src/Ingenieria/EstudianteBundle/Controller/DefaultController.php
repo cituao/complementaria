@@ -9,7 +9,7 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-	 	$user = $this->get('security.context')->getToken()->getUser();
+		$user = $this->get('security.context')->getToken()->getUser();
     	$codigo =  $user->getUsername();
     	$repository = $this->getDoctrine()->getRepository('IngenieriaEstudianteBundle:Estudiante');
     	$estudiante = $repository->findOneBy(array('codigo' => $codigo));
@@ -139,9 +139,35 @@ class DefaultController extends Controller
 	}
 
 	public function inscripcionAction($id){
-		
+		$datos = array('idActividad'=>$id);
 
-		return $this->render('IngenieriaEstudianteBundle:Default:inscripcion.html.twig');
+		return $this->render('IngenieriaEstudianteBundle:Default:inscripcion.html.twig', array('datos' => $datos));
+	}
+	
+	public function confirmarAction($id){
+		//buscamos el estudiante
+		
+		$user = $this->get('security.context')->getToken()->getUser();
+    	$codigo =  $user->getUsername();
+    	$repository = $this->getDoctrine()->getRepository('IngenieriaEstudianteBundle:Estudiante');
+    	$estudiante = $repository->findOneBy(array('codigo' => $codigo));
+		
+		if ($estudiante == NULL){
+			throw $this->createNotFoundException('ERR_ESTUDIANTE_NO_ENCONTRADO');
+		}
+		
+		//buscamos la actividad que el estudiante quiere cursar
+		$repository = $this->getDoctrine()->getRepository('IngenieriaProfesorBundle:Actividad');
+		$actividad = $repository->findOneBy(array('id' => $id));
+		
+		$estudiante->setActividad($actividad);
+		
+		$em = $this->getDoctrine()->getManager();
+		
+		$em->persist($estudiante);
+		$em->flush();
+		
+		return $this->render('IngenieriaEstudianteBundle:Default:confirmacion.html.twig');
 	}
 
 
