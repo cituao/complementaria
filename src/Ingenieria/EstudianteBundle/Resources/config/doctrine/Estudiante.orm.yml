@@ -36,4 +36,8 @@ Ingenieria\EstudianteBundle\Entity\Estudiante:
             joinColumn:
                 name: actividad
                 referencedColumnName: id
+    oneToMany:
+        actividades:
+            targetEntity: Ingenieria\EstudianteBundle\Entity\Cronograma
+            mappedBy: estudiante
     lifecycleCallbacks: {  }

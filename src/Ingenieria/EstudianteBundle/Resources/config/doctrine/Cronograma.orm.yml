@@ -1,0 +1,28 @@
+Ingenieria\EstudianteBundle\Entity\Cronograma:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nombreActividad:
+            type: string
+            length: '250'
+            column: nombre_actividad
+        fechaEntrega:
+            type: date
+            column: fecha_entrega
+        estado:
+            type: boolean
+            
+    manyToOne:
+        estudiante:
+            targetEntity: Ingenieria\EstudianteBundle\Entity\Estudiante
+            inversedBy: actividades
+            joinColumn:
+                name: estudiante
+                referencedColumnName: id
+    lifecycleCallbacks: {  }

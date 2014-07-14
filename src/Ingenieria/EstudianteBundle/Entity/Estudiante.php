@@ -45,6 +45,8 @@ class Estudiante
     private $emailInstitucional;
 
 	protected $actividad;
+	
+	protected $actividades;
 
     /**
      * Get id
@@ -215,5 +217,45 @@ class Estudiante
     public function getActividad()
     {
         return $this->actividad;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->actividades = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add actividades
+     *
+     * @param \Ingenieria\EstudianteBundle\Entity\Cronograma $actividades
+     * @return Estudiante
+     */
+    public function addActividade(\Ingenieria\EstudianteBundle\Entity\Cronograma $actividades)
+    {
+        $this->actividades[] = $actividades;
+
+        return $this;
+    }
+
+    /**
+     * Remove actividades
+     *
+     * @param \Ingenieria\EstudianteBundle\Entity\Cronograma $actividades
+     */
+    public function removeActividade(\Ingenieria\EstudianteBundle\Entity\Cronograma $actividades)
+    {
+        $this->actividades->removeElement($actividades);
+    }
+
+    /**
+     * Get actividades
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getActividades()
+    {
+        return $this->actividades;
     }
 }
