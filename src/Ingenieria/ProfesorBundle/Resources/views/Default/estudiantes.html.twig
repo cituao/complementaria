@@ -56,26 +56,26 @@ $( "#estudiantes h3" ).css("opacity","0.4");
 			
 					{% set id = 1 %}
 					<tr class="spacer"></tr>
-					{% for profesor in listaProfesores %}
+					{% for estudiante in listaEstudiantes %}
 					<tr class="tableItem">
 						<td id="hoverDiv">
 						
 							<td><h2>{{ id }}</h2></td>
 							
-							<td style=" width:15%"><span style="margin-left:20px; ">{{ profesor.nombres }}</span></td>
-							<td style=" width:12%"><span>{{ profesor.apellidos }}</span></td>
-							<td style=" width:8%">{{ profesor.ci }}</td>
+							<td style=" width:15%"><span style="margin-left:20px; ">{{ estudiante.nombres }}</span></td>
+							<td style=" width:12%"><span>{{ estudiante.apellidos }}</span></td>
+							<td style=" width:8%">{{ estudiante.ci }}</td>
 							<td></td>
 							<td></td>
 							<td style=" width:8%"></td>
-							<td style=" width:8%"> {{ profesor.emailInstitucional }}</td>
+							<td style=" width:8%"> {{ estudiante.emailInstitucional }}</td>
 							<td style=" width:8%"></td>
-							<td>{{ profesor.email }}</td>
-
+							<td>{{ estudiante.email }}</td>
+							<td style=" width:25%"></td>
 							<td>
 								<table class="opciones" style="right:129px">
 									<td>
-									<a href="{{ path('ingenieria_director_profesor' , { 'ci': profesor.ci}) }}"><img src="{{ asset('img/editar.png') }}" ><h3> Editar </h3></a>
+									<a href="{{ path('ingenieria_director_profesor' , { 'ci': estudiante.ci}) }}"><img src="{{ asset('img/editar.png') }}" ><h3> Ver </h3></a>
 									</td>
 								</table>
 							</td>
