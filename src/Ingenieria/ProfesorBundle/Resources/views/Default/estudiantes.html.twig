@@ -41,36 +41,32 @@ $( "#estudiantes h3" ).css("opacity","0.4");
 						<th style=" width:10%"><img src="{{ asset('img/idLabel.png') }}"/></th> 
 						<th style=" width:25%"></th> 
 						<th><img src="{{ asset('img/mailLabel.png') }}"/></th>
-						
 						<th></th>
 						<th></th>
-						
 					</tr> <!--tablehead -->
 				</tbody>
 			</table><!-- practicantes tableHead -->
 
 			<div style="width: 100%; height: 750px; overflow: auto; position:relative; padding-bottom:30px;">
-		
 				<table class = "generalTable">
 				<tbody>
-			
 					{% set id = 1 %}
 					<tr class="spacer"></tr>
-					{% for estudiante in listaEstudiantes %}
+					{% for actividad in listaActividades%}
+					{% for estudiante in actividad.estudiantes %}
 					<tr class="tableItem">
 						<td id="hoverDiv">
-						
 							<td><h2>{{ id }}</h2></td>
-							
 							<td style=" width:15%"><span style="margin-left:20px; ">{{ estudiante.nombres }}</span></td>
 							<td style=" width:12%"><span>{{ estudiante.apellidos }}</span></td>
-							<td style=" width:8%">{{ estudiante.ci }}</td>
+							<td style=" width:3%"></td>
+							<td style=" width:8%"><span>{{ estudiante.ci }}</span></td>
+							<td style=" width:8%"><span>{{ estudiante.codigo }}</span></td>
 							<td></td>
-							<td></td>
+							<td style=" width:1%"></td>
+							<td style=" width:8%"><span>{{ estudiante.emailInstitucional }}</span></td>
 							<td style=" width:8%"></td>
-							<td style=" width:8%"> {{ estudiante.emailInstitucional }}</td>
-							<td style=" width:8%"></td>
-							<td>{{ estudiante.email }}</td>
+							<td style=" width:8%"><span>{{ estudiante.email }}</span></td>
 							<td style=" width:25%"></td>
 							<td>
 								<table class="opciones" style="right:129px">
@@ -79,12 +75,11 @@ $( "#estudiantes h3" ).css("opacity","0.4");
 									</td>
 								</table>
 							</td>
-
 						</td> <!-- hoverDiv -->
-
 					</tr>
 					{% set id = id + 1 %}
 					<tr class="spacer"></tr>
+					{% endfor %}
 					{% endfor %}
 					<tr class="spacer"></tr>
 					<tr class="spacer"></tr>
