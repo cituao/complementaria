@@ -20,4 +20,4 @@ ingenieria_profesor_registraractividad:
 
 ingenieria_profesor_actividad:
     pattern:  /profesor/actividad/{id}
-    defaults: { _controller: IngenieriaDirectorBundle:Default:actividad }
+    defaults: { _controller: IngenieriaProfesorBundle:Default:actividad }

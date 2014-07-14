@@ -90,7 +90,6 @@ class DefaultController extends Controller
 	// Registra una actividad
 	/********************************************************/		
 	public function registrarActividadAction(){
-		
 		$user = $this->get('security.context')->getToken()->getUser();
 		$ci =  $user->getUsername();
 		$repository = $this->getDoctrine()->getRepository('IngenieriaProfesorBundle:Profesor');
@@ -117,4 +116,36 @@ class DefaultController extends Controller
 			'formulario' => $formulario->createView()
 			));		
 	}	
+	
+	//**********************************************************
+	//Muestra la informacion de la actividad complementaria
+	//**********************************************************
+	public function actividadAction($id){
+		$peticion = $this->getRequest();
+		$em = $this->getDoctrine()->getManager();
+
+		// buscamos el ID del asesor academico
+		$repository = $this->getDoctrine()->getRepository('IngenieriaProfesorBundle:Actividad');
+		$actividad = $repository->findOneBy(array('id' => $id));
+		
+		$formulario = $this->createForm(new ActividadType(), $actividad);
+		$formulario->handleRequest($peticion);
+
+		if ($formulario->isValid()) {
+			$em->persist($actividad);
+			$em->flush();
+
+			return $this->redirect($this->generateUrl('ingenieria_profesor_homepage'));
+		}
+		/*
+		//buscamos el programa
+		$user = $this->get('security.context')->getToken()->getUser();
+		$coordinador =  $user->getUsername();
+		$repository = $this->getDoctrine()->getRepository('CituaoUsuarioBundle:Programa');
+		$programa = $repository->findOneByCoordinador($coordinador);
+		*/
+		
+		return $this->render('IngenieriaProfesorBundle:Default:actividad.html.twig', array('formulario' => $formulario->createView(), 'actividad' => $actividad ));
+	}
+	
 }

@@ -1,0 +1,99 @@
+{% extends 'IngenieriaProfesorBundle::layout.html.twig' %}
+
+{% block programa %}
+Aplicación WEB : [Profesor]
+{% endblock %}
+
+{% block js  %}
+<script>
+$( "#actividades" ).css("background-color","#000");
+$( "#actividades img" ).css("opacity","0.4");
+$( "#actividades h3" ).css("opacity","0.4");
+</script>
+
+{% endblock %}
+
+{% block content  %}
+{{ parent() }}
+<div class="content">
+	{% block upSection  %}
+	<div class = "upSection">
+		<h1 class="sectionTitle">Actividad complementaria</h1>
+		<a href="javascript:history.back()" class = "button"><img src="{{ asset('img/regresar.png') }}"/><h4>Regresar</h4></a>
+		
+	</div>
+	{% endblock  %}
+
+	{% block downSection  %}
+	<div class = "downSection"> 
+		<div class="profileContainer">
+			
+			<div class="profileFormContainer" style="height:580px;">
+			<form action="{{ path('ingenieria_profesor_actividad' , { 'id': actividad.id}) }}" method="post" {{ form_enctype(formulario) }}>
+				<div>{{ form_errors(formulario) }}</div>
+
+				<div class="profileFormContainer">
+
+					<div class="inputContainer">	
+						<h2>{{ form_label(formulario.nombre) }}</h2>
+						<div class="input"> 
+							{{ form_widget(formulario.nombre, {'attr': {'class':'mediano'}} ) }}
+							{{ form_errors(formulario.nombre) }}
+						</div>
+					</div>
+					
+					<div class="inputContainer">	
+						<h2>{{ form_label(formulario.descripcion) }}</h2>
+						<div class="input"> 
+							{{ form_widget(formulario.descripcion, {'attr': {'class':'mediano'}} ) }}
+							{{ form_errors(formulario.descripcion) }}
+						</div>
+					</div>
+
+					<div class="inputContainer">	
+						<h2>{{ form_label(formulario.url) }}</h2>
+						<div class="input"> 
+							{{ form_widget(formulario.url, {'attr': {'class':'mediano'}} ) }}
+							{{ form_errors(formulario.url) }}
+						</div>
+					</div>
+
+					<div class="inputContainer">	
+						<h2>{{ form_label(formulario.categoria) }}</h2>
+						<div class="input"> 
+							{{ form_widget(formulario.categoria) }}
+							{{ form_errors(formulario.categoria) }}
+						</div>
+					</div>					
+					
+					<div class="inputContainer">	
+						<h2>{{ form_label(formulario.numeroCupos) }}</h2>
+						<div class="input">
+							{{ form_widget(formulario.numeroCupos, {'attr': {'class':'corto'}} ) }}
+							{{ form_errors(formulario.numeroCupos) }}
+						</div>
+					</div>
+
+					<div class="inputContainer" style="width:389px;
+					height:34px;">	
+						
+					</div>
+
+					<div class="inputContainer" style="margin-top:20px; margin-left:-10px; width:auto !important">
+						<div style="position:relative; float:right">
+
+						<img style="position:absolute; left:15px; float:left; pointer-events:none;" src="{{ asset('img/guardar.png') }}" />
+						<input style="padding-left:38px" class="button" type="submit" value="Guardar" />
+						</div>
+					</div>
+
+					
+				</div><!--profileForContainer -->
+				{{ form_rest(formulario) }}
+			</form>
+			</div><!--profileFormContainer -->	
+		</div><!--profileContainer -->	
+	</div><!--donwsection -->
+	{% endblock %}
+</div><!-- content -->
+{% endblock %}
