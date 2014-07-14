@@ -426,29 +426,28 @@ input[type="text"]:focus, #academico_perfil:focus, #centro_direccion:focus, inpu
 }
 /* line 28, psass/sass/contentStyle.scss */
 .upSection h1 {
-  /*width: 150px;*/
   background-color: #ec1c24;
   padding: 3px 0px;
   padding-right: 15px;
   padding-left: 30px;
   float: left;
 }
-/* line 40, psass/sass/contentStyle.scss */
+/* line 36, psass/sass/contentStyle.scss */
 .upSection a {
   float: right;
   margin-right: 1%;
 }
-/* line 44, psass/sass/contentStyle.scss */
+/* line 40, psass/sass/contentStyle.scss */
 .upSection a img {
   margin-right: 7px;
   float: left;
 }
-/* line 48, psass/sass/contentStyle.scss */
+/* line 44, psass/sass/contentStyle.scss */
 .upSection a h4 {
   float: left;
   margin-top: 7px;
 }
-/* line 55, psass/sass/contentStyle.scss */
+/* line 51, psass/sass/contentStyle.scss */
 .upSection form {
   position: absolute;
   top: 100px;
@@ -456,20 +455,20 @@ input[type="text"]:focus, #academico_perfil:focus, #centro_direccion:focus, inpu
   float: right;
   opacity: 0;
 }
-/* line 63, psass/sass/contentStyle.scss */
+/* line 59, psass/sass/contentStyle.scss */
 .upSection form label {
   display: none;
 }
-/* line 66, psass/sass/contentStyle.scss */
+/* line 62, psass/sass/contentStyle.scss */
 .upSection form input[type="file"] {
   width: 300px;
 }
-/* line 75, psass/sass/contentStyle.scss */
+/* line 69, psass/sass/contentStyle.scss */
 .upSection #form div {
   float: right !important;
 }
 
-/* line 83, psass/sass/contentStyle.scss */
+/* line 76, psass/sass/contentStyle.scss */
 .downSection {
   width: 100%;
   margin-top: 83px;
@@ -477,12 +476,12 @@ input[type="text"]:focus, #academico_perfil:focus, #centro_direccion:focus, inpu
   /*border:1px solid #000;*/
 }
 
-/* line 92, psass/sass/contentStyle.scss */
+/* line 83, psass/sass/contentStyle.scss */
 .practicantesTableHead, .generalTableHead {
   width: 100%;
   padding-left: 30px;
 }
-/* line 97, psass/sass/contentStyle.scss */
+/* line 87, psass/sass/contentStyle.scss */
 .practicantesTableHead .tableHead, .generalTableHead .tableHead {
   background-color: #b5b5b5;
   height: 38px;
@@ -494,15 +493,15 @@ input[type="text"]:focus, #academico_perfil:focus, #centro_direccion:focus, inpu
   z-index: 3;
 }
 
-/* line 109, psass/sass/contentStyle.scss */
+/* line 99, psass/sass/contentStyle.scss */
 .practicantesTable {
   width: 100%;
   padding-left: 30px;
   height: auto;
   table-border: collapse;
-  /* practicantesTable */
+  /* opciones */
 }
-/* line 114, psass/sass/contentStyle.scss */
+/* line 104, psass/sass/contentStyle.scss */
 .practicantesTable .tableHead {
   background-color: #b5b5b5;
   height: 35px;
@@ -513,7 +512,7 @@ input[type="text"]:focus, #academico_perfil:focus, #centro_direccion:focus, inpu
   padding-top: 5px;
   z-index: 3;
 }
-/* line 124, psass/sass/contentStyle.scss */
+/* line 115, psass/sass/contentStyle.scss */
 .practicantesTable .tableItem {
   margin: 10px 0px;
   /*border:2px solid $darkGray;*/
@@ -521,11 +520,11 @@ input[type="text"]:focus, #academico_perfil:focus, #centro_direccion:focus, inpu
   color: black;
   position: relative;
 }
-/* line 132, psass/sass/contentStyle.scss */
+/* line 123, psass/sass/contentStyle.scss */
 .practicantesTable .tableItem:hover {
   color: white !important;
 }
-/* line 136, psass/sass/contentStyle.scss */
+/* line 127, psass/sass/contentStyle.scss */
 .practicantesTable #hoverDiv {
   height: 55px;
   width: 100%;
@@ -535,7 +534,7 @@ input[type="text"]:focus, #academico_perfil:focus, #centro_direccion:focus, inpu
   border-bottom: 1px solid #b5b5b5;
   z-index: 2;
 }
-/* line 146, psass/sass/contentStyle.scss */
+/* line 137, psass/sass/contentStyle.scss */
 .practicantesTable .opciones {
   position: absolute;
   opacity: 0;
@@ -550,50 +549,50 @@ input[type="text"]:focus, #academico_perfil:focus, #centro_direccion:focus, inpu
   -ms-border-radius: 3px;
   border-radius: 3px;
 }
-/* line 158, psass/sass/contentStyle.scss */
+/* line 147, psass/sass/contentStyle.scss */
 .practicantesTable .opciones td {
   padding: 1px 6px;
   min-width: 120px;
   float: left;
 }
-/* line 164, psass/sass/contentStyle.scss */
+/* line 153, psass/sass/contentStyle.scss */
 .practicantesTable .opciones td:hover {
   background-color: #72030b;
 }
-/* line 167, psass/sass/contentStyle.scss */
+/* line 156, psass/sass/contentStyle.scss */
 .practicantesTable .opciones img {
   float: left;
 }
-/* line 171, psass/sass/contentStyle.scss */
+/* line 160, psass/sass/contentStyle.scss */
 .practicantesTable .opciones h3 {
   color: white;
   float: left;
   margin-top: 9px;
   margin-left: 5px;
 }
-/* line 182, psass/sass/contentStyle.scss */
+/* line 169, psass/sass/contentStyle.scss */
 .practicantesTable .spacer {
   height: 40px;
 }
-/* line 186, psass/sass/contentStyle.scss */
+/* line 173, psass/sass/contentStyle.scss */
 .practicantesTable img {
   position: relative;
   margin: 0 auto;
 }
-/* line 191, psass/sass/contentStyle.scss */
+/* line 178, psass/sass/contentStyle.scss */
 .practicantesTable td {
   position: relative;
   font-family: helvetica;
   font-size: 14px;
   z-index: 2;
 }
-/* line 198, psass/sass/contentStyle.scss */
+/* line 185, psass/sass/contentStyle.scss */
 .practicantesTable h2 {
   color: #b5b5b5;
   margin-left: 30px;
   font-weight: bold;
 }
-/* line 204, psass/sass/contentStyle.scss */
+/* line 191, psass/sass/contentStyle.scss */
 .practicantesTable .itemImgContainer {
   width: 100px;
   height: 100px;
@@ -604,13 +603,13 @@ input[type="text"]:focus, #academico_perfil:focus, #centro_direccion:focus, inpu
   border-radius: 50%;
   overflow: hidden;
 }
-/* line 210, psass/sass/contentStyle.scss */
+/* line 197, psass/sass/contentStyle.scss */
 .practicantesTable .itemImgContainer .foto {
   top: -5px;
 }
 
 /* practicantes Table style */
-/* line 217, psass/sass/contentStyle.scss */
+/* line 204, psass/sass/contentStyle.scss */
 .imgContainer {
   width: 150px;
   height: 150px;
@@ -621,19 +620,19 @@ input[type="text"]:focus, #academico_perfil:focus, #centro_direccion:focus, inpu
   border-radius: 50%;
   overflow: hidden;
 }
-/* line 224, psass/sass/contentStyle.scss */
+/* line 211, psass/sass/contentStyle.scss */
 .imgContainer .foto {
   position: relative;
   top: -5px;
 }
 
-/* line 229, psass/sass/contentStyle.scss */
+/* line 216, psass/sass/contentStyle.scss */
 .profileContainer {
   padding-left: 30px;
   padding-top: 42px;
 }
 
-/* line 233, psass/sass/contentStyle.scss */
+/* line 220, psass/sass/contentStyle.scss */
 .profilePictureContainer {
   width: 400px;
   float: left;
@@ -641,14 +640,14 @@ input[type="text"]:focus, #academico_perfil:focus, #centro_direccion:focus, inpu
   /*border: 1px solid #000;*/
 }
 
-/* line 239, psass/sass/contentStyle.scss */
+/* line 226, psass/sass/contentStyle.scss */
 .profileFormContainer {
   width: 800px;
   float: left;
   /*border: 1px solid #000;*/
 }
 
-/* line 245, psass/sass/contentStyle.scss */
+/* line 232, psass/sass/contentStyle.scss */
 .inputContainer {
   display: inline-block;
   margin-bottom: 20px;
@@ -656,7 +655,7 @@ input[type="text"]:focus, #academico_perfil:focus, #centro_direccion:focus, inpu
   float: left;
   /*height: 40px;*/
 }
-/* line 252, psass/sass/contentStyle.scss */
+/* line 239, psass/sass/contentStyle.scss */
 .inputContainer h2, .inputContainer label {
   color: black;
   font-family: helveticaNBold;
@@ -666,47 +665,47 @@ input[type="text"]:focus, #academico_perfil:focus, #centro_direccion:focus, inpu
   margin-right: 15px;
   width: 120px;
 }
-/* line 261, psass/sass/contentStyle.scss */
+/* line 248, psass/sass/contentStyle.scss */
 .inputContainer .input {
   float: left;
 }
 
-/* line 265, psass/sass/contentStyle.scss */
+/* line 253, psass/sass/contentStyle.scss */
 .selFile {
   width: 300px;
 }
 
-/* line 268, psass/sass/contentStyle.scss */
+/* line 256, psass/sass/contentStyle.scss */
 .selFile label {
   display: none;
 }
 
-/* line 272, psass/sass/contentStyle.scss */
+/* line 260, psass/sass/contentStyle.scss */
 .profileData {
   /*border:1px solid #000;*/
   height: 85px;
   margin-bottom: 14px;
 }
-/* line 277, psass/sass/contentStyle.scss */
+/* line 265, psass/sass/contentStyle.scss */
 .profileData h1, .profileData h2 {
   color: #242021;
   margin-left: 125px;
   margin-top: 5px;
 }
-/* line 283, psass/sass/contentStyle.scss */
+/* line 271, psass/sass/contentStyle.scss */
 .profileData .imgContainer {
   width: 80px;
   height: 80px;
   position: absolute;
 }
 
-/* line 290, psass/sass/contentStyle.scss */
+/* line 279, psass/sass/contentStyle.scss */
 .tabla {
   width: 100%;
   /*border:1px solid #000;*/
   overflow: auto;
 }
-/* line 295, psass/sass/contentStyle.scss */
+/* line 284, psass/sass/contentStyle.scss */
 .tabla .tableHeader, .tabla .tableHeader:hover {
   color: #fff;
   background-color: #b5b5b5;
@@ -715,7 +714,7 @@ input[type="text"]:focus, #academico_perfil:focus, #centro_direccion:focus, inpu
   z-index: 2;
   height: 30px;
 }
-/* line 303, psass/sass/contentStyle.scss */
+/* line 292, psass/sass/contentStyle.scss */
 .tabla td {
   position: relative;
   font-family: helvetica;
@@ -725,24 +724,24 @@ input[type="text"]:focus, #academico_perfil:focus, #centro_direccion:focus, inpu
   padding-top: 10px;
   width: 120px;
 }
-/* line 312, psass/sass/contentStyle.scss */
+/* line 301, psass/sass/contentStyle.scss */
 .tabla tr {
   margin-top: 10px;
 }
-/* line 316, psass/sass/contentStyle.scss */
+/* line 305, psass/sass/contentStyle.scss */
 .tabla tr:hover {
   background-color: #ec1c24;
   color: #fff;
 }
-/* line 320, psass/sass/contentStyle.scss */
+/* line 309, psass/sass/contentStyle.scss */
 .tabla tr:hover td:first-child {
   color: #fff;
 }
-/* line 324, psass/sass/contentStyle.scss */
+/* line 313, psass/sass/contentStyle.scss */
 .tabla th:first-child {
   padding-left: 30px;
 }
-/* line 327, psass/sass/contentStyle.scss */
+/* line 316, psass/sass/contentStyle.scss */
 .tabla tr td:first-child {
   padding-left: 30px;
   width: 285px;
@@ -750,15 +749,15 @@ input[type="text"]:focus, #academico_perfil:focus, #centro_direccion:focus, inpu
   color: #242021;
 }
 
-/* line 335, psass/sass/contentStyle.scss */
+/* line 324, psass/sass/contentStyle.scss */
 .generalTable {
   width: 100%;
   padding-left: 30px;
   height: auto;
   table-border: colapse;
-  /* generalTable */
+  /* opciones */
 }
-/* line 341, psass/sass/contentStyle.scss */
+/* line 330, psass/sass/contentStyle.scss */
 .generalTable .tableHead {
   background-color: #b5b5b5;
   height: 35px;
@@ -769,7 +768,7 @@ input[type="text"]:focus, #academico_perfil:focus, #centro_direccion:focus, inpu
   padding-top: 5px;
   z-index: 3;
 }
-/* line 351, psass/sass/contentStyle.scss */
+/* line 340, psass/sass/contentStyle.scss */
 .generalTable .tableItem {
   margin: 10px 0px;
   /*border:2px solid $darkGray;*/
@@ -778,12 +777,12 @@ input[type="text"]:focus, #academico_perfil:focus, #centro_direccion:focus, inpu
   color: black;
   position: relative;
 }
-/* line 360, psass/sass/contentStyle.scss */
+/* line 349, psass/sass/contentStyle.scss */
 .generalTable .tableItem:hover {
   color: white !important;
   background-color: #ec1c24;
 }
-/* line 365, psass/sass/contentStyle.scss */
+/* line 354, psass/sass/contentStyle.scss */
 .generalTable #hoverDiv {
   height: 65px;
   width: 100%;
@@ -791,7 +790,7 @@ input[type="text"]:focus, #academico_perfil:focus, #centro_direccion:focus, inpu
   margin-top: -30px;
   z-index: 2;
 }
-/* line 373, psass/sass/contentStyle.scss */
+/* line 362, psass/sass/contentStyle.scss */
 .generalTable .opciones {
   position: absolute;
   opacity: 0;
@@ -807,54 +806,54 @@ input[type="text"]:focus, #academico_perfil:focus, #centro_direccion:focus, inpu
   -ms-border-radius: 3px;
   border-radius: 3px;
 }
-/* line 387, psass/sass/contentStyle.scss */
+/* line 376, psass/sass/contentStyle.scss */
 .generalTable .opciones td {
   padding: 1px 6px !important;
   float: left;
   width: 80px;
 }
-/* line 392, psass/sass/contentStyle.scss */
+/* line 381, psass/sass/contentStyle.scss */
 .generalTable .opciones td:first-child {
   padding: 1px 6px !important;
 }
-/* line 397, psass/sass/contentStyle.scss */
+/* line 386, psass/sass/contentStyle.scss */
 .generalTable .opciones td:hover {
   background-color: #72030b;
 }
-/* line 400, psass/sass/contentStyle.scss */
+/* line 389, psass/sass/contentStyle.scss */
 .generalTable .opciones img {
   float: left;
 }
-/* line 404, psass/sass/contentStyle.scss */
+/* line 393, psass/sass/contentStyle.scss */
 .generalTable .opciones h3 {
   color: white;
   float: left;
   margin-top: 9px;
   margin-left: 5px;
 }
-/* line 415, psass/sass/contentStyle.scss */
+/* line 402, psass/sass/contentStyle.scss */
 .generalTable .spacer {
   height: 40px;
 }
-/* line 419, psass/sass/contentStyle.scss */
+/* line 406, psass/sass/contentStyle.scss */
 .generalTable img {
   position: relative;
   margin: 0 auto;
 }
-/* line 425, psass/sass/contentStyle.scss */
+/* line 411, psass/sass/contentStyle.scss */
 .generalTable td {
   position: relative;
   font-family: helvetica;
   font-size: 14px;
   z-index: 2;
 }
-/* line 432, psass/sass/contentStyle.scss */
+/* line 418, psass/sass/contentStyle.scss */
 .generalTable h2 {
   color: #b5b5b5;
   margin-left: 30px;
   font-weight: bold;
 }
-/* line 438, psass/sass/contentStyle.scss */
+/* line 424, psass/sass/contentStyle.scss */
 .generalTable .itemImgContainer {
   width: 100px;
   height: 100px;
@@ -865,47 +864,47 @@ input[type="text"]:focus, #academico_perfil:focus, #centro_direccion:focus, inpu
   border-radius: 50%;
   overflow: hidden;
 }
-/* line 444, psass/sass/contentStyle.scss */
+/* line 430, psass/sass/contentStyle.scss */
 .generalTable .itemImgContainer .foto {
   top: -5px;
 }
 
 /* general Table style */
-/* line 451, psass/sass/contentStyle.scss */
+/* line 437, psass/sass/contentStyle.scss */
 #centro_direccion {
   width: 170px;
   font-family: helvetica;
   font-family: 12px;
 }
 
-/* line 457, psass/sass/contentStyle.scss */
+/* line 443, psass/sass/contentStyle.scss */
 #externo_cargo {
   width: 170px;
 }
 
-/* line 460, psass/sass/contentStyle.scss */
+/* line 446, psass/sass/contentStyle.scss */
 #cargo div {
   float: left;
 }
 
-/* line 464, psass/sass/contentStyle.scss */
+/* line 450, psass/sass/contentStyle.scss */
 #cargo div:last-child {
   margin-left: 53px;
 }
 
-/* line 467, psass/sass/contentStyle.scss */
+/* line 453, psass/sass/contentStyle.scss */
 .nomodificable {
   border: none !important;
 }
 
-/* line 471, psass/sass/contentStyle.scss */
+/* line 457, psass/sass/contentStyle.scss */
 .inform {
   width: 100%;
   overflow: auto;
   height: 650px;
   /*activity*/
 }
-/* line 477, psass/sass/contentStyle.scss */
+/* line 462, psass/sass/contentStyle.scss */
 .inform .activity {
   margin-top: 30px;
   width: 100%;
@@ -913,55 +912,55 @@ input[type="text"]:focus, #academico_perfil:focus, #centro_direccion:focus, inpu
   border-top: 3px solid #b5b5b5;
   padding-top: 30px;
 }
-/* line 485, psass/sass/contentStyle.scss */
+/* line 470, psass/sass/contentStyle.scss */
 .inform .activity .indicadores {
   float: left;
   width: 350px;
   margin-top: 25px;
   margin-left: 15px;
 }
-/* line 491, psass/sass/contentStyle.scss */
+/* line 476, psass/sass/contentStyle.scss */
 .inform .activity .indicadores .inputContainer {
   width: 200px !important;
 }
-/* line 497, psass/sass/contentStyle.scss */
+/* line 482, psass/sass/contentStyle.scss */
 .inform .activity .inputContainer {
   float: left;
   width: 435px;
   margin-left: 30px;
 }
-/* line 502, psass/sass/contentStyle.scss */
+/* line 487, psass/sass/contentStyle.scss */
 .inform .activity .inputContainer h2 {
   margin-bottom: 10px;
   width: 100% !important;
 }
-/* line 507, psass/sass/contentStyle.scss */
+/* line 492, psass/sass/contentStyle.scss */
 .inform .activity .inputContainer .input {
   margin-top: 20px;
   width: 350px;
   margin-left: 10px;
 }
-/* line 513, psass/sass/contentStyle.scss */
+/* line 498, psass/sass/contentStyle.scss */
 .inform .activity .inputContainer .radio {
   width: 380px;
 }
-/* line 515, psass/sass/contentStyle.scss */
+/* line 500, psass/sass/contentStyle.scss */
 .inform .activity .inputContainer .radio label {
   width: auto;
 }
-/* line 521, psass/sass/contentStyle.scss */
+/* line 506, psass/sass/contentStyle.scss */
 .inform .activity h1 label {
   width: 243px;
   margin-bottom: 10px;
 }
-/* line 529, psass/sass/contentStyle.scss */
+/* line 514, psass/sass/contentStyle.scss */
 .inform h1 {
   font-family: helvetica;
   font-size: 24px;
   color: #242021;
   margin-left: 30px;
 }
-/* line 537, psass/sass/contentStyle.scss */
+/* line 522, psass/sass/contentStyle.scss */
 .inform textarea {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
@@ -977,64 +976,64 @@ input[type="text"]:focus, #academico_perfil:focus, #centro_direccion:focus, inpu
   /*margin-right:50px;*/
   font-family: helvetica;
 }
-/* line 550, psass/sass/contentStyle.scss */
+/* line 535, psass/sass/contentStyle.scss */
 .inform textarea:hover {
   border-color: #ec1c24;
 }
-/* line 553, psass/sass/contentStyle.scss */
+/* line 538, psass/sass/contentStyle.scss */
 .inform textarea:focus {
   border-color: #ec1c24;
 }
-/* line 557, psass/sass/contentStyle.scss */
+/* line 542, psass/sass/contentStyle.scss */
 .inform textarea.nomodificable {
   background-color: #ececec;
 }
-/* line 561, psass/sass/contentStyle.scss */
+/* line 546, psass/sass/contentStyle.scss */
 .inform input.nomodificable {
   background-color: #ececec;
 }
-/* line 565, psass/sass/contentStyle.scss */
+/* line 550, psass/sass/contentStyle.scss */
 .inform .nomodificable {
   pointer-events: none;
 }
-/* line 568, psass/sass/contentStyle.scss */
+/* line 553, psass/sass/contentStyle.scss */
 .inform .nomodificable textarea {
   border: none !important;
   line-height: 150%;
   height: 300px;
   background-color: #ececec;
 }
-/* line 574, psass/sass/contentStyle.scss */
+/* line 559, psass/sass/contentStyle.scss */
 .inform .nomodificable .input {
   background-color: #ececec;
 }
-/* line 577, psass/sass/contentStyle.scss */
+/* line 562, psass/sass/contentStyle.scss */
 .inform .nomodificable input {
   background-color: #ececec;
 }
 
 /*inform*/
-/* line 586, psass/sass/contentStyle.scss */
+/* line 570, psass/sass/contentStyle.scss */
 .bold {
   font-weight: bold;
   font-size: 19px;
   color: #7b7b7b !important;
 }
 
-/* line 592, psass/sass/contentStyle.scss */
+/* line 576, psass/sass/contentStyle.scss */
 .largeh2 {
   color: #242021;
   width: 400px !important;
   font-family: helvetica !important;
 }
 
-/* line 597, psass/sass/contentStyle.scss */
+/* line 581, psass/sass/contentStyle.scss */
 .extraLarge {
   color: #242021;
   width: 80% !important;
 }
 
-/* line 602, psass/sass/contentStyle.scss */
+/* line 586, psass/sass/contentStyle.scss */
 #warning {
   width: 90%;
   border-top: none;

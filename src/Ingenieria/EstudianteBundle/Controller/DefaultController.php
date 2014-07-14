@@ -104,6 +104,9 @@ class DefaultController extends Controller
 		return $this->render('IngenieriaEstudianteBundle:Default:actividades.html.twig', array('listaActividades' => $listaActividades, 'msgerr' => $msgerr));
 	}
 
+	//**********************************************************
+	//Muestra la informacion de la actividad complementaria
+	//**********************************************************
 	public function actividadAction($id){
 		$em = $this->getDoctrine()->getManager();
 
@@ -112,6 +115,12 @@ class DefaultController extends Controller
 		$actividad = $repository->findOneBy(array('id' => $id));
 	
 		return $this->render('IngenieriaEstudianteBundle:Default:actividad.html.twig', array('actividad' => $actividad));
+	}
+
+	public function inscripcionAction($id){
+		
+
+		return $this->render('IngenieriaEstudianteBundle:Default:inscripcion.html.twig');
 	}
 
 
