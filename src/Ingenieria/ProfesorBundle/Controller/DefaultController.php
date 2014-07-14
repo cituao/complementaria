@@ -149,4 +149,27 @@ class DefaultController extends Controller
 		return $this->render('IngenieriaProfesorBundle:Default:actividad.html.twig', array('formulario' => $formulario->createView(), 'actividad' => $actividad ));
 	}
 	
+	//*****************************************************************
+	//Muestra el cronograma de actividades de un estudiante
+	//*****************************************************************
+	
+	public function cronogramaAction($ci){
+		$repository = $this->getDoctrine()->getRepository('IngenieriaEstudianteBundle:Estudiante');
+		$estudiante = $repository->findOneBy(array('ci' => $ci));
+	
+		$cronograma = null;
+		
+		$cronograma = $estudiante->getActividades();
+		
+		if ( $cronograma->count()  == 0 ) {
+			$msgerr = array('descripcion'=>'¡No ha subido el cronograma de actividades!','id'=>'0');
+		}else{
+			$msgerr = array('descripcion'=>'','id'=>'1');
+		}
+		
+		return $this->render('IngenieriaProfesorBundle:Default:cronograma.html.twig', array('cronograma' => $cronograma, 'msgerr' => $msgerr ));
+		
+		
+	}
+	
 }

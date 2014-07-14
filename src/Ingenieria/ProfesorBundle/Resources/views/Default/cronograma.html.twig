@@ -1,0 +1,87 @@
+{% extends 'IngenieriaProfesorBundle::layout.html.twig' %}
+
+{% block programa %}
+App web - Profesor
+{% endblock %}
+
+{% block js  %}
+<script>
+$( "#estudiantes" ).css("background-color","#000");
+$( "#estudiantes img" ).css("opacity","0.4");
+$( "#estudiantes h3" ).css("opacity","0.4");
+</script>
+
+{% endblock %}
+{% block javascripts %}
+	<meta charset="utf-8">
+	 <title>jQuery UI Datepicker - Default functionality</title>
+	 <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+	 <script src="//code.jquery.com/jquery-1.9.1.js"></script>
+	 <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+	 <script src="{{ asset('js/date.js') }}"></script>
+{% endblock %}
+
+
+{% block content  %}
+	{{ parent() }}
+	
+	<div class="content">
+		{% block upSection  %}
+		<div class = "upSection">
+				<h1 class ="sectionTitle">Cronograma del estudiante</h1>
+				<a href="javascript:history.back()" class = "button"><img src="{{ asset('img/regresar.png') }}"/><h4>Regresar</h4></a>
+		</div>
+		{% endblock  %}
+
+		{% block downSection  %}
+		
+		<div class = "downSection"> 
+		{% if msgerr.id == '0' %}
+			<div id = "error">¡El estudiante no ha subido el cronograma de actividades!</div>		
+			<a href="javascript:history.back()" class = "button"><img src="{{ asset('img/regresar.png') }}"/><h4>Enviar email</h4></a>
+		{% else %}
+			<table class = "generalTableHead">
+				<tbody>
+					<tr class="tableHead">
+						<th style=" width:15%"></th> 
+						<th style=" width:12%"></th> 
+						<th></th> 
+						<th style=" width:10%"><img src="{{ asset('img/idLabel.png') }}"/></th> 
+						<th style=" width:25%"></th> 
+						<th><img src="{{ asset('img/mailLabel.png') }}"/></th>
+						<th></th>
+						<th></th>
+					</tr> <!--tablehead -->
+				</tbody>
+			</table><!-- practicantes tableHead -->
+
+			<div style="width: 100%; height: 750px; overflow: auto; position:relative; padding-bottom:30px;">
+				<table class = "generalTable">
+				<tbody>
+					{% set id = 1 %}
+					<tr class="spacer"></tr>
+					{% for actividad in cronograma %}
+					<tr class="tableItem">
+						<td id="hoverDiv">
+							<td><h2>{{ id }}</h2></td>
+							<td style=" width:60%"><span style="margin-left:5px; ">{{ actividad.nombre_actividad }}</span></td>
+							<td style=" width:15%"><span>{{ actividad.fecha_entrega }}</span></td>
+							<td style=" width:15%"><span>{{ actividad.estado }}</span></td>
+							<td></td>
+						</td> <!-- hoverDiv -->
+					</tr>
+					{% set id = id + 1 %}
+					<tr class="spacer"></tr>
+					{% endfor %}
+					<tr class="spacer"></tr>
+					<tr class="spacer"></tr>
+					<tr class="spacer"></tr>
+					<tr class="spacer"></tr>
+					<tr class="spacer"></tr>
+				</tbody>
+				</table><!-- generalTable -->
+		{% endif %}
+		</div>	<!-- down section -->
+	{% endblock  %}
+	</div><!-- content -->
+{% endblock %}
