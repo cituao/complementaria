@@ -55,7 +55,12 @@ class ExceptionListener
 					$message = sprintf('El formato CSV es inválido!');
 					$tmperror = 'IngenieriaUsuarioBundle:Default:error.html.twig';
 					break;
-
+				
+				case "ERR_ESTUDIANTE_NO_ENCONTRADO":
+					$message = sprintf('¡Estudiante no encontrado!');
+					$tmperror = 'IngenieriaEstudianteBundle:Default:error.html.twig';
+					break;
+				
 					
 				default:
 					//$message = sprintf('Error no identificado!');

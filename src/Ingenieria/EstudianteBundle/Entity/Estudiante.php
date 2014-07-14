@@ -193,4 +193,27 @@ class Estudiante
     {
         return $this->emailInstitucional;
     }
+
+    /**
+     * Set actividad
+     *
+     * @param \Ingenieria\ProfesorBundle\Entity\Actividad $actividad
+     * @return Estudiante
+     */
+    public function setActividad(\Ingenieria\ProfesorBundle\Entity\Actividad $actividad = null)
+    {
+        $this->actividad = $actividad;
+
+        return $this;
+    }
+
+    /**
+     * Get actividad
+     *
+     * @return \Ingenieria\ProfesorBundle\Entity\Actividad 
+     */
+    public function getActividad()
+    {
+        return $this->actividad;
+    }
 }

@@ -10,4 +10,5 @@
 /bin/
 /composer.phar
 /web/uploads/*
+/web/css/psass/.sass-cache/*
 *~

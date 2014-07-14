@@ -254,6 +254,26 @@
  		background-color: $redColor;
  		cursor: pointer;
  	}
+	.button img{
+	display:inline;
+
+	
+	} 
+	.downSection{
+	 img{
+	position:relative;
+	top:8px;
+	}
+	h4{
+	margin-left:10px;
+	}
+	
+	}
+	
+	.button h4{
+	display:inline;
+	}
+	
 
  	input[type="text"], input[type="password"],#academico_perfil, #centro_direccion, input[type="email"], input[type="textarea"], input[type="password"]
  	{

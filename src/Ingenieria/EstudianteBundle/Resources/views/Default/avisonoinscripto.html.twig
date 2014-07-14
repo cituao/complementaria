@@ -1,0 +1,44 @@
+{% extends 'IngenieriaEstudianteBundle::layout.html.twig' %}
+
+{% block programa %}
+Aplicación WEB - [Profesor]
+{% endblock %}
+
+{% block js  %}
+<script>
+$( "#cronograma" ).css("background-color","#000");
+$( "#cronograma img" ).css("opacity","0.4");
+$( "#cronograma h3" ).css("opacity","0.4");
+</script>
+
+{% endblock %}
+
+{% block content  %}
+{{ parent() }}
+	<div class="content">
+		{% block upSection  %}
+		<div class = "upSection">
+			<h1 class ="sectionTitle">Aviso</h1>
+		</div>
+		{% endblock  %}
+
+		{% block downSection  %}
+		<div class = "downSection">
+			
+			<h2 style = "color: black">
+				Estimado estudiante le informamos que aun no ha seleccionado una actividad complementaria. Para ver las 
+				<a href="{{ path('ingenieria_estudiante_actividades') }}"  class = "button"><h4>ofertas disponibles!</h4></a>
+			</h2>
+			
+			
+		</div><!-- downSection -->
+		
+		{% endblock %}
+
+</div>
+
+<script>
+
+</script>
+{% endblock %}
+

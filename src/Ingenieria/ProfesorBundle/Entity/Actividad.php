@@ -292,4 +292,44 @@ class Actividad
     {
         return $this->profesor;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->estudiantes = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add estudiantes
+     *
+     * @param \Ingenieria\EstudianteBundle\Entity\Estudiante $estudiantes
+     * @return Actividad
+     */
+    public function addEstudiante(\Ingenieria\EstudianteBundle\Entity\Estudiante $estudiantes)
+    {
+        $this->estudiantes[] = $estudiantes;
+
+        return $this;
+    }
+
+    /**
+     * Remove estudiantes
+     *
+     * @param \Ingenieria\EstudianteBundle\Entity\Estudiante $estudiantes
+     */
+    public function removeEstudiante(\Ingenieria\EstudianteBundle\Entity\Estudiante $estudiantes)
+    {
+        $this->estudiantes->removeElement($estudiantes);
+    }
+
+    /**
+     * Get estudiantes
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getEstudiantes()
+    {
+        return $this->estudiantes;
+    }
 }

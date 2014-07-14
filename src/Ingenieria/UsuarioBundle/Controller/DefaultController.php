@@ -267,7 +267,7 @@ class DefaultController extends Controller
 					$usuario->setPassword($listaEstudiantes[$i]['ci']);
 					$usuario->setSalt(md5(time()));
 					$usuario->addRole($role); //cargamos el rol al coordinador
-					$usuario->setIsActive(false); //no puede tener acceso 
+					$usuario->setIsActive(true); //tener acceso
 
 					$encoder = $this->get('security.encoder_factory')->getEncoder($usuario);
 		            $passwordCodificado = $encoder->encodePassword($usuario->getPassword(), $usuario->getSalt());

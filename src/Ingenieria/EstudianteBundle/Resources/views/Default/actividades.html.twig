@@ -6,22 +6,19 @@ Aplicación WEB - [Profesor]
 
 {% block js  %}
 <script>
-$( "#actividades" ).css("background-color","#000");
-$( "#actividades img" ).css("opacity","0.4");
-$( "#actividades h3" ).css("opacity","0.4");
+$( "#cronograma" ).css("background-color","#000");
+$( "#cronograma img" ).css("opacity","0.4");
+$( "#cronograma h3" ).css("opacity","0.4");
 </script>
 
 {% endblock %}
-
-
 
 {% block content  %}
 {{ parent() }}
 	<div class="content">
 		{% block upSection  %}
 		<div class = "upSection">
-			<h1 class ="sectionTitle">Actividades</h1>
-			<a href="{{ path('ingenieria_profesor_registraractividad') }}"  class = "button"><img src="{{ asset('img/externosBoton.png') }}"/><h4>Nueva actividad</h4></a>
+			<h1 class ="sectionTitle">Actividades complementarias ofertadas</h1>
 		</div>
 		{% endblock  %}
 
@@ -29,7 +26,7 @@ $( "#actividades h3" ).css("opacity","0.4");
 		<div class = "downSection">
 
 		{% if msgerr.id == '1' %}
-			<div id = "error">{{ msgerr.descripcion }}</div>		
+			<div id = "error">No hay actividades complementarias ofertadas!</div>		
 		{% else %}
 			
 			<table class = "generalTableHead">
@@ -41,10 +38,8 @@ $( "#actividades h3" ).css("opacity","0.4");
 						<th style=" width:10%"><img src="{{ asset('img/idLabel.png') }}"/></th> 
 						<th style=" width:25%"></th> 
 						<th><img src="{{ asset('img/mailLabel.png') }}"/></th>
-						
 						<th></th>
 						<th></th>
-						
 					</tr> <!--tablehead -->
 				</tbody>
 			</table><!-- practicantes tableHead -->
@@ -118,7 +113,6 @@ $( ".tableItem" ).mouseenter(function() {
 	    // Animation complete.
 	});
 	});
-</script>
 </script>
 {% endblock %}
 
