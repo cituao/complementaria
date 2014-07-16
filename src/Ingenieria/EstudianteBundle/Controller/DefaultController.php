@@ -17,6 +17,7 @@ class DefaultController extends Controller
 		if ($estudiante == NULL){
 			throw $this->createNotFoundException('ERR_ESTUDIANTE_NO_ENCONTRADO');
 		}
+		//si el estudiante no tiene actividad se les presenta las activiades disponibles
 		if ($estudiante->getActividad() == null){
 			$nohaycupo = 0;
 			//obtenemos las actividad complementarias con cupos

@@ -12,10 +12,24 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
- 		$repository = $this->getDoctrine()->getRepository('IngenieriaEstudianteBundle:Estudiante');
-		$listaEstudiantes = $repository->findAll();
+		//localizamos al profesor
+		$user = $this->get('security.context')->getToken()->getUser();
+		$ci =  $user->getUsername();
+		$repository = $this->getDoctrine()->getRepository('IngenieriaProfesorBundle:Profesor');
+		$profesor = $repository->findOneBy(array('ci' => $ci));
+
+		$hayEstudiantes=false;
+		$listaActividades = $profesor->getActividades();
 		
-		if (!$listaEstudiantes) {
+		foreach($listaActividades as $actividad) {
+			$listaEstudiantes = $actividad->getEstudiantes();
+			if ($listaEstudiantes->count() != 0) {
+				$hayEstudiantes = true;
+				break;
+			}
+		}
+		
+		if (!$hayEstudiantes) {
 			$msgerr = array('descripcion'=>'No hay estudiantes registrados!','id'=>'1');
 		}else{
 			$msgerr = array('descripcion'=>'','id'=>'0');
@@ -28,7 +42,8 @@ class DefaultController extends Controller
 		$programa = $repository->findOneByCoordinador($coordinador);
 		*/
 		
-		return $this->render('IngenieriaProfesorBundle:Default:estudiantes.html.twig', array('listaEstudiantes' => $listaEstudiantes, 'msgerr' => $msgerr));
+		$msgerr = array('descripcion'=>'¡Aun no tiene estudiantes inscritos en las actividades complemetarias registradas por usted!','id'=>'1');
+		return $this->render('IngenieriaProfesorBundle:Default:estudiantes.html.twig', array('listaActividades' => $listaActividades, 'msgerr' => $msgerr));
        
 		
     }
@@ -43,16 +58,30 @@ class DefaultController extends Controller
 		$repository = $this->getDoctrine()->getRepository('IngenieriaProfesorBundle:Profesor');
 		$profesor = $repository->findOneBy(array('ci' => $ci));
 
-		//$repository = $this->getDoctrine()->getRepository('IngenieriaProfesorBundle:Actividad');
-		//$listaActividades = $repository->findAll();
+		$hayEstudiantes=false;
+		$listaActividades = $profesor->getActividades();
 		
-		$listaActividades =  $profesor->getActividades();
-		if ( $listaActividades == null) {
-			$msgerr = array('descripcion'=>'No hay actividades registradas!','id'=>'1');
+		foreach($listaActividades as $actividad) {
+			$listaEstudiantes = $actividad->getEstudiantes();
+			if ($listaEstudiantes->count() != 0) {
+				$hayEstudiantes = true;
+				break;
+			}
+		}
+		
+		if (!$hayEstudiantes) {
+			$msgerr = array('descripcion'=>'No hay estudiantes registrados!','id'=>'1');
 		}else{
 			$msgerr = array('descripcion'=>'','id'=>'0');
 		}
-
+		/*
+				//buscamos el programa
+		$user = $this->get('security.context')->getToken()->getUser();
+		$coordinador =  $user->getUsername();
+		$repository = $this->getDoctrine()->getRepository('CituaoUsuarioBundle:Programa');
+		$programa = $repository->findOneByCoordinador($coordinador);
+		*/
+		
 		
 		return $this->render('IngenieriaProfesorBundle:Default:estudiantes.html.twig', array('listaActividades' => $listaActividades, 'msgerr' => $msgerr));
 	}
