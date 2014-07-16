@@ -42,7 +42,7 @@ class DefaultController extends Controller
 		$programa = $repository->findOneByCoordinador($coordinador);
 		*/
 		
-		$msgerr = array('descripcion'=>'¡Aun no tiene estudiantes inscritos en las actividades complemetarias registradas por usted!','id'=>'1');
+		
 		return $this->render('IngenieriaProfesorBundle:Default:estudiantes.html.twig', array('listaActividades' => $listaActividades, 'msgerr' => $msgerr));
        
 		
