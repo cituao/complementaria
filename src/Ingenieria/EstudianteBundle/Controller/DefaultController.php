@@ -36,7 +36,7 @@ class DefaultController extends Controller
 				$msgerr = array('descripcion'=>'','id'=>'0');
 			}
 			/*
-					//buscamos el programa
+			//buscamos el programa
 			$user = $this->get('security.context')->getToken()->getUser();
 			$coordinador =  $user->getUsername();
 			$repository = $this->getDoctrine()->getRepository('CituaoUsuarioBundle:Programa');
@@ -48,7 +48,16 @@ class DefaultController extends Controller
 		
 		} 
 		else {
-				return $this->render('IngenieriaEstudianteBundle:Default:cronograma.html.twig', array('p' => $practicante, 'e' => $cronogramaexterno, 'a' => $cronograma, 'programa' => $programa));	
+			//buscamos el cronograma del estudiante
+			$cronograma = $estudiante->getActividades();
+			
+			if  ($cronograma->count() == 0) {
+				$msgerr = array('descripcion'=>'Aun no ha subido el cronograma','id'=>'1');
+			}else {
+				$msgerr = array('descripcion'=>'','id'=>'0');
+			}
+			
+			return $this->render('IngenieriaEstudianteBundle:Default:cronograma.html.twig', array('p' => $estudiante, 'programa' => $programa, 'cronograma' => $cronograma));	
 		}
 		return $this->render('IngenieriaEstudianteBundle:Default:actividades.html.twig', array('listaActividades' => $listaActividades, 'msgerr' => $msgerr));
     }
