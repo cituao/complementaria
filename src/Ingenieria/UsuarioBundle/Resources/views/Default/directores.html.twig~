@@ -2,9 +2,9 @@
 
 {% block js  %}
 <script>
-$( "#programas" ).css("background-color","#000");
-$( "#programas img" ).css("opacity","0.4");
-$( "#programas h3" ).css("opacity","0.4");
+$( "#directores" ).css("background-color","#000");
+$( "#directores img" ).css("opacity","0.4");
+$( "#directores h3" ).css("opacity","0.4");
 </script>
 
 {% endblock %}
@@ -44,8 +44,8 @@ $( "#programas h3" ).css("opacity","0.4");
 									<tr class="tableItem">
 										<td id="hoverDiv">
 										<td><h2>{{ id }}</h2></td>
-											<td style=" width:40%"><span style="margin-left:20px; ">{{ director.nombres }}</span></td>
-											<td style=" width:40%"><span style="margin-left:20px; ">{{ director.apellidos }}</span></td>
+											<td style=" width:20%"><span style="margin-left:20px; ">{{ director.nombres }}</span></td>
+											<td style=" width:20%"><span style="margin-left:20px; ">{{ director.apellidos }}</span></td>
 											<td width="5%"></td>
 											<td></td>
 											<td>
