@@ -115,28 +115,24 @@ class DefaultController extends Controller
 
 	}	
 
-	public function profesorAction($ci){
+	//*******************************************
+	// Muestra las actividades de un profesor
+	//*******************************************
+	public function actividadesProfesorAction($id){
 		$peticion = $this->getRequest();
 		$em = $this->getDoctrine()->getManager();
 		
 		$repository = $this->getDoctrine()->getRepository('IngenieriaProfesorBundle:Profesor');
-		$profesor = $repository->findOneBy(array('ci' => $ci));
-		$formulario = $this->createForm(new ProfesorType(), $profesor);
+		$profesor = $repository->findOneBy(array('id' => $id));
+		
+		$actividades = $profesor->getActividades();
 
-		$formulario->handleRequest($peticion);
-
-		if ($formulario->isValid()) {
-			
-            // Completar las propiedades que el usuario no rellena en el formulario
-			$em->persist($profesor);
-			$em->flush();
-
-            // Crear un mensaje flash para notificar al usuario que se ha registrado correctamente
-			$this->get('session')->getFlashBag()->add('info',
-				'¡Enhorabuena! Te has registrado correctamente en Practicas profesionales'
-				);
-			return $this->redirect($this->generateUrl('ingenieria_director_homepage'));
+		if ($actividades->count() == 0) {
+			$msgerr = array('descripcion'=>'No hay actividades registradas para el profesor!','id'=>'1');
+		}else{
+			$msgerr = array('descripcion'=>'','id'=>'0');
 		}
+
 		/*
 				//buscamos el programa
 		$user = $this->get('security.context')->getToken()->getUser();
@@ -144,7 +140,11 @@ class DefaultController extends Controller
 		$repository = $this->getDoctrine()->getRepository('CituaoUsuarioBundle:Programa');
 		$programa = $repository->findOneByCoordinador($coordinador);
 		*/
-		return $this->render('IngenieriaDirectorBundle:Default:profesor.html.twig', array('formulario' => $formulario->createView(), 'profesor' => $profesor ));
+		return $this->render('IngenieriaDirectorBundle:Default:actividades.html.twig', array('listaActividades' => $actividades, 'msgerr' => $msgerr ));
 			
 	}
+
+
+
+
 }

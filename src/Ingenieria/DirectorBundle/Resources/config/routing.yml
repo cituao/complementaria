@@ -17,3 +17,11 @@ ingenieria_director_registrarprofesor:
 ingenieria_director_profesor:
     pattern:  /director/profesor/{ci}
     defaults: { _controller: IngenieriaDirectorBundle:Default:profesor }
+
+ingenieria_director_actividadesprofesor:
+    pattern:  /director/actividades-del-profesor/{id}
+    defaults: { _controller: IngenieriaDirectorBundle:Default:actividadesProfesor }
+
+ingenieria_director_actividad:
+    pattern:  /director/actividad/{id}
+    defaults: { _controller: IngenieriaDirectorBundle:Default:actividad }
