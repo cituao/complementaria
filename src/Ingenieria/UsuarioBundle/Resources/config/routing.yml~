@@ -54,9 +54,9 @@ usuario_profesores:
 
 usuario_actualizar_profesor:
     pattern:  /administrador/actualizar-profesor/id={id}
-    defaults: { _controller: IngenieriaProfesorBundle:Default:profesor }
+    defaults: { _controller: IngenieriaUsuarioBundle:Default:profesor }
 
 usuario_eliminar_profesor:
-    pattern:  /administrador/actualizar-profesor/id={id}
-    defaults: { _controller: IngenieriaProfesorBundle:Default:profesor }
+    pattern:  /administrador/eliminar-profesor/id={id}
+    defaults: { _controller: IngenieriaUsuarioBundle:Default:eliminarProfesor }
 

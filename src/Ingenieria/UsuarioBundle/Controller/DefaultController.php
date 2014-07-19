@@ -384,6 +384,22 @@ class DefaultController extends Controller
         return $this->render('IngenieriaUsuarioBundle:Default:profesor.html.twig', array('formulario' => $formulario->createView(), 'profesor' => $profesor ));
 	}	
 
-
+	//******************************************************
+	// Muestra todas las actividades
+	//******************************************************
+	public function actividadesAction(){
+	
+		$repository = $this->getDoctrine()->getRepository('IngenieriaProfesorBundle:Actividad');
+		$actividades = $repository->findAll();
+		
+		
+		if (!$actividades) {
+			//throw $this->createNotFoundException('ERR_NO_HAY_PROGRAMA');
+			$msgerr = array('id'=>1, 'descripcion' => 'No hay actividades registradas en el sistema');
+		}else{
+			$msgerr = array('id'=>0, 'descripcion' => 'Ok');
+		}
+		return $this->render('IngenieriaUsuarioBundle:Default:actividades.html.twig',  array('listaActividades' => $actividades, 'msgerr' => $msgerr));
+	}
 	
 }

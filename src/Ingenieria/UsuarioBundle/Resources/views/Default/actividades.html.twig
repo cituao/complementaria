@@ -6,22 +6,18 @@ Aplicación WEB - [Administrador]
 
 {% block js  %}
 <script>
-$( "#profesores" ).css("background-color","#000");
-$( "#profesores img" ).css("opacity","0.4");
-$( "#profesores h3" ).css("opacity","0.4");
+$( "#actividades" ).css("background-color","#000");
+$( "#actividades img" ).css("opacity","0.4");
+$( "#actividades h3" ).css("opacity","0.4");
 </script>
-
 {% endblock %}
-
-
 
 {% block content  %}
 {{ parent() }}
 	<div class="content">
 		{% block upSection  %}
 		<div class = "upSection">
-			<h1 class ="sectionTitle">Profesores</h1>
-			
+			<h1 class ="sectionTitle">Actividades</h1>
 		</div>
 		{% endblock  %}
 
@@ -56,29 +52,21 @@ $( "#profesores h3" ).css("opacity","0.4");
 			
 					{% set id = 1 %}
 					<tr class="spacer"></tr>
-					{% for profesor in listaProfesores %}
+					{% for actividad in listaActividades %}
 					<tr class="tableItem">
 						<td id="hoverDiv">
-						
-							<td><h2>{{ id }}</h2></td>
-							
-							<td style=" width:15%"><span style="margin-left:20px; ">{{ profesor.nombres }}</span></td>
-							<td style=" width:12%"><span>{{ profesor.apellidos }}</span></td>
-							<td style=" width:8%">{{ profesor.ci }}</td>
-							<td></td>
-							<td></td>
-							<td style=" width:8%"></td>
-							<td style=" width:8%"> {{ profesor.emailInstitucional }}</td>
-							
-							<td>
-								<table class="opciones">
-									<td>
-									<a href="{{ path('usuario_actualizar_profesor' , { 'id': profesor.id}) }}"><img src="{{ asset('img/editar.png') }}" ><h3> Editar </h3></a>
-									</td>
-									<td style="width: 100px;"><a href="{{ path('usuario_eliminar_profesor', { 'id': profesor.id}) }}"><img src="{{ asset('img/editar.png') }}"><h3>Eliminar</h3></a></td>
+							<td style=" width:5%"><h2>{{ id }}</h2></td>
+							<td style=" width:40%"><span style="margin-left:30px; ">{{ actividad.nombre }}</span></td>
+							<td style=" width:20%"><span style="margin-left:30px; ">{{ actividad.profesor.nombres }}</span></td>							
+							<td style=" width:20%"><span style="margin-left:30px; ">{{ actividad.profesor.apellidos }}</span></td>								
 
+							<td>
+								<table class="opciones" style="right:129px">
+									<td style="width: 100px;">
+									<a href="{{ path('ingenieria_profesor_actividad' , { 'id': actividad.id}) }}"><img src="{{ asset('img/editar.png') }}" ><h3> Matrícula </h3></a>
+									</td>
 								</table>
-								{{ profesor.email }}
+								{{ actividad.numeroCupos }}
 							</td>
 						</td> <!-- hoverDiv -->
 					</tr>
@@ -96,6 +84,7 @@ $( "#profesores h3" ).css("opacity","0.4");
 			</div><!-- downSection -->
 		{% endif %}
 		{% endblock %}
+
 </div>
 
 <script>

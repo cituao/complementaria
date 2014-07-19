@@ -373,22 +373,9 @@ class DefaultController extends Controller
 		$formulario->handleRequest($peticion);
 
         if ($formulario->isValid()) {
-			$repository = $this->getDoctrine()->getRepository('IngenieriaUsuarioBundle:Usuario');
-			$usuario = $repository->findOneBy(array('username' => $director->getCi()));
-
-			
-			$usuario->setUsername($director->getCi());
-			$usuario->setPassword($formulario->get('password')->getData());
-			$usuario->setSalt(md5(time()));
-			//codificamos el password			
-			$encoder = $this->get('security.encoder_factory')->getEncoder($usuario);
-			$passwordCodificado = $encoder->encodePassword($usuario->getPassword(), $usuario->getSalt());
-			$usuario->setPassword($passwordCodificado);
-			
 
 			$em = $this->getDoctrine()->getManager();
             $em->persist($profesor);
-			$em->persist($usuario);
             $em->flush();
             
             return $this->redirect($this->generateUrl('usuario_profesores'));
@@ -397,6 +384,22 @@ class DefaultController extends Controller
         return $this->render('IngenieriaUsuarioBundle:Default:profesor.html.twig', array('formulario' => $formulario->createView(), 'profesor' => $profesor ));
 	}	
 
-
+	//******************************************************
+	// Muestra todas las actividades
+	//******************************************************
+	public function actividadesAction(){
+	
+		$repository = $this->getDoctrine()->getRepository('IngenieriaProfesorBundle:Actividad');
+		$actividades = $repository->findAll();
+		
+		
+		if (!$actividades) {
+			//throw $this->createNotFoundException('ERR_NO_HAY_PROGRAMA');
+			$msgerr = array('id'=>1, 'descripcion' => 'No hay actividades registradas en el sistema');
+		}else{
+			$msgerr = array('id'=>0, 'descripcion' => 'Ok');
+		}
+		return $this->render('IngenieriaUsuarioBundle:Default:actividades.html.twig',  array('listaActividades' => $directores, 'msgerr' => $msgerr));
+	}
 	
 }
