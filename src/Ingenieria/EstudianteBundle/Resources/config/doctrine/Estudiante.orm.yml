@@ -28,6 +28,10 @@ Ingenieria\EstudianteBundle\Entity\Estudiante:
         emailInstitucional:
             type: string
             length: '50'
+        aprobadoCronograma:
+            type: boolean
+            nullable: true
+            column: aprobado_cronograma
 
     manyToOne:
         actividad:

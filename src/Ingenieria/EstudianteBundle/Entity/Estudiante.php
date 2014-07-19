@@ -37,7 +37,12 @@ class Estudiante
     /**
      * @var string
      */
-    private $email;
+    private $email;	
+
+    /**
+     * @var boolean
+     */
+    private $aprobadoCronograma;
 
     /**
      * @var string
@@ -257,5 +262,28 @@ class Estudiante
     public function getActividades()
     {
         return $this->actividades;
+    }
+
+    /**
+     * Set aprobadoCronograma
+     *
+     * @param boolean $aprobadoCronograma
+     * @return Estudiante
+     */
+    public function setAprobadoCronograma($aprobadoCronograma)
+    {
+        $this->aprobadoCronograma = $aprobadoCronograma;
+
+        return $this;
+    }
+
+    /**
+     * Get aprobadoCronograma
+     *
+     * @return boolean 
+     */
+    public function getAprobadoCronograma()
+    {
+        return $this->aprobadoCronograma;
     }
 }

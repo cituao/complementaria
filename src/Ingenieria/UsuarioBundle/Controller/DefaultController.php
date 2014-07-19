@@ -295,6 +295,7 @@ class DefaultController extends Controller
 					$estudiante->setApellidos($listaEstudiantes[$i]['apellidos']);
 					$estudiante->setEmailInstitucional($listaEstudiantes[$i]['emailInstitucional']);
 					$estudiante->setCi($listaEstudiantes[$i]['ci']);
+					$estudiante->setAprobadoCronograma(false);
 					//$practicante->setPrograma($programa);
 					//$practicante->setPeriodo($periodoActual);
 					

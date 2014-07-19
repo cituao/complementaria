@@ -157,6 +157,7 @@ class DefaultController extends Controller
 			$repository = $this->getDoctrine()->getRepository('IngenieriaUsuarioBundle:Usuario');
 			$usuario = $repository->findOneBy(array('username' => $director->getCi()));
 
+			
 			$usuario->setUsername($director->getCi());
 			$usuario->setPassword($formulario->get('password')->getData());
 			$usuario->setSalt(md5(time()));
