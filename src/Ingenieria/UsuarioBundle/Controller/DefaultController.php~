@@ -8,6 +8,7 @@ use Ingenieria\UsuarioBundle\Entity\Director;
 use Ingenieria\UsuarioBundle\Entity\Usuario;
 use Ingenieria\UsuarioBundle\Entity\Document;
 use Ingenieria\UsuarioBundle\Form\Type\DirectorType;
+use Ingenieria\ProfesorBundle\Entity\Profesor;
 use Ingenieria\EstudianteBundle\Entity\Estudiante;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -122,11 +123,12 @@ class DefaultController extends Controller
 			$usuario->setPassword($formulario->get('password')->getData());
 			$usuario->setSalt(md5(time()));
 			$usuario->addRole($role);  //cargamos el rol al coordinador
-
+		
 			//codificamos el password			
 			$encoder = $this->get('security.encoder_factory')->getEncoder($usuario);
 			$passwordCodificado = $encoder->encodePassword($usuario->getPassword(), $usuario->getSalt());
 			$usuario->setPassword($passwordCodificado);
+			$usuario->setIsActive(true);		
 			$em->persist($usuario);
 			
 
@@ -139,6 +141,41 @@ class DefaultController extends Controller
 			));		
 
 	}		
+
+	/********************************************************/
+	//Muestra y modifica un director registrado en la base de datos
+	/********************************************************/		
+	public function directorAction($id){
+		$peticion = $this->getRequest();
+		$repository = $this->getDoctrine()->getRepository('IngenieriaUsuarioBundle:Director');
+		$director = $repository->findOneBy(array('id' => $id));
+		
+        $formulario = $this->createForm(new DirectorType(), $director);
+		$formulario->handleRequest($peticion);
+
+        if ($formulario->isValid()) {
+			$repository = $this->getDoctrine()->getRepository('IngenieriaUsuarioBundle:Usuario');
+			$usuario = $repository->findOneBy(array('username' => $director->getCi()));
+
+			$usuario->setUsername($director->getCi());
+			$usuario->setPassword($formulario->get('password')->getData());
+			$usuario->setSalt(md5(time()));
+			//codificamos el password			
+			$encoder = $this->get('security.encoder_factory')->getEncoder($usuario);
+			$passwordCodificado = $encoder->encodePassword($usuario->getPassword(), $usuario->getSalt());
+			$usuario->setPassword($passwordCodificado);
+			
+
+			$em = $this->getDoctrine()->getManager();
+            $em->persist($director);
+			$em->persist($usuario);
+            $em->flush();
+            
+            return $this->redirect($this->generateUrl('usuario_adm_homepage'));
+        }
+		
+        return $this->render('IngenieriaUsuarioBundle:Default:director.html.twig', array('formulario' => $formulario->createView(), 'director' => $director ));
+	}	
 	
 		//******************************************************
 	// Home del administrador de la aplicacion
@@ -265,7 +302,7 @@ class DefaultController extends Controller
 					$usuario->setPassword($listaEstudiantes[$i]['ci']);
 					$usuario->setSalt(md5(time()));
 					$usuario->addRole($role); //cargamos el rol al coordinador
-					$usuario->setIsActive(false); //no puede tener acceso 
+					$usuario->setIsActive(true); //tener acceso
 
 					$encoder = $this->get('security.encoder_factory')->getEncoder($usuario);
 		            $passwordCodificado = $encoder->encodePassword($usuario->getPassword(), $usuario->getSalt());
@@ -297,4 +334,30 @@ class DefaultController extends Controller
 
 		return $this->render('IngenieriaUsuarioBundle:Default:subirestudiantes.html.twig', array('listaEstudiantes' => $listaEstudiantes , 'msgerr' => $msgerr));
 	}
+	
+		//********************************************************
+	// Muestra un listado de profesores
+	//******************************************************** 	
+	public function profesoresAction(){
+		$repository = $this->getDoctrine()->getRepository('IngenieriaProfesorBundle:Profesor');
+		$listaProfesores = $repository->findAll();
+		
+		if (!$listaProfesores) {
+			$msgerr = array('descripcion'=>'No hay profesores registrados!','id'=>'1');
+		}else{
+			$msgerr = array('descripcion'=>'','id'=>'0');
+		}
+		/*
+				//buscamos el programa
+		$user = $this->get('security.context')->getToken()->getUser();
+		$coordinador =  $user->getUsername();
+		$repository = $this->getDoctrine()->getRepository('CituaoUsuarioBundle:Programa');
+		$programa = $repository->findOneByCoordinador($coordinador);
+		*/
+		
+		return $this->render('IngenieriaUsuarioBundle:Default:profesores.html.twig', array('listaProfesores' => $listaProfesores, 'msgerr' => $msgerr));
+	}
+
+
+	
 }

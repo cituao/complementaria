@@ -1,4 +1,4 @@
-{% extends 'CituaoPracticanteBundle::layout.html.twig' %}
+{% extends 'IngenieriaEstudianteBundle::layout.html.twig' %}
 
 {% block programa %}
 {{ p.programa.nombre }}
@@ -37,43 +37,30 @@ $( "#cronograma h3" ).css("opacity","0.4");
 		<div class = "downSection"> 
 			
 			{% if msgerr.id == '1' %}
-			<div id = "error">{{ msgerr.descripcion }}</div>		
-			<table class = "tabla">
-			  <tr class="tableHeader">
-				<th>Actividad</th>
-				<th>Fecha de entrega</th>
-				<th>Estado</th>
-			  </tr>
-			<tr style="height:8px;"></tr>
+				<div id = "error">{{ msgerr.descripcion }}</div>		
+				<table class = "tabla">
+				  <tr class="tableHeader">
+					<th>Actividad</th>
+					<th>Fecha de entrega</th>
+					<th>Estado</th>
+				  </tr>
+				<tr style="height:8px;"></tr>
 			{% else %}
-			
-			{% for a in cronograma%}
-			  <tr>
-				<td  class = "colActividad">Asesoría #1</td>
-				<td  class = "colFecha">{{ a.fechaAsesoria1|date("d/m/Y") }}</td>
-				{% if a.fechaAsesoria1 > date() %}
-					<td class = "colEstado">Aun no es fecha!</td>
-					<td class = "colEstado"></td>
-					<td class = "colEstado"></td>
-				{% else %}
-					{% if a.listoAsesoria1 == false %}
-						<td  class = "colEstado">Sin entregar!</td>
-						<td class = "colEstado">No ha entregado!</td>
-						<td class = "colEstado"></td>
+				{% for a in cronograma%}
+				  <tr>
+					<td  class = "colActividad">{{ a.nombreActividad }}</td>
+					<td  class = "colFecha">{{ a.fechaEntrega|date("d/m/Y") }}</td>
+					{% if a.fechaEntrega > date() %}
+						<td class = "colEstado">Aun no es fecha!</td>
 					{% else %}
-						{% if p.listoAsesoria1 == true %}
-							<td  class = "colEstado">Realizada</td>
-							<td class = "colEstado">Entregada</td>
-							<td  class = "colEstado"><a href="{{ path('cituao_practicante_registrar_asesoria', { 'id': p.id, 'numase': 1}) }}">Ver</a></td>
+						{% if a.listo == false %}
+							<td  class = "colEstado">Sin entregar!</td>
 						{% else %}
-							<td  class = "colEstado">Debe entregar!</td>
 							<td class = "colEstado">Entregada</td>
-							<td class = "colEstado"><a href="{{ path('cituao_practicante_registrar_asesoria', { 'id': p.id, 'numase': 1}) }}">Entregar</a></td>
 						{% endif %}
 					{% endif %}
-				{% endif %}
-			  </tr>
-			{% endfor %}
+				  </tr>
+				{% endfor %}
 			{% endif %}
 			</table>
 			{% endif %}

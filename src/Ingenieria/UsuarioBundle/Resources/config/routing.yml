@@ -22,7 +22,7 @@ usuario_registrar_director:
 
 usuario_actualizar_director:
     pattern:  /administrador/actualizar-director/id={id}
-    defaults: { _controller: IngenieriaUsuarioBundle:Default:actualizarDirector }
+    defaults: { _controller: IngenieriaUsuarioBundle:Default:director }
 
 usuario_eliminar_director:
     pattern:  /administrador/eliminar-director/id={id}

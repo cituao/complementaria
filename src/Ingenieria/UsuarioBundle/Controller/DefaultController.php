@@ -141,6 +141,42 @@ class DefaultController extends Controller
 			));		
 
 	}		
+
+	/********************************************************/
+	//Muestra y modifica un director registrado en la base de datos
+	/********************************************************/		
+	public function directorAction($id){
+		$peticion = $this->getRequest();
+		$repository = $this->getDoctrine()->getRepository('IngenieriaUsuarioBundle:Director');
+		$director = $repository->findOneBy(array('id' => $id));
+		
+        $formulario = $this->createForm(new DirectorType(), $director);
+		$formulario->handleRequest($peticion);
+
+        if ($formulario->isValid()) {
+			$repository = $this->getDoctrine()->getRepository('IngenieriaUsuarioBundle:Usuario');
+			$usuario = $repository->findOneBy(array('username' => $director->getCi()));
+
+			
+			$usuario->setUsername($director->getCi());
+			$usuario->setPassword($formulario->get('password')->getData());
+			$usuario->setSalt(md5(time()));
+			//codificamos el password			
+			$encoder = $this->get('security.encoder_factory')->getEncoder($usuario);
+			$passwordCodificado = $encoder->encodePassword($usuario->getPassword(), $usuario->getSalt());
+			$usuario->setPassword($passwordCodificado);
+			
+
+			$em = $this->getDoctrine()->getManager();
+            $em->persist($director);
+			$em->persist($usuario);
+            $em->flush();
+            
+            return $this->redirect($this->generateUrl('usuario_adm_homepage'));
+        }
+		
+        return $this->render('IngenieriaUsuarioBundle:Default:director.html.twig', array('formulario' => $formulario->createView(), 'director' => $director ));
+	}	
 	
 		//******************************************************
 	// Home del administrador de la aplicacion
@@ -322,5 +358,7 @@ class DefaultController extends Controller
 		
 		return $this->render('IngenieriaUsuarioBundle:Default:profesores.html.twig', array('listaProfesores' => $listaProfesores, 'msgerr' => $msgerr));
 	}
+
+
 	
 }
