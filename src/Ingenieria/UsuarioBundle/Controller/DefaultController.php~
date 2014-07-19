@@ -361,7 +361,7 @@ class DefaultController extends Controller
 		return $this->render('IngenieriaUsuarioBundle:Default:profesores.html.twig', array('listaProfesores' => $listaProfesores, 'msgerr' => $msgerr));
 	}
 
-		/********************************************************/
+	/********************************************************/
 	//Muestra y modifica un profesor registrado en la base de datos
 	/********************************************************/		
 	public function profesorAction($id){
@@ -399,7 +399,28 @@ class DefaultController extends Controller
 		}else{
 			$msgerr = array('id'=>0, 'descripcion' => 'Ok');
 		}
-		return $this->render('IngenieriaUsuarioBundle:Default:actividades.html.twig',  array('listaActividades' => $directores, 'msgerr' => $msgerr));
+		return $this->render('IngenieriaUsuarioBundle:Default:actividades.html.twig',  array('listaActividades' => $actividades, 'msgerr' => $msgerr));
 	}
+	
+	/********************************************************/
+	//Muestra y modifica un profesor registrado en la base de datos
+	/********************************************************/		
+	public function matriculaAction($id){
+		$peticion = $this->getRequest();
+		$repository = $this->getDoctrine()->getRepository('IngenieriaProfesorBundle:Actividad');
+		$actividad = $repository->findOneBy(array('id' => $id));
+		
+		$estudiantes = $actividad->getEstudiantes();
+		if ($estudiantes->count() == 0) {
+			//throw $this->createNotFoundException('ERR_NO_HAY_PROGRAMA');
+			$msgerr = array('id'=>1, 'descripcion' => 'No hay estudiantes matriculaods para esta actividad complementaria!');
+		}else{
+			$msgerr = array('id'=>0, 'descripcion' => 'Ok');
+		}
+		
+	
+		return $this->render('IngenieriaUsuarioBundle:Default:matricula.html.twig',  array('listaEstudiantes' => $estudiantes, 'msgerr' => $msgerr));
+}	
+	
 	
 }

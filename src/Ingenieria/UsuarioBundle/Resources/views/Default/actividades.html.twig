@@ -63,7 +63,7 @@ $( "#actividades h3" ).css("opacity","0.4");
 							<td>
 								<table class="opciones" style="right:129px">
 									<td style="width: 100px;">
-									<a href="{{ path('ingenieria_profesor_actividad' , { 'id': actividad.id}) }}"><img src="{{ asset('img/editar.png') }}" ><h3> Matrícula </h3></a>
+									<a href="{{ path('usuario_matricula' , { 'id': actividad.id}) }}"><img src="{{ asset('img/editar.png') }}" ><h3> Matrícula </h3></a>
 									</td>
 								</table>
 								{{ actividad.numeroCupos }}

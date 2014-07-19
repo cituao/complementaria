@@ -60,3 +60,7 @@ usuario_eliminar_profesor:
     pattern:  /administrador/eliminar-profesor/id={id}
     defaults: { _controller: IngenieriaUsuarioBundle:Default:eliminarProfesor }
 
+usuario_actividades:
+    path:     /administrador/actividades
+    defaults: { _controller: IngenieriaUsuarioBundle:Default:actividades }
+
