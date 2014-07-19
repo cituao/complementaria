@@ -46,14 +46,14 @@ $( "#directores h3" ).css("opacity","0.4");
 										<td><h2>{{ id }}</h2></td>
 											<td style=" width:20%"><span style="margin-left:20px; ">{{ director.nombres }}</span></td>
 											<td style=" width:20%"><span style="margin-left:20px; ">{{ director.apellidos }}</span></td>
-											<td style=" width:10%"><span style="margin-left:20px; ">{{ director.ci }}</span></td>											
+											<td style="width:10%"">{{ director.ci }}</td>											
 <td width="5%"></td>
 											<td></td>
 											<td>
 												<div>
 													<table class="opciones">
 													<td><a href="{{ path('usuario_actualizar_director', { 'id': director.id}) }}"><img src="{{ asset('img/editar.png') }}"><h3> Editar </h3></a></td>
-													<td style ="width: 90px;"><a href="{{ path('usuario_eliminar_director', { 'id': director.id}) }}"><img src="{{ asset('img/editar.png') }}"><h3> Eliminar</h3></a></td>
+													<td style ="width: 90px;"><a href="{{ path('usuario_eliminar_director', { 'id': director.id}) }}"><img src="{{ asset('img/editar.png') }}"><h3> Eliminar</h3></a></td>	
 													</table> <!-- opciones -->
 												</div>
 												{{ director.email }}
