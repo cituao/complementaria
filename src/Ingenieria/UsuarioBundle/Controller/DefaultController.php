@@ -8,6 +8,7 @@ use Ingenieria\UsuarioBundle\Entity\Director;
 use Ingenieria\UsuarioBundle\Entity\Usuario;
 use Ingenieria\UsuarioBundle\Entity\Document;
 use Ingenieria\UsuarioBundle\Form\Type\DirectorType;
+use Ingenieria\UsuarioBundle\Form\Type\ProfesorType;
 use Ingenieria\ProfesorBundle\Entity\Profesor;
 use Ingenieria\EstudianteBundle\Entity\Estudiante;
 use Symfony\Component\HttpFoundation\Request;
@@ -359,6 +360,29 @@ class DefaultController extends Controller
 		
 		return $this->render('IngenieriaUsuarioBundle:Default:profesores.html.twig', array('listaProfesores' => $listaProfesores, 'msgerr' => $msgerr));
 	}
+
+		/********************************************************/
+	//Muestra y modifica un profesor registrado en la base de datos
+	/********************************************************/		
+	public function profesorAction($id){
+		$peticion = $this->getRequest();
+		$repository = $this->getDoctrine()->getRepository('IngenieriaProfesorBundle:Profesor');
+		$profesor = $repository->findOneBy(array('id' => $id));
+		
+        $formulario = $this->createForm(new ProfesorType(), $profesor);
+		$formulario->handleRequest($peticion);
+
+        if ($formulario->isValid()) {
+
+			$em = $this->getDoctrine()->getManager();
+            $em->persist($profesor);
+            $em->flush();
+            
+            return $this->redirect($this->generateUrl('usuario_profesores'));
+        }
+		
+        return $this->render('IngenieriaUsuarioBundle:Default:profesor.html.twig', array('formulario' => $formulario->createView(), 'profesor' => $profesor ));
+	}	
 
 
 	

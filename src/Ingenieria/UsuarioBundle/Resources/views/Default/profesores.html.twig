@@ -69,18 +69,17 @@ $( "#profesores h3" ).css("opacity","0.4");
 							<td></td>
 							<td style=" width:8%"></td>
 							<td style=" width:8%"> {{ profesor.emailInstitucional }}</td>
-							<td style=" width:8%"></td>
+							<td style=" width:8	%"></td>
 							<td>{{ profesor.email }}</td>
-
-							<!--
 							<td>
-								<table class="opciones" style="right:129px">
+								<table class="opciones">
 									<td>
-									<a href="{{ path('ingenieria_director_profesor' , { 'ci': profesor.ci}) }}"><img src="{{ asset('img/editar.png') }}" ><h3> Editar </h3></a>
+									<a href="{{ path('usuario_actualizar_profesor' , { 'id': profesor.id}) }}"><img src="{{ asset('img/editar.png') }}" ><h3> Editar </h3></a>
 									</td>
+									<td><a href="{{ path('usuario_eliminar_profesor', { 'id': profesor.id}) }}"><img src="{{ asset('img/editar.png') }}"><h3>Eliminar</h3></a></td>
+
 								</table>
 							</td>
-							-->
 						</td> <!-- hoverDiv -->
 					</tr>
 					{% set id = id + 1 %}

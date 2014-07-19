@@ -51,3 +51,12 @@ usuario_subirestudiantes:
 usuario_profesores:
     path:     /administrador/profesores
     defaults: { _controller: IngenieriaUsuarioBundle:Default:profesores }
+
+usuario_actualizar_profesor:
+    pattern:  /administrador/actualizar-profesor/id={id}
+    defaults: { _controller: IngenieriaUsuarioBundle:Default:profesor }
+
+usuario_eliminar_profesor:
+    pattern:  /administrador/eliminar-profesor/id={id}
+    defaults: { _controller: IngenieriaUsuarioBundle:Default:eliminarProfesor }
+
