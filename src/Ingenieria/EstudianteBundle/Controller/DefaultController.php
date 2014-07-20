@@ -199,5 +199,11 @@ class DefaultController extends Controller
 		return $this->render('IngenieriaEstudianteBundle:Default:confirmacion.html.twig');
 	}
 
+	/********************************************************/
+	// Registra una actividad
+	/********************************************************/		
+	public function registrarActividadAction(){
 
+		return $this->redirect($this->generateUrl('cituao_coord_practicantes'));
+	}	
 }

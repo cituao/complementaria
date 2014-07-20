@@ -27,8 +27,14 @@ $( "#cronograma h3" ).css("opacity","0.4");
 	
 	<div class="content">
 		{% block upSection  %}
-		<div class = "upSection">
-				<h1 class ="sectionTitle">Mi cronograma</h1>
+		<div class = "upSection" style="height:60px;">
+			<h1 class ="sectionTitle">Mi cronograma</h1>
+
+			<div id="aggacti" style="width: 700px;height: 40px; float: right; padding: 5px;">
+				
+				Actividad: <input type="text" name="actividad">
+				Fecha de entrega: <input type="text" name="fecha">
+			</div>
 				<!--
 				<a href="javascript:history.back()" class = "button"><img src="{{ asset('img/regresar.png') }}"/><h4>Regresar</h4></a> -->
 		</div>
