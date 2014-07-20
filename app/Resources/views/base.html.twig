@@ -32,16 +32,15 @@
 
 		   <div id="sideBar">
 				<h1 id="userName"> {{ app.user.username }}</h1>
-				<h2 id="userRole">{% if is_granted('ROLE_COORDINADOR') %} Coordinador{% endif %}
-					{% if is_granted('ROLE_ASESOR_EXT') %} Asesor Externo{% endif %}
-					{% if is_granted('ROLE_PRACTICANTE') %} Practicante{% endif %}
-					{% if is_granted('ROLE_ASESOR_ACA') %} Asesor Académico{% endif %}
+				<h2 id="userRole">{% if is_granted('ROLE_DIRECTOR') %} Director{% endif %}
+					{% if is_granted('ROLE_PROFESOR') %} Profesor{% endif %}
+					{% if is_granted('ROLE_ESTUDIANTE') %} Estudiante{% endif %}
+					{% if is_granted('ROLE_ADMIN') %} Administrador{% endif %}
 				</h2> {% block foto %} {% endblock %}
 				<div id="imgContainer">
 				 {% if is_granted('ROLE_PROFESOR') %}<img  width="100%" src="{{ asset('img/defaultPicture.png') }}" onerror="this.src='{{ asset('uploads/fotos/defaultPicture.png') }}'"/>{% endif %}
 				 {% if is_granted('ROLE_DIRECTOR') %}<img  width="100%" src="{{ asset('img/defaultPicture.png') }}" onerror="this.src='{{ asset('uploads/fotos/defaultPicture.png') }}'"/>{% endif %}
-				 {% if is_granted('ROLE_PRACTICANTE') %} <img  width="100%" src="{{ asset('uploads/fotos/defaultPicture.png') }}" onerror="this.src='{{ asset('uploads/fotos/defaultPicture.png') }}'"/>{% endif %}
-				 {% if is_granted('ROLE_ASESOR_ACA') %} <img  width="100%" src="{{ asset('uploads/fotos/defaultPicture.png') }}" onerror="this.src='{{ asset('uploads/fotos/defaultPicture.png') }}'"/> {% endif %}
+				 {% if is_granted('ROLE_ESTUDIANTE') %} <img  width="100%" src="{{ asset('img/defaultPicture.png') }}" onerror="this.src='{{ asset('uploads/fotos/defaultPicture.png') }}'"/>{% endif %}
 				{% if is_granted('ROLE_ADMIN') %} <img  width="100%" src="{{ asset('img/defaultPicture.png') }}" onerror="this.src='{{ asset('uploads/fotos/defaultPicture.png') }}'"/> {% endif %}
 				</div>
 

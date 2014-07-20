@@ -7,7 +7,7 @@ ingenieria_estudiante_cronograma:
     defaults: { _controller: IngenieriaEstudianteBundle:Default:cronograma }
 
 ingenieria_estudiante_actividades:
-    path:     /estudiante/actividades-ofertadas
+    path:     /estudiante/activida	des-ofertadas
     defaults: { _controller: IngenieriaEstudianteBundle:Default:actividades }
 
 ingenieria_estudiante_actividad:

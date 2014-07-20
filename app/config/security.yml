@@ -45,3 +45,4 @@ security:
             - { path: ^/administrador/*, roles: ROLE_ADMIN }
             - { path: ^/director/*, roles: ROLE_DIRECTOR }
             - { path: ^/profesor/*, roles: ROLE_PROFESOR }
+            - { path: ^/estudiante/*, roles: ROLE_ESTUDIANTE }
