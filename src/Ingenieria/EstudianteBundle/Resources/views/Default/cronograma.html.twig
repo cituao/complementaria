@@ -1,7 +1,7 @@
 {% extends 'IngenieriaEstudianteBundle::layout.html.twig' %}
 
 {% block programa %}
-{{ p.programa.nombre }}
+AppWeb - Estudiante
 {% endblock %}
 
 {% block js  %}
@@ -29,41 +29,42 @@ $( "#cronograma h3" ).css("opacity","0.4");
 		{% block upSection  %}
 		<div class = "upSection">
 				<h1 class ="sectionTitle">Mi cronograma</h1>
-				<!--<a href="javascript:history.back()" class = "button"><img src="{{ asset('img/regresar.png') }}"/><h4>Regresar</h4></a>-->
+				<!--
+				<a href="javascript:history.back()" class = "button"><img src="{{ asset('img/regresar.png') }}"/><h4>Regresar</h4></a> -->
 		</div>
 		{% endblock  %}
 
 		{% block downSection  %}
 		<div class = "downSection"> 
-			
-			{% if msgerr.id == '1' %}
-				<div id = "error">{{ msgerr.descripcion }}</div>		
-				<table class = "tabla">
-				  <tr class="tableHeader">
-					<th>Actividad</th>
-					<th>Fecha de entrega</th>
-					<th>Estado</th>
-				  </tr>
-				<tr style="height:8px;"></tr>
-			{% else %}
-				{% for a in cronograma%}
-				  <tr>
-					<td  class = "colActividad">{{ a.nombreActividad }}</td>
-					<td  class = "colFecha">{{ a.fechaEntrega|date("d/m/Y") }}</td>
-					{% if a.fechaEntrega > date() %}
-						<td class = "colEstado">Aun no es fecha!</td>
+					
+			<table class = "tabla">
+			  <tr class="tableHeader">
+				<th>Actividad</th>
+				<th>Fecha de entrega</th>
+				<th>Estado</th>
+			  </tr>
+			<tr style="height:8px;"></tr>
+		
+			{% for a in cronograma %}
+			  <tr>
+				<td  class = "colActividad">{{ a.nombreActividad }}</td>
+				<td  class = "colFecha">{{ a.fechaEntrega|date("d/m/Y") }}</td>
+				{% if a.fechaEntrega > date() %}
+					<td class = "colEstado">Aun no es fecha!</td>
+				{% else %}
+					{% if a.listo == false %}
+						<td  class = "colEstado">Sin entregar!</td>
 					{% else %}
-						{% if a.listo == false %}
-							<td  class = "colEstado">Sin entregar!</td>
-						{% else %}
-							<td class = "colEstado">Entregada</td>
-						{% endif %}
+						<td class = "colEstado">Entregada</td>
 					{% endif %}
-				  </tr>
-				{% endfor %}
-			{% endif %}
-			</table>
-			{% endif %}
+				{% endif %}
+			  </tr>
+			{% endfor %}
+		</table>
+		{% if msgerr.id == '1' %}
+		<div id = "error">{{ msgerr.descripcion }}</div>	
+		{% endif %}
+			
 	</div>	<!-- down section -->
 	{% endblock  %}
 	</div><!-- content -->
