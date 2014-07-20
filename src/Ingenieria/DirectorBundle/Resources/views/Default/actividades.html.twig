@@ -19,6 +19,7 @@ $( "#profesores h3" ).css("opacity","0.4");
 		{% block upSection  %}
 		<div class = "upSection">
 			<h1 class ="sectionTitle">Actividades complementarias del profesor</h1>
+			<a href="javascript:history.back()" class = "button"><img src="{{ asset('img/regresar.png') }}"/><h4>Regresar</h4></a>
 		</div>
 		{% endblock  %}
 
@@ -65,7 +66,7 @@ $( "#profesores h3" ).css("opacity","0.4");
 									<a href="{{ path('ingenieria_director_actividad' , { 'id': actividad.id}) }}"><img src="{{ asset('img/editar.png') }}" ><h3> Ver </h3></a>
 									</td>
 									<td style="width:105px">
-									<a href="{{ path('ingenieria_director_actividad' , { 'id': actividad.id}) }}"><img src="{{ asset('img/editar.png') }}" ><h3> Matrícula </h3></a>
+									<a href="{{ path('ingenieria_director_matricula' , { 'id': actividad.id}) }}"><img src="{{ asset('img/editar.png') }}" ><h3> Matrícula </h3></a>
 									</td>
 
 								</table>

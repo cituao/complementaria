@@ -25,3 +25,7 @@ ingenieria_director_actividadesprofesor:
 ingenieria_director_actividad:
     pattern:  /director/actividad/{id}
     defaults: { _controller: IngenieriaDirectorBundle:Default:actividad }
+
+ingenieria_director_matricula:
+    pattern:  /director/matricula-actividad/{id}
+    defaults: { _controller: IngenieriaDirectorBundle:Default:matricula }

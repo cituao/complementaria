@@ -166,5 +166,25 @@ class DefaultController extends Controller
 		return $this->render('IngenieriaDirectorBundle:Default:actividad.html.twig', array('actividad' => $actividad ));
 	}
 
+	/********************************************************/
+	//Muestra y modifica un profesor registrado en la base de datos
+	/********************************************************/		
+	public function matriculaAction($id){
+		$peticion = $this->getRequest();
+		$repository = $this->getDoctrine()->getRepository('IngenieriaProfesorBundle:Actividad');
+		$actividad = $repository->findOneBy(array('id' => $id));
+		
+		$estudiantes = $actividad->getEstudiantes();
+		if ($estudiantes->count() == 0) {
+			//throw $this->createNotFoundException('ERR_NO_HAY_PROGRAMA');
+			$msgerr = array('id'=>1, 'descripcion' => 'No hay estudiantes matriculados para esta actividad complementaria!');
+		}else{
+			$msgerr = array('id'=>0, 'descripcion' => 'Ok');
+		}
+		
+	
+		return $this->render('IngenieriaDirectorBundle:Default:matricula.html.twig',  array('listaEstudiantes' => $estudiantes, 'msgerr' => $msgerr));
+	}	
+
 
 }

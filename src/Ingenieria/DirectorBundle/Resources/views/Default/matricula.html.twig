@@ -1,0 +1,165 @@
+{% extends 'IngenieriaDirectorBundle::layout.html.twig' %}
+
+{% block js  %}
+<script>
+$( "#profesores" ).css("background-color","#000");
+$( "#profesores img" ).css("opacity","0.4");
+$( "#profesores h3" ).css("opacity","0.4");
+</script>
+{% endblock %}
+
+{% block content  %}
+{{ parent() }}
+<div class="content">
+		{% block upSection  %}
+			<div class = "upSection">
+			<h1 class ="sectionTitle">Matricula</h2>
+			<a href="javascript:history.back()" class = "button"><img src="{{ asset('img/regresar.png') }}"/><h4>Regresar</h4></a>
+			</div> <!--up section -->
+		{% endblock  %}
+
+		{% block downSection  %}
+			<div class = "downSection">
+				{% if msgerr.id == '1' %}
+					<div id = "error">{{ msgerr.descripcion }}</div>	
+				{% else %}
+					<table class="generalTableHead">
+						<tbody>
+							<tr class="tableHead">
+								<th width="5%"></th>
+								<th width="10%"></th>
+								<th width="18%"></th>
+								<th width="16%"></th>
+								<th width="8%"><img src="{{ asset('img/codigoLabel.png') }}"/></th>
+								<th width="9%"><img style="margin-left:11px;" src="{{ asset('img/idLabel.png') }}"/></th>
+								<th><img style="margin-left:70px;" src="{{ asset('img/mailLabel.png') }}"/></th>
+								<th></th>
+								<th></th>
+							</tr> <!--tablehead -->
+						</tbody>
+					</table><!-- practicantes tableHead -->
+			
+						{% set id = 1 %}
+						<div style="width: 100%; height: 750px; overflow: auto; position:relative; padding-bottom:30px;"> 
+							<table class="generalTable">
+							
+								{% for estudiante in listaEstudiantes %}
+								<tr class="spacer"></tr>
+								<tr height="20px" class="tableItem">
+									<td id="hoverDiv" >
+										<td><h2>{{ id }}</h2></td>
+										<td><span>{{ estudiante.apellidos }}</span></td>
+										<td><span>{{ estudiante.nombres }}</span></td>
+										<td>{{ estudiante.codigo }}</td>
+										<td>{{ estudiante.ci }}</td>
+										<td>
+											<div>
+												<table class="opciones">
+													{% if estudiante.actividades.count > 0 %}
+													<td><a href="{{ path('usuario_cronograma', { 'id': estudiante.id}) }}"><img src="{{ asset('img/cronograma.png') }}" /><h3>Cronograma</h3></a></td>
+													{% else %}
+													<td	><img src="{{ asset('img/nocrono.png') }}" /></td>
+													{% endif %}
+													
+												</table> <!-- opciones -->
+											</div>
+											{{ estudiante.emailInstitucional }} <br> {{ estudiante.email }}</td>
+										</td> <!-- hoverDiv -->
+									</tr>
+									{% set id = id + 1 %}
+									{% endfor %}
+									<tr class="spacer"></tr>
+									<tr class="spacer"></tr>
+									<tr class="spacer"></tr>
+									<tr class="spacer"></tr>
+									<tr class="spacer"></tr>
+									<tr class="spacer"></tr>
+								</table>
+						</div> <!-- tabla con items
+					
+				{% endif %}
+			</div><!--downsection -->
+		{% endblock  %}
+	</div><!-- content -->
+
+	<script>
+		var form = $('form');
+		var anadirEstudiantes =  $('#anadirEstudiantes');
+		var nuevoEstudiante =  $('#nuevoEstudiante');
+		
+		$( ".tableItem" ).mouseenter(function() {
+				var opciones = $('.opciones', this);
+				var itemPicture = $('.itemImgContainer', this);
+				$(itemPicture).css("border-color","#ec1c24");
+
+				$( opciones).animate({
+					opacity: 1,
+					top: "-30px",
+				}, 300, function() {
+				// Animation complete.
+			});
+			});
+
+			$( ".tableItem" ).mouseleave(function() {
+				var itemPicture = $('.itemImgContainer', this);
+				var opciones = $('.opciones', this);
+				$(itemPicture).css("border-color","#242021");
+				$( opciones).animate({
+					opacity: 0,
+					top: "0px",
+				}, 300, function() {
+				// Animation complete.
+			});
+			});
+			
+			$( "#anadirEstudiantes" ).click(function() {
+				$(nuevoEstudiante).fadeOut(300);
+				//$(periodo).fadeOut(300);
+				//$(estadoPracticante).fadeOut(300);
+				$(this).fadeOut(300,function(){
+
+					$( form).animate({
+						opacity: 1,
+						top: "21px",
+					}, 300);
+				});
+
+			});
+			
+			$( "#listo" ).click(function() {
+				if(validateForm()){
+					$(nuevoEstudiante).fadeIn(300);
+					$(anadirEstudiantes).fadeIn(300,function(){
+
+						$( form).animate({
+							opacity: 0,
+							top: "100px",
+						}, 300);
+					});
+			}// validate form
+			});
+
+			$( "#cancelar" ).click(function() {
+					$(nuevoEstudiante).fadeIn(300);
+					//$(estadoPracticante).fadeIn(300);
+					//$(periodo).fadeIn(300);
+						$(anadirEstudiantes).fadeIn(80,function(){
+							$( form).animate({
+								opacity: 0,
+								top: "100px",
+							}, 100);
+						});
+			});
+			
+			function validateForm()
+			{
+				var x=document.forms["anadirP"]["listo"].value;
+				if (x==null || x=="")
+				{
+					window.alert("you");
+					return false;
+				}
+			}
+
+	</script>
+{% endblock %}
