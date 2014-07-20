@@ -99,6 +99,11 @@ class DefaultController extends Controller
 			return $this->render('IngenieriaEstudianteBundle:Default:avisonoinscripto.html.twig');
 		}
 		else{
+			//buscar cronograma
+			
+
+
+			$msgerr = array('descripcion'=>'','id'=>'0');
 			return $this->render('IngenieriaEstudianteBundle:Default:cronograma.html.twig', array('msgerr' => $msgerr));
 			
 		}	
@@ -148,12 +153,18 @@ class DefaultController extends Controller
 		return $this->render('IngenieriaEstudianteBundle:Default:actividad.html.twig', array('actividad' => $actividad));
 	}
 
+	//*****************************************************************************************
+	//Muestra una interfaz para que el estudiante se inscriba en la actividad que el selecciono
+	//*****************************************************************************************
 	public function inscripcionAction($id){
 		$datos = array('idActividad'=>$id);
 
 		return $this->render('IngenieriaEstudianteBundle:Default:inscripcion.html.twig', array('datos' => $datos));
 	}
 	
+	//****************************************************************
+	//Asigna una actividad al estudiante y actualiza cantidad de cupos
+	//****************************************************************
 	public function confirmarAction($id){
 		//buscamos el estudiante
 		
@@ -171,9 +182,13 @@ class DefaultController extends Controller
 		$actividad = $repository->findOneBy(array('id' => $id));
 		
 		$estudiante->setActividad($actividad);
-		
+		//bajamos numero de cupos
+		$ncupos = $actividad->getNumeroCupos();
+		$ncupos = $ncupos--;
+		$actividad->setNumeroCupos($ncupos);
+
 		$em = $this->getDoctrine()->getManager();
-		
+		$em->persist($actividad);
 		$em->persist($estudiante);
 		$em->flush();
 		
