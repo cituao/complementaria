@@ -55,15 +55,19 @@ $( "#profesores h3" ).css("opacity","0.4");
 					<tr class="tableItem">
 						<td id="hoverDiv">
 							<td><h2>{{ id }}</h2></td>
-							<td style=" width:60%"><span style="margin-left:5px; ">{{ actividad.nombre }}</span></td>
+							<td style=" width:50%"><span style="margin-left:5px; ">{{ actividad.nombre }}</span></td>
 							<td style=" width:15%"><span>{{ actividad.profesor.nombres }}</span></td>
 							<td style=" width:15%"><span>{{ actividad.profesor.apellidos }}</span></td>
 							
 							<td>
-								<table class="opciones" style="right:129px">
+								<table class="opciones" style="width:210px">
 									<td>
 									<a href="{{ path('ingenieria_director_actividad' , { 'id': actividad.id}) }}"><img src="{{ asset('img/editar.png') }}" ><h3> Ver </h3></a>
 									</td>
+									<td style="width:105px">
+									<a href="{{ path('ingenieria_director_actividad' , { 'id': actividad.id}) }}"><img src="{{ asset('img/editar.png') }}" ><h3> Matrícula </h3></a>
+									</td>
+
 								</table>
 							</td>
 

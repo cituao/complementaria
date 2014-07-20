@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Ingenieria\ProfesorBundle\Entity\Profesor;
 use Ingenieria\UsuarioBundle\Entity\Usuario;
 use Ingenieria\DirectorBundle\Form\Type\ProfesorType;
-
+use Ingenieria\DirectorBundle\Form\Type\ActividadType;
 
 class DefaultController extends Controller
 {
@@ -144,7 +144,27 @@ class DefaultController extends Controller
 			
 	}
 
+	//**********************************************************
+	//Muestra la informacion de la actividad complementaria
+	//**********************************************************
+	public function actividadAction($id){
+		$peticion = $this->getRequest();
+		$em = $this->getDoctrine()->getManager();
 
+		// buscamos el ID del asesor academico
+		$repository = $this->getDoctrine()->getRepository('IngenieriaProfesorBundle:Actividad');
+		$actividad = $repository->findOneBy(array('id' => $id));
+		
+		/*
+		//buscamos el programa
+		$user = $this->get('security.context')->getToken()->getUser();
+		$coordinador =  $user->getUsername();
+		$repository = $this->getDoctrine()->getRepository('CituaoUsuarioBundle:Programa');
+		$programa = $repository->findOneByCoordinador($coordinador);
+		*/
+		
+		return $this->render('IngenieriaDirectorBundle:Default:actividad.html.twig', array('actividad' => $actividad ));
+	}
 
 
 }

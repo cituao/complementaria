@@ -1,6 +1,6 @@
 <?php
 // src/Ingenieria/ProfesorBundle/Form/Type/ProfesorType.php
-namespace Ingenieria\ProfesorBundle\Form\Type;
+namespace Ingenieria\DirectorBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -32,6 +32,6 @@ class ActividadType extends AbstractType
 
     public function getName()
     {
-        return 'profesor';
+        return 'director';
     }
 }
