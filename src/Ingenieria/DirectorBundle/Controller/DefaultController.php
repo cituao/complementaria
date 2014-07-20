@@ -186,5 +186,26 @@ class DefaultController extends Controller
 		return $this->render('IngenieriaDirectorBundle:Default:matricula.html.twig',  array('listaEstudiantes' => $estudiantes, 'msgerr' => $msgerr));
 	}	
 
+	/********************************************************/
+	//Muestra y modifica un profesor registrado en la base de datos
+	/********************************************************/		
+	public function profesorAction($id){
+		$peticion = $this->getRequest();
+		$repository = $this->getDoctrine()->getRepository('IngenieriaProfesorBundle:Profesor');
+		$profesor = $repository->findOneBy(array('id' => $id));
+		
+        $formulario = $this->createForm(new ProfesorType(), $profesor);
+		$formulario->handleRequest($peticion);
 
+        if ($formulario->isValid()) {
+
+			$em = $this->getDoctrine()->getManager();
+            $em->persist($profesor);
+            $em->flush();
+            
+            return $this->redirect($this->generateUrl('ingenieria_director_homepage'));
+        }
+		
+        return $this->render('IngenieriaDirectorBundle:Default:profesor.html.twig', array('formulario' => $formulario->createView(), 'profesor' => $profesor ));
+	}
 }
