@@ -10,11 +10,6 @@ $( "#cronograma" ).css("background-color","#000");
 $( "#cronograma img" ).css("opacity","0.4");
 $( "#cronograma h3" ).css("opacity","0.4");
 </script>
-
-{% endblock %}
-{% block javascripts %}
-	<meta charset="utf-8">
-	 <title>jQuery UI Datepicker - Default functionality</title>
 	 <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
 	 <script src="//code.jquery.com/jquery-1.9.1.js"></script>
 	 <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
@@ -29,19 +24,20 @@ $( "#cronograma h3" ).css("opacity","0.4");
 		{% block upSection  %}
 		<div class = "upSection" style="height:60px;">
 			<h1 class ="sectionTitle">Mi cronograma</h1>
-
-			<div id="aggacti" style="width: 700px;height: 40px; float: right; padding: 5px;">
-				
+			<a href="" class = "button"><img src="{{ asset('img/regresar.png') }}"/><h4>Add (+) </h4></a> 
+			<div id="aggacti" style="width: 700px;height: 40px; float: right; padding: 5px;"  data-path = "{{ path('ingenieria_estudiante_agregaractividad') }}">
 				Actividad: <input type="text" name="actividad">
-				Fecha de entrega: <input type="text" name="fecha">
+				Fecha de entrega: <input type="text" name="fecha"  id= "cronograma_fechaIniciacion">
 			</div>
-				<!--
-				<a href="javascript:history.back()" class = "button"><img src="{{ asset('img/regresar.png') }}"/><h4>Regresar</h4></a> -->
+				
+				
+			<div id="datepicker"></div>
 		</div>
 		{% endblock  %}
 
 		{% block downSection  %}
 		<div class = "downSection"> 
+		<div id="datepicker"></div>
 					
 			<table class = "tabla">
 			  <tr class="tableHeader">

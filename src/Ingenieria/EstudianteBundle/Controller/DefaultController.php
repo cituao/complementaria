@@ -202,7 +202,7 @@ class DefaultController extends Controller
 	/********************************************************/
 	// Registra una actividad
 	/********************************************************/		
-	public function registrarActividadAction(){
+	public function agregaractividadAction(){
 
 		return $this->redirect($this->generateUrl('cituao_coord_practicantes'));
 	}	

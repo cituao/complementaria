@@ -21,3 +21,7 @@ ingenieria_estudiante_inscripcion:
 ingenieria_estudiante_confirmar:
     path:     /estudiante/confirmar={id}
     defaults: { _controller: IngenieriaEstudianteBundle:Default:confirmar }
+
+ingenieria_estudiante_agregaractividad:
+    path:     /estudiante/agregaractividad
+    defaults: { _controller: IngenieriaEstudianteBundle:Default:agregaractividad }
