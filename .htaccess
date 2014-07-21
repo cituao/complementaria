@@ -1,5 +1,0 @@
-<Directory /var/www/project/web>
-    # enable the .htaccess rewrites
-    AllowOverride All
-    Require all granted
-</Directory>
