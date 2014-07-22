@@ -24,22 +24,18 @@ $( "#cronograma h3" ).css("opacity","0.4");
 		{% block upSection  %}
 		<div class = "upSection" style="height:60px;">
 			<h1 class ="sectionTitle">Mi cronograma</h1>
-			<a href="" class = "button"><img src="{{ asset('img/regresar.png') }}"/><h4>Add (+) </h4></a> 
+			
+			<div style="position:relative; float:right"><input style="padding-left:38px;" class="button" type="button" value="Subir" id="btnsubir" name="btnsubir" /><img style="position:absolute; top:0px; left:13px; pointer-events:none" src="{{ asset('img/listo.png') }}"/></div>			
 			<div id="aggacti" style="width: 700px;height: 40px; float: right; padding: 5px;"  data-path = "{{ path('ingenieria_estudiante_agregaractividad') }}">
-				Actividad: <input type="text" name="actividad">
+				Actividad: <input type="text" name="actividad" id = "input_actividad">
 				Fecha de entrega: <input type="text" name="fecha"  id= "cronograma_fechaIniciacion">
 			</div>
-				
-				
-			<div id="datepicker"></div>
 		</div>
 		{% endblock  %}
 
 		{% block downSection  %}
 		<div class = "downSection"> 
-		<div id="datepicker"></div>
-					
-			<table class = "tabla">
+			<table class = "tabla" id = "tabla">
 			  <tr class="tableHeader">
 				<th>Actividad</th>
 				<th>Fecha de entrega</th>

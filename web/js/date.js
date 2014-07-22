@@ -142,21 +142,44 @@ $(function() {
 			}); //date picker
 
 
-		$("#cronograma_centro").change(function(){
+		$("#btnsubir").click(function(){
 				var codigo = "";
-	
-				codigo = this.value;
-				//alert(codigo);
-				
-				var ruta = $("#ruta").attr("data-path");
+				var actividad = "";
+				var fecha = "";
+
+				//codigo = this.value;
+				actividad = $("#input_actividad").val();
+				fecha = $("#cronograma_fechaIniciacion").val();
+				var ruta = $("#aggacti").attr("data-path");
+
+				//alert("Value: " + $("#input_actividad").val());
+
 				//alert(ruta);
+					
 					$.ajax({url: ruta,
 						type: "POST",
-						data: { "cod_centro" : codigo },
+						data: { "fecha" : fecha , "nombre" : actividad },
 						success:function(data){
-							//alert(data);
-							//console.log(data);
+							alert(data);
+							console.log(data);
+							$("#input_actividad").val("");
+							$("#cronograma_fechaIniciacion").val("");
 
+							var html = '';
+							html = '<tr><td class = ';
+							html = html + '"colActividad">';
+							html = html + actividad;
+							html = html + '</td><td class = ';
+							html = html + '"colFecha">';
+							html = html + fecha;
+							html = html + '</td>';
+
+							$("#tabla tr:last").after(html);
+
+							/*							
+							$("#tabla tr:last").after('<tr><td class = "colActividad">Asesoria 1</td><td class = "colActividad">Asesoria 1</td></tr>');
+
+							
 							var obj = eval ("(" + data + ")");
 							//console.log(obj);
 
@@ -171,8 +194,9 @@ $(function() {
 								.find('option')
 								.remove()
 								.end()
-								.append(html);
+								.append(html);*/
 							
+							$("#error").remove();
 					}});
 		});
 		

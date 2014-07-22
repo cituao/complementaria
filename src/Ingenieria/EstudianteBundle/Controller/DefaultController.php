@@ -2,6 +2,10 @@
 
 namespace Ingenieria\EstudianteBundle\Controller;
 
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Ingenieria\EstudianteBundle\Entity;
 
@@ -203,7 +207,31 @@ class DefaultController extends Controller
 	// Registra una actividad
 	/********************************************************/		
 	public function agregaractividadAction(){
-
-		return $this->redirect($this->generateUrl('cituao_coord_practicantes'));
+		$request = $this->getRequest();
+		$fecha = $request->request->get('fecha');
+		$actividad = $request->request->get('nombre');
+		
+		//$codigo_id = 2;
+		/*		
+		$em = $this->getDoctrine()->getManager();
+		$query = $em->createQuery('SELECT e.id, e.nombres, e.apellidos FROM CituaoExternoBundle:Externo e WHERE e.centro = :cod_id ORDER BY e.nombres')->setParameter('cod_id',$codigo_id); 
+		
+		$externos = $query->getResult();
+		if(!$externos){
+			$exception = array('codigo' => '999', 'message' => 'no hay registros');
+		}
+		else{
+			$exception = array('codigo' => '000', 'message' => 'si hay registros');
+		}
+		//return $this->render('CituaoCoordBundle:Default:prueba.html.twig', array('externos' => $externos, 'exception' => $exception ));
+		*/
+		$r = array("fecha" => $fecha, "nombre" => $actividad);
+		$serializer = new Serializer(array(new GetSetMethodNormalizer()), array('json' => new 
+			JsonEncoder()));
+		$json = $serializer->serialize($r, 'json');
+		
+			
+		return new Response($json);
+		//return $this->redirect($this->generateUrl('cituao_coord_practicantes'));
 	}	
 }
