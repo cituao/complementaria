@@ -30,10 +30,10 @@ Aplicación WEB - [Director]
 						<th style=" width:15%"></th> 
 						<th style=" width:12%"></th> 
 						<th></th> 
-						<th style=" width:10%"><img src="{{ asset('img/idLabel.png') }}"/></th> 
+						<th style=" width:10%"><!--<img src="{{ asset('img/idLabel.png') }}"/>--></th> 
 						<th style=" width:25%"></th> 
-						<th><img src="{{ asset('img/mailLabel.png') }}"/></th>
-						<th></th>
+						<th style=" width:15%"></th>
+						<th><img src="{{ asset('img/idLabel.png') }}"/></th>
 						<th></th>
 					</tr> <!--tablehead -->
 				</tbody>
@@ -57,10 +57,10 @@ Aplicación WEB - [Director]
 							<td>
 								<table class="opciones" style="width:210px">
 									<td>
-									<a href="{{ path('ingenieria_director_actividad' , { 'id': actividad.id}) }}"><img src="{{ asset('img/editar.png') }}" ><h3> Ver </h3></a>
+									<a href="{{ path('ingenieria_director_actividad' , { 'id': actividad.id}) }}"><img src="{{ asset('img/ver.png') }}" ><h3> Ver </h3></a>
 									</td>
 									<td style="width:105px">
-									<a href="{{ path('ingenieria_director_matricula' , { 'id': actividad.id}) }}"><img src="{{ asset('img/editar.png') }}" ><h3> Matrícula </h3></a>
+									<a href="{{ path('ingenieria_director_matricula' , { 'id': actividad.id}) }}"><img src="{{ asset('img/ver.png') }}" ><h3> Matrícula </h3></a>
 									</td>
 
 								</table>
