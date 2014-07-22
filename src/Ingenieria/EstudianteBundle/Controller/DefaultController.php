@@ -8,6 +8,8 @@ use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Ingenieria\EstudianteBundle\Entity;
+use Ingenieria\EstudianteBundle\Entity\Cronograma;
+use \DateTime;
 
 class DefaultController extends Controller
 {
@@ -207,25 +209,45 @@ class DefaultController extends Controller
 	// Registra una actividad
 	/********************************************************/		
 	public function agregaractividadAction(){
+		//buscamos el estudiante
+		$user = $this->get('security.context')->getToken()->getUser();
+    	$codigo =  $user->getUsername();
+    	$repository = $this->getDoctrine()->getRepository('IngenieriaEstudianteBundle:Estudiante');
+    	$estudiante = $repository->findOneBy(array('codigo' => $codigo));
+	
 		$request = $this->getRequest();
 		$fecha = $request->request->get('fecha');
-		$actividad = $request->request->get('nombre');
+		$nombre_actividad = $request->request->get('nombre');
 		
-		//$codigo_id = 2;
-		/*		
+		
 		$em = $this->getDoctrine()->getManager();
-		$query = $em->createQuery('SELECT e.id, e.nombres, e.apellidos FROM CituaoExternoBundle:Externo e WHERE e.centro = :cod_id ORDER BY e.nombres')->setParameter('cod_id',$codigo_id); 
 		
-		$externos = $query->getResult();
-		if(!$externos){
-			$exception = array('codigo' => '999', 'message' => 'no hay registros');
-		}
-		else{
-			$exception = array('codigo' => '000', 'message' => 'si hay registros');
-		}
-		//return $this->render('CituaoCoordBundle:Default:prueba.html.twig', array('externos' => $externos, 'exception' => $exception ));
-		*/
-		$r = array("fecha" => $fecha, "nombre" => $actividad);
+		$cronograma = new Cronograma();
+		
+		$cronograma->setNombreActividad($nombre_actividad);
+		
+		$cronograma->setEstado(false);
+		$cronograma->setEstudiante($estudiante);
+		
+		
+		 //convertimos la fecha de matricula a un objeto Date				
+		
+		$separa = explode("-",$fecha);
+		$dia = $separa[0];
+		$mes = $separa[1];
+		$ano = $separa[2];
+
+		$f = new \DateTime();
+		$f->setDate($ano,$mes,$dia);
+
+		$cronograma->setFechaEntrega($f);
+
+		
+		
+		$em->persist($cronograma);
+		$em->flush();
+		
+		$r = array("fecha" => $fecha, "nombre" => $nombre_actividad);
 		$serializer = new Serializer(array(new GetSetMethodNormalizer()), array('json' => new 
 			JsonEncoder()));
 		$json = $serializer->serialize($r, 'json');
