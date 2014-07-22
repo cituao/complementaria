@@ -15,7 +15,7 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-		$user = $this->get('security.context')->getToken()->getUser();
+		 	$user = $this->get('security.context')->getToken()->getUser();
     	$codigo =  $user->getUsername();
     	$repository = $this->getDoctrine()->getRepository('IngenieriaEstudianteBundle:Estudiante');
     	$estudiante = $repository->findOneBy(array('codigo' => $codigo));
@@ -23,7 +23,6 @@ class DefaultController extends Controller
 		if ($estudiante == NULL){
 			throw $this->createNotFoundException('ERR_ESTUDIANTE_NO_ENCONTRADO');
 		}
-		//si el estudiante no tiene actividad se les presenta las activiades disponibles
 		if ($estudiante->getActividad() == null){
 			$nohaycupo = 0;
 			//obtenemos las actividad complementarias con cupos
@@ -42,18 +41,16 @@ class DefaultController extends Controller
 				$msgerr = array('descripcion'=>'','id'=>'0');
 			}
 			/*
-			//buscamos el programa
+					//buscamos el programa
 			$user = $this->get('security.context')->getToken()->getUser();
 			$coordinador =  $user->getUsername();
 			$repository = $this->getDoctrine()->getRepository('CituaoUsuarioBundle:Programa');
 			$programa = $repository->findOneByCoordinador($coordinador);
 			*/
 			
-			return $this->render('IngenieriaEstudianteBundle:Default:actividades.html.twig', array('listaActividades' => $listaActividades, 'msgerr' => $msgerr));
-		
-		
-		} 
-		else {
+			return $this->render('IngenieriaEstudianteBundle:Default:avisonoinscripto.html.twig');
+		}
+		else{
 			//buscar cronograma
 			$cronograma = $estudiante->getActividades();
 				
@@ -63,10 +60,10 @@ class DefaultController extends Controller
 			else {
 				$msgerr = array('descripcion'=>'','id'=>'0');
 			}
-			return $this->render('IngenieriaEstudianteBundle:Default:cronograma.html.twig', array('cronograma'=>$cronograma, 'msgerr' => $msgerr));
-		}
-		return $this->render('IngenieriaEstudianteBundle:Default:actividades.html.twig', array('listaActividades' => $listaActividades, 'msgerr' => $msgerr));
-    }
+			return $this->render('IngenieriaEstudianteBundle:Default:cronograma.html.twig', array('estudiante' => $estudiante, 'cronograma'=>$cronograma, 'msgerr' => $msgerr));
+			
+		}	
+	}
 
 	public function cronogramaAction(){
 	 	$user = $this->get('security.context')->getToken()->getUser();
@@ -114,7 +111,7 @@ class DefaultController extends Controller
 			else {
 				$msgerr = array('descripcion'=>'','id'=>'0');
 			}
-			return $this->render('IngenieriaEstudianteBundle:Default:cronograma.html.twig', array('cronograma'=>$cronograma, 'msgerr' => $msgerr));
+			return $this->render('IngenieriaEstudianteBundle:Default:cronograma.html.twig', array('estudiante' => $estudiante, 'cronograma'=>$cronograma, 'msgerr' => $msgerr));
 			
 		}	
 	}

@@ -60,15 +60,18 @@ $( "#cronograma h3" ).css("opacity","0.4");
 			  <tr>
 				<td  class = "colActividad">{{ a.nombreActividad }}</td>
 				<td  class = "colFecha">{{ a.fechaEntrega|date("d/m/Y") }}</td>
-
-				<!--<td class ="eliminar"><a href="" class="elimina"><img src="/complementaria/web/img/delete.png"/></a></td> -->
-				{% if a.fechaEntrega > date() %}
-					<td class = "colEstado">Aun no es fecha!</td>
+				
+				{% if estudiante.aprobadoCronograma == false %}
+					<td><a  class="eliminaa"><img src="/complementaria/web/img/delete.png"/></a></td>
 				{% else %}
-					{% if a.listo == false %}
-						<td  class = "colEstado">Sin entregar!</td>
+					{% if a.fechaEntrega > date() %}
+						<td class = "colEstado">Aun no es fecha!</td>
 					{% else %}
-						<td class = "colEstado">Entregada</td>
+						{% if a.estado == false %}
+							<td  class = "colEstado">Sin entregar!</td>
+						{% else %}
+							<td class = "colEstado">Entregada</td>
+						{% endif %}
 					{% endif %}
 				{% endif %}
 			  </tr>

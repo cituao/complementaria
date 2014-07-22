@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 $.datepicker.regional['es'] = {
 	closeText: 'Cerrar',
 	prevText: '<Ant',
@@ -28,15 +21,6 @@ $(function() {
 
 	$(document).ready(function(){
 
-
-
-
-
-
-
-
-
-
 		$("#cronograma_fechaIniciacion").datepicker({
 			dateFormat: "dd-mm-yy",
 			onSelect: function(dateText, inst) {
@@ -54,8 +38,6 @@ $(function() {
 				actividad = $("#input_actividad").val();
 				fecha = $("#cronograma_fechaIniciacion").val();
 				var ruta = $("#aggacti").attr("data-path");
-
-
 
 				$.ajax({url: ruta,
 					type: "POST",
@@ -86,9 +68,6 @@ $(function() {
 							});
 						}});
 			});
-
-
-
 
 function fn_dar_eliminar(x){
 		//var fechaEliminar = $(this).val()
