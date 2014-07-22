@@ -69,6 +69,12 @@ $(function() {
 						}});
 			});
 
+			$(".eliminaa").click(function(){
+				windows.alert("Ok");
+				//fn_dar_eliminar(this);
+
+			});			
+
 function fn_dar_eliminar(x){
 		//var fechaEliminar = $(this).val()
 		var id;
