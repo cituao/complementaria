@@ -31,9 +31,20 @@ $( "#cronograma h3" ).css("opacity","0.4");
 			<h1 class ="sectionTitle">Mi cronograma</h1>
 
 			<div id="aggacti" style="width: 700px;height: 40px; float: right; padding: 5px;">
+				<form style="width:100%; top:21px; opacity:1;">
+				<div style="position:relative; float:right;">
+					<input style="padding-left:38px;" type="submit" class="button" value="listo" id="listo" name="listo">
+						<img style="pointer-events:none; position:absolute; top:0; left:13px;" src="/complementaria/web/img/listo.png"/>
+						</input>
+				</div>
+
+				<input style=" float:right" type="text" name="fecha">
+				<h2 style="margin-top:8px; margin-right: 15px; color:#000; float:right">Fecha de entrega:</h2> 
+
+				<input style="margin-right:10px; float:right" type="text" name="actividad">
+				<h2 style=" margin-top:8px; margin-right: 15px; color:#000; float:right">Actividad:</h2> 
 				
-				Actividad: <input type="text" name="actividad">
-				Fecha de entrega: <input type="text" name="fecha">
+			</form>
 			</div>
 				<!--
 				<a href="javascript:history.back()" class = "button"><img src="{{ asset('img/regresar.png') }}"/><h4>Regresar</h4></a> -->
