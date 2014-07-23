@@ -13,7 +13,7 @@ class ActividadType extends AbstractType
         $builder
 		->add('nombre','text', array('label' => 'Nombre:' , 'required' => true))	    
 		->add('descripcion','text', array('label' => 'Descripción:' , 'required' => true))
-		->add('url','text', array('required' => false, 'label' => 'Direccion web'))
+		->add('url','text', array('required' => false, 'label' => 'Recurso digital:'))
 		->add('categoria', 'choice', array(
 				'choices' => array('1' => 'Organización de eventos académicos', '2' => 'Talleres prácticos', '3' => 'Aplicaciones de TICs', '4' => 'Cursar y aprobar un MOOC', '5' => 'Apoyo a la gestión'),
 				'required' => true,))
