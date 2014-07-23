@@ -29,3 +29,7 @@ ingenieria_director_actividad:
 ingenieria_director_matricula:
     pattern:  /director/matricula-actividad/{id}
     defaults: { _controller: IngenieriaDirectorBundle:Default:matricula }
+
+ingenieria_director_cronograma:
+    pattern:  /director/cronograma/{id}
+    defaults: { _controller: IngenieriaDirectorBundle:Default:cronograma }

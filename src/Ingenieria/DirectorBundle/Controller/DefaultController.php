@@ -208,4 +208,35 @@ class DefaultController extends Controller
 		
         return $this->render('IngenieriaDirectorBundle:Default:profesor.html.twig', array('formulario' => $formulario->createView(), 'profesor' => $profesor ));
 	}
+
+	//******************************************************************
+	//Muestra cronograma del estudiantes
+	//******************************************************************
+	public function cronogramaAction($id){
+    	$repository = $this->getDoctrine()->getRepository('IngenieriaEstudianteBundle:Estudiante');
+    	$estudiante = $repository->findOneBy(array('id' => $id));
+		
+		if ($estudiante == NULL){
+			throw $this->createNotFoundException('ERR_ESTUDIANTE_NO_ENCONTRADO');
+		}
+		if ($estudiante->getActividad() == null){
+			throw $this->createNotFoundException('ERR_CRONOGRAMA_NO_ENCONTRADO');
+
+		}
+		
+		//buscar cronograma
+		$cronograma = $estudiante->getActividades();
+			
+		if ($cronograma->count()==0){
+			$msgerr = array('descripcion'=>'No hay actividades registradas en el sistema!','id'=>'1');
+		}
+		else {
+			$msgerr = array('descripcion'=>'','id'=>'0');
+		}
+		return $this->render('IngenieriaDirectorBundle:Default:cronograma.html.twig', array('estudiante' => $estudiante, 'cronograma'=>$cronograma, 'msgerr' => $msgerr));
+			
+			
+	}
+
+
 }
