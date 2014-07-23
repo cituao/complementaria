@@ -36,6 +36,11 @@
 					<h3>Actividades complementarias - Aplicación WEB</h3>
 
 					<div id="formWrapper">
+						{% if error.message == 'M' %}
+							<div style="padding: 20px;"> 
+							<h2 style="background-color: white; width: 300px; margin-left: 5%;">¡Disculpe! <br>Estimado usuario estamos en mantenimiento...</h2>
+							</div>
+						{% else %}
 						<form action="{{ path('usuario_login_check') }}" method="post">
 							{% if error %}
 								{% if error.message != '' %}
@@ -54,6 +59,7 @@
 							
 							<input type="submit" value="Ingresar"></input>
 						</form>
+						{% endif %}
 					</div>
 				</div><!-- side -->
 			</div><!-- cierra header -->
