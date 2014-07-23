@@ -1,0 +1,62 @@
+{% extends 'IngenieriaUsuarioBundle::layout.html.twig' %}
+
+{% block programa %}
+AppWeb - Administrador
+{% endblock %}
+
+{% block js  %}
+{% endblock %}
+
+
+{% block content  %}
+	{{ parent() }}
+	
+	<div class="content">
+		{% block upSection  %}
+		<div class = "upSection" style="height:60px;">
+			<h1 class ="sectionTitle">Cronograma</h1>
+			<div id="estadoPracticante" style="width: 350px;height: 40px; float: left; padding: 15px;font-size: 12px;">
+			{% if estudiante.aprobadoCronograma == false %}
+				<h2 style= "color: black;">Estado: Aun no ha sido aprobado por el profesor</h3>
+			{% else %}
+				<h2 style= "color: black;">Estado: Aprobado por el profesor</h3>
+			{% endif %}
+			</div>
+
+		</div>
+		{% endblock  %}
+
+		{% block downSection  %}
+		<div class = "downSection"> 
+			<table class = "tabla" id = "tabla">
+			  <tr class="tableHeader">
+				<th>Actividad</th>
+				<th>Fecha de entrega</th>
+				<th>Acción</th>
+			  </tr>
+			<tr style="height:8px;"></tr>
+			{% for a in cronograma %}
+			  <tr>
+				<td  class = "colActividad">{{ a.nombreActividad }}</td>
+				<td  class = "colFecha">{{ a.fechaEntrega|date("d/m/Y") }}</td>
+				{% if a.fechaEntrega > date() %}
+					<td class = "colEstado">Aun no es fecha!</td>
+				{% else %}
+					{% if a.estado == false %}
+						<td  class = "colEstado">Sin entregar!</td>
+					{% else %}
+						<td class = "colEstado">Entregada</td>
+					{% endif %}
+				{% endif %}
+			  </tr>
+			{% endfor %}
+		</table>
+		{% if msgerr.id == '1' %}
+		<div id = "error">{{ msgerr.descripcion }}</div>	
+		{% endif %}
+			
+	</div>	<!-- down section -->
+	{% endblock  %}
+	</div><!-- content -->
+{% endblock %}
+

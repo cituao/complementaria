@@ -37,7 +37,7 @@ usuario_cronograma:
     defaults: { _controller: IngenieriaUsuarioBundle:Default:cronograma }
     
 usuario_estudiantes:
-    pattern:  /administrador/cronograma-estudiante
+    pattern:  /administrador/estudiantes
     defaults: { _controller: IngenieriaUsuarioBundle:Default:estudiantes }
     
 usuario_registrar_estudiante:

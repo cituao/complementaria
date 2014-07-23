@@ -66,7 +66,7 @@ $( "#estudiantes h3" ).css("opacity","0.4");
 													{% if estudiante.actividades.count > 0 %}
 													<td><a href="{{ path('usuario_cronograma', { 'id': estudiante.id}) }}"><img src="{{ asset('img/cronograma.png') }}" /><h3>Cronograma</h3></a></td>
 													{% else %}
-													<td	><img src="{{ asset('img/nocrono.png') }}" /></td>
+													<td><img src="{{ asset('img/nocrono.png') }}" /></td>
 													{% endif %}
 													
 												</table> <!-- opciones -->
