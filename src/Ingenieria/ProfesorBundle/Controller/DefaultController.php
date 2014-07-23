@@ -216,9 +216,9 @@ class DefaultController extends Controller
 		$cronograma = $estudiante->getActividades();
 
 		if ( $cronograma->count()  == 0 ) {
-			$msgerr = array('descripcion'=>'¡No ha subido el cronograma de actividades!','id'=>'0');
+			$msgerr = array('descripcion'=>'¡No ha subido el cronograma de actividades!','id'=>'1');
 		}else{
-			$msgerr = array('descripcion'=>'','id'=>'1');
+			$msgerr = array('descripcion'=>'','id'=>'0');
 		}
 		
 		return $this->render('IngenieriaProfesorBundle:Default:cronograma.html.twig', array('estudiante' => $estudiante, 'cronograma' => $cronograma, 'msgerr' => $msgerr ));
