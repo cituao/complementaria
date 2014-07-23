@@ -330,7 +330,7 @@ class DefaultController extends Controller
 		$f->setDate($ano,$mes,$dia);
 
 			
-		$r = array("fecha" => $fecha, "nombre" => 'nose');
+		$r = array("fecha" => $fecha, "nombre" => 'SATISFACTORIO!');
 		$serializer = new Serializer(array(new GetSetMethodNormalizer()), array('json' => new 
 			JsonEncoder()));
 		$json = $serializer->serialize($r, 'json');
