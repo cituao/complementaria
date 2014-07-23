@@ -187,7 +187,6 @@ class DefaultController extends Controller
 		$estudiante = $repository->findOneBy(array('id' => $id));
 	
 		$cronograma = null;
-		
 		$cronograma = $estudiante->getActividades();
 		
 		if ( $cronograma->count()  == 0 ) {
@@ -196,9 +195,30 @@ class DefaultController extends Controller
 			$msgerr = array('descripcion'=>'','id'=>'1');
 		}
 		
-		return $this->render('IngenieriaProfesorBundle:Default:cronograma.html.twig', array('cronograma' => $cronograma, 'msgerr' => $msgerr ));
-		
-		
+		return $this->render('IngenieriaProfesorBundle:Default:cronograma.html.twig', array('estudiante' => $estudiante, 'cronograma' => $cronograma, 'msgerr' => $msgerr ));
 	}
+
+	//****************************************************************
+	// Coloca true el campo de aprobado en el estudiante
+	//****************************************************************
+	public function aprobarAction($id){
+		
+		$repository = $this->getDoctrine()->getRepository('IngenieriaEstudianteBundle:Estudiante');
+		$estudiante = $repository->findOneBy(array('id' => $id));
+	
+		$em = $this->getDoctrine()->getManager();
+
+		$estudiante->setAprobadoCronograma(true);
+		$em->persist($estudiante);		
+		$em->flush();
+
+		$cronograma = null;
+		$cronograma = $estudiante->getActividades();
+
+
+		return $this->render('IngenieriaProfesorBundle:Default:cronograma.html.twig', array('estudiante' => $estudiante, 'cronograma' => $cronograma, 'msgerr' => $msgerr ));
+	}
+
+
 	
 }
