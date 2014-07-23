@@ -70,8 +70,8 @@ $(function() {
 			});
 
 			$(".eliminaa").click(function(){
-				windows.alert("Ok");
-				//fn_dar_eliminar(this);
+				alert("Delete!");
+				fn_dar_eliminar(this);
 
 			});			
 
@@ -84,17 +84,27 @@ function fn_dar_eliminar(x){
 		id = parent.find("td").eq(0).html();
 		var fechaEliminada = parent.find("td").eq(1).html();
 		respuesta = confirm("Desea eliminar el usuario: " + id);
+		var ruta = $("#aggacti").attr("data-path2");
 		if (respuesta){
+				$.ajax({url: ruta,
+					type: "POST",
+					data: { "fecha" : fechaEliminada },
+					success:function(data){
+							alert(data);
+							$(x).parents("tr").fadeOut("normal", function(){
+								$(x).remove();
+								//alert("Usuario " + id + " eliminado")
+									        /*
+									            aqui puedes enviar un conjunto de datos por ajax
+									            $.post("eliminar.php", {ide_usu: id})
+									            */
+							}) //parents
 
-			$(x).parents("tr").fadeOut("normal", function(){
-				$(x).remove();
-				//alert("Usuario " + id + " eliminado")
-                            /*
-                                aqui puedes enviar un conjunto de datos por ajax
-                                $.post("eliminar.php", {ide_usu: id})
-                                */
-                            })
-		}
+
+						}}); //ajax			
+
+
+		} //respuesta
 
 	};
 

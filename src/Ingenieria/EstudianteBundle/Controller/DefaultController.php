@@ -302,6 +302,42 @@ class DefaultController extends Controller
 		}
 	}	
 
+	/**********************************************************************/
+	// Registra una actividad en el cronograma el paso de datos es por ajax
+	/**********************************************************************/		
+	public function eliminaractividadAction(){
+		//buscamos el estudiante
+		
+		$user = $this->get('security.context')->getToken()->getUser();
+    	$codigo =  $user->getUsername();
+    	$repository = $this->getDoctrine()->getRepository('IngenieriaEstudianteBundle:Estudiante');
+    	$estudiante = $repository->findOneBy(array('codigo' => $codigo));
+		
+		$request = $this->getRequest();
+		$fecha = $request->request->get('fecha');
+		
+		$em = $this->getDoctrine()->getManager();
+		
+			
+		 //convertimos la fecha de matricula a un objeto Date				
+		$separa = explode("/",$fecha);
+		$dia = $separa[0];
+		$mes = $separa[1];
+		$ano = $separa[2];
 
+				
+		$f = new \DateTime();
+		$f->setDate($ano,$mes,$dia);
+
+			
+		$r = array("fecha" => $fecha, "nombre" => 'nose');
+		$serializer = new Serializer(array(new GetSetMethodNormalizer()), array('json' => new 
+			JsonEncoder()));
+		$json = $serializer->serialize($r, 'json');
+		
+			
+		return new Response($json);
+		//return $this->redirect($this->generateUrl('cituao_coord_practicantes'));
+	}	
 
 }

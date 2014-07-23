@@ -26,7 +26,7 @@ $( "#cronograma h3" ).css("opacity","0.4");
 			<h1 class ="sectionTitle">Mi cronograma</h1>
 
 			{% if estudiante.aprobadoCronograma == false %}
-				<div id="aggacti" style="width: 700px;height: 40px; float: right; padding: 5px;" data-path = "{{ path('ingenieria_estudiante_agregaractividad') }}">
+				<div id="aggacti" style="width: 700px;height: 40px; float: right; padding: 5px;" data-path = "{{ path('ingenieria_estudiante_agregaractividad') }}" data-path2 = "{{ path('ingenieria_estudiante_eliminaractividad') }}">
 					<form style="width:100%; top:21px; opacity:1;">
 					<div style="position:relative; float:right;">
 						<input style="padding-left:38px;"  class="button" value="listo" id="btnsubir" name="listo"  type="button">
