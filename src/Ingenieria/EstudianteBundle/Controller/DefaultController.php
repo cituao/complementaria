@@ -65,6 +65,9 @@ class DefaultController extends Controller
 		}	
 	}
 
+	//***************************************************
+	// Mostrar el cronograma del estudiantes
+	//***************************************************
 	public function cronogramaAction(){
 	 	$user = $this->get('security.context')->getToken()->getUser();
     	$codigo =  $user->getUsername();
@@ -202,9 +205,9 @@ class DefaultController extends Controller
 		return $this->render('IngenieriaEstudianteBundle:Default:confirmacion.html.twig');
 	}
 
-	/********************************************************/
-	// Registra una actividad
-	/********************************************************/		
+	/**********************************************************************/
+	// Registra una actividad en el cronograma el paso de datos es por ajax
+	/**********************************************************************/		
 	public function agregaractividadAction(){
 		//buscamos el estudiante
 		$user = $this->get('security.context')->getToken()->getUser();
@@ -253,4 +256,52 @@ class DefaultController extends Controller
 		return new Response($json);
 		//return $this->redirect($this->generateUrl('cituao_coord_practicantes'));
 	}	
+	
+	//***********************************************+
+	// Mostrar informacion de la actividad matriculada
+	//************************************************	
+	public function actividadMatriculadaAction(){
+		//buscamos el estudiante
+		$user = $this->get('security.context')->getToken()->getUser();
+    	$codigo =  $user->getUsername();
+    	$repository = $this->getDoctrine()->getRepository('IngenieriaEstudianteBundle:Estudiante');
+    	$estudiante = $repository->findOneBy(array('codigo' => $codigo));
+
+		$actividad = $estudiante->getActividad();
+
+		if ($estudiante->getActividad() == null){
+			$nohaycupo = 0;
+			//obtenemos las actividad complementarias con cupos
+			$repository = $this->getDoctrine()->getRepository('IngenieriaProfesorBundle:Actividad');
+			$query = $repository->createQueryBuilder('a')
+					->where('a.numeroCupos > :nohaycupo')
+					->setParameter('nohaycupo', $nohaycupo)
+					->getQuery();
+					
+			//->setParameter('id_programa', $programa->getId())
+			$listaActividades = $query->getResult();
+
+			if (!$listaActividades) {
+				$msgerr = array('descripcion'=>'No hay actividades registradas!','id'=>'1');
+			}else{
+				$msgerr = array('descripcion'=>'','id'=>'0');
+			}
+			/*
+					//buscamos el programa
+			$user = $this->get('security.context')->getToken()->getUser();
+			$coordinador =  $user->getUsername();
+			$repository = $this->getDoctrine()->getRepository('CituaoUsuarioBundle:Programa');
+			$programa = $repository->findOneByCoordinador($coordinador);
+			*/
+			
+			return $this->render('IngenieriaEstudianteBundle:Default:avisonoinscripto.html.twig');
+		}
+		else{
+
+			return $this->render('IngenieriaEstudianteBundle:Default:infoactividad.html.twig', array('actividad' => $actividad));
+		}
+	}	
+
+
+
 }

@@ -1,0 +1,75 @@
+{% extends 'IngenieriaEstudianteBundle::layout.html.twig' %}
+
+{% block programa %}
+Aplicación WEB : [Estudiante]
+{% endblock %}
+
+{% block js  %}
+$( "#actividad" ).css("background-color","#000");
+$( "#actividad img" ).css("opacity","0.4");
+$( "#actividad h3" ).css("opacity","0.4");
+{% endblock %}
+
+{% block content  %}
+{{ parent() }}
+<div class="content">
+	{% block upSection  %}
+	<div class = "upSection">
+		<h1 class="sectionTitle">Actividad complementaria</h1>
+		<a href="javascript:history.back()" class = "button"><img src="{{ asset('img/regresar.png') }}"/><h4>Regresar</h4></a>
+		
+	</div>
+	{% endblock  %}
+
+	{% block downSection  %}
+	<div class = "downSection"> 
+		<div class="profileContainer">
+			
+			<div class="profileFormContainer" style="height:580px;">
+			<form action="" method="post">
+				<div class="inputContainer">
+					<h2>Actividad</h2>
+					<div class="input nomodificable">
+					<input type="text" value = "{{ actividad.nombre }}" readonly class = "largo">
+					</div>
+				</div>
+
+				<div class="inputContainer">	
+					<h2>Categoría</h2>
+					<div class="input nomodificable">
+					<input type="text" value = "{{ actividad.categoria }}" readonly>
+					</div>
+				</div>
+
+				<div class="inputContainer">
+					<h2>Descripción</h2>
+					<div class="input nomodificable">
+					<textarea style="border:none !important; font-family:helvetica; margin-top:15px;" cols="40" rows="10" readonly>{{ actividad.descripcion }}</textarea>
+					</div>
+				</div>
+
+
+				<div class="inputContainer">	
+					<h2>Profesor</h2>
+					<div class="input nomodificable">
+					<input type="text" value	 = "{{ actividad.profesor.getNombreCompleto }}" readonly>
+					</div>
+				</div>
+				<!--
+				<div class="inputContainer">	
+					<h2>Recurso digital</h2>
+					<div class="input nomodificable">
+					<a href = "http://{{ actividad.url }}" target="_blank">{{ actividad.url }}</a>
+					</div>
+				</div>
+				-->
+
+			</form>
+			
+			</div><!--profileFormContainer -->	
+		</div><!--profileContainer -->	
+	</div><!--donwsection -->
+
+	{% endblock %}
+</div><!-- content -->
+{% endblock %}

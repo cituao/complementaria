@@ -25,3 +25,9 @@ ingenieria_estudiante_confirmar:
 ingenieria_estudiante_agregaractividad:
     path:     /estudiante/agregaractividad
     defaults: { _controller: IngenieriaEstudianteBundle:Default:agregaractividad }
+
+ingenieria_estudiante_actividadmatriculada:
+    path:     /estudiante/actividad-informacion
+    defaults: { _controller: IngenieriaEstudianteBundle:Default:actividadMatriculada }
+
+
