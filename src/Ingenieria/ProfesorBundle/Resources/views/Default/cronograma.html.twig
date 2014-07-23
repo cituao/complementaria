@@ -64,8 +64,8 @@ $( "#estudiantes h3" ).css("opacity","0.4");
 					<tr class="tableItem">
 						<td id="hoverDiv">
 							<td><h2>{{ id }}</h2></td>
-							<td style=" width:60%"><span style="margin-left:5px; ">{{ actividad.nombre_actividad }}</span></td>
-							<td style=" width:15%"><span>{{ actividad.fecha_entrega }}</span></td>
+							<td style=" width:60%"><span style="margin-left:5px; ">{{ actividad.nombreActividad }}</span></td>
+							<td style=" width:15%"><span>{{ actividad.fechaEntrega|date("d/m/Y") }}</span></td>
 							<td style=" width:15%"><span>{{ actividad.estado }}</span></td>
 							<td></td>
 						</td> <!-- hoverDiv -->

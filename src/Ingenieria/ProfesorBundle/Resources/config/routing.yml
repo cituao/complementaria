@@ -23,5 +23,5 @@ ingenieria_profesor_actividad:
     defaults: { _controller: IngenieriaProfesorBundle:Default:actividad }
 
 ingenieria_profesor_cronograma:
-    pattern:  /profesor/cronograma/{ci}
+    pattern:  /profesor/cronograma/{id}
     defaults: { _controller: IngenieriaProfesorBundle:Default:cronograma }

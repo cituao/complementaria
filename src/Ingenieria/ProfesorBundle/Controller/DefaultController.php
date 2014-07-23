@@ -182,9 +182,9 @@ class DefaultController extends Controller
 	//Muestra el cronograma de actividades de un estudiante
 	//*****************************************************************
 	
-	public function cronogramaAction($ci){
+	public function cronogramaAction($id){
 		$repository = $this->getDoctrine()->getRepository('IngenieriaEstudianteBundle:Estudiante');
-		$estudiante = $repository->findOneBy(array('ci' => $ci));
+		$estudiante = $repository->findOneBy(array('id' => $id));
 	
 		$cronograma = null;
 		
