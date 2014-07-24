@@ -19,7 +19,7 @@ class Categoria
      */
     private $nombre;
 
-
+	protected $actividades;
     /**
      * Get id
      *
@@ -51,5 +51,45 @@ class Categoria
     public function getNombre()
     {
         return $this->nombre;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->actividades = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add actividades
+     *
+     * @param \Ingenieria\ProfesorBundle\Entity\Actividad $actividades
+     * @return Categoria
+     */
+    public function addActividade(\Ingenieria\ProfesorBundle\Entity\Actividad $actividades)
+    {
+        $this->actividades[] = $actividades;
+
+        return $this;
+    }
+
+    /**
+     * Remove actividades
+     *
+     * @param \Ingenieria\ProfesorBundle\Entity\Actividad $actividades
+     */
+    public function removeActividade(\Ingenieria\ProfesorBundle\Entity\Actividad $actividades)
+    {
+        $this->actividades->removeElement($actividades);
+    }
+
+    /**
+     * Get actividades
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getActividades()
+    {
+        return $this->actividades;
     }
 }

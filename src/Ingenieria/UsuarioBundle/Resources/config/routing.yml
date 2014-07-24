@@ -52,6 +52,10 @@ usuario_profesores:
     path:     /administrador/profesores
     defaults: { _controller: IngenieriaUsuarioBundle:Default:profesores }
 
+usuario_registrar_profesor:
+    pattern:  /administrador/registrar-profesor
+    defaults: { _controller: IngenieriaUsuarioBundle:Default:registrarProfesor }
+    
 usuario_actualizar_profesor:
     pattern:  /administrador/actualizar-profesor/id={id}
     defaults: { _controller: IngenieriaUsuarioBundle:Default:profesor }

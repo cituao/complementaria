@@ -100,7 +100,7 @@ class DefaultController extends Controller
 		//$listaActividades = $repository->findAll();
 		
 		$listaActividades =  $profesor->getActividades();
-		if ( $listaActividades == null) {
+		if ( $listaActividades->count() == 0) {
 			$msgerr = array('descripcion'=>'No hay actividades registradas!','id'=>'1');
 		}else{
 			$msgerr = array('descripcion'=>'','id'=>'0');

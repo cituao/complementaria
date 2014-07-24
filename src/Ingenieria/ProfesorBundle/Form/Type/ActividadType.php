@@ -12,15 +12,10 @@ class ActividadType extends AbstractType
     {
         $builder
 		->add('nombre','text', array('label' => 'Nombre:' , 'required' => true))	    
-		->add('descripcion','text', array('label' => 'Descripción:' , 'required' => true))
+		->add('descripcion','textarea', array('label' => 'Descripción:' , 'required' => true , 'attr' => array('cols' => '50', 'rows' => '5')))
 		->add('url','text', array('required' => false, 'label' => 'Recurso digital:'))
-		->add('categoria', 'choice', array(
-				'choices' => array('1' => 'Organización de eventos académicos', '2' => 'Talleres prácticos', '3' => 'Aplicaciones de TICs', '4' => 'Cursar y aprobar un MOOC', '5' => 'Apoyo a la gestión'),
-				'required' => true,))
-        ->add('numeroCupos','integer', array('label' => 'Número de cupos:' , 'required' => true));
-        
-		
-		
+		->add('categoria','entity', array('required' => true, 'class' => 'IngenieriaUsuarioBundle:Categoria' , 'property'=>'nombre', 'label' => 'Categoría:'))
+		->add('numeroCupos','integer', array('label' => 'Número de cupos:' , 'required' => true));
 		}
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)

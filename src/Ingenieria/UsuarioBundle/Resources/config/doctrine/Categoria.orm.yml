@@ -12,3 +12,8 @@ Ingenieria\UsuarioBundle\Entity\Categoria:
             type: string
             length: '100'
     lifecycleCallbacks: {  }
+    
+    oneToMany:
+        actividades:
+            targetEntity: Ingenieria\ProfesorBundle\Entity\Actividad
+            mappedBy: categoria

@@ -20,8 +20,6 @@ Ingenieria\ProfesorBundle\Entity\Actividad:
             type: string
             length: '50'
             nullable: true
-        categoria:
-            type: integer
         numeroCupos:
             type: integer
             column: numero_cupos
@@ -31,6 +29,12 @@ Ingenieria\ProfesorBundle\Entity\Actividad:
             inversedBy: actividades
             joinColumn:
                 name: profesor
+                referencedColumnName: id
+        categoria:
+            targetEntity: Ingenieria\UsuarioBundle\Entity\Categoria
+            inversedBy: actividades
+            joinColumn:
+                name: categoria
                 referencedColumnName: id
     oneToMany:
         estudiantes:
