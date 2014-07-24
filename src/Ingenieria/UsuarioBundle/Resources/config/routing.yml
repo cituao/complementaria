@@ -68,3 +68,10 @@ usuario_matricula:
     path:     /administrador/matricula-de-la-actividad/id={id}
     defaults: { _controller: IngenieriaUsuarioBundle:Default:matricula }
 
+usuario_categorias:
+    path:     /administrador/categorias
+    defaults: { _controller: IngenieriaUsuarioBundle:Default:categorias }
+
+usuario_registrar_categoria:
+    pattern:  /administrador/registrar-cateogria
+    defaults: { _controller: IngenieriaUsuarioBundle:Default:registrarCategoria }

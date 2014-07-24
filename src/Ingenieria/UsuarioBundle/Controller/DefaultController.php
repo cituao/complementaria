@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Security\Core\SecurityContext;
 use Ingenieria\UsuarioBundle\Entity\Director;
 use Ingenieria\UsuarioBundle\Entity\Usuario;
+use Ingenieria\UsuarioBundle\Entity\Categoria;
 use Ingenieria\UsuarioBundle\Entity\Document;
 use Ingenieria\UsuarioBundle\Form\Type\DirectorType;
 use Ingenieria\UsuarioBundle\Form\Type\ProfesorType;
@@ -453,4 +454,21 @@ class DefaultController extends Controller
 			
 			
 	}
+	
+		//******************************************************
+	// Muestra todas las categorias
+	//******************************************************
+	public function categoriasAction(){
+		$repository = $this->getDoctrine()->getRepository('IngenieriaUsuarioBundle:Categoria');
+		$categorias = $repository->findAll();
+		
+		if (!$categorias) {
+			//throw $this->createNotFoundException('ERR_NO_HAY_PROGRAMA');
+			$msgerr = array('id'=>1, 'descripcion' => 'No hay categorias registradas en el sistema');
+		}else{
+			$msgerr = array('id'=>0, 'descripcion' => 'Ok');
+		}
+		return $this->render('IngenieriaUsuarioBundle:Default:categorias.html.twig',  array('listaActividades' => $categorias, 'msgerr' => $msgerr));
+	}
+	
 }
