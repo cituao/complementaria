@@ -75,3 +75,7 @@ usuario_categorias:
 usuario_registrar_categoria:
     pattern:  /administrador/registrar-cateogria
     defaults: { _controller: IngenieriaUsuarioBundle:Default:registrarCategoria }
+
+usuario_actualizar_categoria:
+    pattern:  /administrador/actualizar-categoria/id={id}
+    defaults: { _controller: IngenieriaUsuarioBundle:Default:categoria }

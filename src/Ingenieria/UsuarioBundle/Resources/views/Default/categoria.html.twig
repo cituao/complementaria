@@ -1,0 +1,49 @@
+{% extends 'IngenieriaUsuarioBundle::layout.html.twig' %}
+
+{% block programa %}
+Appweb - Admin
+{% endblock %}
+
+{% block js  %}
+{% endblock %}
+
+
+{% block content  %}
+	{{ parent() }}
+	<div class="content">
+		{% block upSection  %}
+		<div class = "upSection">
+			<h1 class ="sectionTitle">Datos categoría</h1>
+			<a href="javascript:history.back()" class = "button"><img src="{{ asset('img/regresar.png') }}"/><h4>Regresar</h4></a>
+		</div>
+		{% endblock  %}
+
+		{% block downSection  %}
+		<div class="downSection">
+
+			<div class="profileContainer">
+			<form  style="height:580px;" action="{{ path('usuario_registrar_categoria') }}" method="post" {{ form_enctype(formulario) }}>
+				<div>	{{ form_errors(formulario) }}	</div>
+
+				<div class="profileFormContainer" style="height:600px;">	
+			    <div class="inputContainer"> 
+					<h2>{{ form_label(formulario.nombre) }}</h2>
+					{{ form_errors(formulario.nombre) }}
+					{{ form_widget(formulario.nombre, {'attr': {'class':'mediano'}} ) }}
+				</div>
+
+				{{ form_rest(formulario) }}
+					 <div class="inputContainer" style="margin-top:80px; margin-left:-10px; width:auto !important">
+				<div style="position:relative; float:right">
+					<img style="position:absolute; left:15px; float:left; pointer-events:none;" src="{{ asset('img/guardar.png') }}" />
+					<input class="button" style="padding-left:38px"  type="submit" value="Guardar cambios" />
+					  </div>
+				</div>
+			  
+			</form>	
+		</div><!-- profileFormContainer -->
+		</div><!-- profileContainer -->
+		</div><!-- downSection -->
+		{% endblock  %}
+	</div><!-- content -->
+{% endblock %}

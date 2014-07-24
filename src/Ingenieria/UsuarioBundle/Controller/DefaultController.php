@@ -497,6 +497,30 @@ class DefaultController extends Controller
 		return $this->render('IngenieriaUsuarioBundle:Default:registrarcategoria.html.twig', array(
 			'formulario' => $formulario->createView()
 			));		
-
 	}	
+	
+	
+		/********************************************************/
+	//Muestra y modifica una  categoria en la base de datos
+	/********************************************************/		
+	public function categoriaAction($id){
+		$peticion = $this->getRequest();
+		$repository = $this->getDoctrine()->getRepository('IngenieriaUsuarioBundle:Categoria');
+		$categoria = $repository->findOneBy(array('id' => $id));
+		
+        $formulario = $this->createForm(new CategoriaType(), $categoria);
+		$formulario->handleRequest($peticion);
+
+        if ($formulario->isValid()) {
+			$repository = $this->getDoctrine()->getRepository('IngenieriaUsuarioBundle:Categoria');
+		
+			$em->persist($categoria);
+            $em->flush();
+            
+            return $this->redirect($this->generateUrl('usuario_categorias'));
+        }
+		
+        return $this->render('IngenieriaUsuarioBundle:Default:categoria.html.twig', array('formulario' => $formulario->createView(), 'categoria' => $categoria ));
+	}	
+	
 }
