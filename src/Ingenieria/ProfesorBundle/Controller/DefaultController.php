@@ -139,7 +139,7 @@ class DefaultController extends Controller
 			$em->persist($actividad);
 
 			$em->flush();
-			return $this->redirect($this->generateUrl('ingenieria_profesor_homepage'));
+			return $this->redirect($this->generateUrl('ingenieria_profesor_actividades'));
 		}
 
 		return $this->render('IngenieriaProfesorBundle:Default:registraractividades.html.twig', array(
