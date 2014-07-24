@@ -12,7 +12,7 @@ class ActividadType extends AbstractType
     {
         $builder
 		->add('nombre','text', array('label' => 'Nombre:' , 'required' => true))	    
-		->add('descripcion','textarea', array('label' => 'Descripción:' , 'required' => true , 'attr' => array('cols' => '50', 'rows' => '5')))
+		->add('descripcion','textarea', array('label' => 'Descripción:' , 'required' => true , 'attr' => array('cols' => '60', 'rows' => '7')))
 		->add('url','text', array('required' => false, 'label' => 'Recurso digital:'))
 		->add('categoria','entity', array('required' => true, 'class' => 'IngenieriaUsuarioBundle:Categoria' , 'property'=>'nombre', 'label' => 'Categoría:'))
 		->add('numeroCupos','integer', array('label' => 'Número de cupos:' , 'required' => true));

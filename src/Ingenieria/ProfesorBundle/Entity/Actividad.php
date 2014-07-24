@@ -4,6 +4,7 @@ namespace Ingenieria\ProfesorBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Actividad
@@ -15,13 +16,13 @@ class Actividad
      */
     private $id;
 
-    /**
-     * @var string
+     /**
+ 	 * @Assert\NotBlank(message="Es obligatorio!")
      */
     private $nombre;
 
-    /**
-     * @var string
+     /**
+ 	 * @Assert\NotBlank(message="Es obligatorio!")
      */
     private $descripcion;
 
@@ -35,8 +36,9 @@ class Actividad
      */
     private $imagen;
 
-    /**
-     * @var integer
+     /**
+	 * @Assert\NotBlank(message="Es obligatorio!")
+	 * @Assert\Regex(pattern="/^\d+$/", match=true, message="Dato inválido!")
      */
     private $numeroCupos;
 

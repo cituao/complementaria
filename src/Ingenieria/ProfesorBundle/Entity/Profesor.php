@@ -3,6 +3,7 @@
 namespace Ingenieria\ProfesorBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Profesor
@@ -14,28 +15,39 @@ class Profesor
      */
     private $id;
 
-    /**
-     * @var string
+     /**
+ 	 * @Assert\NotBlank(message="Es obligatorio!")
+	 * @Assert\Regex(pattern="/\d/", match=false, message="Nombre inválido!")
      */
     private $nombres;
 
-    /**
-     * @var string
+     /**
+ 	 * @Assert\NotBlank(message="Es obligatorio!")
+	 * @Assert\Regex(pattern="/\d/", match=false, message="Apellido inválido!")
      */
     private $apellidos;
 
-    /**
-     * @var string
+     /**
+	 * @Assert\NotBlank(message="Es obligatorio!")
+	 * @Assert\Regex(pattern="/^\d+$/", match=true, message="Cédula inválida!")
      */
     private $ci;
 
-    /**
-     * @var string
+	/**
+	 * @Assert\NotBlank(message="Es obligatorio!")
+     * @Assert\Email(
+     *     message = "The email '{{ value }}' is not a valid email.",
+     *     checkMX = true
+     * )
      */
     private $email;
 
-    /**
-     * @var string
+	/**
+	 * @Assert\NotBlank(message="Es obligatorio!")
+     * @Assert\Email(
+     *     message = "The email '{{ value }}' is not a valid email.",
+     *     checkMX = true
+     * )
      */
     private $emailInstitucional;
 

@@ -16,6 +16,7 @@ Ingenieria\ProfesorBundle\Entity\Actividad:
         url:
             type: string
             length: '250'
+            nullable: true
         imagen:
             type: string
             length: '50'
