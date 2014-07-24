@@ -249,7 +249,7 @@ class DefaultController extends Controller
 				}
 
 				$listaEstudiantes[$i] =  array("codigo"=> $sql[0], "apellidos"=>$sql[1], "nombres"=>$sql[2], "ci" => $sql[3], 	
-					 "emailInstitucional" => $sql[4] );
+					 "emailInstitucional" => $sql[4], "email" => $sql[5] );
 				$i++;
 				$nohay = false;
 			}
@@ -300,6 +300,7 @@ class DefaultController extends Controller
 					$estudiante->setNombres($listaEstudiantes[$i]['nombres']);
 					$estudiante->setApellidos($listaEstudiantes[$i]['apellidos']);
 					$estudiante->setEmailInstitucional($listaEstudiantes[$i]['emailInstitucional']);
+					$estudiante->setEmail($listaEstudiantes[$i]['email']);
 					$estudiante->setCi($listaEstudiantes[$i]['ci']);
 					$estudiante->setAprobadoCronograma(false);
 					//$practicante->setPrograma($programa);
