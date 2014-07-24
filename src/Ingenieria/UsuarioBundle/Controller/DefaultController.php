@@ -10,6 +10,7 @@ use Ingenieria\UsuarioBundle\Entity\Categoria;
 use Ingenieria\UsuarioBundle\Entity\Document;
 use Ingenieria\UsuarioBundle\Form\Type\DirectorType;
 use Ingenieria\UsuarioBundle\Form\Type\ProfesorType;
+use Ingenieria\UsuarioBundle\Form\Type\CategoriaType;
 use Ingenieria\ProfesorBundle\Entity\Profesor;
 use Ingenieria\EstudianteBundle\Entity\Estudiante;
 use Symfony\Component\HttpFoundation\Request;
@@ -471,4 +472,31 @@ class DefaultController extends Controller
 		return $this->render('IngenieriaUsuarioBundle:Default:categorias.html.twig',  array('listaActividades' => $categorias, 'msgerr' => $msgerr));
 	}
 	
+	
+		/********************************************************/
+	// Registra y modifica una categoria
+	/********************************************************/		
+	public function registrarCategoriaAction(){
+
+		$peticion = $this->getRequest();
+		$em = $this->getDoctrine()->getManager();
+
+		$categoria = new Categoria();
+
+		$formulario = $this->createForm(new CategoriaType(), $categoria);
+		$formulario->handleRequest($peticion);
+
+		if ($formulario->isValid()) {
+		   // Completar las propiedades que el usuario no rellena en el formulario
+
+			$em->persist($categoria);
+			$em->flush();
+			return $this->redirect($this->generateUrl('usuario_categorias'));
+		}
+
+		return $this->render('IngenieriaUsuarioBundle:Default:registrarcategoria.html.twig', array(
+			'formulario' => $formulario->createView()
+			));		
+
+	}	
 }
