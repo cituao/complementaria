@@ -1,5 +1,9 @@
 {% extends 'IngenieriaUsuarioBundle::layout.html.twig' %}
 
+{% block programa %}
+Aplicación WEB - [Administrador]
+{% endblock %}
+
 {% block js  %}
 <script>
 $( "#estudiantes" ).css("background-color","#000");
@@ -15,8 +19,9 @@ $( "#estudiantes h3" ).css("opacity","0.4");
 			<div class = "upSection">
 			<h1 class ="sectionTitle">Estudiantes matriculados</h2>
 			<a id="anadirEstudiantes" class = "button"><img src="{{ asset('img/anadirPracticantes.png') }}"/><h4>Subir estudiantes</h4></a>
+			<!--
 			<a id="nuevoEstudiante" href="{{ path('usuario_registrar_estudiante') }}" class = "button"><img src="{{ asset('img/academicosBoton.png') }}"/><h4>Nuevo estudiante</h4></a>
-
+			-->
 			<form name="anadirP" action= {{ path('usuario_subirestudiantes') }} method="post" {{ form_enctype(form) }}>
 				<div style="position:relative; float:right"><input style="padding-left:38px;" class="button" type="button" value="Cancelar" id="cancelar" name="cancelar" /><img style="position:absolute; top:0px; left:13px; pointer-events:none" src="{{ asset('img/cancelar.png') }}"/></div>
 				<div style="position:relative; float:right"><input style="padding-left:38px;" class="button" type="submit" value="Listo" id="listo" name="listo" /><img style="position:absolute; top:0px; left:13px; pointer-events:none" src="{{ asset('img/listo.png') }}"/></div>

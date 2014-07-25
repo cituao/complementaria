@@ -1,7 +1,7 @@
 {% extends 'IngenieriaEstudianteBundle::layout.html.twig' %}
 
 {% block programa %}
-AppWeb - Estudiante
+Aplicación WEB  [Estudiante]
 {% endblock %}
 
 {% block js  %}
@@ -110,7 +110,10 @@ $( "#cronograma h3" ).css("opacity","0.4");
 			<td  class = "colFecha">{{ a.fechaEntrega|date("d/m/Y") }}</td>
 
 			{% if estudiante.aprobadoCronograma == false %}
+
 			<td><a  class="eliminaa"><img src="/complementaria/web/img/delete.png"/></a></td>
+
+				
 			{% else %}
 			{% if a.fechaEntrega > date() %}
 			<td class = "colEstado">Aun no es fecha!</td>

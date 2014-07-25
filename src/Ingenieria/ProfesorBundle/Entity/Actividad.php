@@ -4,6 +4,7 @@ namespace Ingenieria\ProfesorBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Actividad
@@ -15,13 +16,13 @@ class Actividad
      */
     private $id;
 
-    /**
-     * @var string
+     /**
+ 	 * @Assert\NotBlank(message="Es obligatorio!")
      */
     private $nombre;
 
-    /**
-     * @var string
+     /**
+ 	 * @Assert\NotBlank(message="Es obligatorio!")
      */
     private $descripcion;
 
@@ -35,13 +36,9 @@ class Actividad
      */
     private $imagen;
 
-    /**
-     * @var integer
-     */
-    private $categoria;
-
-    /**
-     * @var integer
+     /**
+	 * @Assert\NotBlank(message="Es obligatorio!")
+	 * @Assert\Regex(pattern="/^\d+$/", match=true, message="Dato inválido!")
      */
     private $numeroCupos;
 
@@ -50,7 +47,9 @@ class Actividad
 	protected $profesor;
 
 	protected $estudiantes;
-		
+
+	protected $categoria;
+	
     public function setFile(UploadedFile $file = null)
     {
         $this->file = $file;
@@ -166,29 +165,6 @@ class Actividad
     public function getImagen()
     {
         return $this->imagen;
-    }
-
-    /**
-     * Set categoria
-     *
-     * @param integer $categoria
-     * @return Actividad
-     */
-    public function setCategoria($categoria)
-    {
-        $this->categoria = $categoria;
-
-        return $this;
-    }
-
-    /**
-     * Get categoria
-     *
-     * @return integer 
-     */
-    public function getCategoria()
-    {
-        return $this->categoria;
     }
 
     /**
@@ -331,5 +307,28 @@ class Actividad
     public function getEstudiantes()
     {
         return $this->estudiantes;
+    }
+
+    /**
+     * Set categoria
+     *
+     * @param \Ingenieria\UsuarioBundle\Entity\Categoria $categoria
+     * @return Actividad
+     */
+    public function setCategoria(\Ingenieria\UsuarioBundle\Entity\Categoria $categoria = null)
+    {
+        $this->categoria = $categoria;
+
+        return $this;
+    }
+
+    /**
+     * Get categoria
+     *
+     * @return \Ingenieria\UsuarioBundle\Entity\Categoria 
+     */
+    public function getCategoria()
+    {
+        return $this->categoria;
     }
 }

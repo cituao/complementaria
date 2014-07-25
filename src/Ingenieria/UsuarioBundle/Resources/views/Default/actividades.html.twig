@@ -31,15 +31,9 @@ $( "#actividades h3" ).css("opacity","0.4");
 			<table class = "generalTableHead">
 				<tbody>
 					<tr class="tableHead">
-						<th style=" width:15%"></th> 
-						<th style=" width:12%"></th> 
-						<th></th> 
-						<th style=" width:10%"><img src="{{ asset('img/idLabel.png') }}"/></th> 
-						<th style=" width:25%"></th> 
-						<th><img src="{{ asset('img/mailLabel.png') }}"/></th>
-						
+						<th style=" width:45%"></th> 
 						<th></th>
-						<th></th>
+						<th style="width:5%; color: white;"># Cupos</th>
 						
 					</tr> <!--tablehead -->
 				</tbody>
@@ -55,10 +49,10 @@ $( "#actividades h3" ).css("opacity","0.4");
 					{% for actividad in listaActividades %}
 					<tr class="tableItem">
 						<td id="hoverDiv">
-							<td style=" width:5%"><h2>{{ id }}</h2></td>
-							<td style=" width:40%"><span style="margin-left:30px; ">{{ actividad.nombre }}</span></td>
-							<td style=" width:20%"><span style="margin-left:30px; ">{{ actividad.profesor.nombres }}</span></td>							
-							<td style=" width:20%"><span style="margin-left:30px; ">{{ actividad.profesor.apellidos }}</span></td>								
+							<td style=" width:1%"><h2>{{ id }}</h2></td>
+							<td style=" width:60%"><span style="margin-left:30px; ">{{ actividad.nombre }}</span></td>
+							<td style=" width:15%"><span style="margin-left:30px; ">{{ actividad.profesor.nombres }}</span></td>							
+							<td style=" width:15%"><span style="margin-left:30px; ">{{ actividad.profesor.apellidos }}</span></td>								
 
 							<td>
 								<table class="opciones" style="right:129px">

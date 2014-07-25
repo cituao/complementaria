@@ -100,7 +100,7 @@ class DefaultController extends Controller
 		//$listaActividades = $repository->findAll();
 		
 		$listaActividades =  $profesor->getActividades();
-		if ( $listaActividades == null) {
+		if ( $listaActividades->count() == 0) {
 			$msgerr = array('descripcion'=>'No hay actividades registradas!','id'=>'1');
 		}else{
 			$msgerr = array('descripcion'=>'','id'=>'0');
@@ -139,7 +139,7 @@ class DefaultController extends Controller
 			$em->persist($actividad);
 
 			$em->flush();
-			return $this->redirect($this->generateUrl('ingenieria_profesor_homepage'));
+			return $this->redirect($this->generateUrl('ingenieria_profesor_actividades'));
 		}
 
 		return $this->render('IngenieriaProfesorBundle:Default:registraractividades.html.twig', array(
@@ -190,9 +190,9 @@ class DefaultController extends Controller
 		$cronograma = $estudiante->getActividades();
 		
 		if ( $cronograma->count()  == 0 ) {
-			$msgerr = array('descripcion'=>'¡No ha subido el cronograma de actividades!','id'=>'0');
+			$msgerr = array('descripcion'=>'¡No ha subido el cronograma de actividades!','id'=>'1');
 		}else{
-			$msgerr = array('descripcion'=>'','id'=>'1');
+			$msgerr = array('descripcion'=>'','id'=>'0');
 		}
 		
 		return $this->render('IngenieriaProfesorBundle:Default:cronograma.html.twig', array('estudiante' => $estudiante, 'cronograma' => $cronograma, 'msgerr' => $msgerr ));
@@ -216,9 +216,9 @@ class DefaultController extends Controller
 		$cronograma = $estudiante->getActividades();
 
 		if ( $cronograma->count()  == 0 ) {
-			$msgerr = array('descripcion'=>'¡No ha subido el cronograma de actividades!','id'=>'0');
+			$msgerr = array('descripcion'=>'¡No ha subido el cronograma de actividades!','id'=>'1');
 		}else{
-			$msgerr = array('descripcion'=>'','id'=>'1');
+			$msgerr = array('descripcion'=>'','id'=>'0');
 		}
 		
 		return $this->render('IngenieriaProfesorBundle:Default:cronograma.html.twig', array('estudiante' => $estudiante, 'cronograma' => $cronograma, 'msgerr' => $msgerr ));

@@ -52,6 +52,10 @@ usuario_profesores:
     path:     /administrador/profesores
     defaults: { _controller: IngenieriaUsuarioBundle:Default:profesores }
 
+usuario_registrar_profesor:
+    pattern:  /administrador/registrar-profesor
+    defaults: { _controller: IngenieriaUsuarioBundle:Default:registrarProfesor }
+    
 usuario_actualizar_profesor:
     pattern:  /administrador/actualizar-profesor/id={id}
     defaults: { _controller: IngenieriaUsuarioBundle:Default:profesor }
@@ -68,3 +72,14 @@ usuario_matricula:
     path:     /administrador/matricula-de-la-actividad/id={id}
     defaults: { _controller: IngenieriaUsuarioBundle:Default:matricula }
 
+usuario_categorias:
+    path:     /administrador/categorias
+    defaults: { _controller: IngenieriaUsuarioBundle:Default:categorias }
+
+usuario_registrar_categoria:
+    pattern:  /administrador/registrar-cateogria
+    defaults: { _controller: IngenieriaUsuarioBundle:Default:registrarCategoria }
+
+usuario_actualizar_categoria:
+    pattern:  /administrador/actualizar-categoria/id={id}
+    defaults: { _controller: IngenieriaUsuarioBundle:Default:categoria }

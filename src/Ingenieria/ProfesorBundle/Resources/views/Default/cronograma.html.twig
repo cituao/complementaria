@@ -1,17 +1,12 @@
 {% extends 'IngenieriaProfesorBundle::layout.html.twig' %}
 
 {% block programa %}
-App web - Profesor
+App WEB  [Profesor]
 {% endblock %}
 
 {% block js  %}
-<script>
-$( "#estudiantes" ).css("background-color","#000");
-$( "#estudiantes img" ).css("opacity","0.4");
-$( "#estudiantes h3" ).css("opacity","0.4");
-</script>
-
 {% endblock %}
+
 {% block javascripts %}
 	<meta charset="utf-8">
 	 <title>jQuery UI Datepicker - Default functionality</title>
@@ -31,10 +26,12 @@ $( "#estudiantes h3" ).css("opacity","0.4");
 				<h1 class ="sectionTitle">Cronograma del estudiante</h1>
 				<a href="javascript:history.back()" class = "button"><img src="{{ asset('img/regresar.png') }}"/><h4>Regresar</h4></a>
 
+
 				<a href="" class = "button"><img src="{{ asset('img/aprobarCronogramaProfe.png') }}"/><h4>Aprobar Cronograma</h4></a>
 				<a href="" class = "button"><img src="{{ asset('img/rechazarCronogramaProfe.png') }}"/><h4>Rechazar Cronograma</h4></a>
 
-				{% if estudiante.aprobadoCronograma == false %}
+				{% if (estudiante.aprobadoCronograma == false) and (msgerr.id == '1') %}
+
 				<a href="{{ path('ingenieria_profesor_aprobarcronograma' , { 'id': estudiante.id}) }}" class = "button"><img src="{{ asset('img/listo.png') }}"/><h4>Aprobar</h4></a>
 				{% endif %}
 		</div>
@@ -43,7 +40,7 @@ $( "#estudiantes h3" ).css("opacity","0.4");
 		{% block downSection  %}
 		
 		<div class = "downSection"> 
-		{% if msgerr.id == '0' %}
+		{% if msgerr.id == '1' %}
 			<div id = "error">¡El estudiante no ha subido el cronograma de actividades!</div>		
 			<a href="javascript:history.back()" class = "button"><img src="{{ asset('img/regresar.png') }}"/><h4>Enviar email</h4></a>
 		{% else %}
@@ -51,11 +48,9 @@ $( "#estudiantes h3" ).css("opacity","0.4");
 				<tbody>
 					<tr class="tableHead">
 						<th style=" width:15%"></th> 
-						<th style=" width:12%"></th> 
-						<th></th> 
-						<th style=" width:10%"><img src="{{ asset('img/idLabel.png') }}"/></th> 
-						<th style=" width:25%"></th> 
-						<th><img src="{{ asset('img/mailLabel.png') }}"/></th>
+						<th style=" width:10%"><h2>Actividad</h2></th> 
+						<th style=" width:40%"></th> 
+						<th><h2>Fecha de entrega</h2></th>
 						<th></th>
 						<th></th>
 					</tr> <!--tablehead -->

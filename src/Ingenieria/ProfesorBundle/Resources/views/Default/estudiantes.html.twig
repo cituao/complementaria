@@ -1,7 +1,7 @@
 {% extends 'IngenieriaProfesorBundle::layout.html.twig' %}
 
 {% block programa %}
-Aplicación WEB - [Profesor]
+App WEB  [Profesor]
 {% endblock %}
 
 {% block js  %}
@@ -10,10 +10,7 @@ $( "#estudiantes" ).css("background-color","#000");
 $( "#estudiantes img" ).css("opacity","0.4");
 $( "#estudiantes h3" ).css("opacity","0.4");
 </script>
-
 {% endblock %}
-
-
 
 {% block content  %}
 {{ parent() }}
@@ -27,27 +24,22 @@ $( "#estudiantes h3" ).css("opacity","0.4");
 				<h4>Morosos</h4>
 			</a>
 			
+
 		</div>
 		{% endblock  %}
 
 		{% block downSection  %}
 		<div class = "downSection">
-
 		{% if msgerr.id == '1' %}
 			<div id = "error">{{ msgerr.descripcion }}</div>		
 		{% else %}
-			
 			<table class = "generalTableHead">
 				<tbody>
 					<tr class="tableHead">
-						<th style=" width:15%"></th> 
-						<th style=" width:12%"></th> 
-						<th></th> 
+						<th style=" width:30%"></th> 
 						<th style=" width:10%"><img src="{{ asset('img/idLabel.png') }}"/></th> 
-						<th style=" width:25%"></th> 
+						<th style=" width:30%"></th> 
 						<th><img src="{{ asset('img/mailLabel.png') }}"/></th>
-						<th></th>
-						<th></th>
 					</tr> <!--tablehead -->
 				</tbody>
 			</table><!-- practicantes tableHead -->
@@ -62,17 +54,14 @@ $( "#estudiantes h3" ).css("opacity","0.4");
 					<tr class="tableItem">
 						<td id="hoverDiv">
 							<td><h2>{{ id }}</h2></td>
-							<td style=" width:15%"><span style="margin-left:20px; ">{{ estudiante.nombres }}</span></td>
-							<td style=" width:12%"><span>{{ estudiante.apellidos }}</span></td>
+							<td><span style="margin-left:5px; ">{{ estudiante.nombres }}</span></td>
+							<td><span>{{ estudiante.apellidos }}</span></td>
 							<td style=" width:3%"></td>
-							<td style=" width:8%"><span>{{ estudiante.ci }}</span></td>
-							<td style=" width:8%"><span>{{ estudiante.codigo }}</span></td>
-							<td></td>
+							<td>{{ estudiante.codigo }}</td>							
+							<td>{{ estudiante.ci }}</td>
+							<td>{{ estudiante.emailInstitucional }} </td>
+							<td>{{ estudiante.email }} </td>
 							<td style=" width:1%"></td>
-							<td style=" width:8%"><span>{{ estudiante.emailInstitucional }}</span></td>
-							<td style=" width:8%"></td>
-							<td style=" width:8%"><span>{{ estudiante.email }}</span></td>
-							<td style=" width:25%"></td>
 							<td>
 								<table class="opciones" style="right:129px">
 									<td style="width: 120px;"><a href="{{ path('ingenieria_profesor_cronograma' , { 'id': estudiante.id}) }}"><img src="{{ asset('img/cronograma.png') }}" ><h3> Cronograma </h3></a>

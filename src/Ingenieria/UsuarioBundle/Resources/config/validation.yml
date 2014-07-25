@@ -7,3 +7,34 @@ Ingenieria\UsuarioBundle\Entity\Document:
                 mimeTypes: [text/plain]
                 mimeTypesMessage: Por favor suba un CSV válido
                 uploadErrorMessage: El archivo no puede ser cargado!
+
+Ingenieria\ProfesorBundle\Entity\Profesor:
+ properties:
+ codigo:
+ - NotBlank: ~
+ - Type:
+ type: integer
+ message: El valor no es un codigo valido
+ ci:
+ - NotBlank: ~
+ - Type:
+ type: integer
+ message: El valor no es una cédula válida 
+ apellidos:
+ - NotBlank: ~
+ - Type:
+ type: string
+ message: El valor no es un apellido válido
+ nombres:
+ - NotBlank: ~
+ - Type:
+ type: string
+ message: El valor no es un nombre válido
+ emailInstitucional:
+ - Email:
+ message: El valor no es un correo válido
+ checkMX: true
+ email:
+ - Email:
+ message: El valor no es un correo válido
+ checkMX: true

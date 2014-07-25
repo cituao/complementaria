@@ -13,16 +13,17 @@
 
 
 {% block sideBarMenu %}
-		<div id="menu">	
-			<a href="{{ path('ingenieria_estudiante_cronograma') }}" class="menubutton"  id="cronograma">
-				<img id="externoIcon" src="{{ asset('img/cronograma.png') }}">
-				<h3>Cronograma</h3>
-			</a>
-		<a href="{{ path('ingenieria_estudiante_actividadmatriculada') }}" class="menubutton"  id="actividad">
-				<img id="externoIcon" src="{{ asset('img/actividad.png') }}">
-				<h3>Actividad</h3>
-			</a>
-		</div>
+<div id="menu">	
+	<a href="{{ path('ingenieria_estudiante_cronograma') }}" class="menubutton"  id="cronograma">
+		<img id="externoIcon" src="{{ asset('img/cronograma.png') }}">
+		<h3>Cronograma</h3>
+	</a>
+
+	<a href="{{ path('ingenieria_estudiante_actividadmatriculada') }}" class="menubutton"  id="actividad">
+		<img id="externoIcon" src="{{ asset('img/actividad.png') }}">
+		<h3>Actividad</h3>
+	</a>
+</div>
 {% endblock  %}
 
 {% block upSection %} 

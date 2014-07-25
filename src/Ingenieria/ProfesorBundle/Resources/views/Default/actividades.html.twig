@@ -1,7 +1,7 @@
 {% extends 'IngenieriaProfesorBundle::layout.html.twig' %}
 
 {% block programa %}
-Aplicación WEB - [Profesor]
+App WEB  [Profesor]
 {% endblock %}
 
 {% block js  %}
@@ -12,8 +12,6 @@ $( "#actividades h3" ).css("opacity","0.4");
 </script>
 
 {% endblock %}
-
-
 
 {% block content  %}
 {{ parent() }}
@@ -31,7 +29,6 @@ $( "#actividades h3" ).css("opacity","0.4");
 		{% if msgerr.id == '1' %}
 			<div id = "error">{{ msgerr.descripcion }}</div>		
 		{% else %}
-			
 			<table class = "generalTableHead">
 				<tbody>
 					<tr class="tableHead">
@@ -39,12 +36,10 @@ $( "#actividades h3" ).css("opacity","0.4");
 						<th style=" width:12%"></th> 
 						<th></th> 
 						<th style=" width:10%"><!--<img src="{{ asset('img/idLabel.png') }}"/>--></th> 
-						<th style=" width:25%"></th> 
+						<th style=" width:40%"></th> 
 						<th><!--<img src="{{ asset('img/mailLabel.png') }}"/>--></th>
-						
 						<th></th>
-						<th></th>
-						
+						<th><h2># Cupos</h2></th>
 					</tr> <!--tablehead -->
 				</tbody>
 			</table><!-- practicantes tableHead -->
@@ -59,14 +54,10 @@ $( "#actividades h3" ).css("opacity","0.4");
 					{% for actividad in listaActividades %}
 					<tr class="tableItem">
 						<td id="hoverDiv">
-						
-							<td><h2>{{ id }}</h2></td>
-							
-							<td style=" width:40%"><span style="margin-left:30px; ">{{ actividad.nombre }}</span></td>
+							<td style= "width:100px;"><h2>{{ id }}</h2></td>
+							<td style=" width:60%"><span style="margin-left:30px; ">{{ actividad.nombre }}</span></td>
 							<td style=" width:8%"><span>{{ actividad.numeroCupos }}</span></td>
-							<td style=" width:50%"></td>
 							<td></td>
-
 							<td>
 								<table class="opciones" style="right:129px">
 									<td>
@@ -74,9 +65,7 @@ $( "#actividades h3" ).css("opacity","0.4");
 									</td>
 								</table>
 							</td>
-
 						</td> <!-- hoverDiv -->
-
 					</tr>
 					{% set id = id + 1 %}
 					<tr class="spacer"></tr>
