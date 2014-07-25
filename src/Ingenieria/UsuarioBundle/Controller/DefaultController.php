@@ -485,7 +485,7 @@ class DefaultController extends Controller
 		}
 		
 	
-		return $this->render('IngenieriaDirectorBundle:Default:matricula.html.twig',  array('listaEstudiantes' => $estudiantes, 'msgerr' => $msgerr));
+		return $this->render('IngenieriaUsuarioBundle:Default:matricula.html.twig',  array('listaEstudiantes' => $estudiantes, 'msgerr' => $msgerr));
 	}	
 	
 	//******************************************************************
