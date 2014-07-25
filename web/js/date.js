@@ -20,6 +20,16 @@ $.datepicker.setDefaults($.datepicker.regional['es']);
 $(function() {
 
 	$(document).ready(function(){
+		function validate(a){
+			//if it's NOT valid
+			if(a.length < 4){
+				return false;
+			}
+			//if it's valid
+			else{
+				return true;
+			}
+		}
 
 		$("#cronograma_fechaIniciacion").datepicker({
 			dateFormat: "dd-mm-yy",
@@ -38,12 +48,15 @@ $(function() {
 				actividad = $("#input_actividad").val();
 				fecha = $("#cronograma_fechaIniciacion").val();
 				var ruta = $("#aggacti").attr("data-path");
+				alert(fecha);			
+				if (!validate(actividad)) return false;
+				if (!validate(fecha)) return false;
 
 				$.ajax({url: ruta,
 					type: "POST",
 					data: { "fecha" : fecha , "nombre" : actividad },
 					success:function(data){
-						alert(data);
+							alert(data);
 							//console.log(data);
 							$("#input_actividad").val("");
 							$("#cronograma_fechaIniciacion").val("");
@@ -90,7 +103,7 @@ function fn_dar_eliminar(x){
 					type: "POST",
 					data: { "fecha" : fechaEliminada },
 					success:function(data){
-							alert(data);
+							//alert(data);
 							$(x).parents("tr").fadeOut("normal", function(){
 								$(x).remove();
 								//alert("Usuario " + id + " eliminado")
