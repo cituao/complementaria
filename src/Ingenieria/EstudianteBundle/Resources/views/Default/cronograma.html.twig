@@ -6,14 +6,14 @@ Aplicación WEB  [Estudiante]
 
 {% block js  %}
 <script>
-$( "#cronograma" ).css("background-color","#000");
-$( "#cronograma img" ).css("opacity","0.4");
-$( "#cronograma h3" ).css("opacity","0.4");
-</script>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
-<script src="//code.jquery.com/jquery-1.9.1.js"></script>
-<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-<script src="{{ asset('js/date.js') }}"></script>
+	$( "#cronograma" ).css("background-color","#000");
+	$( "#cronograma img" ).css("opacity","0.4");
+	$( "#cronograma h3" ).css("opacity","0.4");
+	</script>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+	<script src="//code.jquery.com/jquery-1.9.1.js"></script>
+	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+	<script src="{{ asset('js/date.js') }}"></script>
 {% endblock %}
 
 
@@ -24,75 +24,45 @@ $( "#cronograma h3" ).css("opacity","0.4");
 	{% block upSection  %}
 	<div class = "upSection" style="height:60px;">
 		<h1 class ="sectionTitle">Mi cronograma</h1>
-		{% set sw = '2'  %}
-		{% if sw == '0' %}
-		<div id="aggacti" style="width: 700px;height: 40px; float: right; padding: 5px; right:15%" data-path = "{{ path('ingenieria_estudiante_agregaractividad') }}" data-path2 = "{{ path('ingenieria_estudiante_eliminaractividad') }}">
-			<form style="width:100%; top:21px; opacity:1;">
-				<div style="position:relative; float:right;">
-					<input style="padding-left:38px;"  class="button" value="listo" id="btnsubir" name="listo"  type="button">
-					<img style="pointer-events:none; position:absolute; top:0; left:13px;" src="/complementaria/web/img/listo.png"/>
-				</input>
-
+		{% set rechazado = '0'  %}
+		{% set aprobado = '0'  %}
+		{% if aprobado == false %}
+			<div id="aggacti" style="width: 700px;height: 40px; float: left; padding: 5px; right:15%" data-path = "{{ path('ingenieria_estudiante_agregaractividad') }}" data-path2 = "{{ path('ingenieria_estudiante_eliminaractividad') }}">
+				<form style="width:80%; top:21px; opacity:1;">
+					{% if rechazado == true %}
+						<div style="width: 165px;height: 40px; float: right; padding: 1px;font-size: 24px; color:#f14440">
+						<img  src="/complementaria/web/img/cronogramaRechazado.png"/>Rechazado				
+						</div>
+					{% else %}
+						<div style="width: 250px;height: 40px; float: right; padding: 1px;font-size: 24px; color:#ba8234">
+							<img  src="/complementaria/web/img/cronogramaEspera.png"/>En espera				
+						</div>
+					{% endif %}
+				
+					<div style="position:relative; float:right;">
+						<input style="padding-left:38px;"  class="button" value="Enviar Cronograma" id="btnenviar" name="enviarCronograma"  type="button">
+						<img style="pointer-events:none; position:absolute; top:-3px; left:13px;" src="/complementaria/web/img/enviarCronograma.png"/>
+						</input>
+					</div>
+					<div style="position:relative; float:right;">
+						<input style="padding-left:38px;"  class="button" value="listo" id="btnsubir" name="listo"  type="button">
+						<img style="pointer-events:none; position:absolute; top:0; left:13px;" src="/complementaria/web/img/listo.png"/>
+						</input>
+					</div>
+					<input style=" float:right" type="text" name="fecha" id="cronograma_fechaIniciacion">
+					<h2 style="margin-top:8px; margin-right: 15px; color:#000; float:right">Fecha de entrega:</h2> 
+					<input style="margin-right:10px; float:right" type="text" name="actividad" id="input_actividad">
+					<h2 style=" margin-top:8px; margin-right: 15px; color:#000; float:right">Actividad:</h2> 
+				</form>
+			</div> <!-- aggacti -->
+		{% else %}
+			<div style="width: 250px;height: 40px; float: right; padding: 1px;font-size: 24px; color:#8ba035">
+			<img  src="/complementaria/web/img/cronogramaAprobado.png"/>Aprobado				
 			</div>
-			<div style="position:relative; float:right;">
-				<input style="padding-left:38px;"  class="button" value="Enviar Cronograma" id="btnenviar" name="enviarCronograma"  type="button">
-				<img style="pointer-events:none; position:absolute; top:-3px; left:13px;" src="/complementaria/web/img/enviarCronograma.png"/>
-			</input>
-		</div>
-
-		<input style=" float:right" type="text" name="fecha" id="cronograma_fechaIniciacion">
-		<h2 style="margin-top:8px; margin-right: 15px; color:#000; float:right">Fecha de entrega:</h2> 
-
-		<input style="margin-right:10px; float:right" type="text" name="actividad" id="input_actividad">
-		<h2 style=" margin-top:8px; margin-right: 15px; color:#000; float:right">Actividad:</h2> 
-
-	</form>
-
-</div>
-{% endif %}
-{% if sw == '1' %}
-<div style="width: 250px;height: 40px; float: right; padding: 1px;font-size: 24px; color:#ba8234">
-	<img  src="/complementaria/web/img/cronogramaEspera.png"/>En espera				
-</div>
-{% endif %}
-
-{% if sw == '2' %}
-
-<div style="width: 165px;height: 40px; float: right; padding: 1px;font-size: 24px; color:#f14440">
-	<img  src="/complementaria/web/img/cronogramaRechazado.png"/>Rechazado				
-</div>
-<div id="aggacti" style="width: 700px;height: 40px; float: right; padding: 5px;" data-path = "{{ path('ingenieria_estudiante_agregaractividad') }}" data-path2 = "{{ path('ingenieria_estudiante_eliminaractividad') }}">
-	<form style="width:100%; top:28px; opacity:1; right:15%">
-		<div style="position:relative; float:right;">
-			<input style="padding-left:38px;"  class="button" value="listo" id="btnsubir" name="listo"  type="button">
-			<img style="pointer-events:none; position:absolute; top:0; left:13px;" src="/complementaria/web/img/listo.png"/>
-		</input>
-	</div>
-
-		<div style="position:relative; float:right;">
-				<input style="padding-left:38px;"  class="button" value="Enviar Cronograma" id="btnenviar" name="enviarCronograma"  type="button">
-				<img style="pointer-events:none; position:absolute; top:-3px; left:13px;" src="/complementaria/web/img/enviarCronograma.png"/>
-			</input>
-		</div>
-
-	<input style=" float:right" type="text" name="fecha" id="cronograma_fechaIniciacion">
-	<h2 style="margin-top:8px; margin-right: 15px; color:#000; float:right">Fecha de entrega:</h2> 
-
-	<input style="margin-right:10px; float:right" type="text" name="actividad" id="input_actividad">
-	<h2 style=" margin-top:8px; margin-right: 15px; color:#000; float:right">Actividad:</h2> 
-
-</form>
-
-</div>
-{% endif %}
-
-{% if sw == '3' %}
-<div style="width: 250px;height: 40px; float: right; padding: 1px;font-size: 24px; color:#8ba035">
-	<img  src="/complementaria/web/img/cronogramaAprobado.png"/>Aprobado				
-</div>
-{% endif %}
-</div>
-{% endblock  %}
+		{% endif %}
+	
+	</div> <!-- up section -->
+	{% endblock  %}
 
 {% block downSection  %}
 <div class = "downSection"> 
@@ -101,29 +71,24 @@ $( "#cronograma h3" ).css("opacity","0.4");
 			<th>Actividad</th>
 			<th>Fecha de entrega</th>
 			<th>Acción</th>
-
 		</tr>
 		<tr style="height:8px;"></tr>
 		{% for a in cronograma %}
 		<tr>
 			<td  class = "colActividad">{{ a.nombreActividad }}</td>
 			<td  class = "colFecha">{{ a.fechaEntrega|date("d/m/Y") }}</td>
-
 			{% if estudiante.aprobadoCronograma == false %}
-
-			<td><a  class="eliminaa"><img src="/complementaria/web/img/delete.png"/></a></td>
-
-				
+				<td><a  class="eliminaa"><img src="/complementaria/web/img/delete.png"/></a></td>
 			{% else %}
-			{% if a.fechaEntrega > date() %}
-			<td class = "colEstado">Aun no es fecha!</td>
-			{% else %}
-			{% if a.estado == false %}
-			<td  class = "colEstado">Sin entregar!</td>
-			{% else %}
-			<td class = "colEstado">Entregada</td>
-			{% endif %}
-			{% endif %}
+				{% if a.fechaEntrega > date() %}
+					<td class = "colEstado">Aun no es fecha!</td>
+				{% else %}
+					{% if a.estado == false %}
+					<td  class = "colEstado">Sin entregar!</td>
+					{% else %}
+					<td class = "colEstado">Entregada</td>
+					{% endif %}
+				{% endif %}
 			{% endif %}
 		</tr>
 		{% endfor %}
