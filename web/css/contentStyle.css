@@ -554,7 +554,7 @@
   color: #242021;
   margin-left: 30px;
 }
-/* line 522, psass/sass/contentStyle.scss */
+/* line 521, psass/sass/contentStyle.scss */
 .inform textarea {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
@@ -637,4 +637,9 @@
   font-weight: bold;
   color: #fff;
   line-height: 130%;
+}
+
+/* line 599, psass/sass/contentStyle.scss */
+#cronograma_fechaIniciacion {
+  width: 80px;
 }

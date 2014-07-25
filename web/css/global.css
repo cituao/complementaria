@@ -1062,3 +1062,8 @@ input[type="text"]:focus, #academico_perfil:focus, #centro_direccion:focus, inpu
   color: #fff;
   line-height: 130%;
 }
+
+/* line 599, psass/sass/contentStyle.scss */
+#cronograma_fechaIniciacion {
+  width: 80px;
+}

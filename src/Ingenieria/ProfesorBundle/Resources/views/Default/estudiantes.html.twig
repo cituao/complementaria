@@ -21,6 +21,11 @@ $( "#estudiantes h3" ).css("opacity","0.4");
 		{% block upSection  %}
 		<div class = "upSection">
 			<h1 class ="sectionTitle">Estudiantes</h1>
+
+			<a href="" class="button">
+				<img src="/complementaria/web/img/reloj.png">
+				<h4>Morosos</h4>
+			</a>
 			
 		</div>
 		{% endblock  %}
@@ -70,7 +75,7 @@ $( "#estudiantes h3" ).css("opacity","0.4");
 							<td style=" width:25%"></td>
 							<td>
 								<table class="opciones" style="right:129px">
-									<td style="width: 120px;"><a href="{{ path('ingenieria_profesor_cronograma' , { 'id': estudiante.id}) }}"><img src="{{ asset('img/ver.png') }}" ><h3> Cronograma </h3></a>
+									<td style="width: 120px;"><a href="{{ path('ingenieria_profesor_cronograma' , { 'id': estudiante.id}) }}"><img src="{{ asset('img/cronograma.png') }}" ><h3> Cronograma </h3></a>
 									</td>
 								</table>
 							</td>
