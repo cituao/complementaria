@@ -22,7 +22,7 @@ security:
             memory:
                 users:
                     user:  { password: userpass, roles: [ 'ROLE_USER' ] }
-                    AdmUAO: { password: 5a1a939fa30f7b5358e2ff9b0aa62585c5aa61a1, roles: [ 'ROLE_ADMIN' ] }
+                    AdmUAO: { password: ef4f5cd341ad8b17d2be9166347033e46400ce0b, roles: [ 'ROLE_ADMIN' ] }
         usuarios:
             entity: { class: Ingenieria\UsuarioBundle\Entity\Usuario, property: username }
 
