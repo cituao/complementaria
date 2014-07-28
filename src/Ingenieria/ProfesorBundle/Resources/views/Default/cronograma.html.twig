@@ -6,9 +6,9 @@ App WEB  [Profesor]
 
 {% block js  %}
 <script>
-$( "#actividades" ).css("background-color","#000");
-$( "#actividades img" ).css("opacity","0.4");
-$( "#actividades h3" ).css("opacity","0.4");
+$( "#estudiantes" ).css("background-color","#000");
+$( "#estudiantes img" ).css("opacity","0.4");
+$( "#estudiantes h3" ).css("opacity","0.4");
 </script>
 
 {% endblock %}
@@ -46,8 +46,10 @@ $( "#actividades h3" ).css("opacity","0.4");
 		
 		<div class = "downSection"> 
 		{% if msgerr.id == '1' %}
-			<div id = "error">¡El estudiante no ha subido el cronograma de actividades!</div>		
-			<a href="javascript:history.back()" class = "button"><img style="top:12px;"  src="{{ asset('img/enviarCorreo.png') }}"/><h4>Enviar email</h4></a>
+			<div id = "error"><h2>¡El estudiante no ha subido el cronograma de actividades!</h2>
+				<a href="javascript:history.back()" class = "button"><img style="display:inline; top:12px;"  src="{{ asset('img/enviarCorreo.png') }}"/><h4>Enviar email</h4></a>
+			</div>		
+			
 		{% else %}
 			<table class = "generalTableHead">
 				<tbody>

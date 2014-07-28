@@ -422,6 +422,28 @@ input[type="text"]:focus, #academico_perfil:focus, #centro_direccion:focus, inpu
   border: #af0000 solid 1px;
 }
 
+/* line 338, psass/sass/global.scss */
+#error {
+  font-family: helvetica;
+  color: #dddddd;
+  font-size: 30px;
+  width: 100%;
+  text-align: center;
+  margin-top: 7%;
+}
+/* line 345, psass/sass/global.scss */
+#error h2 {
+  color: #dddddd;
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+/* line 350, psass/sass/global.scss */
+#error img {
+  display: block;
+  margin: 0 auto;
+  margin: 0 auto;
+}
+
 /* Welcome to Compass.
  * In this file you should write your main styles. (or centralize your imports)
  * Import this file using the following HTML or equivalent:

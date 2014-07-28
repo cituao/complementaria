@@ -335,5 +335,24 @@
  		border: #af0000 solid 1px;
  	}
 
+ 	#error{
+ 		font-family: helvetica;
+ 		color:#dddddd;
+ 		font-size: 30px;
+ 		width: 100%;
+ 		text-align: center;
+ 		margin-top:7%;
+ 		h2{
+ 			color:#dddddd;
+ 			font-size: 30px;
+ 			margin-bottom: 10px;
+ 		}
+ 		img{
+ 			display: block;
+ 			margin:0 auto;
+ 			margin: 0 auto;
+ 		}
+
+ 	}
 
  	@import "contentStyle";

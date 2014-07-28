@@ -26,10 +26,11 @@ $( "#actividad h3" ).css("opacity","0.4");*/
 		{% block downSection  %}
 		<div class = "downSection">
 			
-			<h2 style = "color: black">
-				Estimado estudiante le informamos que aun no ha seleccionado una actividad complementaria. Para ver las 
-				<a href="{{ path('ingenieria_estudiante_actividades') }}"  class = "button"><h4>ofertas disponibles!</h4></a>
-			</h2>
+			<div id="error">
+				<h2>Aun no ha seleccionado una actividad complementaria</h2>
+				<a href="{{ path('ingenieria_estudiante_actividades') }}"  class = "button"><h4>Ver ofertas disponibles!</h4></a>
+			</div>
+			
 		</div><!-- downSection -->
 		{% endblock %}
 </div>
