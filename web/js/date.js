@@ -48,7 +48,7 @@ $(function() {
 				actividad = $("#input_actividad").val();
 				fecha = $("#cronograma_fechaIniciacion").val();
 				var ruta = $("#aggacti").attr("data-path");
-				alert(fecha);			
+				//alert(fecha);			
 				if (!validate(actividad)) return false;
 				if (!validate(fecha)) return false;
 
@@ -56,7 +56,7 @@ $(function() {
 					type: "POST",
 					data: { "fecha" : fecha , "nombre" : actividad },
 					success:function(data){
-							alert(data);
+							//alert(data);
 							//console.log(data);
 							$("#input_actividad").val("");
 							$("#cronograma_fechaIniciacion").val("");
@@ -83,7 +83,7 @@ $(function() {
 			});
 
 			$(".eliminaa").click(function(){
-				alert("Delete!");
+				//alert("Delete!");
 				fn_dar_eliminar(this);
 
 			});			
@@ -96,7 +96,7 @@ function fn_dar_eliminar(x){
 		var parent = $(x).parents("tr");
 		id = parent.find("td").eq(0).html();
 		var fechaEliminada = parent.find("td").eq(1).html();
-		respuesta = confirm("Desea eliminar el usuario: " + id);
+		respuesta = confirm("¿Eliminar la actividad con fecha de " + fechaEliminada);
 		var ruta = $("#aggacti").attr("data-path2");
 		if (respuesta){
 				$.ajax({url: ruta,

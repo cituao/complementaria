@@ -26,24 +26,34 @@ Aplicación WEB  [Estudiante]
 		<h1 class ="sectionTitle">Mi cronograma</h1>
 		{% set rechazado = '0'  %}
 		{% set aprobado = '0'  %}
-		{% if aprobado == false %}
+		{% if estudiante.aprobadoCronograma == false %}
 			<div id="aggacti" style="width: 700px;height: 40px; float: left; padding: 5px; right:15%" data-path = "{{ path('ingenieria_estudiante_agregaractividad') }}" data-path2 = "{{ path('ingenieria_estudiante_eliminaractividad') }}">
 				<form style="width:80%; top:21px; opacity:1;">
-					{% if rechazado == true %}
+					{% if estudiante.rechazadoCronograma == true %}
 						<div style="width: 165px;height: 40px; float: right; padding: 1px;font-size: 24px; color:#f14440">
 						<img  src="/complementaria/web/img/cronogramaRechazado.png"/>Rechazado				
 						</div>
-					{% else %}
-						<div style="width: 250px;height: 40px; float: right; padding: 1px;font-size: 24px; color:#ba8234">
-							<img  src="/complementaria/web/img/cronogramaEspera.png"/>En espera				
+						<div style="position:relative; float:right;">
+							<input style="padding-left:38px;"  class="button" value="Enviar Cronograma" id="btnenviar" name="enviarCronograma"  type="button">
+							<img style="pointer-events:none; position:absolute; top:-3px; left:13px;" src="/complementaria/web/img/enviarCronograma.png"/>
+							</input>
 						</div>
-					{% endif %}
+					{% else %}
 				
-					<div style="position:relative; float:right;">
-						<input style="padding-left:38px;"  class="button" value="Enviar Cronograma" id="btnenviar" name="enviarCronograma"  type="button">
-						<img style="pointer-events:none; position:absolute; top:-3px; left:13px;" src="/complementaria/web/img/enviarCronograma.png"/>
-						</input>
-					</div>
+						{% if cronograma.count > 0 %}
+							<div style="width: 140px;height: 40px; float: right; padding: 1px;font-size: 24px; color:#ba8234">
+								<img  src="/complementaria/web/img/cronogramaEspera.png"/>En espera				
+							</div>
+
+							<div style="position:relative; float:right;">
+								<input style="padding-left:38px;"  class="button" value="Enviar Cronograma" id="btnenviar" name="enviarCronograma"  type="button">
+								<img style="pointer-events:none; position:absolute; top:-3px; left:13px;" src="/complementaria/web/img/enviarCronograma.png"/>
+								</input>
+							</div>
+					
+						{% endif %}
+					{% endif %}
+
 					<div style="position:relative; float:right;">
 						<input style="padding-left:38px;"  class="button" value="listo" id="btnsubir" name="listo"  type="button">
 						<img style="pointer-events:none; position:absolute; top:0; left:13px;" src="/complementaria/web/img/listo.png"/>
@@ -93,9 +103,11 @@ Aplicación WEB  [Estudiante]
 		</tr>
 		{% endfor %}
 	</table>
-	{% if msgerr.id == '1' %}
+
+	{% if cronograma.count == 0 %}
 	<div id = "error">{{ msgerr.descripcion }}</div>	
 	{% endif %}
+	
 
 </div>	<!-- down section -->
 {% endblock  %}
