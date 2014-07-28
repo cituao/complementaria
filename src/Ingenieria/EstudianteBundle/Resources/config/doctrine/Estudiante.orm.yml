@@ -32,6 +32,10 @@ Ingenieria\EstudianteBundle\Entity\Estudiante:
             type: boolean
             nullable: true
             column: aprobado_cronograma
+        rechazadoCronograma:
+            type: boolean
+            nullable: true
+            column: rechazado_cronograma
 
     manyToOne:
         actividad:

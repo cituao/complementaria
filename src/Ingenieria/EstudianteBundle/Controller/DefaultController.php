@@ -317,30 +317,31 @@ class DefaultController extends Controller
 		
 		$em = $this->getDoctrine()->getManager();
 		
-		//$fecha = "14-07-2014";	
 		 //convertimos la fecha de matricula a un objeto Date				
-		$separa = explode("-",$fecha);
+		$separa = explode("/",$fecha);
 		$dia = $separa[0];
 		$mes = $separa[1];
 		$ano = $separa[2];
 				
+
 		$f = new \DateTime();
 		$f->setDate($ano,$mes,$dia);
-
-		//borramos el cronograma asignado al asesor academico
+	
 		$em = $this->getDoctrine()->getManager();
 		$query = $em->createQuery(
 				'DELETE IngenieriaEstudianteBundle:Cronograma c
-				WHERE c.fechaEntrega = :fecha')
-				->setParameter('fecha', $f->format('Y-m-d'));
+				WHERE c.fechaEntrega = :fecha AND c.estudiante = :id_estudiante')
+				->setParameter('fecha', $f->format('Y-m-d'))
+				->setParameter('id_estudiante', $estudiante->getId());
 		$query->execute();			
 
-		$r = array("fecha" => $fecha, "nombre" => 'SATISFACTORIO!');
+		$r = array("fecha" => $f->format('Y-m-d'), "nombre" => 'SATISFACTORIO!');
 		$serializer = new Serializer(array(new GetSetMethodNormalizer()), array('json' => new 
 			JsonEncoder()));
 		$json = $serializer->serialize($r, 'json');
-					
-		return new Response($json);
+			
+		return $this->redirect($this->generateUrl('ingenieria_estudiante_cronograma'));		
+		//return new Response($json);
 		
 	}	
 

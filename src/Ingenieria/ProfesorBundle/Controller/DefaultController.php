@@ -224,6 +224,31 @@ class DefaultController extends Controller
 		return $this->render('IngenieriaProfesorBundle:Default:cronograma.html.twig', array('estudiante' => $estudiante, 'cronograma' => $cronograma, 'msgerr' => $msgerr ));
 	}
 
+	//****************************************************************
+	// Coloca true el campo de aprobado en el estudiante
+	//****************************************************************
+	public function rechazarAction($id){
+		
+		$repository = $this->getDoctrine()->getRepository('IngenieriaEstudianteBundle:Estudiante');
+		$estudiante = $repository->findOneBy(array('id' => $id));
+	
+		$em = $this->getDoctrine()->getManager();
+
+		$estudiante->setRechazadoCronograma(true);
+		$em->persist($estudiante);		
+		$em->flush();
+
+		$cronograma = null;
+		$cronograma = $estudiante->getActividades();
+
+		if ( $cronograma->count()  == 0 ) {
+			$msgerr = array('descripcion'=>'¡No ha subido el cronograma de actividades!','id'=>'1');
+		}else{
+			$msgerr = array('descripcion'=>'','id'=>'0');
+		}
+		
+		return $this->render('IngenieriaProfesorBundle:Default:cronograma.html.twig', array('estudiante' => $estudiante, 'cronograma' => $cronograma, 'msgerr' => $msgerr ));
+	}
 
 	
 }

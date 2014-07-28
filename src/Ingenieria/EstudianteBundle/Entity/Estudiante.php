@@ -45,6 +45,11 @@ class Estudiante
     private $aprobadoCronograma;
 
     /**
+     * @var boolean
+     */
+    private $rechazadoCronograma;
+
+    /**
      * @var string
      */
     private $emailInstitucional;
@@ -285,5 +290,28 @@ class Estudiante
     public function getAprobadoCronograma()
     {
         return $this->aprobadoCronograma;
+    }
+
+    /**
+     * Set rechazadoCronograma
+     *
+     * @param boolean $rechazadoCronograma
+     * @return Estudiante
+     */
+    public function setRechazadoCronograma($rechazadoCronograma)
+    {
+        $this->rechazadoCronograma = $rechazadoCronograma;
+
+        return $this;
+    }
+
+    /**
+     * Get rechazadoCronograma
+     *
+     * @return boolean 
+     */
+    public function getRechazadoCronograma()
+    {
+        return $this->rechazadoCronograma;
     }
 }
