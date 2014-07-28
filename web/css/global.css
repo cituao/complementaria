@@ -332,7 +332,7 @@ a#cerrarButtonLink {
 /* line 263, psass/sass/global.scss */
 .downSection img {
   position: relative;
-  top: 2px;
+  top: 0px;
 }
 /* line 267, psass/sass/global.scss */
 .downSection h4 {
