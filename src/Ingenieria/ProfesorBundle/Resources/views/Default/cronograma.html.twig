@@ -5,6 +5,12 @@ App WEB  [Profesor]
 {% endblock %}
 
 {% block js  %}
+<script>
+$( "#actividades" ).css("background-color","#000");
+$( "#actividades img" ).css("opacity","0.4");
+$( "#actividades h3" ).css("opacity","0.4");
+</script>
+
 {% endblock %}
 
 {% block javascripts %}
@@ -32,7 +38,7 @@ App WEB  [Profesor]
 
 				{% if (estudiante.aprobadoCronograma == false) and (msgerr.id == '1') %}
 
-				<a href="{{ path('ingenieria_profesor_aprobarcronograma' , { 'id': estudiante.id}) }}" class = "button"><img src="{{ asset('img/listo.png') }}"/><h4>Aprobar</h4></a>
+				<!--<a href="{{ path('ingenieria_profesor_aprobarcronograma' , { 'id': estudiante.id}) }}" class = "button"><img src="{{ asset('img/listo.png') }}"/><h4>Aprobar</h4></a>-->
 				{% endif %}
 		</div>
 		{% endblock  %}
