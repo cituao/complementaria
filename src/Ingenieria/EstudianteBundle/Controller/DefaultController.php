@@ -339,8 +339,9 @@ class DefaultController extends Controller
 		$serializer = new Serializer(array(new GetSetMethodNormalizer()), array('json' => new 
 			JsonEncoder()));
 		$json = $serializer->serialize($r, 'json');
-					
-		return new Response($json);
+			
+		return $this->redirect($this->generateUrl('ingenieria_estudiante_cronograma'));		
+		//return new Response($json);
 		
 	}	
 
