@@ -14,16 +14,27 @@ AppWeb - Administrador
 	<div class="content">
 		{% block upSection  %}
 		<div class = "upSection" style="height:60px;">
-			<h1 class ="sectionTitle">Cronograma</h1>
-			<div id="estadoPracticante" style="width: 350px;height: 40px; float: left; padding: 15px;font-size: 12px;">
+			<h1 class ="sectionTitle">Cronograma del estudiante</h1>
+			<div id="aggacti" style="width: 700px;height: 40px; float: left; padding: 5px; right:15%">
 			{% if estudiante.aprobadoCronograma == false %}
-				<h2 style= "color: black;">Estado: Aun no ha sido aprobado por el profesor</h3>
+				{% if estudiante.rechazadoCronograma == true %}
+					<div style="width: 165px;height: 40px; float: right; padding: 1px;font-size: 24px; color:#f14440">
+					<img  src="/complementaria/web/img/cronogramaRechazado.png"/>Rechazado				
+					</div>
+				{% else %}
+					{% if cronograma.count > 0 %}
+						<div style="width: 140px;height: 40px; float: right; padding: 1px;font-size: 24px; color:#ba8234">
+							<img  src="/complementaria/web/img/cronogramaEspera.png"/>En espera				
+						</div>
+					{% endif %}
+				{% endif %}
 			{% else %}
-				<h2 style= "color: black;">Estado: Aprobado por el profesor</h3>
+				<div style="width: 250px;height: 40px; float: right; padding: 1px;font-size: 24px; color:#8ba035">
+				<img  src="/complementaria/web/img/cronogramaAprobado.png"/>Aprobado				
+				</div>
 			{% endif %}
-			</div>
-
-		</div>
+			</div> <!-- aggacti -->
+		</div> <!-- upsection -->
 		{% endblock  %}
 
 		{% block downSection  %}
