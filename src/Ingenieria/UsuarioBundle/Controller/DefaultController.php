@@ -69,9 +69,9 @@ class DefaultController extends Controller
         );
     }
 	
-	//******************************************************
-	// Home del administrador de la aplicacion
-	//******************************************************
+	//**************************************************************************
+	// Home del administrador de la aplicacion muestra los directores
+	//**************************************************************************
 	public function homeAdmAction(){
 	
 		$repository = $this->getDoctrine()->getRepository('IngenieriaUsuarioBundle:Director');
@@ -183,6 +183,22 @@ class DefaultController extends Controller
 		
         return $this->render('IngenieriaUsuarioBundle:Default:director.html.twig', array('formulario' => $formulario->createView(), 'director' => $director ));
 	}	
+	
+	//********************************************************/
+	//Elimina director
+	/********************************************************/		
+	public function eliminarDirectorAction($id){
+		$peticion = $this->getRequest();
+		$repository = $this->getDoctrine()->getRepository('IngenieriaUsuarioBundle:Director');
+		$director = $repository->findOneBy(array('id' => $id));
+		
+		$em= $this->getDoctrine()->getManager();
+		$em->remove($director);
+		$em->flush();
+            
+        return $this->redirect($this->generateUrl('usuario_adm_homepage'));
+	}	
+	
 	
 		//******************************************************
 	// Home del administrador de la aplicacion
