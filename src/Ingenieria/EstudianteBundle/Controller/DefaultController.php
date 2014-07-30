@@ -196,8 +196,9 @@ class DefaultController extends Controller
 		
 		$estudiante->setActividad($actividad);
 		//bajamos numero de cupos
+		$ncupos = 0;
 		$ncupos = $actividad->getNumeroCupos();
-		$ncupos = $ncupos--;
+		$ncupos = $ncupos - 1;
 		$actividad->setNumeroCupos($ncupos);
 
 		$em = $this->getDoctrine()->getManager();
