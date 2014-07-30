@@ -13,9 +13,12 @@ use \DateTime;
 
 class DefaultController extends Controller
 {
+	//******************************************************************************************
+	//
+	//******************************************************************************************
     public function indexAction()
     {
-		 	$user = $this->get('security.context')->getToken()->getUser();
+		 $user = $this->get('security.context')->getToken()->getUser();
     	$codigo =  $user->getUsername();
     	$repository = $this->getDoctrine()->getRepository('IngenieriaEstudianteBundle:Estudiante');
     	$estudiante = $repository->findOneBy(array('codigo' => $codigo));
