@@ -13,9 +13,11 @@ use \DateTime;
 
 class DefaultController extends Controller
 {
-	//******************************************************************************************
-	//
-	//******************************************************************************************
+	//******************************************************************************************************
+	//Al iniciar sesion el estudiante debe mostrarse las ofertas o el cornograma de actividades 
+	//SI EL PROCESO DE INSCRIPCION SE CIERRA COMENTAR LAS VISTA avisonoinscripto.html
+	//y descomentar la vista inscripcion cerradas
+	//******************************************************************************************************
     public function indexAction()
     {
 		 $user = $this->get('security.context')->getToken()->getUser();
@@ -51,7 +53,10 @@ class DefaultController extends Controller
 			$programa = $repository->findOneByCoordinador($coordinador);
 			*/
 			
-			return $this->render('IngenieriaEstudianteBundle:Default:avisonoinscripto.html.twig');
+			//si el proceso de inscripcion se cierra mostrar esta vista
+			return $this->render('IngenieriaEstudianteBundle:Default:inscripcioncerrada.html.twig');
+			//si el proceso de inscripcion esta en curso descomentar esta vista
+			//return $this->render('IngenieriaEstudianteBundle:Default:avisonoinscripto.html.twig');
 		}
 		else{
 			//buscar cronograma
@@ -81,6 +86,7 @@ class DefaultController extends Controller
 			throw $this->createNotFoundException('ERR_ESTUDIANTE_NO_ENCONTRADO');
 		}
 		if ($estudiante->getActividad() == null){
+			
 			$nohaycupo = 0;
 			//obtenemos las actividad complementarias con cupos
 			$repository = $this->getDoctrine()->getRepository('IngenieriaProfesorBundle:Actividad');
@@ -104,8 +110,10 @@ class DefaultController extends Controller
 			$repository = $this->getDoctrine()->getRepository('CituaoUsuarioBundle:Programa');
 			$programa = $repository->findOneByCoordinador($coordinador);
 			*/
-			
-			return $this->render('IngenieriaEstudianteBundle:Default:avisonoinscripto.html.twig');
+			//si el proceso de inscripcion se cierra mostrar esta vista
+			return $this->render('IngenieriaEstudianteBundle:Default:inscripcioncerrada.html.twig');
+			//si el proceso de inscripcion esta en curso descomentar esta vista
+			//return $this->render('IngenieriaEstudianteBundle:Default:avisonoinscripto.html.twig');
 		}
 		else{
 			//buscar cronograma

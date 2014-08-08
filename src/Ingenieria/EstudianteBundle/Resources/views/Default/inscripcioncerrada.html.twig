@@ -1,0 +1,39 @@
+{% extends 'IngenieriaEstudianteBundle::layout.html.twig' %}
+
+{% block programa %}
+Aplicación WEB  [Estudiante]
+{% endblock %}
+
+{% block js  %}
+<script>
+$( "#actividad" ).remove();
+$( "#actividad img" ).remove();
+$( "#actividad h3" ).remove();
+$( "#cronograma" ).remove();
+$( "#cronograma img" ).remove();
+$( "#cronograma h3" ).remove();
+</script>
+
+{% endblock %}
+
+{% block content  %}
+{{ parent() }}
+	<div class="content">
+		{% block upSection  %}
+		<div class = "upSection">
+			<h1 class ="sectionTitle">Aviso</h1>
+		</div>
+		{% endblock  %}
+
+		{% block downSection  %}
+		<div class = "downSection">
+			
+			<div id="error">
+				<h2>¡Estimado estudiante las incripciones están cerradas!</h2>
+			</div>
+			
+		</div><!-- downSection -->
+		{% endblock %}
+</div>
+{% endblock %}
+
