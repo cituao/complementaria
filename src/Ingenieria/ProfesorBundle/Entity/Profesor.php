@@ -51,9 +51,9 @@ class Profesor
      */
     private $emailInstitucional;
 
-	protected $actividades;
-
-    /**
+	protected $grupo;
+    
+	/**
      * Get id
      *
      * @return integer 
@@ -182,41 +182,8 @@ class Profesor
      */
     public function __construct()
     {
-        $this->actividades = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add actividades
-     *
-     * @param \Ingenieria\ProfesorBundle\Entity\Actividad $actividades
-     * @return Profesor
-     */
-    public function addActividade(\Ingenieria\ProfesorBundle\Entity\Actividad $actividades)
-    {
-        $this->actividades[] = $actividades;
-
-        return $this;
-    }
-
-    /**
-     * Remove actividades
-     *
-     * @param \Ingenieria\ProfesorBundle\Entity\Actividad $actividades
-     */
-    public function removeActividade(\Ingenieria\ProfesorBundle\Entity\Actividad $actividades)
-    {
-        $this->actividades->removeElement($actividades);
-    }
-
-    /**
-     * Get actividades
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getActividades()
-    {
-        return $this->actividades;
-    }
+ 
+	}
 
 	/**
 	 *
@@ -226,4 +193,27 @@ class Profesor
 
 		return sprintf('%s %s',$this->nombres, $this->apellidos);
 	}
+
+    /**
+     * Set grupo
+     *
+     * @param \Ingenieria\DirectorBundle\Entity\Grupo $grupo
+     * @return Profesor
+     */
+    public function setGrupo(\Ingenieria\DirectorBundle\Entity\Grupo $grupo = null)
+    {
+        $this->grupo = $grupo;
+
+        return $this;
+    }
+
+    /**
+     * Get grupo
+     *
+     * @return \Ingenieria\DirectorBundle\Entity\Grupo 
+     */
+    public function getGrupo()
+    {
+        return $this->grupo;
+    }
 }

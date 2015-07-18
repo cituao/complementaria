@@ -26,9 +26,10 @@ Ingenieria\ProfesorBundle\Entity\Profesor:
             type: string
             length: '50'
             column: email_institucional
-    oneToMany:
-        actividades:
-            targetEntity: Ingenieria\ProfesorBundle\Entity\Actividad
-            mappedBy: profesor
+
+    oneToOne:
+        grupo:
+            targetEntity: Ingenieria\DirectorBundle\Entity\Grupo
+            mappedBy: tutor
 
     lifecycleCallbacks: {  }
