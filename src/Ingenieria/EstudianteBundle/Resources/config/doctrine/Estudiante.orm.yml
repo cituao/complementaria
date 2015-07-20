@@ -48,4 +48,12 @@ Ingenieria\EstudianteBundle\Entity\Estudiante:
         actividades:
             targetEntity: Ingenieria\EstudianteBundle\Entity\Cronograma
             mappedBy: estudiante
+
+    manyToOne:
+        grupo:
+            targetEntity: Ingenieria\DirectorBundle\Entity\Grupo
+            inversedBy: estudiantes
+            joinColumn:
+                name: grupo
+                referencedColumnName: id
     lifecycleCallbacks: {  }

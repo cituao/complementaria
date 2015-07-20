@@ -216,4 +216,10 @@ class Profesor
     {
         return $this->grupo;
     }
+
+	public function __toString()
+	{
+		$nombrecompleto = $this->nombres." ".$this->apellidos;	
+		return $nombrecompleto;
+	}
 }

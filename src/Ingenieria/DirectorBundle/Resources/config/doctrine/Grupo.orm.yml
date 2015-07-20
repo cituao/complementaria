@@ -19,4 +19,9 @@ Ingenieria\DirectorBundle\Entity\Grupo:
             joinColumn:
                  name: tutor
                  referencedColumnName: id
+    oneToMany:
+        estudiantes:
+            targetEntity: Ingenieria\EstudianteBundle\Entity\Estudiante
+            mappedBy: grupo
+
     lifecycleCallbacks: {  }
