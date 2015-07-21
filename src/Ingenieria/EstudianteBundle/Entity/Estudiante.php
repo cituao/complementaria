@@ -54,11 +54,11 @@ class Estudiante
      */
     private $emailInstitucional;
 
-	protected $actividad;
-	
 	protected $actividades;
 
 	protected $grupo;
+	
+	protected $actividad;
 
     /**
      * Get id

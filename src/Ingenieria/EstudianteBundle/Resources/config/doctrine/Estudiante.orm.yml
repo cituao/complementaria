@@ -37,13 +37,6 @@ Ingenieria\EstudianteBundle\Entity\Estudiante:
             nullable: true
             column: rechazado_cronograma
 
-    manyToOne:
-        actividad:
-            targetEntity: Ingenieria\ProfesorBundle\Entity\Actividad
-            inversedBy: estudiantes
-            joinColumn:
-                name: actividad
-                referencedColumnName: id
     oneToMany:
         actividades:
             targetEntity: Ingenieria\EstudianteBundle\Entity\Cronograma
@@ -55,5 +48,11 @@ Ingenieria\EstudianteBundle\Entity\Estudiante:
             inversedBy: estudiantes
             joinColumn:
                 name: grupo
+                referencedColumnName: id
+        actividad:
+            targetEntity: Ingenieria\ProfesorBundle\Entity\Actividad
+            inversedBy: estudiantes
+            joinColumn:
+                name: actividad
                 referencedColumnName: id
     lifecycleCallbacks: {  }
