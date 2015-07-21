@@ -33,3 +33,7 @@ ingenieria_estudiante_actividadmatriculada:
 ingenieria_estudiante_eliminaractividad:
     path:     /estudiante/eliminaractividad
     defaults: { _controller: IngenieriaEstudianteBundle:Default:eliminaractividad }
+
+ingenieria_estudiante_tutor:
+    path:     /estudiante/tutor
+    defaults: { _controller: IngenieriaEstudianteBundle:Default:tutor }

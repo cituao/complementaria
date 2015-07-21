@@ -300,4 +300,18 @@ class DefaultController extends Controller
 		
 	}	
 
+	/**********************************************************************************/
+	// Mostrar datos del tutor
+	/**********************************************************************************/		
+	public function tutorAction(){
+		$user = $this->get('security.context')->getToken()->getUser();
+    	$codigo =  $user->getUsername();
+    	$repository = $this->getDoctrine()->getRepository('IngenieriaEstudianteBundle:Estudiante');
+    	$estudiante = $repository->findOneBy(array('codigo' => $codigo));
+		
+		$grupo = $estudiante->getGrupo();
+		$tutor = $grupo->getTutor();
+		
+		return $this->render('IngenieriaEstudianteBundle:Default:tutor.html.twig', array('tutor' => $tutor));
+	}
 }
