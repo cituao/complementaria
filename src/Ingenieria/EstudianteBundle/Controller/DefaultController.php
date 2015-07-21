@@ -20,7 +20,7 @@ class DefaultController extends Controller
 	//******************************************************************************************************
     public function indexAction()
     {
-		 $user = $this->get('security.context')->getToken()->getUser();
+		$user = $this->get('security.context')->getToken()->getUser();
     	$codigo =  $user->getUsername();
     	$repository = $this->getDoctrine()->getRepository('IngenieriaEstudianteBundle:Estudiante');
     	$estudiante = $repository->findOneBy(array('codigo' => $codigo));
@@ -54,9 +54,9 @@ class DefaultController extends Controller
 			*/
 			
 			//si el proceso de inscripcion se cierra mostrar esta vista
-			return $this->render('IngenieriaEstudianteBundle:Default:inscripcioncerrada.html.twig');
+			//return $this->render('IngenieriaEstudianteBundle:Default:inscripcioncerrada.html.twig');
 			//si el proceso de inscripcion esta en curso descomentar esta vista
-			//return $this->render('IngenieriaEstudianteBundle:Default:avisonoinscripto.html.twig');
+			return $this->render('IngenieriaEstudianteBundle:Default:avisonoinscripto.html.twig');
 		}
 		else{
 			//buscar cronograma

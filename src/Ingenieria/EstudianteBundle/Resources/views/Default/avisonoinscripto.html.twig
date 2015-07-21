@@ -1,18 +1,27 @@
-{% extends 'IngenieriaEstudianteBundle::layout.html.twig' %}
+{% extends '::base.html.twig' %}
 
-{% block programa %}
-Aplicación WEB  [Estudiante]
+{% block title %} Panel Principal:: Actividad complementaria UAO{% endblock %}
+
+{% block stylesheets %}
+{{ parent() }}	
 {% endblock %}
 
 {% block js  %}
 <script>
-/*
 $( "#actividad" ).css("background-color","#000");
 $( "#actividad img" ).css("opacity","0.4");
-$( "#actividad h3" ).css("opacity","0.4");*/
+$( "#actividad h3" ).css("opacity","0.4");
 </script>
-
 {% endblock %}
+
+{% block body %}
+{{ parent() }}
+{% endblock %}
+
+
+{% block sideBarMenu %}
+
+{% endblock  %}
 
 {% block content  %}
 {{ parent() }}
@@ -27,7 +36,7 @@ $( "#actividad h3" ).css("opacity","0.4");*/
 		<div class = "downSection">
 			
 			<div id="error">
-				<h2>Aun no ha seleccionado una actividad complementaria</h2>
+				<h2>Aún no ha seleccionado una actividad complementaria</h2>
 				<a href="{{ path('ingenieria_estudiante_actividades') }}"  class = "button"><h4>Ver ofertas disponibles!</h4></a>
 			</div>
 			
