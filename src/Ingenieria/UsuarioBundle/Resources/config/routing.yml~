@@ -85,7 +85,7 @@ usuario_actualizar_categoria:
     defaults: { _controller: IngenieriaUsuarioBundle:Default:categoria }
 
 usuario_registrar_grupo:
-    pattern:  /administrador/registrar-grupo/id={id}
+    pattern:  /administrador/registrar-grupo
     defaults: { _controller: IngenieriaUsuarioBundle:Default:registrarGrupo }
 
 usuario_actualizar_grupo:
@@ -95,3 +95,7 @@ usuario_actualizar_grupo:
 usuario_eliminar_grupo:
     pattern:  /administrador/eliminar-grupo/id={id}
     defaults: { _controller: IngenieriaUsuarioBundle:Default:eliminarGrupo }
+
+usuario_registrar_actividad:
+    pattern:  /administrador/registrar-actividad
+    defaults: { _controller: IngenieriaUsuarioBundle:Default:registrarActividad }

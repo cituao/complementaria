@@ -45,7 +45,6 @@ class ExceptionListener
 					$message = sprintf('Cronograma no fue encontrado en el sistema!');
 					$tmperror = 'IngenieriaUsuarioBundle:Default:error.html.twig';
 					break;
-
 	
 				case "ERR_PROFESOR_REGISTRADO":
 					$message = sprintf('El profesor ya esta registrado en el sistema!');
@@ -66,7 +65,10 @@ class ExceptionListener
 					$message = sprintf('¡Estudiante no encontrado!');
 					$tmperror = 'IngenieriaEstudianteBundle:Default:error.html.twig';
 					break;
-				
+				case "ERR__NO_HAY_ACTIVIDAD":
+					$message = sprintf('¡No hay actividades registradas en el sistema!');
+					$tmperror = 'IngenieriaUsuarioBundle:Default:error.html.twig';
+					break;
 					
 				default:
 					//$message = sprintf('Error no identificado!');

@@ -18,6 +18,7 @@ $( "#actividades h3" ).css("opacity","0.4");
 		{% block upSection  %}
 		<div class = "upSection">
 			<h1 class ="sectionTitle">Actividades</h1>
+<a href="{{ path('usuario_registrar_actividad') }}" class = "button"><img src="{{ asset('img/actividad.png') }}"/><h4>Nueva Actividad</h4></a>
 		</div>
 		{% endblock  %}
 
@@ -48,15 +49,19 @@ $( "#actividades h3" ).css("opacity","0.4");
 					<tr class="tableItem">
 						<td id="hoverDiv">
 							<td style=" width:1%"><h2>{{ id }}</h2></td>
-							<td style=" width:60%"><span style="margin-left:30px; ">{{ actividad.nombre }}</span></td>
-							<td style=" width:15%"><span style="margin-left:30px; ">{{ actividad.profesor.nombres }}</span></td>							
-							<td style=" width:15%"><span style="margin-left:30px; ">{{ actividad.profesor.apellidos }}</span></td>								
-
+							<td style=" width:40%"><span style="margin-left:30px; ">{{ actividad.nombre }}</span></td>
+							<td style=" width:25%"><span style="margin-left:30px; ">{{ actividad.mentor }}</span></td>							
 							<td>
 								<table class="opciones" style="right:129px">
 									<td style="width: 100px;">
-									<a href="{{ path('usuario_matricula' , { 'id': actividad.id}) }}"><img src="{{ asset('img/editar.png') }}" ><h3> Matrícula </h3></a>
+									<a href="{{ path('usuario_matricula' , { 'id': actividad.id}) }}">
+									<img src="{{ asset('img/editar.png') }}" ><h3> Matrícula </h3></a>
 									</td>
+									<td style="width: 100px;">
+									<a href="{{ path('usuario_actualizar_actividad' , { 'id': actividad.id}) }}">
+									<img src="{{ asset('img/editar.png') }}" ><h3> Actualizar </h3></a>
+									</td>
+
 								</table>
 								{{ actividad.numeroCupos }}
 							</td>

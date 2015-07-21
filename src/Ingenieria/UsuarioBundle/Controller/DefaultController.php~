@@ -12,7 +12,10 @@ use Ingenieria\UsuarioBundle\Form\Type\DirectorType;
 use Ingenieria\UsuarioBundle\Form\Type\ProfesorType;
 use Ingenieria\UsuarioBundle\Form\Type\CategoriaType;
 use Ingenieria\UsuarioBundle\Form\Type\GrupoType;
+use Ingenieria\UsuarioBundle\Form\Type\GrupoActualizarType;
+use Ingenieria\UsuarioBundle\Form\Type\ActividadType;
 use Ingenieria\ProfesorBundle\Entity\Profesor;
+use Ingenieria\ProfesorBundle\Entity\Actividad;
 use Ingenieria\EstudianteBundle\Entity\Estudiante;
 use Ingenieria\DirectorBundle\Entity\Grupo;
 use Symfony\Component\HttpFoundation\Request;
@@ -609,7 +612,16 @@ class DefaultController extends Controller
 
 		$peticion = $this->getRequest();
 		$em = $this->getDoctrine()->getManager();
+		
+		$repository_actividades = $this->getDoctrine()->getRepository('IngenieriaProfesorBundle:Actividad');
+		$actividades = $repository_actividades->findAll();
 
+		//sino hay centros es una exception
+		if (!$actividades) {
+			throw $this->createNotFoundException('ERR__NO_HAY_ACTIVIDAD');
+		}
+
+		
 		//buscamos los profesores que no tienen asignado grupo		
 		$repository_profesor = $this->getDoctrine()->getRepository('IngenieriaProfesorBundle:Profesor');
 		$profesores = $repository_profesor->findAll();
@@ -754,5 +766,54 @@ class DefaultController extends Controller
 		
 	}
 
+	/********************************************************/
+	// Registrar actividad
+	/********************************************************/		
+	public function registrarActividadAction(){
 
+		$peticion = $this->getRequest();
+		$em = $this->getDoctrine()->getManager();
+
+		$actividad = new Actividad();
+
+		$formulario = $this->createForm(new ActividadType(), $actividad);
+		$formulario->handleRequest($peticion);
+
+		if ($formulario->isValid()) {
+			
+			$em->persist($actividad);
+
+			$em->flush();
+			return $this->redirect($this->generateUrl('usuario_actividades'));
+		}
+
+		return $this->render('IngenieriaUsuarioBundle:Default:registraractividad.html.twig', array(
+			'formulario' => $formulario->createView()
+			));	
+	}
+
+	/********************************************************/
+	//Muestra y modifica una actividad
+	/********************************************************/		
+	public function actualizarActividadAction($id){
+		$peticion = $this->getRequest();
+		$em = $this->getDoctrine()->getManager();
+
+
+		$repository = $this->getDoctrine()->getRepository('IngenieriaProfesorBundle:Actividad');
+		$grupo = $repository->findOneBy(array('id' => $id));		
+	
+		$formulario = $this->createForm(new ActividadType(), $grupo);
+		
+		$formulario->handleRequest($peticion);
+
+		if ($formulario->isValid()) {
+			$em->persist($grupo);
+			$em->flush();
+			return $this->redirect($this->generateUrl('usuario_actividades'));
+		}
+		
+        return $this->render('IngenieriaUsuarioBundle:Default:actualizaractividad.html.twig', array('formulario' => $formulario->createView(), 'actividad' => $actividad ));
+		
+	}
 }

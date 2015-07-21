@@ -95,3 +95,11 @@ usuario_actualizar_grupo:
 usuario_eliminar_grupo:
     pattern:  /administrador/eliminar-grupo/id={id}
     defaults: { _controller: IngenieriaUsuarioBundle:Default:eliminarGrupo }
+
+usuario_registrar_actividad:
+    pattern:  /administrador/registrar-actividad
+    defaults: { _controller: IngenieriaUsuarioBundle:Default:registrarActividad }
+
+usuario_actualizar_actividad:
+    pattern:  /administrador/actualizar-actividad/id={id}
+    defaults: { _controller: IngenieriaUsuarioBundle:Default:actualizarActividad }
