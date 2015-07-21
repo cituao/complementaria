@@ -6,11 +6,18 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Security\Core\SecurityContext;
 use Ingenieria\UsuarioBundle\Entity\Director;
 use Ingenieria\UsuarioBundle\Entity\Usuario;
+use Ingenieria\UsuarioBundle\Entity\Categoria;
 use Ingenieria\UsuarioBundle\Entity\Document;
 use Ingenieria\UsuarioBundle\Form\Type\DirectorType;
 use Ingenieria\UsuarioBundle\Form\Type\ProfesorType;
+use Ingenieria\UsuarioBundle\Form\Type\CategoriaType;
+use Ingenieria\UsuarioBundle\Form\Type\GrupoType;
+use Ingenieria\UsuarioBundle\Form\Type\GrupoActualizarType;
+use Ingenieria\UsuarioBundle\Form\Type\ActividadType;
 use Ingenieria\ProfesorBundle\Entity\Profesor;
+use Ingenieria\ProfesorBundle\Entity\Actividad;
 use Ingenieria\EstudianteBundle\Entity\Estudiante;
+use Ingenieria\DirectorBundle\Entity\Grupo;
 use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
@@ -37,9 +44,12 @@ class DefaultController extends Controller
 			}
 		}			
 		}
-		
 	}
-     return $this->render('IngenieriaUsuarioBundle:Default:portal.html.twig', array("error"=>array("message"=>"")));
+	
+    //para colocar en mantenimiento $msg = "M"  vacío para produccion $msg=""
+	$msg = "";
+	
+     return $this->render('IngenieriaUsuarioBundle:Default:portal.html.twig', array("error"=>array("message"=>$msg)));
     }
 
 	//*******************************************************
@@ -64,22 +74,22 @@ class DefaultController extends Controller
         );
     }
 	
-	//******************************************************
-	// Home del administrador de la aplicacion
-	//******************************************************
+	//**************************************************************************
+	// Home del administrador de la aplicacion muestra los directores
+	//**************************************************************************
 	public function homeAdmAction(){
 	
-		$repository = $this->getDoctrine()->getRepository('IngenieriaUsuarioBundle:Director');
-		$directores = $repository->findAll();
+		$repository = $this->getDoctrine()->getRepository('IngenieriaDirectorBundle:Grupo');
+		$grupos = $repository->findAll();
 		
 		
-		if (!$directores) {
+		if (!$grupos) {
 			//throw $this->createNotFoundException('ERR_NO_HAY_PROGRAMA');
-			$msgerr = array('id'=>1, 'descripcion' => 'No hay directores registrados en el sistema');
+			$msgerr = array('id'=>1, 'descripcion' => 'No hay grupos registrados!');
 		}else{
 			$msgerr = array('id'=>0, 'descripcion' => 'Ok');
 		}
-		return $this->render('IngenieriaUsuarioBundle:Default:directores.html.twig',  array('listaDirectores' => $directores, 'msgerr' => $msgerr));
+		return $this->render('IngenieriaUsuarioBundle:Default:grupos.html.twig',  array('listaGrupo' => $grupos, 'msgerr' => $msgerr));
 	}
 	
 	/********************************************************/
@@ -179,6 +189,22 @@ class DefaultController extends Controller
         return $this->render('IngenieriaUsuarioBundle:Default:director.html.twig', array('formulario' => $formulario->createView(), 'director' => $director ));
 	}	
 	
+	//********************************************************/
+	//Elimina director
+	/********************************************************/		
+	public function eliminarDirectorAction($id){
+		$peticion = $this->getRequest();
+		$repository = $this->getDoctrine()->getRepository('IngenieriaUsuarioBundle:Director');
+		$director = $repository->findOneBy(array('id' => $id));
+		
+		$em= $this->getDoctrine()->getManager();
+		$em->remove($director);
+		$em->flush();
+            
+        return $this->redirect($this->generateUrl('usuario_adm_homepage'));
+	}	
+	
+	
 		//******************************************************
 	// Home del administrador de la aplicacion
 	//******************************************************
@@ -244,7 +270,7 @@ class DefaultController extends Controller
 				}
 
 				$listaEstudiantes[$i] =  array("codigo"=> $sql[0], "apellidos"=>$sql[1], "nombres"=>$sql[2], "ci" => $sql[3], 	
-					 "emailInstitucional" => $sql[4] );
+					 "emailInstitucional" => $sql[4], "email" => $sql[5] );
 				$i++;
 				$nohay = false;
 			}
@@ -295,6 +321,7 @@ class DefaultController extends Controller
 					$estudiante->setNombres($listaEstudiantes[$i]['nombres']);
 					$estudiante->setApellidos($listaEstudiantes[$i]['apellidos']);
 					$estudiante->setEmailInstitucional($listaEstudiantes[$i]['emailInstitucional']);
+					$estudiante->setEmail($listaEstudiantes[$i]['email']);
 					$estudiante->setCi($listaEstudiantes[$i]['ci']);
 					$estudiante->setAprobadoCronograma(false);
 					//$practicante->setPrograma($programa);
@@ -384,6 +411,66 @@ class DefaultController extends Controller
         return $this->render('IngenieriaUsuarioBundle:Default:profesor.html.twig', array('formulario' => $formulario->createView(), 'profesor' => $profesor ));
 	}	
 
+	/********************************************************/
+	// Registra y modifica un profesor
+	/********************************************************/		
+	public function registrarProfesorAction(){
+
+		$peticion = $this->getRequest();
+		$em = $this->getDoctrine()->getManager();
+
+		$profesor = new Profesor();
+
+		$formulario = $this->createForm(new ProfesorType(), $profesor);
+		$formulario->handleRequest($peticion);
+
+		if ($formulario->isValid()) {
+			//validamos que no existe el director
+			$repository = $this->getDoctrine()->getRepository('IngenieriaProfesorBundle:Profesor');
+			$p = $repository->findOneBy(array('ci' => $profesor->getCi()));
+
+			if ($p != NULL){
+				throw $this->createNotFoundException('ERR_PROFESOR_REGISTRADO');
+			}
+
+		   // Completar las propiedades que el usuario no rellena en el formulario
+
+			$em->persist($profesor);
+
+			//los roles fueron cargados de forma manual en la base de datos
+			//buscamos una instancia role tipo PROFESOR 
+			
+			$codigo = 2; //codigo ID q corresponde al director
+			$repository = $this->getDoctrine()->getRepository('IngenieriaUsuarioBundle:Role');
+			$role = $repository->findOneBy(array('id' => $codigo));
+
+			if ($role == NULL){
+				throw $this->createNotFoundException('ERR_ROLE_PROFESOR_NOREGISTRADO');
+			}
+			$usuario = new Usuario();
+			//cargamos todos los atributos al usuario
+			$usuario->setUsername($profesor->getCi());
+			$usuario->setPassword($profesor->getCi());
+			$usuario->setSalt(md5(time()));
+			$usuario->addRole($role);  //cargamos el rol al coordinador
+
+			//codificamos el password			
+			$encoder = $this->get('security.encoder_factory')->getEncoder($usuario);
+			$passwordCodificado = $encoder->encodePassword($usuario->getPassword(), $usuario->getSalt());
+			$usuario->setPassword($passwordCodificado);
+			$em->persist($usuario);
+			
+
+			$em->flush();
+			return $this->redirect($this->generateUrl('usuario_profesores'));
+		}
+
+		return $this->render('IngenieriaUsuarioBundle:Default:registrarprofesor.html.twig', array(
+			'formulario' => $formulario->createView()
+			));		
+
+	}	
+	
 	//******************************************************
 	// Muestra todas las actividades
 	//******************************************************
@@ -419,7 +506,7 @@ class DefaultController extends Controller
 		}
 		
 	
-		return $this->render('IngenieriaDirectorBundle:Default:matricula.html.twig',  array('listaEstudiantes' => $estudiantes, 'msgerr' => $msgerr));
+		return $this->render('IngenieriaUsuarioBundle:Default:matricula.html.twig',  array('listaEstudiantes' => $estudiantes, 'msgerr' => $msgerr));
 	}	
 	
 	//******************************************************************
@@ -446,8 +533,287 @@ class DefaultController extends Controller
 		else {
 			$msgerr = array('descripcion'=>'','id'=>'0');
 		}
-		return $this->render('IngenieriaEstudianteBundle:Default:cronograma.html.twig', array('estudiante' => $estudiante, 'cronograma'=>$cronograma, 'msgerr' => $msgerr));
+		return $this->render('IngenieriaUsuarioBundle:Default:cronograma.html.twig', array('estudiante' => $estudiante, 'cronograma'=>$cronograma, 'msgerr' => $msgerr));
 			
 			
+	}
+	
+		//******************************************************
+	// Muestra todas las categorias
+	//******************************************************
+	public function categoriasAction(){
+		$repository = $this->getDoctrine()->getRepository('IngenieriaUsuarioBundle:Categoria');
+		$categorias = $repository->findAll();
+		
+		if (!$categorias) {
+			//throw $this->createNotFoundException('ERR_NO_HAY_PROGRAMA');
+			$msgerr = array('id'=>1, 'descripcion' => 'No hay categorias registradas en el sistema');
+		}else{
+			$msgerr = array('id'=>0, 'descripcion' => 'Ok');
+		}
+		return $this->render('IngenieriaUsuarioBundle:Default:categorias.html.twig',  array('listaActividades' => $categorias, 'msgerr' => $msgerr));
+	}
+	
+	
+		/********************************************************/
+	// Registra y modifica una categoria
+	/********************************************************/		
+	public function registrarCategoriaAction(){
+
+		$peticion = $this->getRequest();
+		$em = $this->getDoctrine()->getManager();
+
+		$categoria = new Categoria();
+
+		$formulario = $this->createForm(new CategoriaType(), $categoria);
+		$formulario->handleRequest($peticion);
+
+		if ($formulario->isValid()) {
+		   // Completar las propiedades que el usuario no rellena en el formulario
+
+			$em->persist($categoria);
+			$em->flush();
+			return $this->redirect($this->generateUrl('usuario_categorias'));
+		}
+
+		return $this->render('IngenieriaUsuarioBundle:Default:registrarcategoria.html.twig', array(
+			'formulario' => $formulario->createView()
+			));		
+	}	
+	
+	
+		/********************************************************/
+	//Muestra y modifica una  categoria en la base de datos
+	/********************************************************/		
+	public function categoriaAction($id){
+		$peticion = $this->getRequest();
+		$repository = $this->getDoctrine()->getRepository('IngenieriaUsuarioBundle:Categoria');
+		$categoria = $repository->findOneBy(array('id' => $id));
+		
+        $formulario = $this->createForm(new CategoriaType(), $categoria);
+		$formulario->handleRequest($peticion);
+
+        if ($formulario->isValid()) {
+			$repository = $this->getDoctrine()->getRepository('IngenieriaUsuarioBundle:Categoria');
+		
+			$em->persist($categoria);
+            $em->flush();
+            
+            return $this->redirect($this->generateUrl('usuario_categorias'));
+        }
+		
+        return $this->render('IngenieriaUsuarioBundle:Default:categoria.html.twig', array('formulario' => $formulario->createView(), 'categoria' => $categoria ));
+	}	
+
+	/********************************************************/
+	// Registra y modifica un grupo
+	/********************************************************/		
+	public function registrarGrupoAction(){
+
+		$peticion = $this->getRequest();
+		$em = $this->getDoctrine()->getManager();
+		
+		$repository_actividades = $this->getDoctrine()->getRepository('IngenieriaProfesorBundle:Actividad');
+		$actividades = $repository_actividades->findAll();
+
+		//sino hay centros es una exception
+		if (!$actividades) {
+			throw $this->createNotFoundException('ERR__NO_HAY_ACTIVIDAD');
+		}
+
+		
+		//buscamos los profesores que no tienen asignado grupo		
+		$repository_profesor = $this->getDoctrine()->getRepository('IngenieriaProfesorBundle:Profesor');
+		$profesores = $repository_profesor->findAll();
+		$repository_grupo = $this->getDoctrine()->getRepository('IngenieriaDirectorBundle:Grupo');
+	
+		//creamos un objeto de arreglos para los profesores		
+		$profelibres= new \Doctrine\Common\Collections\ArrayCollection();
+
+		foreach ($profesores as $p){
+			//si lo encuentra pasamos sino lo agregamos al arreglo de objetos
+			if ($grupo = $repository_grupo->findOneByTutor($p->getId()))
+				continue;
+			else
+				$profelibres[]=$p;
+		}
+
+		$grupo = new Grupo();
+
+		$formulario = $this->createForm(new GrupoType($profelibres), $grupo);
+		$formulario->handleRequest($peticion);
+
+		if ($formulario->isValid()) {
+			//validamos que no existe el director
+			$repository = $this->getDoctrine()->getRepository('IngenieriaDirectorBundle:Grupo');
+
+		   // Completar las propiedades que el usuario no rellena en el formulario
+
+			if ($grupo->getFile() != NULL) {
+				
+				$grupo->setPath('grupo');
+				$grupo->upload();
+				/*
+				$archivo= $grupo->getAbsolutePath();		
+				//bajamos el archivo a una matriz para procesar registro a registro y bajarlo a base de datos		    
+				$filas = file($archivo.".csv");
+				$i=1;
+				$numero_fila= count($filas);	
+
+				//para buscar si ya se encuentra en la base de datos
+				$repository = $this->getDoctrine()->getRepository('IngenieriaEstudianteBundle:Estudiante');
+
+				$nohay = true;
+				$numero_registrados=0;
+				//procesamos la matriz separando los campos por medio del separador putno y coma
+				while($i < $numero_fila){
+					$row = $filas[$i];
+					$sql = explode(",",$row);
+
+					$e = $repository->findOneBy(array('ci' => $sql[5]));
+					//Si esta en la base de datos lo ignoramos				
+					if ($e != NULL){
+						$numero_registrados++;
+						$i++;						
+						continue;
+					}
+
+					$listaEstudiantes[$i] =  array("codigo"=> $sql[1], "apellidos"=>$sql[2], "nombres"=>$sql[3], "ci" => $sql[5], 	
+											"emailInstitucional" => $sql[7], "emailpersonal" => $sql[8]);
+					$i++;
+					$nohay = false;
+				}
+				//los roles fueron cargados de forma manual en la base de datos
+				//buscamos una instancia role tipo practicante 
+				$codigo = 3; //1 corresponde a practicantes		
+				$repository = $this->getDoctrine()->getRepository('IngenieriaUsuarioBundle:Role');
+				$role = $repository->findOneBy(array('id' => $codigo));
+
+				$i=1;
+				while($i < $numero_fila){
+					//creamos una instancia Practicante para descargar datos del CSV y guardar en la base de datos
+					$estudiante = new Estudiante();
+					//creamos una instancia de usuario para darle entrada a los practicantes como usuarios en el sistema
+					$usuario = new Usuario();
+
+					//viene del archivo .csv	
+					//cargamos todos los atributos al practicante
+					$estudiante->setCodigo($listaEstudiantes[$i]['codigo']);
+					$estudiante->setNombres($listaEstudiantes[$i]['nombres']);
+					$estudiante->setApellidos($listaEstudiantes[$i]['apellidos']);
+					$estudiante->setEmailInstitucional($listaEstudiantes[$i]['emailInstitucional']);
+					$estudiante->setEmail($listaEstudiantes[$i]['emailpersonal']);
+					$estudiante->setCi($listaEstudiantes[$i]['ci']);
+					$estudiante->setAprobadoCronograma(false);
+					
+					//cargamos todos los atributos al usuario
+					$usuario->setUsername($listaEstudiantes[$i]['codigo']) ;
+					$usuario->setPassword($listaEstudiantes[$i]['ci']);
+					$usuario->setSalt(md5(time()));
+					$usuario->addRole($role); //cargamos el rol al coordinador
+					$usuario->setIsActive(true); //tener acceso
+
+					$encoder = $this->get('security.encoder_factory')->getEncoder($usuario);
+		            $passwordCodificado = $encoder->encodePassword($usuario->getPassword(), $usuario->getSalt());
+					$usuario->setPassword($passwordCodificado);
+
+					$em->persist($usuario);
+					$em->persist($estudiante);
+					$i++;
+				}
+				*/
+				$em->persist($grupo);	
+				$em->flush();	
+
+				return $this->redirect($this->generateUrl('usuario_adm_homepage'));
+			} 
+
+			$msgerr = array('id'=>'0', 'descripcion'=>' ');
+			return $this->render('IngenieriaUsuarioBundle:Default:subirestudiantes.html.twig', array('listaEstudiantes' => $listaEstudiantes , 'msgerr' => $msgerr));
+			
+		
+		}
+
+		return $this->render('IngenieriaUsuarioBundle:Default:registrargrupo.html.twig', array(
+			'formulario' => $formulario->createView()
+			));		
+
+	}	
+
+
+	/********************************************************/
+	//Muestra y modifica un grupo registrado en la base de datos
+	/********************************************************/		
+	public function actualizargrupoAction($id){
+		$peticion = $this->getRequest();
+		$em = $this->getDoctrine()->getManager();
+
+
+		$repository = $this->getDoctrine()->getRepository('IngenieriaDirectorBundle:Grupo');
+		$grupo = $repository->findOneBy(array('id' => $id));		
+	
+		$formulario = $this->createForm(new GrupoActualizarType(), $grupo);
+		
+		$formulario->handleRequest($peticion);
+
+		if ($formulario->isValid()) {
+			$em->persist($grupo);
+			$em->flush();
+			return $this->redirect($this->generateUrl('usuario_adm_homepage'));
+		}
+		
+        return $this->render('IngenieriaUsuarioBundle:Default:actualizargrupo.html.twig', array('formulario' => $formulario->createView(), 'grupo' => $grupo ));
+		
+	}
+
+	/********************************************************/
+	// Registrar actividad
+	/********************************************************/		
+	public function registrarActividadAction(){
+
+		$peticion = $this->getRequest();
+		$em = $this->getDoctrine()->getManager();
+
+		$actividad = new Actividad();
+
+		$formulario = $this->createForm(new ActividadType(), $actividad);
+		$formulario->handleRequest($peticion);
+
+		if ($formulario->isValid()) {
+			
+			$em->persist($actividad);
+
+			$em->flush();
+			return $this->redirect($this->generateUrl('usuario_actividades'));
+		}
+
+		return $this->render('IngenieriaUsuarioBundle:Default:registraractividad.html.twig', array(
+			'formulario' => $formulario->createView()
+			));	
+	}
+
+	/********************************************************/
+	//Muestra y modifica una actividad
+	/********************************************************/		
+	public function actualizarActividadAction($id){
+		$peticion = $this->getRequest();
+		$em = $this->getDoctrine()->getManager();
+
+
+		$repository = $this->getDoctrine()->getRepository('IngenieriaProfesorBundle:Actividad');
+		$grupo = $repository->findOneBy(array('id' => $id));		
+	
+		$formulario = $this->createForm(new ActividadType(), $grupo);
+		
+		$formulario->handleRequest($peticion);
+
+		if ($formulario->isValid()) {
+			$em->persist($grupo);
+			$em->flush();
+			return $this->redirect($this->generateUrl('usuario_actividades'));
+		}
+		
+        return $this->render('IngenieriaUsuarioBundle:Default:actualizaractividad.html.twig', array('formulario' => $formulario->createView(), 'actividad' => $actividad ));
+		
 	}
 }

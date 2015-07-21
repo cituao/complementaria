@@ -58,6 +58,8 @@ class Estudiante
 	
 	protected $actividades;
 
+	protected $grupo;
+
     /**
      * Get id
      *
@@ -313,5 +315,28 @@ class Estudiante
     public function getRechazadoCronograma()
     {
         return $this->rechazadoCronograma;
+    }
+
+    /**
+     * Set grupo
+     *
+     * @param \Ingenieria\DirectorBundle\Entity\Grupo $grupo
+     * @return Estudiante
+     */
+    public function setGrupo(\Ingenieria\DirectorBundle\Entity\Grupo $grupo = null)
+    {
+        $this->grupo = $grupo;
+
+        return $this;
+    }
+
+    /**
+     * Get grupo
+     *
+     * @return \Ingenieria\DirectorBundle\Entity\Grupo 
+     */
+    public function getGrupo()
+    {
+        return $this->grupo;
     }
 }

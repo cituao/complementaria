@@ -1,0 +1,220 @@
+{% extends 'IngenieriaUsuarioBundle::layout.html.twig' %}
+
+{% block programa %}
+App WEB  [Administrador]
+{% endblock %}
+
+{% block js  %}
+<script>  /*Deja activo la sesion Practicantes en la menu sidebar*/
+$( "#actividades" ).css("background-color","#000");
+$( "#actividades img" ).css("opacity","0.4");
+$( "#actividades h3" ).css("opacity","0.4");
+</script>
+
+{% endblock %}
+
+{% block content  %}
+{{ parent() }}
+	<div class="content">
+		{% block upSection  %}
+
+		<div class="upSection">
+			<h1 class="sectionTitle">Actualizar actividad</h1>
+
+			<a href="javascript:history.back()" class = "button"><img src="{{ asset('img/regresar.png') }}"/><h4>Regresar</h4></a>
+			
+		</div><!-- upSection -->
+		{% endblock  %}
+	
+	{% block downSection  %}
+	<div class="downSection" style="padding:30px">
+		<div class="inform" style="height:500px;">
+			<form action="{{ path('usuario_actualizar_actividad', { 'id': actividad.id }) }}" method="post" {{ form_enctype(formulario) }}>
+				<div>{{ form_errors(formulario) }}</div>
+
+				<div class="profileFormContainer">
+
+					<div class="inputContainer" style="width:450px;">	
+						<h2>{{ form_label(formulario.mentor) }}</h2>
+						<div class="input"> 
+							{{ form_widget(formulario.mentor, {'attr': {'class':'mediano'}} ) }}
+							{{ form_errors(formulario.mentor) }}
+						</div>
+					</div>
+
+
+					<div class="inputContainer" style="width:450px;">	
+						<h2>{{ form_label(formulario.email) }}</h2>
+						<div class="input"> 
+							{{ form_widget(formulario.email, {'attr': {'class':'mediano'}} ) }}
+							{{ form_errors(formulario.email) }}
+						</div>
+					</div>
+
+					<div class="inputContainer" style="width:450px;">	
+						<h2>{{ form_label(formulario.nombre) }}</h2>
+						<div class="input"> 
+							{{ form_widget(formulario.nombre, {'attr': {'class':'mediano'}} ) }}
+							{{ form_errors(formulario.nombre) }}
+						</div>
+					</div>
+
+					<div class="inputContainer" style="width:450px;">	
+						<h2>{{ form_label(formulario.proposito) }}</h2>
+						<div class="input"> 
+							{{ form_widget(formulario.proposito, {'attr': {'class':'mediano'}} ) }}
+							{{ form_errors(formulario.proposito) }}
+						</div>
+					</div>
+
+
+					<div class="inputContainer" style="width:450px;">	
+						<h2>{{ form_label(formulario.dirigida) }}</h2>
+						<div class="input"> 
+							{{ form_widget(formulario.dirigida, {'attr': {'class':'mediano'}} ) }}
+							{{ form_errors(formulario.dirigida) }}
+						</div>
+					</div>
+
+					
+					<div class="inputContainer" style="width:450px;">	
+						<h2>{{ form_label(formulario.descripcion) }}</h2>
+						<div class="input"> 
+							{{ form_widget(formulario.descripcion, {'attr': {'class':'mediano'}} ) }}
+							{{ form_errors(formulario.descripcion) }}
+						</div>
+					</div>
+
+					<div class="inputContainer" style="width:450px;">	
+						<h2>{{ form_label(formulario.url) }}</h2>
+						<div class="input"> 
+							{{ form_widget(formulario.url, {'attr': {'class':'mediano'}} ) }}
+							{{ form_errors(formulario.url) }}
+						</div>
+					</div>
+
+					<div class="inputContainer" style="width:450px;">	
+						<h2>{{ form_label(formulario.categoria) }}</h2>
+						<div class="input"> 
+							{{ form_widget(formulario.categoria) }}
+							{{ form_errors(formulario.categoria) }}
+						</div>
+					</div>					
+					
+					<div class="inputContainer" style="width:450px;">	
+						<h2>{{ form_label(formulario.numeroCupos) }}</h2>
+						<div class="input" style="height:40px;">
+							{{ form_widget(formulario.numeroCupos, {'attr': {'class':'corto'}} ) }}
+							{{ form_errors(formulario.numeroCupos) }}
+						</div>
+					</div>
+
+					<div class="inputContainer">	
+						<h2>{{ form_label(formulario.trabajo) }}</h2>
+						<div class="input">
+							{{ form_widget(formulario.trabajo, {'attr': {'class':'corto'}} ) }}
+							{{ form_errors(formulario.trabajo) }}
+						</div>
+					</div>
+
+					<div class="inputContainer">	
+						<h2>{{ form_label(formulario.aprendizaje) }}</h2>
+						<div class="input">
+							{{ form_widget(formulario.aprendizaje, {'attr': {'class':'corto'}} ) }}
+							{{ form_errors(formulario.aprendizaje) }}
+						</div>
+					</div>
+
+					<div class="inputContainer">	
+						<h2>{{ form_label(formulario.pensamiento) }}</h2>
+						<div class="input">
+							{{ form_widget(formulario.pensamiento, {'attr': {'class':'corto'}} ) }}
+							{{ form_errors(formulario.pensamiento) }}
+						</div>
+					</div>
+
+
+					<div class="inputContainer">	
+						<h2>{{ form_label(formulario.autonomia) }}</h2>
+						<div class="input">
+							{{ form_widget(formulario.autonomia, {'attr': {'class':'corto'}} ) }}
+							{{ form_errors(formulario.autonomia) }}
+						</div>
+					</div>
+
+					<div class="inputContainer">	
+						<h2>{{ form_label(formulario.integralidad) }}</h2>
+						<div class="input">
+							{{ form_widget(formulario.integralidad, {'attr': {'class':'corto'}} ) }}
+							{{ form_errors(formulario.integralidad) }}
+						</div>
+					</div>
+
+					<div class="inputContainer">	
+						<h2>{{ form_label(formulario.excelencia) }}</h2>
+						<div class="input">
+							{{ form_widget(formulario.excelencia, {'attr': {'class':'corto'}} ) }}
+							{{ form_errors(formulario.excelencia) }}
+						</div>
+					</div>
+
+					<div class="inputContainer">	
+						<h2>{{ form_label(formulario.creatividad) }}</h2>
+						<div class="input">
+							{{ form_widget(formulario.creatividad, {'attr': {'class':'corto'}} ) }}
+							{{ form_errors(formulario.creatividad) }}
+						</div>
+					</div>
+
+
+					<div class="inputContainer">	
+						<h2>{{ form_label(formulario.eticidad) }}</h2>
+						<div class="input">
+							{{ form_widget(formulario.eticidad, {'attr': {'class':'corto'}} ) }}
+							{{ form_errors(formulario.eticidad) }}
+						</div>
+					</div>
+
+					<div class="inputContainer">	
+						<h2>{{ form_label(formulario.responsabilidad) }}</h2>
+						<div class="input">
+							{{ form_widget(formulario.responsabilidad, {'attr': {'class':'corto'}} ) }}
+							{{ form_errors(formulario.responsabilidad) }}
+						</div>
+					</div>
+
+					<div class="inputContainer">	
+						<h2>{{ form_label(formulario.pertenencia) }}</h2>
+						<div class="input">
+							{{ form_widget(formulario.pertenencia, {'attr': {'class':'corto'}} ) }}
+							{{ form_errors(formulario.pertenencia) }}
+						</div>
+					</div>
+
+					<div class="inputContainer">	
+						<h2>{{ form_label(formulario.honestidad) }}</h2>
+						<div class="input">
+							{{ form_widget(formulario.honestidad, {'attr': {'class':'corto'}} ) }}
+							{{ form_errors(formulario.honestidad) }}
+						</div>
+					</div>
+
+
+					<div class="inputContainer" style="margin-top:20px; margin-left:-10px; width:auto !important">
+						<div style="position:relative; float:right">
+
+						<img style="position:absolute; left:15px; float:left; pointer-events:none;" src="{{ asset('img/guardar.png') }}" />
+						<input style="padding-left:38px" class="button" type="submit" value="Guardar" />
+						</div>
+					</div>
+
+					
+				</div><!--profileForContainer -->
+				{{ form_rest(formulario) }}
+			</form>
+		</div><!-- profileContainer -->
+		{% endblock  %}
+	</div><!--downsection -->
+	</div> <!-- cierra content -->
+{% endblock %}
+
