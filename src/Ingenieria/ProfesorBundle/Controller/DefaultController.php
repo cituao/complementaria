@@ -18,34 +18,25 @@ class DefaultController extends Controller
 		$repository = $this->getDoctrine()->getRepository('IngenieriaProfesorBundle:Profesor');
 		$profesor = $repository->findOneBy(array('ci' => $ci));
 
-		$hayEstudiantes=false;
-		$listaActividades = $profesor->getActividades();
-		
-		foreach($listaActividades as $actividad) {
-			$listaEstudiantes = $actividad->getEstudiantes();
-			if ($listaEstudiantes->count() != 0) {
-				$hayEstudiantes = true;
-				break;
+		//buscamos si el profesor o tutor tiene un grupo asignado
+		$repository = $this->getDoctrine()->getRepository('IngenieriaDirectorBundle:Grupo');
+		$grupo = $repository->findOneBy(array('tutor' => $profesor->getId()));
+
+		//Sino tiene grupo mensaje de advertencia
+		if (!$grupo) {
+			$msgerr = array('descripcion'=>'Aún no tiene grupo asignado!','id'=>'1');
+			$estudiantes = array();
+		}else{
+			$estudiantes = $grupo->getEstudiantes();
+
+			if (!$estudiantes) {
+				$msgerr = array('descripcion'=>'No hay estudiantes registrados!','id'=>'1');
+			}else{
+				$msgerr = array('descripcion'=>'','id'=>'0');
 			}
 		}
 		
-		if (!$hayEstudiantes) {
-			$msgerr = array('descripcion'=>'No hay estudiantes registrados!','id'=>'1');
-		}else{
-			$msgerr = array('descripcion'=>'','id'=>'0');
-		}
-		/*
-				//buscamos el programa
-		$user = $this->get('security.context')->getToken()->getUser();
-		$coordinador =  $user->getUsername();
-		$repository = $this->getDoctrine()->getRepository('CituaoUsuarioBundle:Programa');
-		$programa = $repository->findOneByCoordinador($coordinador);
-		*/
-		
-		
-		return $this->render('IngenieriaProfesorBundle:Default:estudiantes.html.twig', array('listaActividades' => $listaActividades, 'msgerr' => $msgerr));
-       
-		
+		return $this->render('IngenieriaProfesorBundle:Default:estudiantes.html.twig', array('listaEstudiantes' => $estudiantes, 'msgerr' => $msgerr));
     }
 
 	//********************************************************
@@ -58,32 +49,24 @@ class DefaultController extends Controller
 		$repository = $this->getDoctrine()->getRepository('IngenieriaProfesorBundle:Profesor');
 		$profesor = $repository->findOneBy(array('ci' => $ci));
 
-		$hayEstudiantes=false;
-		$listaActividades = $profesor->getActividades();
+		//buscamos si el profesor o tutor tiene un grupo asignado
+		$repository = $this->getDoctrine()->getRepository('IngenieriaDirectorBundle:Grupo');
+		$grupo = $repository->findOneBy(array('tutor' => $profesor->getId()));
 		
-		foreach($listaActividades as $actividad) {
-			$listaEstudiantes = $actividad->getEstudiantes();
-			if ($listaEstudiantes->count() != 0) {
-				$hayEstudiantes = true;
-				break;
+		//Sino tiene grupo mensaje de advertencia
+		if (!$grupo) {
+			$msgerr = array('descripcion'=>'Aun no tiene grupo asignado!','id'=>'1');
+		}else{
+			$estudiantes = $grupo->getEstudiantes();
+
+			if (!$estudiantes) {
+				$msgerr = array('descripcion'=>'No hay estudiantes registrados!','id'=>'1');
+			}else{
+				$msgerr = array('descripcion'=>'','id'=>'0');
 			}
 		}
 		
-		if (!$hayEstudiantes) {
-			$msgerr = array('descripcion'=>'No hay estudiantes registrados!','id'=>'1');
-		}else{
-			$msgerr = array('descripcion'=>'','id'=>'0');
-		}
-		/*
-				//buscamos el programa
-		$user = $this->get('security.context')->getToken()->getUser();
-		$coordinador =  $user->getUsername();
-		$repository = $this->getDoctrine()->getRepository('CituaoUsuarioBundle:Programa');
-		$programa = $repository->findOneByCoordinador($coordinador);
-		*/
-		
-		
-		return $this->render('IngenieriaProfesorBundle:Default:estudiantes.html.twig', array('listaActividades' => $listaActividades, 'msgerr' => $msgerr));
+		return $this->render('IngenieriaProfesorBundle:Default:estudiantes.html.twig', array('listaEstudiantes' => $estudiantes, 'msgerr' => $msgerr));
 	}
 
 	//********************************************************

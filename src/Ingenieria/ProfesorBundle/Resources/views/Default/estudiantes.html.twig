@@ -49,8 +49,8 @@ $( "#estudiantes h3" ).css("opacity","0.4");
 				<tbody>
 					{% set id = 1 %}
 					<tr class="spacer"></tr>
-					{% for actividad in listaActividades%}
-					{% for estudiante in actividad.estudiantes %}
+					
+					{% for estudiante in listaEstudiantes %}
 					<tr class="tableItem">
 						<td id="hoverDiv">
 							<td><h2>{{ id }}</h2></td>
@@ -73,7 +73,7 @@ $( "#estudiantes h3" ).css("opacity","0.4");
 					{% set id = id + 1 %}
 					<tr class="spacer"></tr>
 					{% endfor %}
-					{% endfor %}
+					
 					<tr class="spacer"></tr>
 					<tr class="spacer"></tr>
 					<tr class="spacer"></tr>
