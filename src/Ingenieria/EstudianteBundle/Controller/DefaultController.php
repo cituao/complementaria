@@ -45,13 +45,6 @@ class DefaultController extends Controller
 			}else{
 				$msgerr = array('descripcion'=>'','id'=>'0');
 			}
-			/*
-					//buscamos el programa
-			$user = $this->get('security.context')->getToken()->getUser();
-			$coordinador =  $user->getUsername();
-			$repository = $this->getDoctrine()->getRepository('CituaoUsuarioBundle:Programa');
-			$programa = $repository->findOneByCoordinador($coordinador);
-			*/
 			
 			//si el proceso de inscripcion se cierra mostrar esta vista
 			//return $this->render('IngenieriaEstudianteBundle:Default:inscripcioncerrada.html.twig');
@@ -161,17 +154,36 @@ class DefaultController extends Controller
 		return $this->render('IngenieriaEstudianteBundle:Default:actividades.html.twig', array('listaActividades' => $listaActividades, 'msgerr' => $msgerr));
 	}
 
-	//**********************************************************
-	//Muestra la informacion de la actividad complementaria
-	//**********************************************************
+	//****************************************************************************
+	//Muestra la informacion de la actividad complementarias ofertadas
+	//****************************************************************************
 	public function actividadAction($id){
 		$em = $this->getDoctrine()->getManager();
+		
+		$user = $this->get('security.context')->getToken()->getUser();
+    	$codigo =  $user->getUsername();
+    	$repository = $this->getDoctrine()->getRepository('IngenieriaEstudianteBundle:Estudiante');
+    	$estudiante = $repository->findOneBy(array('codigo' => $codigo));
+		
+	 	$user = $this->get('security.context')->getToken()->getUser();
+    	$codigo =  $user->getUsername();
+    	$repository = $this->getDoctrine()->getRepository('IngenieriaEstudianteBundle:Estudiante');
+    	$estudiante = $repository->findOneBy(array('codigo' => $codigo));		
 
 		// buscamos el ID del asesor academico
 		$repository = $this->getDoctrine()->getRepository('IngenieriaProfesorBundle:Actividad');
 		$actividad = $repository->findOneBy(array('id' => $id));
 	
-		return $this->render('IngenieriaEstudianteBundle:Default:actividad.html.twig', array('actividad' => $actividad));
+		if ($estudiante->getActividad()) 
+			$inscripto = true; 
+		else	
+			$inscripto = false;
+		
+		if ($inscripto)
+			return $this->render('IngenieriaEstudianteBundle:Default:actividad.html.twig', array('actividad' => $actividad));
+		else	
+			return $this->render('IngenieriaEstudianteBundle:Default:actividades_ofertadas.html.twig', array('actividad' => $actividad));
+	
 	}
 
 	//*****************************************************************************************

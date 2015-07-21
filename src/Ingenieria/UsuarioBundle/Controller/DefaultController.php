@@ -653,7 +653,7 @@ class DefaultController extends Controller
 				
 				$grupo->setPath('grupo');
 				$grupo->upload();
-				/*
+				
 				$archivo= $grupo->getAbsolutePath();		
 				//bajamos el archivo a una matriz para procesar registro a registro y bajarlo a base de datos		    
 				$filas = file($archivo.".csv");
@@ -721,7 +721,7 @@ class DefaultController extends Controller
 					$em->persist($estudiante);
 					$i++;
 				}
-				*/
+				
 				$em->persist($grupo);	
 				$em->flush();	
 

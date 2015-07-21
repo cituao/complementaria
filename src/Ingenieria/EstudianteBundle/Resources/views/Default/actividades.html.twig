@@ -1,10 +1,15 @@
 {% extends 'IngenieriaEstudianteBundle::layout.html.twig' %}
 
 {% block programa %}
-Aplicación WEB  [Profesor]
+Aplicación WEB  [Estudiante]
 {% endblock %}
 
 {% block js  %}
+<script>
+$( "#actividad" ).css("background-color","#000");
+$( "#actividad img" ).css("opacity","0.4");
+$( "#actividad h3" ).css("opacity","0.4");
+</script>
 {% endblock %}
 
 {% block content  %}
@@ -27,7 +32,7 @@ Aplicación WEB  [Profesor]
 				<tbody>
 					<tr class="tableHead">
 						<th style=" width:75%"></th> 
-						<th><h2>PROFESOR</h2></th>
+						<th><h2>Mentor</h2></th>
 						<th></th>
 						<th></th>
 					</tr> <!--tablehead -->
@@ -45,19 +50,16 @@ Aplicación WEB  [Profesor]
 					<tr class="tableItem">
 						<td id="hoverDiv">
 							<td><h2>{{ id }}</h2></td>
-							<td style=" width:65%"><span style="margin-left:5px; ">{{ actividad.nombre }}</span></td>
-							<td style=" width:15%"><span>{{ actividad.profesor.nombres }}</span></td>
-							<td style=" width:15%"><span>{{ actividad.profesor.apellidos }}</span></td>
-							
+							<td style=" width:45%"><span style="margin-left:5px; ">{{ actividad.nombre }}</span></td>
+							<td style=" width:25%"><span>{{ actividad.mentor }}</span></td>
+							<td style=" width:15%"><span>{{ actividad.email }}</span></td>
 							<td>
 								<table class="opciones" style="right:129px">
 									<td>
-									<a href="{{ path('ingenieria_estudiante_actividad' , { 'id': actividad.id}) }}"><img src="{{ asset('img/editar.png') }}" ><h3> Ver </h3></a>
+									<a href="{{ path('ingenieria_estudiante_actividad' , { 'id': actividad.id}) }}"><img src="{{ asset('img/editar.png') }}" ><h3>Ver</h3></a>
 									</td>
 								</table>
 							</td>
-
-
 							<td></td>
 						</td> <!-- hoverDiv -->
 					</tr>
