@@ -55,8 +55,7 @@ $( "#estudiantes h3" ).css("opacity","0.4");
 							<td><h2>{{ id }}</h2></td>
 							<td><span style="margin-left:5px; ">{{ estudiante.nombres }}</span></td>
 							<td><span>{{ estudiante.apellidos }}</span></td>
-							<td style=" width:3%"></td>
-							<td>{{ estudiante.email }} {{ estudiante.emailInstitucional }}</td>
+							<td>{{ estudiante.email }} <br> {{ estudiante.emailInstitucional }}</td>
 							{% if estudiante.actividad == null %}
 							<td>Por matricular</td>
 							{% else %}
