@@ -705,6 +705,7 @@ class DefaultController extends Controller
 					$estudiante->setEmail($listaEstudiantes[$i]['emailpersonal']);
 					$estudiante->setCi($listaEstudiantes[$i]['ci']);
 					$estudiante->setAprobadoCronograma(false);
+					$estudiante->setGrupo($grupo);
 					
 					//cargamos todos los atributos al usuario
 					$usuario->setUsername($listaEstudiantes[$i]['codigo']) ;

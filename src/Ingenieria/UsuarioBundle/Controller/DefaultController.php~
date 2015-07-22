@@ -653,7 +653,7 @@ class DefaultController extends Controller
 				
 				$grupo->setPath('grupo');
 				$grupo->upload();
-				/*
+				
 				$archivo= $grupo->getAbsolutePath();		
 				//bajamos el archivo a una matriz para procesar registro a registro y bajarlo a base de datos		    
 				$filas = file($archivo.".csv");
@@ -705,6 +705,7 @@ class DefaultController extends Controller
 					$estudiante->setEmail($listaEstudiantes[$i]['emailpersonal']);
 					$estudiante->setCi($listaEstudiantes[$i]['ci']);
 					$estudiante->setAprobadoCronograma(false);
+					$estudiante->setGrupo($grupo);
 					
 					//cargamos todos los atributos al usuario
 					$usuario->setUsername($listaEstudiantes[$i]['codigo']) ;
@@ -721,7 +722,7 @@ class DefaultController extends Controller
 					$em->persist($estudiante);
 					$i++;
 				}
-				*/
+				
 				$em->persist($grupo);	
 				$em->flush();	
 
@@ -801,14 +802,14 @@ class DefaultController extends Controller
 
 
 		$repository = $this->getDoctrine()->getRepository('IngenieriaProfesorBundle:Actividad');
-		$grupo = $repository->findOneBy(array('id' => $id));		
+		$actividad = $repository->findOneBy(array('id' => $id));		
 	
-		$formulario = $this->createForm(new ActividadType(), $grupo);
+		$formulario = $this->createForm(new ActividadType(), $actividad);
 		
 		$formulario->handleRequest($peticion);
 
 		if ($formulario->isValid()) {
-			$em->persist($grupo);
+			$em->persist($actividad);
 			$em->flush();
 			return $this->redirect($this->generateUrl('usuario_actividades'));
 		}
