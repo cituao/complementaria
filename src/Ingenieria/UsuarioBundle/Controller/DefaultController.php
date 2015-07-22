@@ -209,12 +209,7 @@ class DefaultController extends Controller
 	// Home del administrador de la aplicacion
 	//******************************************************
 	public function estudiantesAction(){
-		$document = new Document();
-		$form = $this->createFormBuilder($document)
-		->add('file')
-		->add('name')
-		->getForm();
-	
+
 		$repository = $this->getDoctrine()->getRepository('IngenieriaEstudianteBundle:Estudiante');
 		$estudiantes = $repository->findAll();
 		
@@ -225,7 +220,7 @@ class DefaultController extends Controller
 		}else{
 			$msgerr = array('id'=>0, 'descripcion' => 'Ok');
 		}
-		return $this->render('IngenieriaUsuarioBundle:Default:estudiantes.html.twig',  array('listaEstudiantes' => $estudiantes,  'form' => $form->createView() , 'msgerr' => $msgerr));
+		return $this->render('IngenieriaUsuarioBundle:Default:estudiantes.html.twig',  array('listaEstudiantes' => $estudiantes, 'msgerr' => $msgerr));
 	}
 	
 	//********************************************************************
@@ -800,7 +795,6 @@ class DefaultController extends Controller
 		$peticion = $this->getRequest();
 		$em = $this->getDoctrine()->getManager();
 
-
 		$repository = $this->getDoctrine()->getRepository('IngenieriaProfesorBundle:Actividad');
 		$actividad = $repository->findOneBy(array('id' => $id));		
 	
@@ -815,6 +809,25 @@ class DefaultController extends Controller
 		}
 		
         return $this->render('IngenieriaUsuarioBundle:Default:actualizaractividad.html.twig', array('formulario' => $formulario->createView(), 'actividad' => $actividad ));
+	}
+	
+	/********************************************************/
+	//Muestra y modifica una actividad
+	/********************************************************/		
+	public function estudiantesGrupoAction($id){
 		
+		$repository = $this->getDoctrine()->getRepository('IngenieriaDirectorBundle:Grupo');
+		$grupo = $repository->findOneBy(array('id' => $id));	
+		
+		$estudiantes = $grupo->getEstudiantes();
+
+		if (!$estudiantes) {
+			//throw $this->createNotFoundException('ERR_NO_HAY_PROGRAMA');
+			$msgerr = array('id'=>1, 'descripcion' => 'ERROR NO hay estudiantes en el grupo');
+		}else{
+			$msgerr = array('id'=>0, 'descripcion' => 'Ok');
+		}
+		return $this->render('IngenieriaUsuarioBundle:Default:estudiantes.html.twig',  array('listaEstudiantes' => $estudiantes, 'msgerr' => $msgerr));
+	
 	}
 }

@@ -22,12 +22,7 @@ $( "#estudiantes h3" ).css("opacity","0.4");
 			<!--
 			<a id="nuevoEstudiante" href="{{ path('usuario_registrar_estudiante') }}" class = "button"><img src="{{ asset('img/academicosBoton.png') }}"/><h4>Nuevo estudiante</h4></a>
 			-->
-			<form name="anadirP" action= {{ path('usuario_subirestudiantes') }} method="post" {{ form_enctype(form) }}>
-				<div style="position:relative; float:right"><input style="padding-left:38px;" class="button" type="button" value="Cancelar" id="cancelar" name="cancelar" /><img style="position:absolute; top:0px; left:13px; pointer-events:none" src="{{ asset('img/cancelar.png') }}"/></div>
-				<div style="position:relative; float:right"><input style="padding-left:38px;" class="button" type="submit" value="Listo" id="listo" name="listo" /><img style="position:absolute; top:0px; left:13px; pointer-events:none" src="{{ asset('img/listo.png') }}"/></div>
-				<div style="float:right;">{{ form_widget(form) }}</div>
-				<h2 style="float:right; color:#000; margin-right:15px; margin-top:8px;">Nombre de archivo</h2>
-			</form>
+
 			</div> <!--up section -->
 		{% endblock  %}
 

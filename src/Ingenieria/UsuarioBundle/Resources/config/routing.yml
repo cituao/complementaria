@@ -103,3 +103,7 @@ usuario_registrar_actividad:
 usuario_actualizar_actividad:
     pattern:  /administrador/actualizar-actividad/id={id}
     defaults: { _controller: IngenieriaUsuarioBundle:Default:actualizarActividad }
+
+usuario_estudiantes_grupo:
+    pattern:  /administrador/estudiantes-grupo/id={id}
+    defaults: { _controller: IngenieriaUsuarioBundle:Default:estudiantesGrupo }
