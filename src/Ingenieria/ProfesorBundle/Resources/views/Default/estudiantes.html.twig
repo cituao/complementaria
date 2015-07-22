@@ -1,7 +1,7 @@
 {% extends 'IngenieriaProfesorBundle::layout.html.twig' %}
 
 {% block programa %}
-App WEB  [Profesor]
+App WEB  [Tutor]
 {% endblock %}
 
 {% block js  %}
@@ -18,13 +18,12 @@ $( "#estudiantes h3" ).css("opacity","0.4");
 		{% block upSection  %}
 		<div class = "upSection">
 			<h1 class ="sectionTitle">Estudiantes</h1>
-
+			<!--
 			<a href="" class="button">
 				<img src="/complementaria/web/img/reloj.png">
 				<h4>Morosos</h4>
 			</a>
-			
-
+			-->
 		</div>
 		{% endblock  %}
 
@@ -57,10 +56,12 @@ $( "#estudiantes h3" ).css("opacity","0.4");
 							<td><span style="margin-left:5px; ">{{ estudiante.nombres }}</span></td>
 							<td><span>{{ estudiante.apellidos }}</span></td>
 							<td style=" width:3%"></td>
-							<td>{{ estudiante.codigo }}</td>							
-							<td>{{ estudiante.ci }}</td>
-							<td>{{ estudiante.emailInstitucional }} </td>
-							<td>{{ estudiante.email }} </td>
+							<td>{{ estudiante.email }} {{ estudiante.emailInstitucional }}</td>
+							{% if estudiante.actividad == null %}
+							<td>Por matricular</td>
+							{% else %}
+							<td>{{ estudiante.actividad.nombre }}</td>
+							{% endif %}
 							<td style=" width:1%"></td>
 							<td>
 								<table class="opciones" style="right:129px">
