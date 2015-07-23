@@ -50,7 +50,7 @@ Aplicación WEB  [Estudiante]
 				
 				{% if a.verificado == false%}
 					<td class = "colEstado">No</td>
-					<td class = "colEstado">Modificar</td>
+					<td class = "colEstado"><a href="{{ path('ingenieria_estudiante_actualizar_actividad_semanal', { 'id': a.id}) }}">Modificar</a></td>
 				{% else %}
 					<td class = "colEstado">Si</td>
 					<td class = "colEstado"></td>

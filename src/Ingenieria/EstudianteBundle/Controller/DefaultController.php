@@ -368,4 +368,28 @@ class DefaultController extends Controller
 			'formulario' => $formulario->createView()
 			));	
 	}
+	
+	/********************************************************/
+	//Muestra y modifica una actividad
+	/********************************************************/		
+	public function actualizarActividadSemanalAction($id){
+		$peticion = $this->getRequest();
+		$em = $this->getDoctrine()->getManager();
+
+		$repository = $this->getDoctrine()->getRepository('IngenieriaEstudianteBundle:Bitacora');
+		$actividad_semanal = $repository->findOneBy(array('id' => $id));		
+	
+		$formulario = $this->createForm(new BitacoraType(), $actividad_semanal);
+		
+		$formulario->handleRequest($peticion);
+
+		if ($formulario->isValid()) {
+			$em->persist($actividad_semanal);
+			$em->flush();
+			return $this->redirect($this->generateUrl('ingenieria_estudiante_bitacora'));
+		}
+		
+        return $this->render('IngenieriaEstudianteBundle:Default:actualizar_actividad_semanal.html.twig', array('formulario' => $formulario->createView(), 'actividad' => $actividad_semanal ));
+	}
+	
 }
