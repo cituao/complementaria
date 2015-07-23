@@ -33,3 +33,7 @@ ingenieria_profesor_aprobarcronograma:
 ingenieria_profesor_rechazarcronograma:
     pattern:  /profesor/rechazar-cronograma/{id}
     defaults: { _controller: IngenieriaProfesorBundle:Default:rechazar }
+
+ingenieria_profesor_bitacora:
+    pattern:  /profesor/bitacora/{id}
+    defaults: { _controller: IngenieriaProfesorBundle:Default:bitacora }

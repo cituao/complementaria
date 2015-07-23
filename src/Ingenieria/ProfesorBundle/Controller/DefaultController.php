@@ -233,5 +233,22 @@ class DefaultController extends Controller
 		return $this->render('IngenieriaProfesorBundle:Default:cronograma.html.twig', array('estudiante' => $estudiante, 'cronograma' => $cronograma, 'msgerr' => $msgerr ));
 	}
 
+		/**********************************************************************************/
+	// Muestra bitacora de trabajo semanal del estudiante
+	/**********************************************************************************/		
+	public function bitacoraAction($id){
+    	$repository = $this->getDoctrine()->getRepository('IngenieriaEstudianteBundle:Estudiante');
+    	$estudiante = $repository->findOneBy(array('id' => $id));
+		
+		$bitacora = $estudiante->getBitacora();
+		
+		if (!$bitacora) {
+			$msgerr = array('descripcion'=>'No hay actividades registradas!','id'=>'1');
+		}else{
+			$msgerr = array('descripcion'=>'','id'=>'0');
+		}
+		
+		return $this->render('IngenieriaProfesorBundle:Default:bitacora.html.twig', array('estudiante' => $estudiante, 'bitacora'=>$bitacora, 'msgerr' => $msgerr));
+	}
 	
 }
