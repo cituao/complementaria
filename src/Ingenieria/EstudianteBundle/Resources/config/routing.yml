@@ -37,3 +37,7 @@ ingenieria_estudiante_eliminaractividad:
 ingenieria_estudiante_tutor:
     path:     /estudiante/tutor
     defaults: { _controller: IngenieriaEstudianteBundle:Default:tutor }
+
+ingenieria_estudiante_bitacora:
+    path:     /estudiante/bitacora
+    defaults: { _controller: IngenieriaEstudianteBundle:Default:bitacora }

@@ -1,0 +1,36 @@
+Ingenieria\EstudianteBundle\Entity\Bitacora:
+    type: entity
+    table: null
+    repositoryClass: Ingenieria\EstudianteBundle\Entity\BitacoraRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nombreActividad:
+            type: text
+            column: nombre_actividad
+        descripcion:
+            type: string
+            length: '255'
+        fechaInicio:
+            type: date
+            column: fecha_inicio
+        fechaFin:
+            type: date
+            column: fecha_fin
+        finalizada:
+            type: boolean
+        verificado:
+            type: boolean
+
+    manyToOne:
+        estudiante:
+            targetEntity: Ingenieria\EstudianteBundle\Entity\Estudiante
+            inversedBy: bitacora
+            joinColumn:
+                name: estudiante
+                referencedColumnName: id
+    lifecycleCallbacks: {  }

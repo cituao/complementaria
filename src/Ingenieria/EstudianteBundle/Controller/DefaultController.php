@@ -52,7 +52,8 @@ class DefaultController extends Controller
 			return $this->render('IngenieriaEstudianteBundle:Default:avisonoinscripto.html.twig');
 		}
 		else{
-			//buscar cronograma
+			
+			
 			$cronograma = $estudiante->getActividades();
 				
 			if ($cronograma->count()==0){
@@ -62,7 +63,6 @@ class DefaultController extends Controller
 				$msgerr = array('descripcion'=>'','id'=>'0');
 			}
 			return $this->render('IngenieriaEstudianteBundle:Default:cronograma.html.twig', array('estudiante' => $estudiante, 'cronograma'=>$cronograma, 'msgerr' => $msgerr));
-			
 		}	
 	}
 
@@ -313,5 +313,25 @@ class DefaultController extends Controller
 		$tutor = $grupo->getTutor();
 		
 		return $this->render('IngenieriaEstudianteBundle:Default:tutor.html.twig', array('tutor' => $tutor));
+	}
+	
+	/**********************************************************************************/
+	// Muestra bitacora de trabajo semanal
+	/**********************************************************************************/		
+	public function bitacoraAction(){
+		$user = $this->get('security.context')->getToken()->getUser();
+    	$codigo =  $user->getUsername();
+    	$repository = $this->getDoctrine()->getRepository('IngenieriaEstudianteBundle:Estudiante');
+    	$estudiante = $repository->findOneBy(array('codigo' => $codigo));
+		
+		$bitacora = $estudiante->getBitacora();
+		
+		if (!$bitacora) {
+			$msgerr = array('descripcion'=>'No hay actividades registradas!','id'=>'1');
+		}else{
+			$msgerr = array('descripcion'=>'','id'=>'0');
+		}
+		
+		return $this->render('IngenieriaEstudianteBundle:Default:bitacora.html.twig', array('estudiante' => $estudiante, 'bitacora'=>$bitacora, 'msgerr' => $msgerr));
 	}
 }

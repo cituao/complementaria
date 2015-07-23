@@ -41,6 +41,10 @@ Ingenieria\EstudianteBundle\Entity\Estudiante:
         actividades:
             targetEntity: Ingenieria\EstudianteBundle\Entity\Cronograma
             mappedBy: estudiante
+         
+        bitacora:
+            targetEntity: Ingenieria\EstudianteBundle\Entity\Bitacora
+            mappedBy: estudiante
 
     manyToOne:
         grupo:

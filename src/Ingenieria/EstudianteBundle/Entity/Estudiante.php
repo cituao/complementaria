@@ -59,6 +59,8 @@ class Estudiante
 	protected $grupo;
 	
 	protected $actividad;
+	
+	protected $bitacora;
 
     /**
      * Get id
@@ -338,5 +340,38 @@ class Estudiante
     public function getGrupo()
     {
         return $this->grupo;
+    }
+
+    /**
+     * Add bitacora
+     *
+     * @param \Ingenieria\EstudianteBundle\Entity\Bitacora $bitacora
+     * @return Estudiante
+     */
+    public function addBitacora(\Ingenieria\EstudianteBundle\Entity\Bitacora $bitacora)
+    {
+        $this->bitacora[] = $bitacora;
+
+        return $this;
+    }
+
+    /**
+     * Remove bitacora
+     *
+     * @param \Ingenieria\EstudianteBundle\Entity\Bitacora $bitacora
+     */
+    public function removeBitacora(\Ingenieria\EstudianteBundle\Entity\Bitacora $bitacora)
+    {
+        $this->bitacora->removeElement($bitacora);
+    }
+
+    /**
+     * Get bitacora
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getBitacora()
+    {
+        return $this->bitacora;
     }
 }
