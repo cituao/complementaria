@@ -41,3 +41,7 @@ ingenieria_estudiante_tutor:
 ingenieria_estudiante_bitacora:
     path:     /estudiante/bitacora
     defaults: { _controller: IngenieriaEstudianteBundle:Default:bitacora }
+
+ingenieria_estudiante_registrar_actvidad_semanal:
+    path:     /estudiante/actividad-semanal
+    defaults: { _controller: IngenieriaEstudianteBundle:Default:registrarActividadSemanal }

@@ -2,7 +2,7 @@
  * In this file you should write your main styles. (or centralize your imports)
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
-/* line 5, ../../../../../RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/compass-core-1.0.0.alpha.19/stylesheets/compass/reset/_utilities.scss */
+/* line 5, ../../../../../Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -24,45 +24,45 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-/* line 22, ../../../../../RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/compass-core-1.0.0.alpha.19/stylesheets/compass/reset/_utilities.scss */
+/* line 22, ../../../../../Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/reset/_utilities.scss */
 html {
   line-height: 1;
 }
 
-/* line 24, ../../../../../RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/compass-core-1.0.0.alpha.19/stylesheets/compass/reset/_utilities.scss */
+/* line 24, ../../../../../Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none;
 }
 
-/* line 26, ../../../../../RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/compass-core-1.0.0.alpha.19/stylesheets/compass/reset/_utilities.scss */
+/* line 26, ../../../../../Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 28, ../../../../../RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/compass-core-1.0.0.alpha.19/stylesheets/compass/reset/_utilities.scss */
+/* line 28, ../../../../../Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
-/* line 30, ../../../../../RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/compass-core-1.0.0.alpha.19/stylesheets/compass/reset/_utilities.scss */
+/* line 30, ../../../../../Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
   quotes: none;
 }
-/* line 103, ../../../../../RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/compass-core-1.0.0.alpha.19/stylesheets/compass/reset/_utilities.scss */
+/* line 103, ../../../../../Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
 }
 
-/* line 32, ../../../../../RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/compass-core-1.0.0.alpha.19/stylesheets/compass/reset/_utilities.scss */
+/* line 32, ../../../../../Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none;
 }
 
-/* line 116, ../../../../../RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/compass-core-1.0.0.alpha.19/stylesheets/compass/reset/_utilities.scss */
+/* line 116, ../../../../../Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/reset/_utilities.scss */
 article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
   display: block;
 }
@@ -362,27 +362,27 @@ input[type="text"], input[type="password"], #academico_perfil, #centro_direccion
   font-family: helvetica;
 }
 
-/* line 293, psass/sass/global.scss */
+/* line 292, psass/sass/global.scss */
 input[type="radio"] {
   float: left;
 }
 
-/* line 296, psass/sass/global.scss */
+/* line 295, psass/sass/global.scss */
 .nomodificable {
   border: none !important;
 }
 
-/* line 300, psass/sass/global.scss */
+/* line 299, psass/sass/global.scss */
 .nomodificable input {
   border: none !important;
 }
 
-/* line 303, psass/sass/global.scss */
+/* line 302, psass/sass/global.scss */
 #centro_direccion {
   max-height: 50px;
 }
 
-/* line 306, psass/sass/global.scss */
+/* line 305, psass/sass/global.scss */
 #academico_perfil {
   height: 150px;
   width: 100%;
@@ -390,7 +390,7 @@ input[type="radio"] {
   padding-top: 15px;
 }
 
-/* line 313, psass/sass/global.scss */
+/* line 312, psass/sass/global.scss */
 select {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
@@ -411,18 +411,18 @@ select {
   background: url("../img/arrow.png") #242021 no-repeat;
 }
 
-/* line 328, psass/sass/global.scss */
+/* line 327, psass/sass/global.scss */
 select:hover {
   background: url("../img/arrow.png") #ec1c24 no-repeat;
 }
 
-/* line 332, psass/sass/global.scss */
+/* line 331, psass/sass/global.scss */
 input[type="text"]:focus, #academico_perfil:focus, #centro_direccion:focus, input[type="password"]:focus, select:focus, input[type="email"]:focus {
   outline: none;
   border: #af0000 solid 1px;
 }
 
-/* line 338, psass/sass/global.scss */
+/* line 337, psass/sass/global.scss */
 #error {
   font-family: helvetica;
   color: #dddddd;
@@ -431,13 +431,13 @@ input[type="text"]:focus, #academico_perfil:focus, #centro_direccion:focus, inpu
   text-align: center;
   margin-top: 7%;
 }
-/* line 345, psass/sass/global.scss */
+/* line 344, psass/sass/global.scss */
 #error h2 {
   color: #dddddd;
   font-size: 30px;
   margin-bottom: 10px;
 }
-/* line 350, psass/sass/global.scss */
+/* line 349, psass/sass/global.scss */
 #error img {
   display: block;
   margin: 0 auto;
@@ -1086,6 +1086,6 @@ input[type="text"]:focus, #academico_perfil:focus, #centro_direccion:focus, inpu
 }
 
 /* line 599, psass/sass/contentStyle.scss */
-#cronograma_fechaIniciacion {
-  width: 80px;
+.cronograma_input {
+  width: 80px !important;
 }

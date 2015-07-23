@@ -10,12 +10,7 @@ Aplicación WEB  [Estudiante]
 	$( "#bitacora img" ).css("opacity","0.4");
 	$( "#bitacora h3" ).css("opacity","0.4");
 </script>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
-<script src="//code.jquery.com/jquery-1.9.1.js"></script>
-<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-<script src="{{ asset('js/date.js') }}"></script>
 {% endblock %}
-
 
 {% block content  %}
 {{ parent() }}
@@ -24,21 +19,9 @@ Aplicación WEB  [Estudiante]
 	{% block upSection  %}
 	<div class = "upSection" style="height:60px;">
 		<h1 class ="sectionTitle">Bitácora de trabajo semanal</h1>
-			<div id="aggacti" style="width: 700px;height: 40px; float: left; padding: 5px; right:15%" data-path = "{{ path('ingenieria_estudiante_agregaractividad') }}" data-path2 = "{{ path('ingenieria_estudiante_eliminaractividad') }}">
-				<form style="width:80%; top:21px; opacity:1;">
-					<div style="position:relative; float:right;">
-						<input style="padding-left:38px;"  class="button" value="Actividad" id="btnsubir" name="listo"  type="button">
-						<img style="pointer-events:none; position:absolute; top:0; left:13px;" src="/complementaria/web/img/anadirActividad.png"/>
-						</input>
-					</div>
-					<input style=" float:right" type="text" name="fecha" id="cronograma_fechaFinalizacion">
-					<h2 style="margin-top:8px; margin-right: 15px; color:#000; float:right">Fin:</h2> 
-					<input style=" float:right" type="text" name="fecha" id="cronograma_fechaIniciacion">
-					<h2 style="margin-top:8px; margin-right: 15px; color:#000; float:right">Inicio:</h2> 
-					<input style="margin-right:10px; float:right" type="text" name="actividad" id="input_actividad">
-					<h2 style=" margin-top:8px; margin-right: 15px; color:#000; float:right">Actividad:</h2> 
-				</form>
-			</div> <!-- aggacti -->
+			<a href="{{ path('ingenieria_estudiante_registrar_actvidad_semanal' , { 'codigo': estudiante.codigo}) }}" class = "button"> <img src="{{ asset('img/anadirActividad.png') }}"/>
+			<h4>Actividad</h4>
+			</a>
 	</div> <!-- up section -->
 	{% endblock  %}
 
@@ -51,6 +34,7 @@ Aplicación WEB  [Estudiante]
 				<th>Fecha fin</th>
 				<th>Finalizada</th>
 				<th>Verificada</th>
+				<th>Acción</th>
 			</tr>
 			<tr style="height:8px;"></tr>
 			{% for a in bitacora %}
@@ -58,6 +42,19 @@ Aplicación WEB  [Estudiante]
 				<td  class = "colActividad">{{ a.nombreActividad }}</td>
 				<td  class = "colFecha">{{ a.fechaInicio|date("d/m/Y") }}</td>
 				<td  class = "colFecha">{{ a.fechaFin|date("d/m/Y") }}</td>
+				{% if a.finalizada == false%}
+					<td class = "colEstado">No</td>
+     			{% else %}
+					<td class = "colEstado">Si</td>
+				{% endif %}
+				
+				{% if a.verificado == false%}
+					<td class = "colEstado">No</td>
+					<td class = "colEstado">Modificar</td>
+				{% else %}
+					<td class = "colEstado">Si</td>
+					<td class = "colEstado"></td>
+				{% endif %}
 				<!-- 
 				{% if estudiante.aprobadoCronograma == false %}
 					<td><a  class="eliminaa"><img src="/complementaria/web/img/delete.png"/></a></td>
@@ -76,6 +73,10 @@ Aplicación WEB  [Estudiante]
 			</tr>
 			{% endfor %}
 		</table>
+	
+		{% if bitacora.count == 0 %}
+		<div id = "error"><img src="/complementaria/web/img/error.png"/>{{ msgerr.descripcion }}</div>	
+		{% endif %}
 	</div>	<!-- down section -->
 	{% endblock  %}
 </div><!-- content -->

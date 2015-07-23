@@ -23,8 +23,10 @@ Ingenieria\EstudianteBundle\Entity\Bitacora:
             column: fecha_fin
         finalizada:
             type: boolean
+            nullable: true
         verificado:
             type: boolean
+            nullable: true
 
     manyToOne:
         estudiante:
