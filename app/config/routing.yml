@@ -13,3 +13,6 @@ ingenieria_director:
 ingenieria_usuario:
     resource: "@IngenieriaUsuarioBundle/Resources/config/routing.yml"
     prefix:   /
+
+logout:
+    path:     /logout
