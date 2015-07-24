@@ -8,6 +8,11 @@ use Ingenieria\ProfesorBundle\Entity\Actividad;
 use Ingenieria\ProfesorBundle\Entity\Profesor;
 use Ingenieria\ProfesorBundle\Form\Type\ActividadType;
 
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+
 class DefaultController extends Controller
 {
     public function indexAction()
@@ -250,5 +255,41 @@ class DefaultController extends Controller
 		
 		return $this->render('IngenieriaProfesorBundle:Default:bitacora.html.twig', array('estudiante' => $estudiante, 'bitacora'=>$bitacora, 'msgerr' => $msgerr));
 	}
+
+	/**********************************************************************/
+	// Registra una actividad en el cronograma el paso de datos es por ajax
+	/**********************************************************************/		
+	public function verificarActividadAction(){
+
+		$em = $this->getDoctrine()->getManager();
+		//recuperamos el id de la actividad
+		$request = $this->getRequest();
+		$id_actividad = $request->request->get('id');
+
+		//buscamos la actividad en la bitacora
+    	$repository = $this->getDoctrine()->getRepository('IngenieriaEstudianteBundle:Bitacora');
+    	$actividad = $repository->findOneBy(array('id' => $id_actividad));
+	
+
+		if ($actividad->getVerificado()){
+			$actividad->setVerificado(false);
+		}
+		else {
+			$actividad->setVerificado(true);
+		}
+
+		$em->persist($actividad);
+		$em->flush();
+		
+		$op="a";
+		$r = array("operacion" => $op);
+		$serializer = new Serializer(array(new GetSetMethodNormalizer()), array('json' => new 
+			JsonEncoder()));
+		$json = $serializer->serialize($r, 'json');
+		
+			
+		return new Response($json);
+		
+	}	
 	
 }

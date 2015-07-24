@@ -12,16 +12,19 @@ Aplicación WEB  [Estudiante]
 	
 	 $(document).ready(function () {
 
-      $("#check_verificado").click(function () {
+      $(".check_verificado").click(function () {
+		id = $(this).attr("value")
+		ruta = $("#ruta").attr("value")
+		//alert($id);   
+		//alert($ruta);     
 
-        if ($(this).attr('checked')) {
-           // do what you need here     
-           alert("Checked");
-        }
-        else {
-           // do what you need here         
-           alert("Unchecked");
-        }
+		$.ajax({url: ruta,
+			type: "POST",
+			data: { "id" : id },
+			success:function(data){
+					alert("¡La actividad fue verificada exitosamente!");
+				}});
+
       });
 
 	});
@@ -68,9 +71,9 @@ Aplicación WEB  [Estudiante]
 				{% endif %}
 				
 				{% if a.verificado == true %}
-				<td class = "colEstado"><input id="check_verificado" type="checkbox" name="vehicle1" value="Bike" checked="checked"></td>
+				<td class = "colEstado"><input class="check_verificado" type="checkbox" name="vehicle1" value={{ a.id }} checked="checked"></td>
 				{% else %}
-				<td class = "colEstado"><input id="check_verificado" type="checkbox" name="vehicle1" value="Bike"></td>
+				<td class = "colEstado"><input class="check_verificado" type="checkbox" name="vehicle1" value={{ a.id }}></td>
 				{% endif %}
 			
 				<!-- 
@@ -95,6 +98,7 @@ Aplicación WEB  [Estudiante]
 		{% if bitacora.count == 0 %}
 		<div id = "error"><img src="/complementaria/web/img/error.png"/>{{ msgerr.descripcion }}</div>	
 		{% endif %}
+		<input id="ruta" type="hidden" name="ruta" value="{{ path('ingenieria_profesor_verificarActividad') }}">
 	</div>	<!-- down section -->
 	{% endblock  %}
 </div><!-- content -->
