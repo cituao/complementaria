@@ -107,3 +107,7 @@ usuario_actualizar_actividad:
 usuario_estudiantes_grupo:
     pattern:  /administrador/estudiantes-grupo/id={id}
     defaults: { _controller: IngenieriaUsuarioBundle:Default:estudiantesGrupo }
+
+usuario_bitacora:
+    pattern:  /administrador/bitacora-estudiante/id={id}
+    defaults: { _controller: IngenieriaUsuarioBundle:Default:bitacora }

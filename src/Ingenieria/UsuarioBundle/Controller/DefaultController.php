@@ -204,6 +204,20 @@ class DefaultController extends Controller
         return $this->redirect($this->generateUrl('usuario_adm_homepage'));
 	}	
 	
+	//********************************************************/
+	//Elimina profesor
+	/********************************************************/		
+	public function eliminarProfesorAction($id){
+		$peticion = $this->getRequest();
+		$repository = $this->getDoctrine()->getRepository('IngenieriaProfesorBundle:Profesor');
+		$profesor = $repository->findOneBy(array('id' => $id));
+		
+		$em= $this->getDoctrine()->getManager();
+		$em->remove($profesor);
+		$em->flush();
+            
+        return $this->redirect($this->generateUrl('usuario_profesores'));
+	}	
 	
 		//******************************************************
 	// Home del administrador de la aplicacion
@@ -829,5 +843,23 @@ class DefaultController extends Controller
 		}
 		return $this->render('IngenieriaUsuarioBundle:Default:estudiantes.html.twig',  array('listaEstudiantes' => $estudiantes, 'msgerr' => $msgerr));
 	
+	}
+	
+		/**********************************************************************************/
+	// Muestra bitacora de trabajo semanal del estudiante
+	/**********************************************************************************/		
+	public function bitacoraAction($id){
+    	$repository = $this->getDoctrine()->getRepository('IngenieriaEstudianteBundle:Estudiante');
+    	$estudiante = $repository->findOneBy(array('id' => $id));
+		
+		$bitacora = $estudiante->getBitacora();
+		
+		if (!$bitacora) {
+			$msgerr = array('descripcion'=>'No hay actividades registradas!','id'=>'1');
+		}else{
+			$msgerr = array('descripcion'=>'','id'=>'0');
+		}
+		
+		return $this->render('IngenieriaUsuarioBundle:Default:bitacora.html.twig', array('estudiante' => $estudiante, 'bitacora'=>$bitacora, 'msgerr' => $msgerr));
 	}
 }

@@ -63,10 +63,10 @@ $( "#estudiantes h3" ).css("opacity","0.4");
 										<td>
 											<div>
 												<table class="opciones">
-													{% if estudiante.actividades.count > 0 %}
-													<td style="width: 120px;"><a href="{{ path('usuario_cronograma', { 'id': estudiante.id}) }}"><img src="{{ asset('img/cronograma.png') }}" /><h3>Cronograma</h3></a></td>
+													{% if estudiante.actividad == null > 0 %}
+													 <td><img src="{{ asset('img/nocrono.png') }}" /></td>
 													{% else %}
-													<td><img src="{{ asset('img/nocrono.png') }}" /></td>
+													<td style="width: 120px;"><a href="{{ path('usuario_bitacora', { 'id': estudiante.id}) }}"><img src="{{ asset('img/cronograma.png') }}" /><h3>Bitacora</h3></a></td>
 													{% endif %}
 													
 												</table> <!-- opciones -->

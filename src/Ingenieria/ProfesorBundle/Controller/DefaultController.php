@@ -238,7 +238,7 @@ class DefaultController extends Controller
 		return $this->render('IngenieriaProfesorBundle:Default:cronograma.html.twig', array('estudiante' => $estudiante, 'cronograma' => $cronograma, 'msgerr' => $msgerr ));
 	}
 
-		/**********************************************************************************/
+	/**********************************************************************************/
 	// Muestra bitacora de trabajo semanal del estudiante
 	/**********************************************************************************/		
 	public function bitacoraAction($id){
