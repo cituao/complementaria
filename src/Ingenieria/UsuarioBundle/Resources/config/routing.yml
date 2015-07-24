@@ -83,3 +83,27 @@ usuario_registrar_categoria:
 usuario_actualizar_categoria:
     pattern:  /administrador/actualizar-categoria/id={id}
     defaults: { _controller: IngenieriaUsuarioBundle:Default:categoria }
+
+usuario_registrar_grupo:
+    pattern:  /administrador/registrar-grupo
+    defaults: { _controller: IngenieriaUsuarioBundle:Default:registrarGrupo }
+
+usuario_actualizar_grupo:
+    pattern:  /administrador/actualizar-grupo/id={id}
+    defaults: { _controller: IngenieriaUsuarioBundle:Default:actualizarGrupo }
+
+usuario_eliminar_grupo:
+    pattern:  /administrador/eliminar-grupo/id={id}
+    defaults: { _controller: IngenieriaUsuarioBundle:Default:eliminarGrupo }
+
+usuario_registrar_actividad:
+    pattern:  /administrador/registrar-actividad
+    defaults: { _controller: IngenieriaUsuarioBundle:Default:registrarActividad }
+
+usuario_actualizar_actividad:
+    pattern:  /administrador/actualizar-actividad/id={id}
+    defaults: { _controller: IngenieriaUsuarioBundle:Default:actualizarActividad }
+
+usuario_estudiantes_grupo:
+    pattern:  /administrador/estudiantes-grupo/id={id}
+    defaults: { _controller: IngenieriaUsuarioBundle:Default:estudiantesGrupo }

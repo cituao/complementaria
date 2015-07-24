@@ -11,8 +11,18 @@ Ingenieria\ProfesorBundle\Entity\Actividad:
         nombre:
             type: string
             length: '250'
-        descripcion:
-            type: text
+        mentor:
+            type: string
+            length: '50'
+        email:
+            type: string
+            length: '50'
+        proposito:
+            type: string
+            length: '250'
+        dirigida:
+            type: string
+            length: '250'
         url:
             type: string
             length: '250'
@@ -21,16 +31,47 @@ Ingenieria\ProfesorBundle\Entity\Actividad:
             type: string
             length: '50'
             nullable: true
+        trabajo:
+            type: boolean
+            nullable: true
+        aprendizaje:
+            type: boolean
+            nullable: true
+        pensamiento:
+            type: boolean
+            nullable: true
+        autonomia:
+            type: boolean
+            nullable: true
+        integralidad:
+            type: boolean
+            nullable: true
+        excelencia:
+            type: boolean
+            nullable: true
+        creatividad:
+            type: boolean
+            nullable: true
+        eticidad:
+            type: boolean
+            nullable: true
+        responsabilidad:
+            type: boolean
+            nullable: true
+        pertenencia:
+            type: boolean
+            nullable: true
+        honestidad:
+            type: boolean
+            nullable: true
         numeroCupos:
             type: integer
             column: numero_cupos
+        descripcion:
+            type: text
+            length: 1000
+            nullable: true
     manyToOne:
-        profesor:
-            targetEntity: Ingenieria\ProfesorBundle\Entity\Profesor
-            inversedBy: actividades
-            joinColumn:
-                name: profesor
-                referencedColumnName: id
         categoria:
             targetEntity: Ingenieria\UsuarioBundle\Entity\Categoria
             inversedBy: actividades

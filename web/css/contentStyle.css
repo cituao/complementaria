@@ -640,6 +640,6 @@
 }
 
 /* line 599, psass/sass/contentStyle.scss */
-#cronograma_fechaIniciacion {
-  width: 80px;
+.cronograma_input {
+  width: 80px !important;
 }

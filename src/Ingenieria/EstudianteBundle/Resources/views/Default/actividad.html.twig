@@ -29,45 +29,61 @@ $( "#actividad h3" ).css("opacity","0.4");
 			
 			<div class="profileFormContainer" style="height:700px;">
 			<form action="" method="post">
-				<div class="inputContainer">
-					<h2 style="width: 96px;">Actividad:</h2>
-					<div class="input nomodificable">
-					<input type="text" value = "{{ actividad.nombre }}" readonly style="width: 220px;">
-					</div>
-				</div>
 
-				<div class="inputContainer">	
-					<h2  style="width: 96px;">Categoría:</h2>
-					<div class="input nomodificable">
-					<input type="text" value = "{{ actividad.categoria.nombre }}" readonly class = "largo">
-					</div>
-				</div>
 
 				<div class="inputContainer">
-					<h2  style="width: 96px;">Descripción:</h2>
+					<h2 style="width: 96px;">Mentor:</h2>
 					<div class="input nomodificable">
-					<textarea style="border:none !important; font-family:helvetica; margin-top:15px;" cols="40" rows="20" readonly>{{ actividad.descripcion }}</textarea>
+					<input type="text" value = "{{ actividad.mentor }}" readonly style="width: 450px;">
 					</div>
 				</div>
-
-
-				<div class="inputContainer">	
-					<h2  style="width: 96px;">Profesor:</h2>
+					
+				<div class="inputContainer">
+					<h2 style="width: 96px;">Email:</h2>
 					<div class="input nomodificable">
-					<input type="text" value	 = "{{ actividad.profesor.getNombreCompleto }}" readonly>
+					<input type="text" value = "{{ actividad.email }}" readonly style="width: 450px;">
 					</div>
 				</div>
 				
-				<div class="inputContainer">	
-					<h2  style="width: 96px;">Recurso digital:</h2>
+				<div class="inputContainer">
+					<h2 style="width: 96px;">Nombre de la actividad:</h2>
 					<div class="input nomodificable">
-					<a href = "http://{{ actividad.url }}" target="_blank">{{ actividad.url }}</a>
+					<input type="text" value = "{{ actividad.nombre }}" readonly style="width: 450px;">
+					</div>
+				</div>
+
+			    <div class="inputContainer">
+					<h2 style="width: 96px;">Propósito:</h2>
+					<div class="input nomodificable">
+					<input type="text" value = "{{ actividad.proposito }}" readonly style="width: 450px;">
+					</div>
+				</div>
+
+			    <div class="inputContainer">
+					<h2 style="width: 96px;">Dirigida:</h2>
+					<div class="input nomodificable">
+					<input type="text" value = "{{ actividad.dirigida }}" readonly style="width: 450px;">
+					</div>
+				</div>
+				
+				<div class="inputContainer">
+					<h2 style="width: 96px;">Descripción:</h2>
+					<div class="input nomodificable">
+					<input type="text" value = "{{ actividad.descripcion }}" readonly style="width: 450px;">
+					</div>
+				</div>
+				
+				<div class="inputContainer">
+					<h2 style="width: 96px;">URL:</h2>
+					<div class="input nomodificable">
+					<input type="text" value = "{{ actividad.url }}" readonly style="width: 450px;">
 					</div>
 				</div>
 				
 				<div class= "inputContainer" style = "position= absolute; padding: 30px 10px 10px 10px;">
 					<a href="{{ path('ingenieria_estudiante_inscripcion' , { 'id': actividad.id }) }}" class = "button"><h4>Cursar actividad</h4></a>
 				</div>
+				
 			</form>
 			
 			</div><!--profileFormContainer -->	

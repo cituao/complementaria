@@ -1,0 +1,27 @@
+Ingenieria\DirectorBundle\Entity\Grupo:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nombre:
+            type: string
+            length: '50'
+
+    oneToOne:
+        tutor:
+            targetEntity: Ingenieria\ProfesorBundle\Entity\Profesor
+            inversedBy: grupo
+            joinColumn:
+                 name: tutor
+                 referencedColumnName: id
+    oneToMany:
+        estudiantes:
+            targetEntity: Ingenieria\EstudianteBundle\Entity\Estudiante
+            mappedBy: grupo
+
+    lifecycleCallbacks: {  }

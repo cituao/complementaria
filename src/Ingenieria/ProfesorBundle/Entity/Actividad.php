@@ -21,11 +21,6 @@ class Actividad
      */
     private $nombre;
 
-     /**
- 	 * @Assert\NotBlank(message="Es obligatorio!")
-     */
-    private $descripcion;
-
     /**
      * @var string
      */
@@ -44,12 +39,42 @@ class Actividad
 
 	private $file;
 
-	protected $profesor;
-
 	protected $estudiantes;
 
 	protected $categoria;
+
+	private $mentor;
+
+	private $email;
+
+	private $proposito;
+
+	private $dirigida;
+
+	private $trabajo;
+
+	private $aprendizaje;
+
+	private $pensamiento;
+
+	private $autonomia;
+
+	private $integralidad;
+
+	private $excelencia;
+
+	private $creatividad;
+
+	private $eticidad;
+
+	private $responsabilidad;
+
+	private $pertenencia;
 	
+	private $honestidad;
+
+	private $descripcion;
+
     public function setFile(UploadedFile $file = null)
     {
         $this->file = $file;
@@ -96,29 +121,6 @@ class Actividad
     public function getNombre()
     {
         return $this->nombre;
-    }
-
-    /**
-     * Set descripcion
-     *
-     * @param string $descripcion
-     * @return Actividad
-     */
-    public function setDescripcion($descripcion)
-    {
-        $this->descripcion = $descripcion;
-
-        return $this;
-    }
-
-    /**
-     * Get descripcion
-     *
-     * @return string 
-     */
-    public function getDescripcion()
-    {
-        return $this->descripcion;
     }
 
     /**
@@ -247,28 +249,6 @@ class Actividad
 	}
 
     /**
-     * Set profesor
-     *
-     * @param \Ingenieria\ProfesorBundle\Entity\Profesor $profesor
-     * @return Actividad
-     */
-    public function setProfesor(\Ingenieria\ProfesorBundle\Entity\Profesor $profesor = null)
-    {
-        $this->profesor = $profesor;
-
-        return $this;
-    }
-
-    /**
-     * Get profesor
-     *
-     * @return \Ingenieria\ProfesorBundle\Entity\Profesor 
-     */
-    public function getProfesor()
-    {
-        return $this->profesor;
-    }
-    /**
      * Constructor
      */
     public function __construct()
@@ -330,5 +310,373 @@ class Actividad
     public function getCategoria()
     {
         return $this->categoria;
+    }
+
+    /**
+     * Set mentor
+     *
+     * @param string $mentor
+     * @return Actividad
+     */
+    public function setMentor($mentor)
+    {
+        $this->mentor = $mentor;
+
+        return $this;
+    }
+
+    /**
+     * Get mentor
+     *
+     * @return string 
+     */
+    public function getMentor()
+    {
+        return $this->mentor;
+    }
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     * @return Actividad
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string 
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * Set proposito
+     *
+     * @param string $proposito
+     * @return Actividad
+     */
+    public function setProposito($proposito)
+    {
+        $this->proposito = $proposito;
+
+        return $this;
+    }
+
+    /**
+     * Get proposito
+     *
+     * @return string 
+     */
+    public function getProposito()
+    {
+        return $this->proposito;
+    }
+
+    /**
+     * Set dirigida
+     *
+     * @param string $dirigida
+     * @return Actividad
+     */
+    public function setDirigida($dirigida)
+    {
+        $this->dirigida = $dirigida;
+
+        return $this;
+    }
+
+    /**
+     * Get dirigida
+     *
+     * @return string 
+     */
+    public function getDirigida()
+    {
+        return $this->dirigida;
+    }
+
+    /**
+     * Set trabajo
+     *
+     * @param boolean $trabajo
+     * @return Actividad
+     */
+    public function setTrabajo($trabajo)
+    {
+        $this->trabajo = $trabajo;
+
+        return $this;
+    }
+
+    /**
+     * Get trabajo
+     *
+     * @return boolean 
+     */
+    public function getTrabajo()
+    {
+        return $this->trabajo;
+    }
+
+    /**
+     * Set aprendizaje
+     *
+     * @param boolean $aprendizaje
+     * @return Actividad
+     */
+    public function setAprendizaje($aprendizaje)
+    {
+        $this->aprendizaje = $aprendizaje;
+
+        return $this;
+    }
+
+    /**
+     * Get aprendizaje
+     *
+     * @return boolean 
+     */
+    public function getAprendizaje()
+    {
+        return $this->aprendizaje;
+    }
+
+    /**
+     * Set pensamiento
+     *
+     * @param boolean $pensamiento
+     * @return Actividad
+     */
+    public function setPensamiento($pensamiento)
+    {
+        $this->pensamiento = $pensamiento;
+
+        return $this;
+    }
+
+    /**
+     * Get pensamiento
+     *
+     * @return boolean 
+     */
+    public function getPensamiento()
+    {
+        return $this->pensamiento;
+    }
+
+    /**
+     * Set autonomia
+     *
+     * @param boolean $autonomia
+     * @return Actividad
+     */
+    public function setAutonomia($autonomia)
+    {
+        $this->autonomia = $autonomia;
+
+        return $this;
+    }
+
+    /**
+     * Get autonomia
+     *
+     * @return boolean 
+     */
+    public function getAutonomia()
+    {
+        return $this->autonomia;
+    }
+
+    /**
+     * Set integralidad
+     *
+     * @param boolean $integralidad
+     * @return Actividad
+     */
+    public function setIntegralidad($integralidad)
+    {
+        $this->integralidad = $integralidad;
+
+        return $this;
+    }
+
+    /**
+     * Get integralidad
+     *
+     * @return boolean 
+     */
+    public function getIntegralidad()
+    {
+        return $this->integralidad;
+    }
+
+    /**
+     * Set excelencia
+     *
+     * @param boolean $excelencia
+     * @return Actividad
+     */
+    public function setExcelencia($excelencia)
+    {
+        $this->excelencia = $excelencia;
+
+        return $this;
+    }
+
+    /**
+     * Get excelencia
+     *
+     * @return boolean 
+     */
+    public function getExcelencia()
+    {
+        return $this->excelencia;
+    }
+
+    /**
+     * Set creatividad
+     *
+     * @param boolean $creatividad
+     * @return Actividad
+     */
+    public function setCreatividad($creatividad)
+    {
+        $this->creatividad = $creatividad;
+
+        return $this;
+    }
+
+    /**
+     * Get creatividad
+     *
+     * @return boolean 
+     */
+    public function getCreatividad()
+    {
+        return $this->creatividad;
+    }
+
+    /**
+     * Set eticidad
+     *
+     * @param boolean $eticidad
+     * @return Actividad
+     */
+    public function setEticidad($eticidad)
+    {
+        $this->eticidad = $eticidad;
+
+        return $this;
+    }
+
+    /**
+     * Get eticidad
+     *
+     * @return boolean 
+     */
+    public function getEticidad()
+    {
+        return $this->eticidad;
+    }
+
+    /**
+     * Set responsabilidad
+     *
+     * @param boolean $responsabilidad
+     * @return Actividad
+     */
+    public function setResponsabilidad($responsabilidad)
+    {
+        $this->responsabilidad = $responsabilidad;
+
+        return $this;
+    }
+
+    /**
+     * Get responsabilidad
+     *
+     * @return boolean 
+     */
+    public function getResponsabilidad()
+    {
+        return $this->responsabilidad;
+    }
+
+    /**
+     * Set pertenencia
+     *
+     * @param boolean $pertenencia
+     * @return Actividad
+     */
+    public function setPertenencia($pertenencia)
+    {
+        $this->pertenencia = $pertenencia;
+
+        return $this;
+    }
+
+    /**
+     * Get pertenencia
+     *
+     * @return boolean 
+     */
+    public function getPertenencia()
+    {
+        return $this->pertenencia;
+    }
+
+    /**
+     * Set honestidad
+     *
+     * @param boolean $honestidad
+     * @return Actividad
+     */
+    public function setHonestidad($honestidad)
+    {
+        $this->honestidad = $honestidad;
+
+        return $this;
+    }
+
+    /**
+     * Get honestidad
+     *
+     * @return boolean 
+     */
+    public function getHonestidad()
+    {
+        return $this->honestidad;
+    }
+
+    /**
+     * Set descripcion
+     *
+     * @param string $descripcion
+     * @return Actividad
+     */
+    public function setDescripcion($descripcion)
+    {
+        $this->descripcion = $descripcion;
+
+        return $this;
+    }
+
+    /**
+     * Get descripcion
+     *
+     * @return string 
+     */
+    public function getDescripcion()
+    {
+        return $this->descripcion;
     }
 }

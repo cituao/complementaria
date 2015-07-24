@@ -38,6 +38,12 @@ $(function() {
 			}
 			}); //date picker
 
+		$("#cronograma_fechaFinalizacion").datepicker({
+			dateFormat: "dd-mm-yy",
+			onSelect: function(dateText, inst) {
+				
+			}
+			}); //date picker
 
 		$("#btnsubir").click(function(){
 			var codigo = "";

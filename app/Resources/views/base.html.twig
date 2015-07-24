@@ -33,7 +33,7 @@
 		   <div id="sideBar">
 				<h1 id="userName"> {{ app.user.username }}</h1>
 				<h2 id="userRole">{% if is_granted('ROLE_DIRECTOR') %} Director{% endif %}
-					{% if is_granted('ROLE_PROFESOR') %} Profesor{% endif %}
+					{% if is_granted('ROLE_PROFESOR') %} Tutor{% endif %}
 					{% if is_granted('ROLE_ESTUDIANTE') %} Estudiante{% endif %}
 					{% if is_granted('ROLE_ADMIN') %} Administrador{% endif %}
 				</h2> {% block foto %} {% endblock %}

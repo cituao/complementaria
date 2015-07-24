@@ -1,4 +1,4 @@
-{% extends 'CituaoCoordBundle::layout.html.twig' %}
+{% extends 'IngenieriaUsuarioBundle::layout.html.twig' %}
 
 {% block js  %}
 	<script>

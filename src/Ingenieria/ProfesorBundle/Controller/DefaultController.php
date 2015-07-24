@@ -8,6 +8,11 @@ use Ingenieria\ProfesorBundle\Entity\Actividad;
 use Ingenieria\ProfesorBundle\Entity\Profesor;
 use Ingenieria\ProfesorBundle\Form\Type\ActividadType;
 
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+
 class DefaultController extends Controller
 {
     public function indexAction()
@@ -18,34 +23,25 @@ class DefaultController extends Controller
 		$repository = $this->getDoctrine()->getRepository('IngenieriaProfesorBundle:Profesor');
 		$profesor = $repository->findOneBy(array('ci' => $ci));
 
-		$hayEstudiantes=false;
-		$listaActividades = $profesor->getActividades();
-		
-		foreach($listaActividades as $actividad) {
-			$listaEstudiantes = $actividad->getEstudiantes();
-			if ($listaEstudiantes->count() != 0) {
-				$hayEstudiantes = true;
-				break;
+		//buscamos si el profesor o tutor tiene un grupo asignado
+		$repository = $this->getDoctrine()->getRepository('IngenieriaDirectorBundle:Grupo');
+		$grupo = $repository->findOneBy(array('tutor' => $profesor->getId()));
+
+		//Sino tiene grupo mensaje de advertencia
+		if (!$grupo) {
+			$msgerr = array('descripcion'=>'Aún no tiene grupo asignado!','id'=>'1');
+			$estudiantes = array();
+		}else{
+			$estudiantes = $grupo->getEstudiantes();
+
+			if (!$estudiantes) {
+				$msgerr = array('descripcion'=>'No hay estudiantes registrados!','id'=>'1');
+			}else{
+				$msgerr = array('descripcion'=>'','id'=>'0');
 			}
 		}
 		
-		if (!$hayEstudiantes) {
-			$msgerr = array('descripcion'=>'No hay estudiantes registrados!','id'=>'1');
-		}else{
-			$msgerr = array('descripcion'=>'','id'=>'0');
-		}
-		/*
-				//buscamos el programa
-		$user = $this->get('security.context')->getToken()->getUser();
-		$coordinador =  $user->getUsername();
-		$repository = $this->getDoctrine()->getRepository('CituaoUsuarioBundle:Programa');
-		$programa = $repository->findOneByCoordinador($coordinador);
-		*/
-		
-		
-		return $this->render('IngenieriaProfesorBundle:Default:estudiantes.html.twig', array('listaActividades' => $listaActividades, 'msgerr' => $msgerr));
-       
-		
+		return $this->render('IngenieriaProfesorBundle:Default:estudiantes.html.twig', array('listaEstudiantes' => $estudiantes, 'msgerr' => $msgerr));
     }
 
 	//********************************************************
@@ -58,32 +54,24 @@ class DefaultController extends Controller
 		$repository = $this->getDoctrine()->getRepository('IngenieriaProfesorBundle:Profesor');
 		$profesor = $repository->findOneBy(array('ci' => $ci));
 
-		$hayEstudiantes=false;
-		$listaActividades = $profesor->getActividades();
+		//buscamos si el profesor o tutor tiene un grupo asignado
+		$repository = $this->getDoctrine()->getRepository('IngenieriaDirectorBundle:Grupo');
+		$grupo = $repository->findOneBy(array('tutor' => $profesor->getId()));
 		
-		foreach($listaActividades as $actividad) {
-			$listaEstudiantes = $actividad->getEstudiantes();
-			if ($listaEstudiantes->count() != 0) {
-				$hayEstudiantes = true;
-				break;
+		//Sino tiene grupo mensaje de advertencia
+		if (!$grupo) {
+			$msgerr = array('descripcion'=>'Aun no tiene grupo asignado!','id'=>'1');
+		}else{
+			$estudiantes = $grupo->getEstudiantes();
+
+			if (!$estudiantes) {
+				$msgerr = array('descripcion'=>'No hay estudiantes registrados!','id'=>'1');
+			}else{
+				$msgerr = array('descripcion'=>'','id'=>'0');
 			}
 		}
 		
-		if (!$hayEstudiantes) {
-			$msgerr = array('descripcion'=>'No hay estudiantes registrados!','id'=>'1');
-		}else{
-			$msgerr = array('descripcion'=>'','id'=>'0');
-		}
-		/*
-				//buscamos el programa
-		$user = $this->get('security.context')->getToken()->getUser();
-		$coordinador =  $user->getUsername();
-		$repository = $this->getDoctrine()->getRepository('CituaoUsuarioBundle:Programa');
-		$programa = $repository->findOneByCoordinador($coordinador);
-		*/
-		
-		
-		return $this->render('IngenieriaProfesorBundle:Default:estudiantes.html.twig', array('listaActividades' => $listaActividades, 'msgerr' => $msgerr));
+		return $this->render('IngenieriaProfesorBundle:Default:estudiantes.html.twig', array('listaEstudiantes' => $estudiantes, 'msgerr' => $msgerr));
 	}
 
 	//********************************************************
@@ -250,5 +238,58 @@ class DefaultController extends Controller
 		return $this->render('IngenieriaProfesorBundle:Default:cronograma.html.twig', array('estudiante' => $estudiante, 'cronograma' => $cronograma, 'msgerr' => $msgerr ));
 	}
 
+		/**********************************************************************************/
+	// Muestra bitacora de trabajo semanal del estudiante
+	/**********************************************************************************/		
+	public function bitacoraAction($id){
+    	$repository = $this->getDoctrine()->getRepository('IngenieriaEstudianteBundle:Estudiante');
+    	$estudiante = $repository->findOneBy(array('id' => $id));
+		
+		$bitacora = $estudiante->getBitacora();
+		
+		if (!$bitacora) {
+			$msgerr = array('descripcion'=>'No hay actividades registradas!','id'=>'1');
+		}else{
+			$msgerr = array('descripcion'=>'','id'=>'0');
+		}
+		
+		return $this->render('IngenieriaProfesorBundle:Default:bitacora.html.twig', array('estudiante' => $estudiante, 'bitacora'=>$bitacora, 'msgerr' => $msgerr));
+	}
+
+	/**********************************************************************/
+	// Registra una actividad en el cronograma el paso de datos es por ajax
+	/**********************************************************************/		
+	public function verificarActividadAction(){
+
+		$em = $this->getDoctrine()->getManager();
+		//recuperamos el id de la actividad
+		$request = $this->getRequest();
+		$id_actividad = $request->request->get('id');
+
+		//buscamos la actividad en la bitacora
+    	$repository = $this->getDoctrine()->getRepository('IngenieriaEstudianteBundle:Bitacora');
+    	$actividad = $repository->findOneBy(array('id' => $id_actividad));
+	
+
+		if ($actividad->getVerificado()){
+			$actividad->setVerificado(false);
+		}
+		else {
+			$actividad->setVerificado(true);
+		}
+
+		$em->persist($actividad);
+		$em->flush();
+		
+		$op="a";
+		$r = array("operacion" => $op);
+		$serializer = new Serializer(array(new GetSetMethodNormalizer()), array('json' => new 
+			JsonEncoder()));
+		$json = $serializer->serialize($r, 'json');
+		
+			
+		return new Response($json);
+		
+	}	
 	
 }

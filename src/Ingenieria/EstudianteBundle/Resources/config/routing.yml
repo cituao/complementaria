@@ -33,3 +33,19 @@ ingenieria_estudiante_actividadmatriculada:
 ingenieria_estudiante_eliminaractividad:
     path:     /estudiante/eliminaractividad
     defaults: { _controller: IngenieriaEstudianteBundle:Default:eliminaractividad }
+
+ingenieria_estudiante_tutor:
+    path:     /estudiante/tutor
+    defaults: { _controller: IngenieriaEstudianteBundle:Default:tutor }
+
+ingenieria_estudiante_bitacora:
+    path:     /estudiante/bitacora
+    defaults: { _controller: IngenieriaEstudianteBundle:Default:bitacora }
+
+ingenieria_estudiante_registrar_actvidad_semanal:
+    path:     /estudiante/actividad-semanal
+    defaults: { _controller: IngenieriaEstudianteBundle:Default:registrarActividadSemanal }
+
+ingenieria_estudiante_actualizar_actividad_semanal:
+    path:     /estudiante/actualizar-actividad-semanal/id={id}
+    defaults: { _controller: IngenieriaEstudianteBundle:Default:actualizarActividadSemanal }

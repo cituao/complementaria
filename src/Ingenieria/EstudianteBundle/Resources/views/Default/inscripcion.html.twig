@@ -1,11 +1,20 @@
-{% extends 'IngenieriaEstudianteBundle::layout.html.twig' %}
+{% extends '::base.html.twig' %}
 
-{% block programa %}
-Aplicación WEB  [Estudiante]
+{% block title %} Panel Principal:: Actividad complementaria UAO{% endblock %}
+
+{% block stylesheets %}
+{{ parent() }}	
 {% endblock %}
 
 {% block js  %}
 {% endblock %}
+
+{% block body %}
+{{ parent() }}
+{% endblock %}
+
+{% block sideBarMenu %}
+{% endblock  %}
 
 {% block content  %}
 {{ parent() }}
@@ -20,7 +29,7 @@ Aplicación WEB  [Estudiante]
 	{% block downSection  %}
 	<div class = "downSection"> 
 		<div class="profileContainer">
-		<h2 style="color : black;">Confirme su inscripcion en la actividad complementaria <a href="{{ path('ingenieria_estudiante_confirmar' , { 'id': datos.idActividad }) }}" class = "button"><h4>Confimar!</h4></a></h2>
+		<h2 style="color : black;">¡Confirme su inscripción en la actividad complementaria!<a href="{{ path('ingenieria_estudiante_confirmar' , { 'id': datos.idActividad }) }}" class = "button"><h4>Confimar!</h4></a></h2>
 		
 		</div>
 	</div><!--downsection -->

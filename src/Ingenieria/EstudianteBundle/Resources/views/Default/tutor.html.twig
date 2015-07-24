@@ -1,0 +1,70 @@
+{% extends 'IngenieriaEstudianteBundle::layout.html.twig' %}
+
+{% block programa %}
+Aplicación WEB  [Estudiante]
+{% endblock %}
+
+{% block js  %}
+<script>
+$( "#tutor" ).css("background-color","#000");
+$( "#tutor img" ).css("opacity","0.4");
+$( "#tutor h3" ).css("opacity","0.4");
+</script>
+{% endblock %}
+
+{% block content  %}
+{{ parent() }}
+<div class="content">
+	{% block upSection  %}
+	<div class = "upSection">
+		<h1 class="sectionTitle">Tutor</h1>
+		<a href="javascript:history.back()" class = "button"><img src="{{ asset('img/regresar.png') }}"/><h4>Regresar</h4></a>
+		
+	</div>
+	{% endblock  %}
+
+	{% block downSection  %}
+	<div class = "downSection"> 
+		<div class="profileContainer">
+			
+			<div class="profileFormContainer" style="height:700px;">
+			<form action="" method="post">
+
+
+				<div class="inputContainer">
+					<h2 style="width: 96px;">Nombres:</h2>
+					<div class="input nomodificable">
+					<input type="text" value = "{{ tutor.nombres }}" readonly style="width: 450px;">
+					</div>
+				</div>
+					
+				<div class="inputContainer">
+					<h2 style="width: 96px;">Apellidos:</h2>
+					<div class="input nomodificable">
+					<input type="text" value = "{{ tutor.apellidos }}" readonly style="width: 450px;">
+					</div>
+				</div>
+				
+				<div class="inputContainer">
+					<h2 style="width: 96px;">Email:</h2>
+					<div class="input nomodificable">
+					<input type="text" value = "{{ tutor.email }}" readonly style="width: 450px;">
+					</div>
+				</div>
+				
+				<div class="inputContainer">
+					<h2 style="width: 96px;">Email institucional:</h2>
+					<div class="input nomodificable">
+					<input type="text" value = "{{ tutor.emailInstitucional }}" readonly style="width: 450px;">
+					</div>
+				</div>
+				
+			</form>
+			
+			</div><!--profileFormContainer -->	
+		</div><!--profileContainer -->	
+	</div><!--donwsection -->
+
+	{% endblock %}
+</div><!-- content -->
+{% endblock %}
