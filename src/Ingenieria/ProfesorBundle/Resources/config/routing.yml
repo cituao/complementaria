@@ -41,3 +41,15 @@ ingenieria_profesor_bitacora:
 ingenieria_profesor_verificarActividad:
     path:     /profesor/verificaractividad
     defaults: { _controller: IngenieriaProfesorBundle:Default:verificarActividad }
+
+ingenieria_profesor_grupos:
+    path:     /profesor/grupos
+    defaults: { _controller: IngenieriaProfesorBundle:Default:grupos }
+
+ingenieria_ver_estudiantes_grupo:
+    pattern:  /profesor/estudiantes-del-curso/{id}
+    defaults: { _controller: IngenieriaProfesorBundle:Default:estudiantesCurso }
+
+ingenieria_ver_subgrupos:
+    pattern:  /profesor/grupos-del-curso/{id}
+    defaults: { _controller: IngenieriaProfesorBundle:Default:subGrupos }

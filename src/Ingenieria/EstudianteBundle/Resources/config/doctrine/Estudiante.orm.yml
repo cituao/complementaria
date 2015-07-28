@@ -59,4 +59,10 @@ Ingenieria\EstudianteBundle\Entity\Estudiante:
             joinColumn:
                 name: actividad
                 referencedColumnName: id
+        subgrupo:
+            targetEntity: Ingenieria\ProfesorBundle\Entity\Subgrupo
+            inversedBy: estudiantes
+            joinColumn:
+                name: subgrupo
+                referencedColumnName: id
     lifecycleCallbacks: {  }

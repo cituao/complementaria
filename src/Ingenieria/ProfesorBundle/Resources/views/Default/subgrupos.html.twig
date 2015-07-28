@@ -1,0 +1,118 @@
+{% extends 'IngenieriaProfesorBundle::layout.html.twig' %}
+
+{% block programa %}
+Aplicación WEB - [Administrador]
+{% endblock %}
+
+{% block js  %}
+<script>
+$( "#cursos" ).css("background-color","#000");
+$( "#cursos img" ).css("opacity","0.4");
+$( "#cursos h3" ).css("opacity","0.4");
+</script>
+{% endblock %}
+
+{% block content  %}
+{{ parent() }}
+<div class="content">
+		{% block upSection  %}
+			<div class = "upSection">
+			<h1 class ="sectionTitle">Grupos</h2>
+			</div>
+		{% endblock  %}
+
+		{% block downSection  %}
+			<div class = "downSection">
+				{% if msgerr.id == '1' %}
+					<div id = "error">{{ msgerr.descripcion }}</div>	
+				{% else %}
+					<table class="generalTableHead">
+						<tbody>
+							<tr class="tableHead">
+								<th width="40%"></th>
+								<th width="28%"><img style="margin-left:28%;" src="{{ asset('img/idLabel.png') }}"/></th>	
+								<th width="20%"></th>
+								<th width="15%"><img style="margin-left:28%;" src="{{ asset('img/numeroVacantes.png') }}"/></th>	
+								
+								<th><h3><span></span></h3></th>
+							</tr><!--tablehead -->
+						</tbody>
+					</table><!-- gnrral tableHead -->
+					<div style="width: 100%; height: 750px; overflow: auto; position:relative; padding-bottom:30px;">
+						<table class="generalTable">
+							<tbody>
+								{% set id = 1 %}
+								<tr class="spacer"></tr>
+								{% for subgrupo in listaSubgrupos %}
+									<tr class="tableItem">
+										<td id="hoverDiv">
+										<td><h2>{{ id }}</h2></td>
+											<td style=" width:50%"><span style="margin-left:20px; "><a href="{{ path('usuario_estudiantes_grupo', { 'id': grupo.id }) }}">{{ subgrupo.nombre }}</a></span></td>
+																		
+											<td style ="width: 300px;">
+												<div>
+													<table class="opciones">
+													<td style ="width: 90px;">
+														<a href="{{ path('ingenieria_ver_estudiantes_grupo', { 'id': grupo.id}) }}">
+														<img src="{{ asset('img/editar.png') }}">
+														<h3>Estudian</h3>
+														</a>
+													</td>
+													<td style ="width: 90px;">
+														<a href="{{ path('ingenieria_ver_subgrupos', { 'id': grupo.id}) }}">
+														<img src="{{ asset('img/editar.png') }}">
+														<h3>Grupos</h3>
+														</a>
+													</td>
+													</table> <!-- opciones -->
+												</div>
+												<td><span>{{ subgrupo.estudiantes.count }}</span></td>	
+											</td>
+										</td> <!-- hoverDir -->
+									</tr><!-- tableitem -->
+									{% set id = id + 1 %}
+									<tr class="spacer"></tr>
+								{% endfor %}
+								<tr class="spacer"></tr>
+								<tr class="spacer"></tr>
+								<tr class="spacer"></tr>
+								<tr class="spacer"></tr>
+								<tr class="spacer"></tr>
+							</tbody>
+						</table>
+					</div><!-- scroll div-->					
+					
+				{% endif %}
+			</div><!--downsection -->
+		{% endblock  %}
+	</div><!-- content -->
+
+	<script>
+		$( ".tableItem" ).mouseenter(function() {
+				var opciones = $('.opciones', this);
+				var itemPicture = $('.itemImgContainer', this);
+				$(itemPicture).css("border-color","#ec1c24");
+
+				$( opciones).animate({
+					opacity: 1,
+					top: "-30px",
+				}, 300, function() {
+				// Animation complete.
+			});
+			});
+
+			$( ".tableItem" ).mouseleave(function() {
+				var itemPicture = $('.itemImgContainer', this);
+				var opciones = $('.opciones', this);
+				$(itemPicture).css("border-color","#242021");
+				$( opciones).animate({
+					opacity: 0,
+					top: "0px",
+				}, 300, function() {
+				// Animation complete.
+			});
+			});
+
+	</script>
+{% endblock %}
+

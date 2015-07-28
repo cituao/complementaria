@@ -291,5 +291,81 @@ class DefaultController extends Controller
 		return new Response($json);
 		
 	}	
+
+	//********************************************************
+	// Muestra un listado de grupos
+	//******************************************************** 	
+	public function gruposAction(){
+		//localizamos al profesor
+		$user = $this->get('security.context')->getToken()->getUser();
+		$ci =  $user->getUsername();
+		$repository = $this->getDoctrine()->getRepository('IngenieriaProfesorBundle:Profesor');
+		$profesor = $repository->findOneBy(array('ci' => $ci));
+
+		$listaGrupos = $profesor->getGrupos();
+		
+		//Sino tiene grupo mensaje de advertencia
+		if (!$listaGrupos) {
+			$msgerr = array('descripcion'=>'No tienes grupos asignados!','id'=>'1');
+		} 
+		else {
+			$msgerr = array('descripcion'=>'','id'=>'0');
+		}
+
+		
+		return $this->render('IngenieriaProfesorBundle:Default:grupos.html.twig', array('listaGrupos' => $listaGrupos, 'msgerr' => $msgerr));
+	}
+
+	//********************************************************
+	// Muestra un listado de grupos
+	//******************************************************** 	
+	public function estudiantesCursoAction($id){
+		//localizamos al profesor
+		$user = $this->get('security.context')->getToken()->getUser();
+		$ci =  $user->getUsername();
+		$repository = $this->getDoctrine()->getRepository('IngenieriaProfesorBundle:Profesor');
+		$profesor = $repository->findOneBy(array('ci' => $ci));
+
+		$grupos = $profesor->getGrupos();
+		
+		foreach ($grupos as $g){
+			if ($g->getId() == $id) break;		
+		}
+
+		$msgerr = array('descripcion'=>'','id'=>'0');
+
+		$estudiantes = $g->getEstudiantes();
+		return $this->render('IngenieriaProfesorBundle:Default:estudiantes.html.twig', array('listaEstudiantes' => $estudiantes, 'msgerr' => $msgerr));
+	}
+
+	//********************************************************
+	// Muestra un listado de subgrupos
+	//******************************************************** 	
+	public function subGruposAction($id){
+		//localizamos al profesor
+		$user = $this->get('security.context')->getToken()->getUser();
+		$ci =  $user->getUsername();
+		$repository = $this->getDoctrine()->getRepository('IngenieriaProfesorBundle:Profesor');
+		$profesor = $repository->findOneBy(array('ci' => $ci));
+
+		$grupos = $profesor->getGrupos();
+		
+		foreach ($grupos as $g){
+			if ($g->getId() == $id) break;		
+		}
+
+		$subgrupos = $g->getSubgrupos();
+
+		//Sino tiene grupo mensaje de advertencia
+		if (!$subgrupos) {
+			$msgerr = array('descripcion'=>'No tienes subgrupos definidos!','id'=>'1');
+		} 
+		else {
+			$msgerr = array('descripcion'=>'','id'=>'0');
+		}
+
+		
+		return $this->render('IngenieriaProfesorBundle:Default:subgrupos.html.twig', array('listaSubgrupos' => $subgrupos, 'msgerr' => $msgerr));
+	}
 	
 }

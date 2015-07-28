@@ -1,0 +1,29 @@
+Ingenieria\ProfesorBundle\Entity\Subgrupo:
+    type: entity
+    table: null
+    repositoryClass: Ingenieria\ProfesorBundle\Entity\SubgrupoRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nombre:
+            type: string
+            length: '20'
+
+    manyToOne:
+        grupo:
+            targetEntity: Ingenieria\DirectorBundle\Entity\Grupo
+            inversedBy: subgrupos
+            joinColumn:
+                name: grupo
+                referencedColumnName: id
+
+    oneToMany:
+        estudiantes:
+            targetEntity: Ingenieria\EstudianteBundle\Entity\Estudiante
+            mappedBy: subgrupo
+
+    lifecycleCallbacks: {  }

@@ -33,6 +33,8 @@ class Grupo
 
 	protected $estudiantes;
 
+	protected $subgrupos;
+
 	/**
      * Get id
      *
@@ -226,5 +228,38 @@ class Grupo
     public function getEstudiantes()
     {
         return $this->estudiantes;
+    }
+
+    /**
+     * Add subgrupos
+     *
+     * @param \Ingenieria\ProfesorBundle\Entity\Subgrupo $subgrupos
+     * @return Grupo
+     */
+    public function addSubgrupo(\Ingenieria\ProfesorBundle\Entity\Subgrupo $subgrupos)
+    {
+        $this->subgrupos[] = $subgrupos;
+
+        return $this;
+    }
+
+    /**
+     * Remove subgrupos
+     *
+     * @param \Ingenieria\ProfesorBundle\Entity\Subgrupo $subgrupos
+     */
+    public function removeSubgrupo(\Ingenieria\ProfesorBundle\Entity\Subgrupo $subgrupos)
+    {
+        $this->subgrupos->removeElement($subgrupos);
+    }
+
+    /**
+     * Get subgrupos
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSubgrupos()
+    {
+        return $this->subgrupos;
     }
 }

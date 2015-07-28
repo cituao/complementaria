@@ -51,7 +51,7 @@ class Profesor
      */
     private $emailInstitucional;
 
-	protected $grupo;
+	protected $grupos;
     
 	/**
      * Get id
@@ -194,32 +194,42 @@ class Profesor
 		return sprintf('%s %s',$this->nombres, $this->apellidos);
 	}
 
-    /**
-     * Set grupo
-     *
-     * @param \Ingenieria\DirectorBundle\Entity\Grupo $grupo
-     * @return Profesor
-     */
-    public function setGrupo(\Ingenieria\DirectorBundle\Entity\Grupo $grupo = null)
-    {
-        $this->grupo = $grupo;
-
-        return $this;
-    }
-
-    /**
-     * Get grupo
-     *
-     * @return \Ingenieria\DirectorBundle\Entity\Grupo 
-     */
-    public function getGrupo()
-    {
-        return $this->grupo;
-    }
-
 	public function __toString()
 	{
 		$nombrecompleto = $this->nombres." ".$this->apellidos;	
 		return $nombrecompleto;
 	}
+
+    /**
+     * Add grupos
+     *
+     * @param \Ingenieria\DirectorBundle\Entity\Grupo $grupos
+     * @return Profesor
+     */
+    public function addGrupo(\Ingenieria\DirectorBundle\Entity\Grupo $grupos)
+    {
+        $this->grupos[] = $grupos;
+
+        return $this;
+    }
+
+    /**
+     * Remove grupos
+     *
+     * @param \Ingenieria\DirectorBundle\Entity\Grupo $grupos
+     */
+    public function removeGrupo(\Ingenieria\DirectorBundle\Entity\Grupo $grupos)
+    {
+        $this->grupos->removeElement($grupos);
+    }
+
+    /**
+     * Get grupos
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getGrupos()
+    {
+        return $this->grupos;
+    }
 }

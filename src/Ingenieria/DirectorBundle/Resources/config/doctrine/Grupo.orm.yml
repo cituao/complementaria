@@ -12,16 +12,21 @@ Ingenieria\DirectorBundle\Entity\Grupo:
             type: string
             length: '50'
 
-    oneToOne:
-        tutor:
-            targetEntity: Ingenieria\ProfesorBundle\Entity\Profesor
-            inversedBy: grupo
-            joinColumn:
-                 name: tutor
-                 referencedColumnName: id
     oneToMany:
         estudiantes:
             targetEntity: Ingenieria\EstudianteBundle\Entity\Estudiante
             mappedBy: grupo
+
+        subgrupos:
+            targetEntity: Ingenieria\ProfesorBundle\Entity\Subgrupo
+            mappedBy: grupo
+
+    manyToOne:
+        tutor:
+            targetEntity: Ingenieria\ProfesorBundle\Entity\Profesor
+            inversedBy: grupos
+            joinColumn:
+                name: tutor
+                referencedColumnName: id		
 
     lifecycleCallbacks: {  }

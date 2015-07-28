@@ -27,9 +27,8 @@ Ingenieria\ProfesorBundle\Entity\Profesor:
             length: '50'
             column: email_institucional
 
-    oneToOne:
-        grupo:
+    oneToMany:
+        grupos:
             targetEntity: Ingenieria\DirectorBundle\Entity\Grupo
             mappedBy: tutor
-
     lifecycleCallbacks: {  }
