@@ -195,6 +195,7 @@ class Grupo
     public function __construct()
     {
         $this->estudiantes = new \Doctrine\Common\Collections\ArrayCollection();
+		$this->subgrupos = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**

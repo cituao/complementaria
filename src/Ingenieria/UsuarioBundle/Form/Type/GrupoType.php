@@ -11,8 +11,8 @@ class GrupoType extends AbstractType
 {
 	protected $profesores;
 
-	public function __construct($p){
-		$this->profesores = $p;
+	public function __construct(){
+		//$this->profesores = $p;
 	}
 
 
@@ -23,13 +23,13 @@ class GrupoType extends AbstractType
         $builder
 		->add('nombre','text', array('label' => 'Nombre:' , 'required' => true))   
 		->add('file')
-		->add('tutor', 'entity', array('class' => 'IngenieriaProfesorBundle:Profesor', 'choices' => $this->profesores, 'empty_value' => 'Seleccione?'));
+		//->add('tutor', 'entity', array('class' => 'IngenieriaProfesorBundle:Profesor', 'choices' => $this->profesores, 'empty_value' => 'Seleccione?'));
 										
-		/*
+		
 		->add('tutor', 'entity', array('class' => 'IngenieriaProfesorBundle:Profesor',
 										'query_builder' => function(EntityRepository $er) {
 											return $er->createQueryBuilder('p')->orderBy('p.nombres', 'ASC');},
-												'empty_value' => 'Seleccione?'));*/
+												'empty_value' => 'Seleccione?'));
 		}
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)

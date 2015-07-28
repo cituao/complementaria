@@ -47,9 +47,9 @@ $( "#cursos h3" ).css("opacity","0.4");
 									<tr class="tableItem">
 										<td id="hoverDiv">
 										<td><h2>{{ id }}</h2></td>
-											<td style=" width:50%"><span style="margin-left:20px; "><a href="{{ path('usuario_estudiantes_grupo', { 'id': grupo.id }) }}">{{ grupo.nombre }}</a></span></td>
+											<td style=" width:50%"><span style="margin-left:20px; ">{{ grupo.nombre }}</span></td>
 																		
-											<td style ="width: 300px;">
+											<td style ="width: 400px;">
 												<div>
 													<table class="opciones">
 													<td style ="width: 90px;">
@@ -61,7 +61,7 @@ $( "#cursos h3" ).css("opacity","0.4");
 													<td style ="width: 90px;">
 														<a href="{{ path('ingenieria_ver_subgrupos', { 'id': grupo.id}) }}">
 														<img src="{{ asset('img/editar.png') }}">
-														<h3>Grupos</h3>
+														<h3>Colectivos</h3>
 														</a>
 													</td>
 													</table> <!-- opciones -->

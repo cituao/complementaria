@@ -7,7 +7,7 @@ services:
 #        arguments: [@service_id, "plain_value", %parameter%]
 
 services:
-    my.handler.session_idle:
+   my.handler.session_idle:
         class: Ingenieria\UsuarioBundle\Listener\SessionIdleHandler
         arguments: ["@session", "@security.context", "@router", %session_max_idle_time%]
         tags:

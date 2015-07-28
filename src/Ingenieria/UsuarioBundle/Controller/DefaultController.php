@@ -25,11 +25,7 @@ class DefaultController extends Controller
    public function indexAction()
     {
 		
-		if ($this->get('security.context')->isGranted('ROLE_COORDINADOR')) {
-        	return $this->redirect($this->generateUrl('cituao_coord_homepage'));
-    	}
-		else{
-			if ($this->get('security.context')->isGranted('ROLE_ESTUDIANTE')) {
+		if ($this->get('security.context')->isGranted('ROLE_ESTUDIANTE')) {
 				return $this->redirect($this->generateUrl('ingenieria_estudiante_homepage'));
 			}else{
 				if ($this->get('security.context')->isGranted('ROLE_PROFESOR')) {
@@ -42,7 +38,6 @@ class DefaultController extends Controller
 						return $this->redirect($this->generateUrl('usuario_adm_homepage'));
 				}
 			}
-		}			
 		}
 	}
 	
@@ -74,6 +69,7 @@ class DefaultController extends Controller
         );
     }
 	
+	
 	//**************************************************************************
 	// Home del administrador de la aplicacion muestra los directores
 	//**************************************************************************
@@ -85,7 +81,7 @@ class DefaultController extends Controller
 		
 		if (!$grupos) {
 			//throw $this->createNotFoundException('ERR_NO_HAY_PROGRAMA');
-			$msgerr = array('id'=>1, 'descripcion' => 'No hay grupos registrados!');
+			$msgerr = array('id'=>1, 'descripcion' => '¡No hay cursos registrados!');
 		}else{
 			$msgerr = array('id'=>0, 'descripcion' => 'Ok');
 		}
@@ -636,7 +632,9 @@ class DefaultController extends Controller
 		$profesores = $repository_profesor->findAll();
 		$repository_grupo = $this->getDoctrine()->getRepository('IngenieriaDirectorBundle:Grupo');
 	
+		//RETIRAMOS ESTE CODIGO QUE RECOLECTABA LOS PROFESORES QUE NO TENIAN NINGUN CURSO ASIGNADO 
 		//creamos un objeto de arreglos para los profesores		
+		/*
 		$profelibres= new \Doctrine\Common\Collections\ArrayCollection();
 
 		foreach ($profesores as $p){
@@ -646,10 +644,12 @@ class DefaultController extends Controller
 			else
 				$profelibres[]=$p;
 		}
-
+		*/
+		
 		$grupo = new Grupo();
 
-		$formulario = $this->createForm(new GrupoType($profelibres), $grupo);
+		//$formulario = $this->createForm(new GrupoType($profelibres), $grupo);
+		$formulario = $this->createForm(new GrupoType(), $grupo);
 		$formulario->handleRequest($peticion);
 
 		if ($formulario->isValid()) {
@@ -694,16 +694,16 @@ class DefaultController extends Controller
 				}
 				//los roles fueron cargados de forma manual en la base de datos
 				//buscamos una instancia role tipo practicante 
-				$codigo = 3; //1 corresponde a practicantes		
-				$repository = $this->getDoctrine()->getRepository('IngenieriaUsuarioBundle:Role');
-				$role = $repository->findOneBy(array('id' => $codigo));
+				//$codigo = 3; //1 corresponde a practicantes		
+				//$repository = $this->getDoctrine()->getRepository('IngenieriaUsuarioBundle:Role');
+				//$role = $repository->findOneBy(array('id' => $codigo));
 
 				$i=1;
 				while($i < $numero_fila){
 					//creamos una instancia Practicante para descargar datos del CSV y guardar en la base de datos
 					$estudiante = new Estudiante();
 					//creamos una instancia de usuario para darle entrada a los practicantes como usuarios en el sistema
-					$usuario = new Usuario();
+					//$usuario = new Usuario();
 
 					//viene del archivo .csv	
 					//cargamos todos los atributos al practicante
@@ -717,6 +717,7 @@ class DefaultController extends Controller
 					$estudiante->setGrupo($grupo);
 					
 					//cargamos todos los atributos al usuario
+					/*
 					$usuario->setUsername($listaEstudiantes[$i]['codigo']) ;
 					$usuario->setPassword($listaEstudiantes[$i]['ci']);
 					$usuario->setSalt(md5(time()));
@@ -726,8 +727,9 @@ class DefaultController extends Controller
 					$encoder = $this->get('security.encoder_factory')->getEncoder($usuario);
 		            $passwordCodificado = $encoder->encodePassword($usuario->getPassword(), $usuario->getSalt());
 					$usuario->setPassword($passwordCodificado);
-
-					$em->persist($usuario);
+					*/
+					//$em->persist($usuario);
+					
 					$em->persist($estudiante);
 					$i++;
 				}

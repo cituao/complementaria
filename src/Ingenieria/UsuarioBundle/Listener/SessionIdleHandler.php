@@ -41,7 +41,7 @@ class SessionIdleHandler
 
                 $this->securityContext->setToken(null);
                 $this->session->getFlashBag()->set('info', 'Tu sesión ha terminado por inactividad.');
-
+				
                 // Change the route if you are not using FOSUserBundle.
                 $event->setResponse(new RedirectResponse($this->router->generate('logout')));
             }

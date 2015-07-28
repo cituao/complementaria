@@ -182,7 +182,7 @@ class Profesor
      */
     public function __construct()
     {
- 
+		$this->grupos = new \Doctrine\Common\Collections\ArrayCollection();
 	}
 
 	/**

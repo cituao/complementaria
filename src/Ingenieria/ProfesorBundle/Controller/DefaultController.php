@@ -23,25 +23,18 @@ class DefaultController extends Controller
 		$repository = $this->getDoctrine()->getRepository('IngenieriaProfesorBundle:Profesor');
 		$profesor = $repository->findOneBy(array('ci' => $ci));
 
-		//buscamos si el profesor o tutor tiene un grupo asignado
-		$repository = $this->getDoctrine()->getRepository('IngenieriaDirectorBundle:Grupo');
-		$grupo = $repository->findOneBy(array('tutor' => $profesor->getId()));
-
-		//Sino tiene grupo mensaje de advertencia
-		if (!$grupo) {
-			$msgerr = array('descripcion'=>'Aún no tiene grupo asignado!','id'=>'1');
-			$estudiantes = array();
-		}else{
-			$estudiantes = $grupo->getEstudiantes();
-
-			if (!$estudiantes) {
-				$msgerr = array('descripcion'=>'No hay estudiantes registrados!','id'=>'1');
-			}else{
-				$msgerr = array('descripcion'=>'','id'=>'0');
-			}
-		}
+		$listaGrupos = $profesor->getGrupos();
 		
-		return $this->render('IngenieriaProfesorBundle:Default:estudiantes.html.twig', array('listaEstudiantes' => $estudiantes, 'msgerr' => $msgerr));
+		//Sino tiene grupo mensaje de advertencia
+		if (!$listaGrupos) {
+			$msgerr = array('descripcion'=>'No tienes grupos asignados!','id'=>'1');
+		} 
+		else {
+			$msgerr = array('descripcion'=>'','id'=>'0');
+		}
+
+		
+		return $this->render('IngenieriaProfesorBundle:Default:grupos.html.twig', array('listaGrupos' => $listaGrupos, 'msgerr' => $msgerr));
     }
 
 	//********************************************************
@@ -348,8 +341,10 @@ class DefaultController extends Controller
 		$repository = $this->getDoctrine()->getRepository('IngenieriaProfesorBundle:Profesor');
 		$profesor = $repository->findOneBy(array('ci' => $ci));
 
-		$grupos = $profesor->getGrupos();
+		//obtenemos los cursos o grupos
+		$grupos = $profesor->getGrupos(); 
 		
+		//buscamos el curso correspondiente
 		foreach ($grupos as $g){
 			if ($g->getId() == $id) break;		
 		}
@@ -357,8 +352,8 @@ class DefaultController extends Controller
 		$subgrupos = $g->getSubgrupos();
 
 		//Sino tiene grupo mensaje de advertencia
-		if (!$subgrupos) {
-			$msgerr = array('descripcion'=>'No tienes subgrupos definidos!','id'=>'1');
+		if ($subgrupos->count() == 0) {
+			$msgerr = array('descripcion'=>'No hay colectivos definidos!','id'=>'1');
 		} 
 		else {
 			$msgerr = array('descripcion'=>'','id'=>'0');
