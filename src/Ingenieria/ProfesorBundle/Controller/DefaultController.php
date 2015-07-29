@@ -9,6 +9,7 @@ use Ingenieria\ProfesorBundle\Entity\Profesor;
 use Ingenieria\ProfesorBundle\Form\Type\ActividadType;
 use Ingenieria\ProfesorBundle\Entity\Subgrupo;
 use Ingenieria\ProfesorBundle\Form\Type\SubgrupoType;
+use Ingenieria\ProfesorBundle\Form\Type\EstudianteType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
@@ -480,18 +481,31 @@ class DefaultController extends Controller
 		//buscamos el curso o grupo
 		$repository = $this->getDoctrine()->getRepository('IngenieriaEstudianteBundle:Estudiante');
 		$estudiante = $repository->find($id);
+		
+		$subgruposdisponibles = new \Doctrine\Common\Collections\ArrayCollection();
+
+		$subgrupos = $estudiante->getGrupo()->getSubgrupos();
+		
+		foreach ($subgrupos as $s){
+			//si lo encuentra pasamos sino lo agregamos al arreglo de objetos
+			$estudiantes = $s->getEstudiantes();
+			if ($estudiantes->count() == 3)
+				continue;
+			else
+				$subgruposdisponibles[]=$s;
+		}
 	
-		$formulario = $this->createForm(new EstudianteType(), $estudiante);
+		$formulario = $this->createForm(new EstudianteType($subgruposdisponibles), $estudiante);
 		
 		$formulario->handleRequest($peticion);
 
 		if ($formulario->isValid()) {
 			$em->persist($estudiante);
 			$em->flush();
-			return $this->redirect($this->generateUrl('ingenieria_profesor_estudiantes_singrupos', array('id' => $id)));
+			return $this->redirect($this->generateUrl('ingenieria_profesor_estudiantes_singrupos', array('id' => $estudiante->getGrupo())));
 		}
 		
-        return $this->render('IngenieriaProfesorBundle:Default:asignarsubgrupo.html.twig', array('formulario' => $formulario->createView(), 'grupo' => $grupo ));
+        return $this->render('IngenieriaProfesorBundle:Default:asignarsubgrupoestudiantes.html.twig', array('formulario' => $formulario->createView(), 'grupo' => $estudiante->getGrupo(), 'estudiante' => $estudiante));
 
 
 	}

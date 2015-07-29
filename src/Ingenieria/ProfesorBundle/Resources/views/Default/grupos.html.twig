@@ -1,7 +1,7 @@
 {% extends 'IngenieriaProfesorBundle::layout.html.twig' %}
 
 {% block programa %}
-Aplicación WEB - [Administrador]
+Aplicación WEB - [Tutor]
 {% endblock %}
 
 {% block js  %}
@@ -29,12 +29,8 @@ $( "#cursos h3" ).css("opacity","0.4");
 					<table class="generalTableHead">
 						<tbody>
 							<tr class="tableHead">
-								<th width="40%"></th>
-								<th width="28%"><img style="margin-left:28%;" src="{{ asset('img/idLabel.png') }}"/></th>	
-								<th width="20%"></th>
+								<th width="50%"></th>
 								<th width="15%"><img style="margin-left:28%;" src="{{ asset('img/numeroVacantes.png') }}"/></th>	
-								
-								<th><h3><span></span></h3></th>
 							</tr><!--tablehead -->
 						</tbody>
 					</table><!-- gnrral tableHead -->
@@ -47,26 +43,20 @@ $( "#cursos h3" ).css("opacity","0.4");
 									<tr class="tableItem">
 										<td id="hoverDiv">
 										<td><h2>{{ id }}</h2></td>
-											<td style=" width:50%"><span style="margin-left:20px; ">{{ grupo.nombre }}</span></td>
+											<td style=" width:70%"><span style="margin-left:20px; ">{{ grupo.nombre }}</span></td>
 																		
-											<td style ="width: 400px;">
+											<td style ="width: 350px;">
 												<div>
 													<table class="opciones">
-													<td style ="width: 90px;">
-														<a href="{{ path('ingenieria_ver_estudiantes_grupo', { 'id': grupo.id}) }}">
-														<img src="{{ asset('img/editar.png') }}">
-														<h3>Estudian</h3>
-														</a>
+													<td style ="width: 60px;">
+														<a href="{{ path('ingenieria_ver_estudiantes_grupo', { 'id': grupo.id}) }}"><img src="{{ asset('img/editar.png') }}"><h3>Ver</h3></a>
 													</td>
-													<td style ="width: 90px;">
-														<a href="{{ path('ingenieria_ver_subgrupos', { 'id': grupo.id}) }}">
-														<img src="{{ asset('img/editar.png') }}">
-														<h3>Colectivos</h3>
-														</a>
+													<td style ="width: 130px;">
+														<a href="{{ path('ingenieria_ver_subgrupos', { 'id': grupo.id}) }}"><img src="{{ asset('img/editar.png') }}"><h3>Colectivos</h3></a>
 													</td>
 													</table> <!-- opciones -->
 												</div>
-												<td><span>{{ grupo.estudiantes.count }}</span></td>	
+												<td style=" width:20%"><span>{{ grupo.estudiantes.count }}</span></td>	
 											</td>
 										</td> <!-- hoverDir -->
 									</tr><!-- tableitem -->

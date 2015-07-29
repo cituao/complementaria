@@ -48,8 +48,8 @@ $( "#cursos h3" ).css("opacity","0.4");
 									<tr class="tableItem">
 										<td id="hoverDiv">
 										<td><h2>{{ id }}</h2></td>
-											<td style=" width:50%"><span style="margin-left:20px; "><a href="{{ path('usuario_estudiantes_grupo', { 'id': grupo.id }) }}">{{ subgrupo.nombre }}</a></span></td>
-																		
+											<td style=" width:50%"><span style="margin-left:20px; ">{{ subgrupo.nombre }}</span></td>
+											<td>{{ subgrupo.estudiantes.count }}</td>						
 											<td style ="width: 300px;">
 												<div>
 													<table class="opciones">

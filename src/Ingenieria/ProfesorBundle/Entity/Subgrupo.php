@@ -86,6 +86,12 @@ class Subgrupo
         $this->estudiantes = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
+	public function __toString()
+	{
+		$nombrecompleto = $this->nombre;	
+		return $nombrecompleto;
+	}
+	
     /**
      * Add estudiantes
      *
