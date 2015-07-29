@@ -65,3 +65,11 @@ ingenieria_profesor_actualizar_subgrupo:
 ingenieria_ver_estudiantes_subgrupo:
     pattern:  /profesor/estudiantes-del-colectivo/{id}
     defaults: { _controller: IngenieriaProfesorBundle:Default:estudiantesSubgrupo }
+
+ingenieria_profesor_estudiantes_singrupos:
+    path:     /profesor/estudiantes-sin-colectivos/{id}
+    defaults: { _controller: IngenieriaProfesorBundle:Default:verEstudiantesSinGrupo }
+
+ingenieria_profesor_asignar_subgrupo:
+    path:     /profesor/asignar-colectivo/{id}
+    defaults: { _controller: IngenieriaProfesorBundle:Default:asignarSubgrupo }

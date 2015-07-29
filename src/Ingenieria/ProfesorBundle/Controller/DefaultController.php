@@ -444,10 +444,10 @@ class DefaultController extends Controller
 			$msgerr = array('descripcion'=>'Colectivos ya están formados!','id'=>'1');
 		} 
 		else {
-			$msgerr = array('descripcion'=>'','id'=>'0');
+			$msgerr = array('descripc	ion'=>'','id'=>'0');
 		}
 
-		return $this->render('IngenieriaProfesorBundle:Default:estudiantes_singrupo.html.twig', array('listaEstudiantes' => $estudiantesingrupo, 'msgerr' => $msgerr));
+		return $this->render('IngenieriaProfesorBundle:Default:estudiantes_singrupo.html.twig', array('listaEstudiantes' => $estudiantesingrupo, 'grupo' => $grupo, 'msgerr' => $msgerr));
 
 	}
 	
@@ -474,6 +474,29 @@ class DefaultController extends Controller
 
 	}
 
+	//********************************************************
+	// Muestra un listado de estudiantes sin grupos 
+	//******************************************************** 	
+	public function asignarSubgrupoAction($id){
+		$peticion = $this->getRequest();
+		$em = $this->getDoctrine()->getManager();
+
+		//buscamos el curso o grupo
+		$repository = $this->getDoctrine()->getRepository('IngenieriaEstudianteBundle:Estudiante');
+		$estudiante = $repository->find($id);
+	
+		$formulario = $this->createForm(new EstudianteType(), $estudiante);
+		
+		$formulario->handleRequest($peticion);
+
+		if ($formulario->isValid()) {
+			$em->persist($estudiante);
+			$em->flush();
+			return $this->redirect($this->generateUrl('ingenieria_profesor_estudiantes_singrupos', array('id' => $id)));
+		}
+		
+        return $this->render('IngenieriaProfesorBundle:Default:asignarsubgrupo.html.twig', array('formulario' => $formulario->createView(), 'grupo' => $grupo ));
 
 
+	}
 }

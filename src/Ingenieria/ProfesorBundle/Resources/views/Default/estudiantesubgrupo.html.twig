@@ -18,12 +18,8 @@ $( "#estudiantes h3" ).css("opacity","0.4");
 		{% block upSection  %}
 		<div class = "upSection">
 			<h1 class ="sectionTitle">Estudiantes del {{ subgrupo.nombre }}</h1>
-			<!--
-			<a href="" class="button">
-				<img src="/complementaria/web/img/reloj.png">
-				<h4>Morosos</h4>
-			</a>
-			-->
+
+<a href="{{ path('ingenieria_profesor_estudiantes_singrupos' , { 'id': subgrupo.id}) }}"class = "button"><img src="{{ asset('img/academicosBoton.png') }}"/><h4>Estudiantes sin colectivos</h4></a>
 		</div>
 		{% endblock  %}
 
