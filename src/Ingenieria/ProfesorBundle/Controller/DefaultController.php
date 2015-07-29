@@ -10,6 +10,7 @@ use Ingenieria\ProfesorBundle\Form\Type\ActividadType;
 use Ingenieria\ProfesorBundle\Entity\Subgrupo;
 use Ingenieria\ProfesorBundle\Form\Type\SubgrupoType;
 use Ingenieria\ProfesorBundle\Form\Type\EstudianteType;
+use Ingenieria\UsuarioBundle\Entity\Usuario;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
@@ -405,11 +406,68 @@ class DefaultController extends Controller
 		$repository = $this->getDoctrine()->getRepository('IngenieriaProfesorBundle:Subgrupo');
 		$subgrupo = $repository->find($id);		
 	
+		$lider_actual = $subgrupo->getLider();
+		//le pasamos el id del subgrupo para que en el form type busque los estudiantes del subgrupo
 		$formulario = $this->createForm(new SubgrupoType($id), $subgrupo);
 		
 		$formulario->handleRequest($peticion);
 
 		if ($formulario->isValid()) {
+			
+			$lider_nuevo = $subgrupo->getLider();
+			
+			if($lider_actual == null ){
+					//los roles fueron cargados de forma manual en la base de datos
+					//buscamos una instancia role tipo practicante 
+					$codigo = 3; //1 corresponde a practicantes		
+					$repository = $this->getDoctrine()->getRepository('IngenieriaUsuarioBundle:Role');
+					$role = $repository->findOneBy(array('id' => $codigo));
+
+					$nusuario = new Usuario;
+				
+					//cargamos todos los atributos al usuario
+					$nusuario->setUsername($lider_nuevo->getCodigo()) ;
+					$nusuario->setPassword($lider_nuevo->getCi);
+					$nusuario->setSalt(md5(time()));
+					$nusuario->addRole($role); //cargamos el rol de estudiante
+					$nusuario->setIsActive(true); //tener acceso
+
+					$encoder = $this->get('security.encoder_factory')->getEncoder($nusuario);
+					$passwordCodificado = $encoder->encodePassword($nusuario->getPassword(), $nusuario->getSalt());
+					$nusuario->setPassword($passwordCodificado);
+					
+					$em->persist($nusuario);
+			} 
+			else{
+				if ($lider_actual->getCodigo() != $lider_nuevo->getCodigo()) {
+					//buscamos el usuario en base de datos y lo eliminamos
+					$repository = $this->getDoctrine()->getRepository('IngenieriaUsuarioBundle:Usuario');
+					$usuario_actual = $repository->findOneBy(array('username'=>$lider_actual->getCodigo()));	
+					$em->remove($usuario_actual);
+					
+					//los roles fueron cargados de forma manual en la base de datos
+					//buscamos una instancia role tipo practicante 
+					$codigo = 3; //1 corresponde a practicantes		
+					$repository = $this->getDoctrine()->getRepository('IngenieriaUsuarioBundle:Role');
+					$role = $repository->findOneBy(array('id' => $codigo));
+
+					$nusuario = new Usuario;
+				
+					//cargamos todos los atributos al usuario
+					$nusuario->setUsername($lider_nuevo->getCodigo()) ;
+					$nusuario->setPassword($lider_nuevo->getCi);
+					$nusuario->setSalt(md5(time()));
+					$nusuario->addRole($role); //cargamos el rol de estudiante
+					$nusuario->setIsActive(true); //tener acceso
+
+					$encoder = $this->get('security.encoder_factory')->getEncoder($nusuario);
+					$passwordCodificado = $encoder->encodePassword($nusuario->getPassword(), $nusuario->getSalt());
+					$nusuario->setPassword($passwordCodificado);
+					
+					$em->persist($nusuario);
+				}
+			}
+				
 			$em->persist($subgrupo);
 			$em->flush();
 			return $this->redirect($this->generateUrl('ingenieria_ver_subgrupos', array('id' => $subgrupo->getGrupo()->getId())));
