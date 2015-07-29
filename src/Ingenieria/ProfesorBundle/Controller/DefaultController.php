@@ -7,7 +7,8 @@ use Ingenieria\EstudianteBundle\Entity\Estudiante;
 use Ingenieria\ProfesorBundle\Entity\Actividad;
 use Ingenieria\ProfesorBundle\Entity\Profesor;
 use Ingenieria\ProfesorBundle\Form\Type\ActividadType;
-
+use Ingenieria\ProfesorBundle\Entity\Subgrupo;
+use Ingenieria\ProfesorBundle\Form\Type\SubgrupoType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
@@ -328,7 +329,7 @@ class DefaultController extends Controller
 		$msgerr = array('descripcion'=>'','id'=>'0');
 
 		$estudiantes = $g->getEstudiantes();
-		return $this->render('IngenieriaProfesorBundle:Default:estudiantes.html.twig', array('listaEstudiantes' => $estudiantes, 'msgerr' => $msgerr));
+		return $this->render('IngenieriaProfesorBundle:Default:estudiantes.html.twig', array('listaEstudiantes' => $estudiantes, 'curso' => $g, 'msgerr' => $msgerr));
 	}
 
 	//********************************************************
@@ -360,7 +361,119 @@ class DefaultController extends Controller
 		}
 
 		
-		return $this->render('IngenieriaProfesorBundle:Default:subgrupos.html.twig', array('listaSubgrupos' => $subgrupos, 'msgerr' => $msgerr));
+		return $this->render('IngenieriaProfesorBundle:Default:subgrupos.html.twig', array('listaSubgrupos' => $subgrupos, 'grupo' => $g, 'msgerr' => $msgerr));
 	}
 	
+	//********************************************************
+	// Muestra un listado de subgrupos
+	//******************************************************** 	
+	public function registrarSubgrupoAction($id){
+	
+		$peticion = $this->getRequest();
+		$em = $this->getDoctrine()->getManager();
+
+		//buscamos el curso o grupo
+		$repository = $this->getDoctrine()->getRepository('IngenieriaDirectorBundle:Grupo');
+		$grupo = $repository->find($id);
+
+		$subgrupo = new Subgrupo();
+
+		$formulario = $this->createForm(new SubgrupoType(), $subgrupo);
+		$formulario->handleRequest($peticion);
+
+		if ($formulario->isValid()) {
+			$subgrupo->setGrupo($grupo);
+			$em->persist($subgrupo);
+
+			$em->flush();
+			return $this->redirect($this->generateUrl('ingenieria_ver_subgrupos', array('id' => $id)));
+		}
+
+		return $this->render('IngenieriaProfesorBundle:Default:registrarsubgrupo.html.twig', array(
+			'formulario' => $formulario->createView(), 'grupo' => $grupo));	
+
+	}
+
+	/********************************************************/
+	//Muestra y modifica un subgrupo
+	/********************************************************/		
+	public function actualizarSubgrupoAction($id){
+		$peticion = $this->getRequest();
+		$em = $this->getDoctrine()->getManager();
+
+		//buscamos el curso o grupo
+		$repository = $this->getDoctrine()->getRepository('IngenieriaDirectorBundle:Grupo');
+		$grupo = $repository->find($id);
+
+		$repository = $this->getDoctrine()->getRepository('IngenieriaProfesorBundle:Subgrupo');
+		$subgrupo = $repository->find($id);		
+	
+		$formulario = $this->createForm(new SubgrupoType(), $subgrupo);
+		
+		$formulario->handleRequest($peticion);
+
+		if ($formulario->isValid()) {
+			$em->persist($subgrupo);
+			$em->flush();
+			return $this->redirect($this->generateUrl('ingenieria_ver_subgrupos', array('id' => $id)));
+		}
+		
+        return $this->render('IngenieriaProfesorBundle:Default:actualizarsubgrupo.html.twig', array('formulario' => $formulario->createView(), 'grupo' => $grupo ));
+	}
+
+	//********************************************************
+	// Muestra un listado de estudiantes sin grupos 
+	//******************************************************** 	
+	public function verEstudiantesSinGrupoAction($id){
+	
+		//buscamos el curso o grupo
+		$repository = $this->getDoctrine()->getRepository('IngenieriaDirectorBundle:Grupo');
+		$grupo = $repository->find($id);
+
+		$estudiantes = $grupo->getEstudiantes();
+	
+		$estudiantesingrupo = new \Doctrine\Common\Collections\ArrayCollection();
+
+		foreach($estudiantes as $e){
+			if ($e->getSubgrupo() == null)
+				$estudiantesingrupo[]=$e;
+		}
+
+		//Sino tiene grupo mensaje de advertencia
+		if ($estudiantesingrupo->count() == 0) {
+			$msgerr = array('descripcion'=>'Colectivos ya están formados!','id'=>'1');
+		} 
+		else {
+			$msgerr = array('descripcion'=>'','id'=>'0');
+		}
+
+		return $this->render('IngenieriaProfesorBundle:Default:estudiantes_singrupo.html.twig', array('listaEstudiantes' => $estudiantesingrupo, 'msgerr' => $msgerr));
+
+	}
+	
+	//********************************************************
+	// Muestra un listado de estudiantes sin grupos 
+	//******************************************************** 	
+	public function estudiantesSubgrupoAction($id){
+	
+		//buscamos el curso o grupo
+		$repository = $this->getDoctrine()->getRepository('IngenieriaProfesorBundle:Subgrupo');
+		$subgrupo = $repository->find($id);
+
+		$estudiantes = $subgrupo->getEstudiantes();
+	
+		//Sino tiene grupo mensaje de advertencia
+		if ($estudiantes->count() == 0) {
+			$msgerr = array('descripcion'=>'¡No hay estudiantes registrados!','id'=>'1');
+		} 
+		else {
+			$msgerr = array('descripcion'=>'','id'=>'0');
+		}
+
+		return $this->render('IngenieriaProfesorBundle:Default:estudiantesubgrupo.html.twig', array('listaEstudiantes' => $estudiantes, 'subgrupo' => $subgrupo, 'msgerr' => $msgerr));
+
+	}
+
+
+
 }

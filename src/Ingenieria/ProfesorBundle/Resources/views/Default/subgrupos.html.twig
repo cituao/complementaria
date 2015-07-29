@@ -17,7 +17,8 @@ $( "#cursos h3" ).css("opacity","0.4");
 <div class="content">
 		{% block upSection  %}
 			<div class = "upSection">
-			<h1 class ="sectionTitle">Colectivos</h2>
+			<h1 class ="sectionTitle">Colectivos del {{ grupo.nombre }}</h2>
+			<a href="{{ path('ingenieria_profesor_registrar_subgrupo', { 'id': grupo.id}) }}" class = "button"><img src="{{ asset('img/academicosBoton.png') }}"/><h4>Nuevo colectivo</h4></a>
 			</div>
 		{% endblock  %}
 
@@ -53,15 +54,15 @@ $( "#cursos h3" ).css("opacity","0.4");
 												<div>
 													<table class="opciones">
 													<td style ="width: 90px;">
-														<a href="{{ path('ingenieria_ver_estudiantes_grupo', { 'id': grupo.id}) }}">
+														<a href="{{ path('ingenieria_ver_estudiantes_subgrupo', { 'id': subgrupo.id}) }}">
 														<img src="{{ asset('img/editar.png') }}">
-														<h3>Estudian</h3>
+														<h3>Ver</h3>
 														</a>
 													</td>
 													<td style ="width: 90px;">
-														<a href="{{ path('ingenieria_ver_subgrupos', { 'id': grupo.id}) }}">
+														<a href="{{ path('ingenieria_profesor_actualizar_subgrupo', { 'id': grupo.id}) }}">
 														<img src="{{ asset('img/editar.png') }}">
-														<h3>Grupos</h3>
+														<h3>Editar</h3>
 														</a>
 													</td>
 													</table> <!-- opciones -->

@@ -53,3 +53,15 @@ ingenieria_ver_estudiantes_grupo:
 ingenieria_ver_subgrupos:
     pattern:  /profesor/colectivos-del-curso/{id}
     defaults: { _controller: IngenieriaProfesorBundle:Default:subGrupos }
+
+ingenieria_profesor_registrar_subgrupo:
+    pattern:  /profesor/crear-colectivo/{id}
+    defaults: { _controller: IngenieriaProfesorBundle:Default:registrarSubgrupo }
+
+ingenieria_profesor_actualizar_subgrupo:
+    pattern:  /profesor/actualizar-colectivo/id={id}
+    defaults: { _controller: IngenieriaProfesorBundle:Default:actualizarSubgrupo }
+
+ingenieria_ver_estudiantes_subgrupo:
+    pattern:  /profesor/estudiantes-del-colectivo/{id}
+    defaults: { _controller: IngenieriaProfesorBundle:Default:estudiantesSubgrupo }
