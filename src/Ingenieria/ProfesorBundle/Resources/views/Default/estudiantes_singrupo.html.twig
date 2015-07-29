@@ -18,12 +18,6 @@ $( "#cursos h3" ).css("opacity","0.4");
 		{% block upSection  %}
 		<div class = "upSection">
 			<h1 class ="sectionTitle">Estudiantes sin grupo del {{ grupo.nombre }}</h1>
-			<!--
-			<a href="" class="button">
-				<img src="/complementaria/web/img/reloj.png">
-				<h4>Morosos</h4>
-			</a>
-			-->
 		</div>
 		{% endblock  %}
 
@@ -35,7 +29,7 @@ $( "#cursos h3" ).css("opacity","0.4");
 			<table class = "generalTableHead">
 				<tbody>
 					<tr class="tableHead">
-						<th style=" width:30%"></th> 
+						<th style=" width:20%"></th> 
 						<th style=" width:10%"><img src="{{ asset('img/idLabel.png') }}"/></th> 
 						<th style=" width:30%"></th> 
 						<th><img src="{{ asset('img/mailLabel.png') }}"/></th>
@@ -56,10 +50,10 @@ $( "#cursos h3" ).css("opacity","0.4");
 							<td><span style="margin-left:5px; ">{{ estudiante.nombres }}</span></td>
 							<td><span>{{ estudiante.apellidos }}</span></td>
 							<td>{{ estudiante.email }} <br> {{ estudiante.emailInstitucional }}</td>
-							{% if estudiante.actividad == null %}
-							<td>Por matricular</td>
+							{% if estudiante.subgrupo == null %}
+							<td>¡Sin colectivo!</td>
 							{% else %}
-							<td>{{ estudiante.actividad.nombre }}</td>
+							<td>{{ estudiante.subgrupo }}</td>
 							{% endif %}
 							<td style=" width:1%"></td>
 							<td>

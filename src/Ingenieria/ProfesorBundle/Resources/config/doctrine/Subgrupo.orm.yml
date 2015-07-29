@@ -26,4 +26,11 @@ Ingenieria\ProfesorBundle\Entity\Subgrupo:
             targetEntity: Ingenieria\EstudianteBundle\Entity\Estudiante
             mappedBy: subgrupo
 
-    lifecycleCallbacks: {  }
+    oneToOne:
+        lider:
+            targetEntity: Ingenieria\EstudianteBundle\Entity\Estudiante
+            joinColumn:
+                name: lider
+                referencedColumnName: id
+
+lifecycleCallbacks: {  }

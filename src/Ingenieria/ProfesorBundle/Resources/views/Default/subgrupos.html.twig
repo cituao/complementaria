@@ -1,7 +1,7 @@
 {% extends 'IngenieriaProfesorBundle::layout.html.twig' %}
 
 {% block programa %}
-Aplicación WEB - [Administrador]
+Aplicación WEB - [Tutor]
 {% endblock %}
 
 {% block js  %}
@@ -18,7 +18,7 @@ $( "#cursos h3" ).css("opacity","0.4");
 		{% block upSection  %}
 			<div class = "upSection">
 			<h1 class ="sectionTitle">Colectivos del {{ grupo.nombre }}</h2>
-			<a href="{{ path('ingenieria_profesor_registrar_subgrupo', { 'id': grupo.id}) }}" class = "button"><img src="{{ asset('img/academicosBoton.png') }}"/><h4>Nuevo colectivo</h4></a>
+			<a href="{{ path('ingenieria_profesor_registrar_subgrupo', { 'id': grupo.id}) }}" class = "button"><img src="{{ asset('img/numeroVacantes.png') }}"/><h4>Nuevo colectivo</h4></a>
 			</div>
 		{% endblock  %}
 
@@ -30,9 +30,7 @@ $( "#cursos h3" ).css("opacity","0.4");
 					<table class="generalTableHead">
 						<tbody>
 							<tr class="tableHead">
-								<th width="40%"></th>
-								<th width="28%"><img style="margin-left:28%;" src="{{ asset('img/idLabel.png') }}"/></th>	
-								<th width="20%"></th>
+								<th width="60%"></th>
 								<th width="15%"><img style="margin-left:28%;" src="{{ asset('img/numeroVacantes.png') }}"/></th>	
 								
 								<th><h3><span></span></h3></th>

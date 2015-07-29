@@ -32,6 +32,14 @@ Aplicación WEB - [Administrador]
 							{{ form_widget(formulario.nombre, {'attr': {'class':'mediano'}} ) }}
 						</div>
 					</div>
+					
+					<div class="inputContainer">
+						<h2>{{ form_label(formulario.lider) }}</h2>
+						<div class="input"> 
+							{{ form_errors(formulario.lider) }}
+							{{ form_widget(formulario.lider, {'attr': {'class':'mediano'}} ) }}
+						</div>
+					</div>
 					{{ form_rest(formulario) }}
 					
 				<div class="inputContainer" style="position:relative; margin-top:20px; margin-left:20px;">

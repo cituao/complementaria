@@ -242,6 +242,11 @@ class Estudiante
         $this->actividades = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
+	public function __toString()
+	{
+		$nombrecompleto = $this->nombres." ".$this->apellidos;	
+		return $nombrecompleto;
+	}
     /**
      * Add actividades
      *

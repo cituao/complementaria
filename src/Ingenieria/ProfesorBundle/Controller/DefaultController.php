@@ -405,7 +405,7 @@ class DefaultController extends Controller
 		$repository = $this->getDoctrine()->getRepository('IngenieriaProfesorBundle:Subgrupo');
 		$subgrupo = $repository->find($id);		
 	
-		$formulario = $this->createForm(new SubgrupoType(), $subgrupo);
+		$formulario = $this->createForm(new SubgrupoType($id), $subgrupo);
 		
 		$formulario->handleRequest($peticion);
 
@@ -449,7 +449,7 @@ class DefaultController extends Controller
 	}
 	
 	//********************************************************
-	// Muestra un listado de estudiantes sin grupos 
+	// Muestra un listado de estudiantes del grupos 
 	//******************************************************** 	
 	public function estudiantesSubgrupoAction($id){
 	
@@ -502,7 +502,7 @@ class DefaultController extends Controller
 		if ($formulario->isValid()) {
 			$em->persist($estudiante);
 			$em->flush();
-			return $this->redirect($this->generateUrl('ingenieria_profesor_estudiantes_singrupos', array('id' => $estudiante->getGrupo())));
+			return $this->redirect($this->generateUrl('ingenieria_profesor_estudiantes_singrupos', array('id' => $estudiante->getGrupo()->getId())));
 		}
 		
         return $this->render('IngenieriaProfesorBundle:Default:asignarsubgrupoestudiantes.html.twig', array('formulario' => $formulario->createView(), 'grupo' => $estudiante->getGrupo(), 'estudiante' => $estudiante));

@@ -22,6 +22,8 @@ class Subgrupo
 	protected $grupo;
 
 	protected $estudiantes;
+	
+	protected $lider;
 
     /**
      * Get id
@@ -123,5 +125,28 @@ class Subgrupo
     public function getEstudiantes()
     {
         return $this->estudiantes;
+    }
+
+    /**
+     * Set lider
+     *
+     * @param \Ingenieria\EstudianteBundle\Entity\Estudiante $lider
+     * @return Subgrupo
+     */
+    public function setLider(\Ingenieria\EstudianteBundle\Entity\Estudiante $lider = null)
+    {
+        $this->lider = $lider;
+
+        return $this;
+    }
+
+    /**
+     * Get lider
+     *
+     * @return \Ingenieria\EstudianteBundle\Entity\Estudiante 
+     */
+    public function getLider()
+    {
+        return $this->lider;
     }
 }
