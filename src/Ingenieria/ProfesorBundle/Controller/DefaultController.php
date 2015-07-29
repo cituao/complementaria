@@ -401,10 +401,6 @@ class DefaultController extends Controller
 		$peticion = $this->getRequest();
 		$em = $this->getDoctrine()->getManager();
 
-		//buscamos el curso o grupo
-		$repository = $this->getDoctrine()->getRepository('IngenieriaDirectorBundle:Grupo');
-		$grupo = $repository->find($id);
-
 		$repository = $this->getDoctrine()->getRepository('IngenieriaProfesorBundle:Subgrupo');
 		$subgrupo = $repository->find($id);		
 	
@@ -415,10 +411,10 @@ class DefaultController extends Controller
 		if ($formulario->isValid()) {
 			$em->persist($subgrupo);
 			$em->flush();
-			return $this->redirect($this->generateUrl('ingenieria_ver_subgrupos', array('id' => $id)));
+			return $this->redirect($this->generateUrl('ingenieria_ver_subgrupos', array('id' => $subgrupo->getGrupo()->getId())));
 		}
 		
-        return $this->render('IngenieriaProfesorBundle:Default:actualizarsubgrupo.html.twig', array('formulario' => $formulario->createView(), 'grupo' => $grupo ));
+        return $this->render('IngenieriaProfesorBundle:Default:actualizarsubgrupo.html.twig', array('formulario' => $formulario->createView(), 'subgrupo' => $subgrupo ));
 	}
 
 	//********************************************************

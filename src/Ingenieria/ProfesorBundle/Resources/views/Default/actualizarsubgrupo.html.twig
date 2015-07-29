@@ -22,7 +22,7 @@ Aplicación WEB - [Administrador]
 	<div class="downSection">
 		<div class="profileContainer">
 			<div class="profileFormContainer">
-				<form action="{{ path('ingenieria_profesor_actualizar_subgrupo' , { 'id': grupo.id} ) }}" method="post" {{ form_enctype(formulario) }}>
+				<form action="{{ path('ingenieria_profesor_actualizar_subgrupo' , { 'id': subgrupo.id} ) }}" method="post" {{ form_enctype(formulario) }}>
 					<div>	{{ form_errors(formulario) }}	</div>
 
 					<div class="inputContainer">
