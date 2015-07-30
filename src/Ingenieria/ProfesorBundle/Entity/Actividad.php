@@ -73,6 +73,8 @@ class Actividad
 	
 	private $honestidad;
 
+	private $horario;
+
 	private $descripcion;
 
     public function setFile(UploadedFile $file = null)
@@ -678,5 +680,28 @@ class Actividad
     public function getDescripcion()
     {
         return $this->descripcion;
+    }
+
+    /**
+     * Set horario
+     *
+     * @param string $horario
+     * @return Actividad
+     */
+    public function setHorario($horario)
+    {
+        $this->horario = $horario;
+
+        return $this;
+    }
+
+    /**
+     * Get horario
+     *
+     * @return string 
+     */
+    public function getHorario()
+    {
+        return $this->horario;
     }
 }

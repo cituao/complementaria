@@ -67,6 +67,9 @@ Ingenieria\ProfesorBundle\Entity\Actividad:
         numeroCupos:
             type: integer
             column: numero_cupos
+        horario:
+            type: string
+            length: '100'
         descripcion:
             type: text
             length: 1000
