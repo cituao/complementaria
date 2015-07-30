@@ -16,7 +16,7 @@ class ActividadType extends AbstractType
    		->add('nombre','text', array('label' => 'Nombre actividad:' , 'required' => true))
 		->add('proposito','text', array('label' => 'Propósito formativo:' , 'required' => true))
 		->add('dirigida','text', array('label' => 'Dirigida preferentemente:' , 'required' => true))
-		->add('descripcion','textarea', array('label' => 'Descripción:' , 'required' => true , 'attr' => array('cols' => '60', 'rows' => '7')))
+		->add('descripcion','textarea', array('label' => 'Descripción:' , 'required' => true , 'attr' => array('cols' => '60', 'rows' => '7', 'placeholder' => 'Máximo 1000 carácteres')))
 		->add('horario','text', array('label' => 'Horario:' , 'required' => true))
 		->add('trabajo', 'checkbox', array('required' => false, 'label' => 'Trabajo en equipo:'))
 		->add('aprendizaje', 'checkbox', array('required' => false, 'label' => 'Aprendizaje autónomo y continuo:'))
