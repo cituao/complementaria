@@ -1,0 +1,119 @@
+{% extends 'IngenieriaUsuarioBundle::layout.html.twig' %}
+
+{% block programa %}
+App WEB  [Administrador]
+{% endblock %}
+
+{% block js  %}
+<script>
+$( "#cursos" ).css("background-color","#000");
+$( "#cursos img" ).css("opacity","0.4");
+$( "#cursos h3" ).css("opacity","0.4");
+</script>
+{% endblock %}
+
+{% block content  %}
+{{ parent() }}
+	<div class="content">
+		{% block upSection  %}
+		<div class = "upSection">
+			<h1 class ="sectionTitle">Estudiantes del {{ subgrupo.nombre }}</h1>
+			<a href="{{ path('usuario_ver_subgrupos', { 'id': subgrupo.grupo.id}) }}" class = "button"><img src="{{ asset('img/regresar.png') }}"/><h4>Regresar</h4></a>
+			<h3 style="color:black">Tutor: {{ subgrupo.grupo.tutor }}</h3>
+<!--
+{% if subgrupo.estudiantes.count < 3 %}
+<a href="{{ path('ingenieria_profesor_estudiantes_singrupos' , { 'id': subgrupo.grupo.id }) }}"class = "button"><img src="{{ asset('img/academicosBoton.png') }}"/><h4>Estudiantes sin colectivos</h4></a>
+{% endif %}
+-->
+		</div>
+		{% endblock  %}
+
+		{% block downSection  %}
+		<div class = "downSection">
+		{% if msgerr.id == '1' %}
+			<div id = "error">{{ msgerr.descripcion }}</div>		
+		{% else %}
+			<table class = "generalTableHead">
+				<tbody>
+					<tr class="tableHead">
+						<th style=" width:30%"></th> 
+						<th style=" width:10%"><img src="{{ asset('img/idLabel.png') }}"/></th> 
+						<th style=" width:30%"></th> 
+						<th><img src="{{ asset('img/mailLabel.png') }}"/></th>
+					</tr> <!--tablehead -->
+				</tbody>
+			</table><!-- practicantes tableHead -->
+
+			<div style="width: 100%; height: 750px; overflow: auto; position:relative; padding-bottom:30px;">
+				<table class = "generalTable">
+				<tbody>
+					{% set id = 1 %}
+					<tr class="spacer"></tr>
+					
+					{% for estudiante in listaEstudiantes %}
+					<tr class="tableItem">
+						<td id="hoverDiv">
+							<td><h2>{{ id }}</h2></td>
+							<td><span style="margin-left:5px; ">{{ estudiante.nombres }}</span></td>
+							<td><span>
+							{{ estudiante.apellidos }}
+							{% if estudiante.id == subgrupo.lider.id %}
+							(L)
+							{% endif %}
+							</span></td>
+							<td>{{ estudiante.email }} <br> {{ estudiante.emailInstitucional }}</td>
+							<td style=" width:1%"></td>
+							<td>
+								<table class="opciones" style="right:129px">
+									<td style="width: 120px;"><a href="{{ path('ingenieria_profesor_bitacora' , { 'id': estudiante.id}) }}"><img src="{{ asset('img/cronograma.png') }}" ><h3>Bitacora</h3></a>
+									</td>
+								</table>
+							</td>
+						</td> <!-- hoverDiv -->
+					</tr>
+					{% set id = id + 1 %}
+					<tr class="spacer"></tr>
+					{% endfor %}
+					
+					<tr class="spacer"></tr>
+					<tr class="spacer"></tr>
+					<tr class="spacer"></tr>
+					<tr class="spacer"></tr>
+					<tr class="spacer"></tr>
+				</tbody>
+				</table><!-- generalTable -->
+			</div><!-- scrollDiv -->
+			</div><!-- downSection -->
+		{% endif %}
+		{% endblock %}
+
+</div>
+
+<script>
+$( ".tableItem" ).mouseenter(function() {
+		var opciones = $('.opciones', this);
+		var itemPicture = $('.itemImgContainer', this);
+		$(itemPicture).css("border-color","#ec1c24");
+
+		$( opciones).animate({
+			opacity: 1,
+			top: "-30px",
+		}, 300, function() {
+	    // Animation complete.
+	});
+	});
+
+	$( ".tableItem" ).mouseleave(function() {
+		var itemPicture = $('.itemImgContainer', this);
+		var opciones = $('.opciones', this);
+		$(itemPicture).css("border-color","#242021");
+		$( opciones).animate({
+			opacity: 0,
+			top: "0px",
+		}, 300, function() {
+	    // Animation complete.
+	});
+	});
+</script>
+{% endblock %}
+

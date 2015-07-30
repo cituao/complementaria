@@ -885,4 +885,26 @@ class DefaultController extends Controller
 		}
 		return $this->render('IngenieriaUsuarioBundle:Default:subgrupos.html.twig', array('listaSubgrupos' => $subgrupos, 'grupo' => $grupo, 'msgerr' => $msgerr));
 	}
+	
+		
+	//********************************************************
+	// Muestra un listado de estudiantes del grupos 
+	//******************************************************** 	
+	public function estudiantesSubgrupoAction($id){
+	
+		//buscamos el curso o grupo
+		$repository = $this->getDoctrine()->getRepository('IngenieriaProfesorBundle:Subgrupo');
+		$subgrupo = $repository->find($id);
+
+		$estudiantes = $subgrupo->getEstudiantes();
+	
+		//Sino tiene grupo mensaje de advertencia
+		if ($estudiantes->count() == 0) {
+			$msgerr = array('descripcion'=>'¡No hay estudiantes registrados!','id'=>'1');
+		} 
+		else {
+			$msgerr = array('descripcion'=>'','id'=>'0');
+		}
+		return $this->render('IngenieriaUsuarioBundle:Default:estudiantesubgrupo.html.twig', array('listaEstudiantes' => $estudiantes, 'subgrupo' => $subgrupo, 'msgerr' => $msgerr));
+	}
 }

@@ -58,21 +58,23 @@ $( "#cursos h3" ).css("opacity","0.4");
 												{{ subgrupo.actividad.nombre }}
 												{% endif %}
 											</td>					
-											<td style ="width: 200px;">
+											<td style ="width: 100px;">
 												<div>
-													<table class="opciones" style ="width: 210px;">
+													<table class="opciones" style ="width: 100px;">
 													<td style ="width: 90px;">
-														<a href="{{ path('ingenieria_ver_estudiantes_subgrupo', { 'id': subgrupo.id}) }}">
+														<a href="{{ path('usuario_ver_estudiantes_subgrupo', { 'id': subgrupo.id}) }}">
 														<img src="{{ asset('img/editar.png') }}">
 														<h3>Ver</h3>
 														</a>
 													</td>
+													<!--
 													<td style ="width: 90px;">
 														<a href="{{ path('ingenieria_profesor_actualizar_subgrupo', { 'id': subgrupo.id}) }}">
 														<img src="{{ asset('img/editar.png') }}">
 														<h3>Editar</h3>
 														</a>
 													</td>	
+													-->
 													</table> <!-- opciones -->
 												</div>	
 											</td>
