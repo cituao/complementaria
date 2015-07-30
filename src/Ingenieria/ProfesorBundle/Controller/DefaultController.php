@@ -427,7 +427,7 @@ class DefaultController extends Controller
 				
 					//cargamos todos los atributos al usuario
 					$nusuario->setUsername($lider_nuevo->getCodigo()) ;
-					$nusuario->setPassword($lider_nuevo->getCi);
+					$nusuario->setPassword($lider_nuevo->getCi());
 					$nusuario->setSalt(md5(time()));
 					$nusuario->addRole($role); //cargamos el rol de estudiante
 					$nusuario->setIsActive(true); //tener acceso
@@ -455,7 +455,7 @@ class DefaultController extends Controller
 				
 					//cargamos todos los atributos al usuario
 					$nusuario->setUsername($lider_nuevo->getCodigo()) ;
-					$nusuario->setPassword($lider_nuevo->getCi);
+					$nusuario->setPassword($lider_nuevo->getCi());
 					$nusuario->setSalt(md5(time()));
 					$nusuario->addRole($role); //cargamos el rol de estudiante
 					$nusuario->setIsActive(true); //tener acceso
