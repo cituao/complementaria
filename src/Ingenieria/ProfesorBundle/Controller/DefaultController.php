@@ -470,7 +470,7 @@ class DefaultController extends Controller
 				
 			$em->persist($subgrupo);
 			$em->flush();
-			return $this->redirect($this->generateUrl('ingenieria_ver_subgrupos', array('id' => $subgrupo->getGrupo()->getId())));
+			return $this->redirect($this->generateUrl('ingenieria_ver_estudiantes_subgrupo', array('id' => $subgrupo->getId())));
 		}
 		
         return $this->render('IngenieriaProfesorBundle:Default:actualizarsubgrupo.html.twig', array('formulario' => $formulario->createView(), 'subgrupo' => $subgrupo ));

@@ -55,8 +55,10 @@ $( "#cursos h3" ).css("opacity","0.4");
 							<td><span style="margin-left:5px; ">{{ estudiante.nombres }}</span></td>
 							<td><span>
 							{{ estudiante.apellidos }}
+							{% if subgrupo.lider != NULL %}
 							{% if estudiante.id == subgrupo.lider.id %}
 							(L)
+							{% endif %}
 							{% endif %}
 							</span></td>
 							<td>{{ estudiante.email }} <br> {{ estudiante.emailInstitucional }}</td>
