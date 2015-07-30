@@ -25,7 +25,7 @@ Aplicación WEB - [Administrador]
 				<form action="{{ path('usuario_registrar_grupo') }}" method="post" {{ form_enctype(formulario) }}>
 					<div>	{{ form_errors(formulario) }}	</div>
 
-					<div class="inputContainer">
+					<div class="inputContainer" style="width:600px;">
 						<h2>{{ form_label(formulario.nombre) }}</h2>
 						<div class="input"> 
 							{{ form_errors(formulario.nombre) }}
@@ -33,12 +33,18 @@ Aplicación WEB - [Administrador]
 						</div>
 					</div>
 
-				<div class="inputContainer">
+				<div class="inputContainer" style="width:600px;">
 					<div class="input"> 
 					{{ form_row(formulario.tutor) }}
 					</div > 
 				</div>
 
+				<div class="inputContainer" style="width:600px;">
+					<div class="input"> 
+					{{ form_row(formulario.file) }}
+					</div > 
+				</div>
+				
 					{{ form_rest(formulario) }}
 					
 				<div class="inputContainer" style="position:relative; margin-top:20px; margin-left:20px;">

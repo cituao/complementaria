@@ -25,7 +25,7 @@ Aplicación WEB - [Administrador]
 				<form action="{{ path('ingenieria_profesor_registrar_subgrupo' , { 'id': grupo.id} ) }}" method="post" {{ form_enctype(formulario) }}>
 					<div>	{{ form_errors(formulario) }}	</div>
 
-					<div class="inputContainer">
+					<div class="inputContainer"  style="width:600px;">
 						<h2>{{ form_label(formulario.nombre) }}</h2>
 						<div class="input"> 
 							{{ form_errors(formulario.nombre) }}
