@@ -32,5 +32,10 @@ Ingenieria\ProfesorBundle\Entity\Subgrupo:
             joinColumn:
                 name: lider
                 referencedColumnName: id
+        actividad:
+            targetEntity: Ingenieria\ProfesorBundle\Entity\Actividad
+            joinColumn:
+                name: actividad
+                referencedColumnName: id
 
 lifecycleCallbacks: {  }

@@ -25,6 +25,8 @@ class Subgrupo
 	
 	protected $lider;
 
+	protected $actividad;
+
     /**
      * Get id
      *
@@ -148,5 +150,28 @@ class Subgrupo
     public function getLider()
     {
         return $this->lider;
+    }
+
+    /**
+     * Set actividad
+     *
+     * @param \Ingenieria\ProfesorBundle\Entity\Actividad $actividad
+     * @return Subgrupo
+     */
+    public function setActividad(\Ingenieria\ProfesorBundle\Entity\Actividad $actividad = null)
+    {
+        $this->actividad = $actividad;
+
+        return $this;
+    }
+
+    /**
+     * Get actividad
+     *
+     * @return \Ingenieria\ProfesorBundle\Entity\Actividad 
+     */
+    public function getActividad()
+    {
+        return $this->actividad;
     }
 }

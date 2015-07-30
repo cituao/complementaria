@@ -30,7 +30,7 @@ $( "#cursos h3" ).css("opacity","0.4");
 					<table class="generalTableHead">
 						<tbody>
 							<tr class="tableHead">
-								<th width="60%"></th>
+								<th width="18%"></th>
 								<th width="15%"><img style="margin-left:28%;" src="{{ asset('img/numeroVacantes.png') }}"/></th>	
 								
 								<th><h3><span></span></h3></th>
@@ -46,11 +46,18 @@ $( "#cursos h3" ).css("opacity","0.4");
 									<tr class="tableItem">
 										<td id="hoverDiv">
 										<td><h2>{{ id }}</h2></td>
-											<td style=" width:50%"><span style="margin-left:20px; ">{{ subgrupo.nombre }}</span></td>
-											<td>{{ subgrupo.estudiantes.count }}</td>						
-											<td style ="width: 300px;">
+											<td style="width:20%"><span style="margin-left:20px; ">{{ subgrupo.nombre }}</span></td>
+											<td style="width:10%">{{ subgrupo.estudiantes.count }}</td>	
+											<td style="width:50%">
+												{% if subgrupo.actividad == null %}
+												¡Sin proyecto!
+												{% else %}
+												{{ subgrupo.actividad.nombre }}
+												{% endif %}
+											</td>					
+											<td style ="width: 200px;">
 												<div>
-													<table class="opciones">
+													<table class="opciones" style ="width: 210px;">
 													<td style ="width: 90px;">
 														<a href="{{ path('ingenieria_ver_estudiantes_subgrupo', { 'id': subgrupo.id}) }}">
 														<img src="{{ asset('img/editar.png') }}">
@@ -62,11 +69,11 @@ $( "#cursos h3" ).css("opacity","0.4");
 														<img src="{{ asset('img/editar.png') }}">
 														<h3>Editar</h3>
 														</a>
-													</td>
+													</td>	
 													</table> <!-- opciones -->
-												</div>
-												<td><span>{{ subgrupo.estudiantes.count }}</span></td>	
+												</div>	
 											</td>
+
 										</td> <!-- hoverDir -->
 									</tr><!-- tableitem -->
 									{% set id = id + 1 %}
