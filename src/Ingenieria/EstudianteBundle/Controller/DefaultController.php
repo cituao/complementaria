@@ -177,8 +177,12 @@ class DefaultController extends Controller
 		//buscamos la actividad que el estudiante quiere cursar
 		$repository = $this->getDoctrine()->getRepository('IngenieriaProfesorBundle:Actividad');
 		$actividad = $repository->findOneBy(array('id' => $id));
+		//buscamos el subgrupo
+		$repository_subgrupo = $this->getDoctrine()->getRepository('IngenieriaProfesorBundle:Subgrupo');
+		$subgrupo = $repository_subgrupo->find($estudiante->getSubgrupo()->getId());
 		
 		$estudiante->setActividad($actividad);
+		$subgrupo->setActividad($actividad);
 		//bajamos numero de cupos
 		$ncupos = 0;
 		$ncupos = $actividad->getNumeroCupos();
@@ -188,6 +192,7 @@ class DefaultController extends Controller
 		$em = $this->getDoctrine()->getManager();
 		$em->persist($actividad);
 		$em->persist($estudiante);
+		$em->persist($subgrupo);
 		$em->flush();
 		
 		return $this->render('IngenieriaEstudianteBundle:Default:confirmacion.html.twig');
