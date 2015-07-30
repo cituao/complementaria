@@ -53,14 +53,13 @@ $( "#cursos h3" ).css("opacity","0.4");
 						<td id="hoverDiv">
 							<td><h2>{{ id }}</h2></td>
 							<td><span style="margin-left:5px; ">{{ estudiante.nombres }}</span></td>
-							<td><span>{{ estudiante.apellidos }}
+							<td><span>
+							{{ estudiante.apellidos }}
+							{% if estudiante.id == subgrupo.lider.id %}
+							(L)
+							{% endif %}
 							</span></td>
 							<td>{{ estudiante.email }} <br> {{ estudiante.emailInstitucional }}</td>
-							{% if estudiante.id == subgrupo.lider.id %}
-							<td>Lider</td>
-							{% else %}
-							<td></td>
-							{% endif %}
 							<td style=" width:1%"></td>
 							<td>
 								<table class="opciones" style="right:129px">

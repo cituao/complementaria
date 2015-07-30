@@ -37,13 +37,11 @@ Aplicación WEB  [Estudiante]
 <div class="content">
 	{% block upSection  %}
 	<div class = "upSection" style="height:60px;">
-		<h1 class ="sectionTitle">Bitácora de trabajo semanal</h1>
+		<h1 class ="sectionTitle">Bitácora de trabajo semanal del {{ estudiante.subgrupo.nombre }}</h1>
+		<a href="{{ path('ingenieria_ver_estudiantes_subgrupo', { 'id': estudiante.subgrupo.id}) }}" class = "button"><img src="{{ asset('img/regresar.png') }}"/><h4>Regresar</h4></a>
+		<!--
 		<h2 style="color: black !important; position: absolute; right:3%; font-weight:bold">{{ estudiante.nombres }} {{ estudiante.apellidos }}</h2>
 		<h2 style="color: black !important;  position: absolute; right:3%; top:45px;">{{ estudiante.email }} {{ estudiante.emailInstitucional }}</h2>
-		<!--
-			<a href="{{ path('ingenieria_estudiante_registrar_actvidad_semanal' , { 'codigo': estudiante.codigo}) }}" class = "button"> <img src="{{ asset('img/anadirActividad.png') }}"/>
-			<h4>Actividad</h4>
-			</a>
 		-->
 	</div> <!-- up section -->
 	{% endblock  %}
