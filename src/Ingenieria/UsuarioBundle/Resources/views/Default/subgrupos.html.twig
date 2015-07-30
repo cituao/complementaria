@@ -17,7 +17,11 @@ $( "#cursos h3" ).css("opacity","0.4");
 <div class="content">
 		{% block upSection  %}
 			<div class = "upSection">
-			<h1 class ="sectionTitle">Cursos</h2>
+			<h1 class ="sectionTitle">Colectivos del {{ grupo.nombre }}</h2>
+			<!--
+			<a href="{{ path('ingenieria_profesor_registrar_subgrupo', { 'id': grupo.id}) }}" class = "button"><img src="{{ asset('img/numeroVacantes.png') }}"/><h4>Nuevo colectivo</h4></a>
+			-->
+			<a href="{{ path('usuario_adm_homepage') }}" class = "button"><img src="{{ asset('img/regresar.png') }}"/><h4>Regresar</h4></a>
 			</div>
 		{% endblock  %}
 
@@ -29,9 +33,7 @@ $( "#cursos h3" ).css("opacity","0.4");
 					<table class="generalTableHead">
 						<tbody>
 							<tr class="tableHead">
-								<th width="40%"></th>
-								<th width="28%"><img style="margin-left:28%;" src="{{ asset('img/idLabel.png') }}"/></th>	
-								<th width="20%"></th>
+								<th width="18%"></th>
 								<th width="15%"><img style="margin-left:28%;" src="{{ asset('img/numeroVacantes.png') }}"/></th>	
 								
 								<th><h3><span></span></h3></th>
@@ -43,42 +45,38 @@ $( "#cursos h3" ).css("opacity","0.4");
 							<tbody>
 								{% set id = 1 %}
 								<tr class="spacer"></tr>
-								{% for grupo in listaGrupo %}
+								{% for subgrupo in listaSubgrupos %}
 									<tr class="tableItem">
 										<td id="hoverDiv">
 										<td><h2>{{ id }}</h2></td>
-											<td style=" width:20%"><span style="margin-left:20px; "><a href="{{ path('usuario_estudiantes_grupo', { 'id': grupo.id }) }}">{{ grupo.nombre }}</a></span></td>
-											{% if grupo.tutor %}											
-											<td style=" width:40%"><span style="margin-left:20px; ">{{ grupo.tutor.nombres }} {{ grupo.tutor.apellidos }}</span></td>
-											{% else %}
-											<td style=" width:20%"><span style="margin-left:20px; ">Sin asignar</span></td>
-											{% endif %}
-																			
-											<td style ="width: 400px;">
+											<td style="width:20%"><span style="margin-left:20px; ">{{ subgrupo.nombre }}</span></td>
+											<td style="width:10%">{{ subgrupo.estudiantes.count }}</td>	
+											<td style="width:50%">
+												{% if subgrupo.actividad == null %}
+												¡Sin proyecto!
+												{% else %}
+												{{ subgrupo.actividad.nombre }}
+												{% endif %}
+											</td>					
+											<td style ="width: 200px;">
 												<div>
-													<table class="opciones">
+													<table class="opciones" style ="width: 210px;">
 													<td style ="width: 90px;">
-														<a href="{{ path('usuario_actualizar_grupo', { 'id': grupo.id}) }}">
+														<a href="{{ path('ingenieria_ver_estudiantes_subgrupo', { 'id': subgrupo.id}) }}">
+														<img src="{{ asset('img/editar.png') }}">
+														<h3>Ver</h3>
+														</a>
+													</td>
+													<td style ="width: 90px;">
+														<a href="{{ path('ingenieria_profesor_actualizar_subgrupo', { 'id': subgrupo.id}) }}">
 														<img src="{{ asset('img/editar.png') }}">
 														<h3>Editar</h3>
 														</a>
-													</td>
-													<td style ="width: 90px;">
-														<a href="{{ path('usuario_eliminar_grupo', { 'id': grupo.id}) }}">
-														<img src="{{ asset('img/editar.png') }}">
-														<h3>Eliminar</h3>
-														</a>
-													</td>
-													<td style ="width: 90px;">
-														<a href="{{ path('usuario_ver_subgrupos', { 'id': grupo.id}) }}">
-														<img src="{{ asset('img/editar.png') }}">
-														<h3>Colec...</h3>
-														</a>
-													</td>
+													</td>	
 													</table> <!-- opciones -->
-												</div>
-												<td><span>{{ grupo.estudiantes.count }}</span></td>	
+												</div>	
 											</td>
+
 										</td> <!-- hoverDir -->
 									</tr><!-- tableitem -->
 									{% set id = id + 1 %}
@@ -126,3 +124,4 @@ $( "#cursos h3" ).css("opacity","0.4");
 
 	</script>
 {% endblock %}
+

@@ -111,3 +111,7 @@ usuario_estudiantes_grupo:
 usuario_bitacora:
     pattern:  /administrador/bitacora-estudiante/id={id}
     defaults: { _controller: IngenieriaUsuarioBundle:Default:bitacora }
+
+usuario_ver_subgrupos:
+    pattern:  /administrador/colectivos-del-curso/{id}
+    defaults: { _controller: IngenieriaUsuarioBundle:Default:subGrupos }

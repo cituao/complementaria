@@ -861,7 +861,28 @@ class DefaultController extends Controller
 		}else{
 			$msgerr = array('descripcion'=>'','id'=>'0');
 		}
-		
 		return $this->render('IngenieriaUsuarioBundle:Default:bitacora.html.twig', array('estudiante' => $estudiante, 'bitacora'=>$bitacora, 'msgerr' => $msgerr));
+	}
+	
+		//********************************************************
+	// Muestra un listado de subgrupos
+	//******************************************************** 	
+	public function subGruposAction($id){
+		//localizamos al profesor
+		$user = $this->get('security.context')->getToken()->getUser();
+		$ci =  $user->getUsername();
+		$repository = $this->getDoctrine()->getRepository('IngenieriaDirectorBundle:Grupo');
+		$grupo = $repository->find($id);
+
+		//obtenemos los cursos o grupos
+		$subgrupos = $grupo->getSubgrupos(); 
+		//Sino tiene grupo mensaje de advertencia
+		if ($subgrupos->count() == 0) {
+			$msgerr = array('descripcion'=>'No hay colectivos definidos!','id'=>'1');
+		} 
+		else {
+			$msgerr = array('descripcion'=>'','id'=>'0');
+		}
+		return $this->render('IngenieriaUsuarioBundle:Default:subgrupos.html.twig', array('listaSubgrupos' => $subgrupos, 'grupo' => $grupo, 'msgerr' => $msgerr));
 	}
 }
