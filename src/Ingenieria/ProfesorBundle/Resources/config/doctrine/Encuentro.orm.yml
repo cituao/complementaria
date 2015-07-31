@@ -1,0 +1,26 @@
+Ingenieria\ProfesorBundle\Entity\Encuentro:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        fecha:
+            type: date
+        resumen:
+            type: text
+        observaciones:
+            type: text
+            nullable: true
+
+    manyToOne:
+         subgrupo:
+            targetEntity: Ingenieria\ProfesorBundle\Entity\Subgrupo
+            inversedBy: encuentros
+            joinColumn:
+                name: subgrupo
+                referencedColumnName: id
+    lifecycleCallbacks: {  }

@@ -26,6 +26,8 @@ class Subgrupo
 	protected $lider;
 
 	protected $actividad;
+	
+	protected $encuentros;
 
     /**
      * Get id

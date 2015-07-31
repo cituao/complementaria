@@ -26,6 +26,10 @@ Ingenieria\ProfesorBundle\Entity\Subgrupo:
             targetEntity: Ingenieria\EstudianteBundle\Entity\Estudiante
             mappedBy: subgrupo
 
+        encuentros:
+            targetEntity: Ingenieria\ProfesorBundle\Entity\Encuentro
+            mappedBy: subgrupo
+
     oneToOne:
         lider:
             targetEntity: Ingenieria\EstudianteBundle\Entity\Estudiante
