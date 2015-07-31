@@ -70,34 +70,22 @@ class DefaultController extends Controller
 		return $this->render('IngenieriaProfesorBundle:Default:estudiantes.html.twig', array('listaEstudiantes' => $estudiantes, 'msgerr' => $msgerr));
 	}
 
-	//********************************************************
-	// Muestra un listado de actividades del profesor
-	//******************************************************** 	
+	//******************************************************
+	// Muestra todas las actividades
+	//******************************************************
 	public function actividadesAction(){
-		//localizamos al profesor
-		$user = $this->get('security.context')->getToken()->getUser();
-		$ci =  $user->getUsername();
-		$repository = $this->getDoctrine()->getRepository('IngenieriaProfesorBundle:Profesor');
-		$profesor = $repository->findOneBy(array('ci' => $ci));
-
-		//$repository = $this->getDoctrine()->getRepository('IngenieriaProfesorBundle:Actividad');
-		//$listaActividades = $repository->findAll();
+	
+		$repository = $this->getDoctrine()->getRepository('IngenieriaProfesorBundle:Actividad');
+		$actividades = $repository->findAll();
 		
-		$listaActividades =  $profesor->getActividades();
-		if ( $listaActividades->count() == 0) {
-			$msgerr = array('descripcion'=>'No hay actividades registradas!','id'=>'1');
+		
+		if (!$actividades) {
+			//throw $this->createNotFoundException('ERR_NO_HAY_PROGRAMA');
+			$msgerr = array('id'=>1, 'descripcion' => 'No hay actividades registradas en el sistema');
 		}else{
-			$msgerr = array('descripcion'=>'','id'=>'0');
+			$msgerr = array('id'=>0, 'descripcion' => 'Ok');
 		}
-		/*
-				//buscamos el programa
-		$user = $this->get('security.context')->getToken()->getUser();
-		$coordinador =  $user->getUsername();
-		$repository = $this->getDoctrine()->getRepository('CituaoUsuarioBundle:Programa');
-		$programa = $repository->findOneByCoordinador($coordinador);
-		*/
-		
-		return $this->render('IngenieriaProfesorBundle:Default:actividades.html.twig', array('listaActividades' => $listaActividades, 'msgerr' => $msgerr));
+		return $this->render('IngenieriaProfesorBundle:Default:actividades.html.twig',  array('listaActividades' => $actividades, 'msgerr' => $msgerr));
 	}
 
 	/********************************************************/

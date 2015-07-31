@@ -19,7 +19,9 @@ $( "#actividades h3" ).css("opacity","0.4");
 		{% block upSection  %}
 		<div class = "upSection">
 			<h1 class ="sectionTitle">Actividades</h1>
+			<!--
 			<a href="{{ path('ingenieria_profesor_registraractividad') }}"  class = "button"><img src="{{ asset('img/anadirActividad.png') }}"/><h4>Nueva actividad</h4></a>
+			-->
 		</div>
 		{% endblock  %}
 
@@ -61,7 +63,7 @@ $( "#actividades h3" ).css("opacity","0.4");
 							<td>
 								<table class="opciones" style="right:129px">
 									<td>
-									<a href="{{ path('ingenieria_profesor_actividad' , { 'id': actividad.id}) }}"><img src="{{ asset('img/editar.png') }}" ><h3> Editar </h3></a>
+									<a href="{{ path('ingenieria_profesor_actividad' , { 'id': actividad.id}) }}"><img src="{{ asset('img/editar.png') }}" ><h3> Ver </h3></a>
 									</td>
 								</table>
 							</td>
