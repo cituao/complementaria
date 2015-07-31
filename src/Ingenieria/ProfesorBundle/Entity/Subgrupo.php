@@ -176,4 +176,37 @@ class Subgrupo
     {
         return $this->actividad;
     }
+
+    /**
+     * Add encuentros
+     *
+     * @param \Ingenieria\ProfesorBundle\Entity\Encuentro $encuentros
+     * @return Subgrupo
+     */
+    public function addEncuentro(\Ingenieria\ProfesorBundle\Entity\Encuentro $encuentros)
+    {
+        $this->encuentros[] = $encuentros;
+
+        return $this;
+    }
+
+    /**
+     * Remove encuentros
+     *
+     * @param \Ingenieria\ProfesorBundle\Entity\Encuentro $encuentros
+     */
+    public function removeEncuentro(\Ingenieria\ProfesorBundle\Entity\Encuentro $encuentros)
+    {
+        $this->encuentros->removeElement($encuentros);
+    }
+
+    /**
+     * Get encuentros
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getEncuentros()
+    {
+        return $this->encuentros;
+    }
 }

@@ -8,8 +8,10 @@ use Ingenieria\ProfesorBundle\Entity\Actividad;
 use Ingenieria\ProfesorBundle\Entity\Profesor;
 use Ingenieria\ProfesorBundle\Form\Type\ActividadType;
 use Ingenieria\ProfesorBundle\Entity\Subgrupo;
+use Ingenieria\ProfesorBundle\Entity\Encuentro;
 use Ingenieria\ProfesorBundle\Form\Type\SubgrupoType;
 use Ingenieria\ProfesorBundle\Form\Type\EstudianteType;
+use Ingenieria\ProfesorBundle\Form\Type\EncuentroType;
 use Ingenieria\UsuarioBundle\Entity\Usuario;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Serializer\Serializer;
@@ -550,9 +552,76 @@ class DefaultController extends Controller
 			$em->flush();
 			return $this->redirect($this->generateUrl('ingenieria_profesor_estudiantes_singrupos', array('id' => $estudiante->getGrupo()->getId())));
 		}
-		
         return $this->render('IngenieriaProfesorBundle:Default:asignarsubgrupoestudiantes.html.twig', array('formulario' => $formulario->createView(), 'grupo' => $estudiante->getGrupo(), 'estudiante' => $estudiante));
+	}
+	
+	/**********************************************************************************/
+	// Muestra bitacora de trabajo semanal del estudiante
+	/**********************************************************************************/		
+	public function verEncuentrosAction($id){
+    	$repository = $this->getDoctrine()->getRepository('IngenieriaProfesorBundle:Subgrupo');
+    	$subgrupo = $repository->find($id);
+		
+		$encuentros = $subgrupo->getEncuentros();
+		
+		if ($encuentros->count() == 0) {
+			$msgerr = array('descripcion'=>'No hay encuentros registrados!','id'=>'1');
+		}else{
+			$msgerr = array('descripcion'=>'','id'=>'0');
+		}
+		
+		return $this->render('IngenieriaProfesorBundle:Default:encuentros.html.twig', array('subgrupo' => $subgrupo, 'encuentros'=>$encuentros, 'msgerr' => $msgerr));
+	}
+	
+	//********************************************************
+	// Muestra un listado de subgrupos
+	//******************************************************** 	
+	public function registrarEncuentroAction($id){
+	
+		$peticion = $this->getRequest();
+		$em = $this->getDoctrine()->getManager();
 
+		//buscamos el curso o grupo
+		$repository = $this->getDoctrine()->getRepository('IngenieriaProfesorBundle:Subgrupo');
+		$subgrupo = $repository->find($id);
 
+		$encuentro = new Encuentro();
+
+		$formulario = $this->createForm(new EncuentroType(), $encuentro);
+		$formulario->handleRequest($peticion);
+
+		if ($formulario->isValid()) {
+			$encuentro->setSubgrupo($subgrupo);
+			$em->persist($encuentro);
+
+			$em->flush();
+			return $this->redirect($this->generateUrl('ingenieria_profesor_ver_encuentros', array('id' => $id)));
+		}
+
+		return $this->render('IngenieriaProfesorBundle:Default:registrarencuentro.html.twig', array(
+			'formulario' => $formulario->createView(), 'subgrupo' => $subgrupo));	
+	}
+	
+	/********************************************************/
+	//Muestra y modifica una actividad
+	/********************************************************/		
+	public function actualizarEncuentroAction($id){
+		$peticion = $this->getRequest();
+		$em = $this->getDoctrine()->getManager();
+
+		$repository = $this->getDoctrine()->getRepository('IngenieriaProfesorBundle:Encuentro');
+		$encuentro = $repository->findOneBy(array('id' => $id));		
+	
+		$formulario = $this->createForm(new EncuentroType(), $encuentro);
+		
+		$formulario->handleRequest($peticion);
+
+		if ($formulario->isValid()) {
+			$em->persist($encuentro);
+			$em->flush();
+			
+			return $this->redirect($this->generateUrl('ingenieria_profesor_ver_encuentros', array('id' => $encuentro->getSubgrupo()->getId()) ));
+		}
+        return $this->render('IngenieriaProfesorBundle:Default:actualizarencuentro.html.twig', array('formulario' => $formulario->createView(), 'encuentro' => $encuentro ));
 	}
 }

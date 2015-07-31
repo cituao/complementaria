@@ -45,5 +45,11 @@ $(function() {
 			}
 			}); //date picker
 	
+		$("#profesor_fecha").datepicker({
+			dateFormat: "dd-mm-yy",
+			onSelect: function(dateText, inst) {
+				
+			}
+			}); //date picker
 		}); // document.ready
 }); 

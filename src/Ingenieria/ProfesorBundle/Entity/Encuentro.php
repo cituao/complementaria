@@ -109,4 +109,27 @@ class Encuentro
     {
         return $this->observaciones;
     }
+
+    /**
+     * Set subgrupo
+     *
+     * @param \Ingenieria\ProfesorBundle\Entity\Subgrupo $subgrupo
+     * @return Encuentro
+     */
+    public function setSubgrupo(\Ingenieria\ProfesorBundle\Entity\Subgrupo $subgrupo = null)
+    {
+        $this->subgrupo = $subgrupo;
+
+        return $this;
+    }
+
+    /**
+     * Get subgrupo
+     *
+     * @return \Ingenieria\ProfesorBundle\Entity\Subgrupo 
+     */
+    public function getSubgrupo()
+    {
+        return $this->subgrupo;
+    }
 }

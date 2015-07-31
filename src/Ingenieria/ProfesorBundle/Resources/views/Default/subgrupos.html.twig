@@ -55,9 +55,9 @@ $( "#cursos h3" ).css("opacity","0.4");
 												{{ subgrupo.actividad.nombre }}
 												{% endif %}
 											</td>					
-											<td style ="width: 200px;">
+											<td style ="width: 330px;">
 												<div>
-													<table class="opciones" style ="width: 210px;">
+													<table class="opciones" style ="width:330px;">
 													<td style ="width: 90px;">
 														<a href="{{ path('ingenieria_ver_estudiantes_subgrupo', { 'id': subgrupo.id}) }}">
 														<img src="{{ asset('img/editar.png') }}">
@@ -70,6 +70,12 @@ $( "#cursos h3" ).css("opacity","0.4");
 														<h3>Editar</h3>
 														</a>
 													</td>	
+													<td style ="width: 110px;">
+														<a href="{{ path('ingenieria_profesor_ver_encuentros', { 'id': subgrupo.id}) }}">
+														<img src="{{ asset('img/editar.png') }}">
+														<h3>Encuentros</h3>
+														</a>
+													</td>
 													</table> <!-- opciones -->
 												</div>	
 											</td>
