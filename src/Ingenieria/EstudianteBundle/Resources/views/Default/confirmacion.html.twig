@@ -19,7 +19,9 @@ $( "#cronograma h3" ).css("opacity","0.4");
 		{% block upSection  %}
 		<div class = "upSection">
 			<h1 class ="sectionTitle">Inscripción satisfactoria</h1>
+			<!--			
 			<a href="javascript:history.back()" class = "button"><img src="{{ asset('img/regresar.png') }}"/><h4>Regresar</h4></a>
+			-->
 		</div>
 		{% endblock  %}
 
@@ -27,8 +29,10 @@ $( "#cronograma h3" ).css("opacity","0.4");
 		<div class = "downSection">
 			
 			<h2 style = "color: black">
-				Su inscripción ha sido formalizada en el sistema, debe registrar el cronograma de actividad! 
-				<a href="{{ path('ingenieria_estudiante_cronograma') }}"  class = "button"><h4>Registrar cronograma</h4></a>
+				Su inscripción ha sido formalizada en el sistema. Tiene a su disposición en la barra lateral izquierda la Bitácora semanal, información sobre la actividad complementaria y la información sobre el tutor.	
+				
+				
+				<!-- <a href="{{ path('ingenieria_estudiante_cronograma') }}"  class = "button"><h4>Registrar cronograma</h4></a> -->
 			</h2>
 		</div><!-- downSection -->
 		{% endblock %}
