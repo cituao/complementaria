@@ -618,13 +618,13 @@ class DefaultController extends Controller
 		$peticion = $this->getRequest();
 		$em = $this->getDoctrine()->getManager();
 		
+		/*
 		$repository_actividades = $this->getDoctrine()->getRepository('IngenieriaProfesorBundle:Actividad');
 		$actividades = $repository_actividades->findAll();
-
-		//sino hay centros es una exception
 		if (!$actividades) {
 			throw $this->createNotFoundException('ERR__NO_HAY_ACTIVIDAD');
 		}
+		*/
 
 		
 		//buscamos los profesores que no tienen asignado grupo		
