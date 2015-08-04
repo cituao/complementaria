@@ -666,40 +666,52 @@ class DefaultController extends Controller
 				$archivo= $grupo->getAbsolutePath();		
 				//bajamos el archivo a una matriz para procesar registro a registro y bajarlo a base de datos		    
 				$filas = file($archivo.".csv");
-				$i=1;
-				$numero_fila= count($filas);	
+				if (($gestor = fopen($archivo.".csv", "r")) == FALSE) {
+					throw $this->createNotFoundException('ERR_LECTURA_CSV');
+				}
+				
+				$i=0;
+				$numero_filas=0;
+				//$numero_fila= count($filas);	
 
 				//para buscar si ya se encuentra en la base de datos
 				$repository = $this->getDoctrine()->getRepository('IngenieriaEstudianteBundle:Estudiante');
 
 				$nohay = true;
 				$numero_registrados=0;
+				$sw=false;
 				//procesamos la matriz separando los campos por medio del separador putno y coma
-				while($i < $numero_fila){
-					$row = $filas[$i];
-					$sql = explode(",",$row);
-
-					$e = $repository->findOneBy(array('ci' => $sql[5]));
-					//Si esta en la base de datos lo ignoramos				
-					if ($e != NULL){
-						$numero_registrados++;
-						$i++;						
+				while (($datos = fgetcsv($gestor, 1000, ";")) !== FALSE) {
+					if ($sw == false) {
+						$sw = true;
 						continue;
+					}else 
+					{
+						//$numero = count($datos); lee numero de campos
+						//echo "<p> $numero de campos en la línea $fila: <br /></p>\n";
+						//$fila++;
+						$e = $repository->findOneBy(array('ci' => $datos[5]));
+						if ($e != NULL){
+							$numero_registrados++;
+						}else {
+							$listaEstudiantes[$i] =  array("codigo"=> $datos[1], "apellidos"=>$datos[2], "nombres"=>$datos[3], "ci" => $datos[5],"emailInstitucional" => $datos[7], "emailpersonal" => $datos[8]);
+							$nohay = false;
+							$i++;
+						}
 					}
-
-					$listaEstudiantes[$i] =  array("codigo"=> $sql[1], "apellidos"=>$sql[2], "nombres"=>$sql[3], "ci" => $sql[5], 	
-											"emailInstitucional" => $sql[7], "emailpersonal" => $sql[8]);
-					$i++;
-					$nohay = false;
 				}
+				
+				fclose($gestor);
 				//los roles fueron cargados de forma manual en la base de datos
 				//buscamos una instancia role tipo practicante 
 				//$codigo = 3; //1 corresponde a practicantes		
 				//$repository = $this->getDoctrine()->getRepository('IngenieriaUsuarioBundle:Role');
 				//$role = $repository->findOneBy(array('id' => $codigo));
 
-				$i=1;
-				while($i < $numero_fila){
+				//total de filas
+				$numero_filas = $i-1;
+				$i=0;
+				while($i <= $numero_filas){
 					//creamos una instancia Practicante para descargar datos del CSV y guardar en la base de datos
 					$estudiante = new Estudiante();
 					//creamos una instancia de usuario para darle entrada a los practicantes como usuarios en el sistema
@@ -708,8 +720,8 @@ class DefaultController extends Controller
 					//viene del archivo .csv	
 					//cargamos todos los atributos al practicante
 					$estudiante->setCodigo($listaEstudiantes[$i]['codigo']);
-					$estudiante->setNombres($listaEstudiantes[$i]['nombres']);
-					$estudiante->setApellidos($listaEstudiantes[$i]['apellidos']);
+					$estudiante->setNombres(utf8_encode($listaEstudiantes[$i]['nombres']));
+					$estudiante->setApellidos(utf8_encode($listaEstudiantes[$i]['apellidos']));
 					$estudiante->setEmailInstitucional($listaEstudiantes[$i]['emailInstitucional']);
 					$estudiante->setEmail($listaEstudiantes[$i]['emailpersonal']);
 					$estudiante->setCi($listaEstudiantes[$i]['ci']);
@@ -727,29 +739,21 @@ class DefaultController extends Controller
 					$encoder = $this->get('security.encoder_factory')->getEncoder($usuario);
 		            $passwordCodificado = $encoder->encodePassword($usuario->getPassword(), $usuario->getSalt());
 					$usuario->setPassword($passwordCodificado);
+					$em->persist($usuario);
 					*/
-					//$em->persist($usuario);
-					
 					$em->persist($estudiante);
 					$i++;
 				}
-				
 				$em->persist($grupo);	
 				$em->flush();	
-
-				return $this->redirect($this->generateUrl('usuario_adm_homepage'));
+				//return $this->redirect($this->generateUrl('usuario_adm_homepage'));
+				$msgerr = array('id'=>'0', 'descripcion'=>' ');
+				return $this->render('IngenieriaUsuarioBundle:Default:subirestudiantes.html.twig', array('listaEstudiantes' => $listaEstudiantes , 'msgerr' => $msgerr));
 			} 
-
-			$msgerr = array('id'=>'0', 'descripcion'=>' ');
-			return $this->render('IngenieriaUsuarioBundle:Default:subirestudiantes.html.twig', array('listaEstudiantes' => $listaEstudiantes , 'msgerr' => $msgerr));
-			
-		
 		}
-
 		return $this->render('IngenieriaUsuarioBundle:Default:registrargrupo.html.twig', array(
 			'formulario' => $formulario->createView()
 			));		
-
 	}	
 
 
