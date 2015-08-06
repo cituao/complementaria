@@ -174,9 +174,18 @@ class DefaultController extends Controller
 			throw $this->createNotFoundException('ERR_ESTUDIANTE_NO_ENCONTRADO');
 		}
 		
+	
+		
+		
 		//buscamos la actividad que el estudiante quiere cursar
 		$repository = $this->getDoctrine()->getRepository('IngenieriaProfesorBundle:Actividad');
 		$actividad = $repository->findOneBy(array('id' => $id));
+		
+		//ERROR
+		if ($actividad->getNumeroCupos() ==0)
+			return $this->redirect($this->generateUrl('ingenieria_estudiante_actividades'));
+		
+		
 		//buscamos el subgrupo
 		$repository_subgrupo = $this->getDoctrine()->getRepository('IngenieriaProfesorBundle:Subgrupo');
 		$subgrupo = $repository_subgrupo->find($estudiante->getSubgrupo()->getId());
