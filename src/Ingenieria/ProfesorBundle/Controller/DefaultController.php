@@ -624,4 +624,29 @@ class DefaultController extends Controller
 		}
         return $this->render('IngenieriaProfesorBundle:Default:actualizarencuentro.html.twig', array('formulario' => $formulario->createView(), 'encuentro' => $encuentro ));
 	}
+	
+	/********************************************************/
+	//Muestra y modifica una actividad
+	/********************************************************/		
+	public function eliminarSubgrupoAction($id){
+		$peticion = $this->getRequest();
+		$em = $this->getDoctrine()->getManager();
+
+		$repository = $this->getDoctrine()->getRepository('IngenieriaProfesorBundle:Subgrupo');
+		$subgrupo = $repository->find($id);		
+	
+		$estudiantes = $subgrupo->getEstudiantes();
+		
+		foreach ($estudiantes as $e){
+			$e->setSubgrupo(null);
+			$em->persist($e);
+		}
+		$grupo = $subgrupo->getGrupo();
+		$subgrupos = $grupo->getSubgrupos();
+		
+		$em->remove($subgrupo);
+		$em->flush();
+		$msgerr = array('descripcion'=>'','id'=>'0');
+		return $this->render('IngenieriaProfesorBundle:Default:subgrupos.html.twig', array('listaSubgrupos' => $subgrupos, 'grupo' => $grupo, 'msgerr' => $msgerr));
+	}
 }

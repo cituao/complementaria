@@ -85,3 +85,7 @@ ingenieria_profesor_registrar_encuentro:
 ingenieria_profesor_actualizar_encuentro:
     pattern:  /profesor/actualizar-encuentro/id={id}
     defaults: { _controller: IngenieriaProfesorBundle:Default:actualizarEncuentro }
+
+ingenieria_profesor_eliminar_subgrupo:
+    pattern:  /profesor/eliminar-colectivo/id={id}
+    defaults: { _controller: IngenieriaProfesorBundle:Default:eliminarSubgrupo }
