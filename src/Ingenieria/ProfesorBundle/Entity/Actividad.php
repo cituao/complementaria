@@ -76,6 +76,8 @@ class Actividad
 	private $horario;
 
 	private $descripcion;
+	
+	protected $subgrupos;
 
     public function setFile(UploadedFile $file = null)
     {
@@ -703,5 +705,38 @@ class Actividad
     public function getHorario()
     {
         return $this->horario;
+    }
+
+    /**
+     * Add subgrupos
+     *
+     * @param \Ingenieria\ProfesorBundle\Entity\Subgrupo $subgrupos
+     * @return Actividad
+     */
+    public function addSubgrupo(\Ingenieria\ProfesorBundle\Entity\Subgrupo $subgrupos)
+    {
+        $this->subgrupos[] = $subgrupos;
+
+        return $this;
+    }
+
+    /**
+     * Remove subgrupos
+     *
+     * @param \Ingenieria\ProfesorBundle\Entity\Subgrupo $subgrupos
+     */
+    public function removeSubgrupo(\Ingenieria\ProfesorBundle\Entity\Subgrupo $subgrupos)
+    {
+        $this->subgrupos->removeElement($subgrupos);
+    }
+
+    /**
+     * Get subgrupos
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSubgrupos()
+    {
+        return $this->subgrupos;
     }
 }

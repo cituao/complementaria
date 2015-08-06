@@ -86,4 +86,8 @@ Ingenieria\ProfesorBundle\Entity\Actividad:
             targetEntity: Ingenieria\EstudianteBundle\Entity\Estudiante
             mappedBy: actividad
 
+        subgrupos:
+            targetEntity: Ingenieria\ProfesorBundle\Entity\Subgrupo
+            mappedBy: actividad
+
     lifecycleCallbacks: {  }
