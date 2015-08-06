@@ -21,6 +21,13 @@ Ingenieria\ProfesorBundle\Entity\Subgrupo:
                 name: grupo
                 referencedColumnName: id
 
+        actividad:
+            targetEntity: Ingenieria\ProfesorBundle\Entity\Actividad
+            inversedBy: subgrupos
+            joinColumn:
+                name: actividad
+                referencedColumnName: id
+
     oneToMany:
         estudiantes:
             targetEntity: Ingenieria\EstudianteBundle\Entity\Estudiante
@@ -36,10 +43,6 @@ Ingenieria\ProfesorBundle\Entity\Subgrupo:
             joinColumn:
                 name: lider
                 referencedColumnName: id
-        actividad:
-            targetEntity: Ingenieria\ProfesorBundle\Entity\Actividad
-            joinColumn:
-                name: actividad
-                referencedColumnName: id
+
 
 lifecycleCallbacks: {  }
