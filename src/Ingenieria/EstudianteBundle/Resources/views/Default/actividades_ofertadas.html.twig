@@ -49,7 +49,7 @@
 					</div>
 				</div>
 				
-				<div class="inputContainer">
+				<div class="inputContainer" style="width: 500px;">
 					<h2 style="width: 96px;">Nombre de la actividad:</h2>
 					<div class="input nomodificable">
 					<input type="text" value = "{{ actividad.nombre }}" readonly style="width: 450px;">
@@ -59,7 +59,7 @@
 			    <div class="inputContainer">
 					<h2 style="width: 96px;">Propósito:</h2>
 					<div class="input nomodificable">
-					<input type="text" value = "{{ actividad.proposito }}" readonly style="width: 450px;">
+					{{ actividad.proposito }}
 					</div>
 				</div>
 
@@ -70,17 +70,17 @@
 					</div>
 				</div>
 				
-				<div class="inputContainer">
+				<div class="inputContainer" style="width: 800px;">
 					<h2 style="width: 96px;">Descripción:</h2>
 					<div class="input nomodificable">
-					<input type="text" value = "{{ actividad.descripcion }}" readonly style="width: 450px;">
+					{{ actividad.descripcion }}
 					</div>
 				</div>
 				
 				<div class="inputContainer">
 					<h2 style="width: 96px;">URL:</h2>
 					<div class="input nomodificable">
-					<input type="text" value = "{{ actividad.url }}" readonly style="width: 450px;">
+					{{ actividad.url }}
 					</div>
 				</div>
 				
