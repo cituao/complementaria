@@ -71,7 +71,13 @@ $( "#estudiantes h3" ).css("opacity","0.4");
 													
 												</table> <!-- opciones -->
 											</div>
-											{{ estudiante.emailInstitucional }} <br> {{ estudiante.email }}</td>
+											{{ estudiante.emailInstitucional }} <br> {{ estudiante.email }}
+										</td>
+										{% if estudiante.subgrupo != NULL %}
+										<td>{{ estudiante.subgrupo.nombre }}</td>
+										{% else %}
+										<td>¡Sin colectivo!</td>
+										{% endif %}
 										</td> <!-- hoverDiv -->
 									</tr>
 									{% set id = id + 1 %}
