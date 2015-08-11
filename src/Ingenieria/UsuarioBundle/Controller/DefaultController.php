@@ -911,4 +911,18 @@ class DefaultController extends Controller
 		}
 		return $this->render('IngenieriaUsuarioBundle:Default:estudiantesubgrupo.html.twig', array('listaEstudiantes' => $estudiantes, 'subgrupo' => $subgrupo, 'msgerr' => $msgerr));
 	}
+	
+	//********************************************************/
+	//Elimina grupo
+	/********************************************************/		
+	public function eliminarGrupoAction($id){
+		$peticion = $this->getRequest();
+		$repository = $this->getDoctrine()->getRepository('IngenieriaDirectorBundle:Grupo');
+		$grupo = $repository->find($id);
+		
+		$em= $this->getDoctrine()->getManager();
+		$em->remove($grupo);
+		$em->flush();
+       return $this->redirect($this->generateUrl('usuario_adm_homepage'));
+	}	
 }

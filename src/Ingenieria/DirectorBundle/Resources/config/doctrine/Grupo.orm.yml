@@ -16,10 +16,12 @@ Ingenieria\DirectorBundle\Entity\Grupo:
         estudiantes:
             targetEntity: Ingenieria\EstudianteBundle\Entity\Estudiante
             mappedBy: grupo
+            cascade: ["persist"]
 
         subgrupos:
             targetEntity: Ingenieria\ProfesorBundle\Entity\Subgrupo
             mappedBy: grupo
+            cascade: ["persist"]
 
     manyToOne:
         tutor:
