@@ -34,14 +34,14 @@ $( "#estudiantes h3" ).css("opacity","0.4");
 					<table class="generalTableHead">
 						<tbody>
 							<tr class="tableHead">
-								<th width="5%"></th>
+								
 								<th width="10%"></th>
 								<th width="18%"></th>
 								<th width="16%"></th>
 								<th width="8%"><img src="{{ asset('img/codigoLabel.png') }}"/></th>
 								<th width="9%"><img style="margin-left:11px;" src="{{ asset('img/idLabel.png') }}"/></th>
 								<th><img style="margin-left:70px;" src="{{ asset('img/mailLabel.png') }}"/></th>
-								<th></th>
+								<th><img style="margin-left:70px;" src="{{ asset('img/numeroVacantes.png') }}"/></th>
 								<th></th>
 							</tr> <!--tablehead -->
 						</tbody>
@@ -60,6 +60,7 @@ $( "#estudiantes h3" ).css("opacity","0.4");
 										<td><span>{{ estudiante.nombres }}</span></td>
 										<td>{{ estudiante.codigo }}</td>
 										<td>{{ estudiante.ci }}</td>
+										<td>{{ estudiante.emailInstitucional }} <br> {{ estudiante.email }}</td>
 										<td>
 											<div>
 												<table class="opciones">
@@ -68,16 +69,14 @@ $( "#estudiantes h3" ).css("opacity","0.4");
 													{% else %}
 													<td style="width: 120px;"><a href="{{ path('usuario_bitacora', { 'id': estudiante.id}) }}"><img src="{{ asset('img/cronograma.png') }}" /><h3>Bitacora</h3></a></td>
 													{% endif %}
-													
 												</table> <!-- opciones -->
 											</div>
-											{{ estudiante.emailInstitucional }} <br> {{ estudiante.email }}
+											{% if estudiante.subgrupo != NULL %}
+											<td style="width: 220px;">{{ estudiante.subgrupo.nombre }}</td>
+											{% else %}
+											<td style="width: 220px;">¡Sin colectivo!</td>
+											{% endif %}											
 										</td>
-										{% if estudiante.subgrupo != NULL %}
-										<td>{{ estudiante.subgrupo.nombre }}</td>
-										{% else %}
-										<td>¡Sin colectivo!</td>
-										{% endif %}
 										</td> <!-- hoverDiv -->
 									</tr>
 									{% set id = id + 1 %}

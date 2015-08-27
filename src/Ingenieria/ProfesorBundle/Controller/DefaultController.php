@@ -636,6 +636,14 @@ class DefaultController extends Controller
 		$subgrupo = $repository->find($id);		
 	
 		$estudiantes = $subgrupo->getEstudiantes();
+
+		//borramos los encuentros realizados
+		$query = $em->createQuery(
+				'DELETE IngenieriaProfesorBundle:Encuentro e
+				WHERE e.subgrupo = :idgrupo')
+				->setParameter('idgrupo', $subgrupo->getId());
+		$query->execute();
+
 		
 		foreach ($estudiantes as $e){
 			$e->setSubgrupo(null);
