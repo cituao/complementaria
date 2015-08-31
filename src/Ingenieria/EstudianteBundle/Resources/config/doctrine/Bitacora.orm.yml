@@ -13,8 +13,8 @@ Ingenieria\EstudianteBundle\Entity\Bitacora:
             type: text
             column: nombre_actividad
         descripcion:
-            type: string
-            length: '255'
+            type: text
+            length: 1200
         fechaInicio:
             type: date
             column: fecha_inicio
