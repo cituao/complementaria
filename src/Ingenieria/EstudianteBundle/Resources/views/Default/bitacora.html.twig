@@ -18,7 +18,7 @@ Aplicación WEB  [Estudiante]
 <div class="content">
 	{% block upSection  %}
 	<div class = "upSection" style="height:60px;">
-		<h1 class ="sectionTitle">Bitácora de trabajo semanal</h1>
+		<h1 class ="sectionTitle">Bitácora de trabajo semanal del colectivo {{ estudiante.subgrupo.nombre }}</h1>
 			<a href="{{ path('ingenieria_estudiante_registrar_actvidad_semanal' , { 'codigo': estudiante.codigo}) }}" class = "button"> <img src="{{ asset('img/anadirActividad.png') }}"/>
 			<h4>Actividad</h4>
 			</a>
