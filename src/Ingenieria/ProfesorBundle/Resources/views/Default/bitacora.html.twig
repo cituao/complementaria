@@ -59,7 +59,10 @@ Aplicación WEB  [Estudiante]
 			<tr style="height:8px;"></tr>
 			{% for a in bitacora %}
 			<tr>
-				<td  class = "colActividad">{{ a.nombreActividad }}</td>
+				<td  class = "colActividad">
+				<a href = "{{ path('ingenieria_profesor_ver_bitacora', { 'id': a.id}) }}">{{ a.nombreActividad }}</a>
+				
+				</td>
 				<td  class = "colFecha">{{ a.fechaInicio|date("d/m/Y") }}</td>
 				<td  class = "colFecha">{{ a.fechaFin|date("d/m/Y") }}</td>
 				{% if a.finalizada == false%}

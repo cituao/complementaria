@@ -89,3 +89,7 @@ ingenieria_profesor_actualizar_encuentro:
 ingenieria_profesor_eliminar_subgrupo:
     pattern:  /profesor/eliminar-colectivo/id={id}
     defaults: { _controller: IngenieriaProfesorBundle:Default:eliminarSubgrupo }
+
+ingenieria_profesor_ver_bitacora:
+    path:     /profesor/ver-bitacora/id={id}
+    defaults: { _controller: IngenieriaProfesorBundle:Default:verBitacora }
