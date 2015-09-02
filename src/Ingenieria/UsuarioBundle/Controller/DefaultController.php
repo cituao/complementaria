@@ -14,6 +14,7 @@ use Ingenieria\UsuarioBundle\Form\Type\CategoriaType;
 use Ingenieria\UsuarioBundle\Form\Type\GrupoType;
 use Ingenieria\UsuarioBundle\Form\Type\GrupoActualizarType;
 use Ingenieria\UsuarioBundle\Form\Type\ActividadType;
+use Ingenieria\UsuarioBundle\Form\Type\BitacoraType;
 use Ingenieria\ProfesorBundle\Entity\Profesor;
 use Ingenieria\ProfesorBundle\Entity\Actividad;
 use Ingenieria\EstudianteBundle\Entity\Estudiante;
@@ -847,7 +848,7 @@ class DefaultController extends Controller
 		}else{
 			$msgerr = array('id'=>0, 'descripcion' => 'Ok');
 		}
-		return $this->render('IngenieriaUsuarioBundle:Default:estudiantes.html.twig',  array('listaEstudiantes' => $estudiantes, 'msgerr' => $msgerr));
+		return $this->render('IngenieriaUsuarioBundle:Default:estudiantes.html.twig',  array('grupo' => $grupo, 'listaEstudiantes' => $estudiantes, 'msgerr' => $msgerr));
 	
 	}
 	
@@ -855,9 +856,10 @@ class DefaultController extends Controller
 	// Muestra bitacora de trabajo semanal del estudiante
 	/**********************************************************************************/		
 	public function bitacoraAction($id){
-    	$repository = $this->getDoctrine()->getRepository('IngenieriaEstudianteBundle:Estudiante');
-    	$estudiante = $repository->findOneBy(array('id' => $id));
+		$repository = $this->getDoctrine()->getRepository('IngenieriaProfesorBundle:Subgrupo');
+    	$subgrupo = $repository->findOneBy(array('id' => $id));
 		
+		$estudiante =  $subgrupo->getLider();
 		$bitacora = $estudiante->getBitacora();
 		
 		if (!$bitacora) {
@@ -925,4 +927,27 @@ class DefaultController extends Controller
 		$em->flush();
        return $this->redirect($this->generateUrl('usuario_adm_homepage'));
 	}	
+	
+		/********************************************************/
+	//Muestra y modifica una actividad
+	/********************************************************/		
+	public function verBitacoraAction($id){
+		$peticion = $this->getRequest();
+		$em = $this->getDoctrine()->getManager();
+
+		$repository = $this->getDoctrine()->getRepository('IngenieriaEstudianteBundle:Bitacora');
+		$actividad_semanal = $repository->findOneBy(array('id' => $id));		
+	
+		$formulario = $this->createForm(new BitacoraType(), $actividad_semanal);
+		
+		$formulario->handleRequest($peticion);
+
+		if ($formulario->isValid()) {
+			$em->persist($actividad_semanal);
+			$em->flush();
+			return $this->redirect($this->generateUrl('ingenieria_estudiante_bitacora'));
+		}
+		
+        return $this->render('IngenieriaUsuarioBundle:Default:bitacora_detalle.html.twig', array('formulario' => $formulario->createView(), 'actividad' => $actividad_semanal ));
+	}
 }
