@@ -49,3 +49,7 @@ ingenieria_estudiante_registrar_actvidad_semanal:
 ingenieria_estudiante_actualizar_actividad_semanal:
     path:     /estudiante/actualizar-actividad-semanal/id={id}
     defaults: { _controller: IngenieriaEstudianteBundle:Default:actualizarActividadSemanal }
+
+ingenieria_estudiante_encuentros:
+    path:     /estudiante/encuentro-presencial
+    defaults: { _controller: IngenieriaEstudianteBundle:Default:encuentros }

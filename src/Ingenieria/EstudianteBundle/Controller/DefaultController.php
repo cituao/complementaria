@@ -403,4 +403,24 @@ class DefaultController extends Controller
         return $this->render('IngenieriaEstudianteBundle:Default:actualizar_actividad_semanal.html.twig', array('formulario' => $formulario->createView(), 'actividad' => $actividad_semanal ));
 	}
 	
+	/********************************************************/
+	//Muestra los encuentros presenciales
+	/********************************************************/		
+	public function encuentrosAction(){
+		$user = $this->get('security.context')->getToken()->getUser();
+    	$codigo =  $user->getUsername();
+    	$repository = $this->getDoctrine()->getRepository('IngenieriaEstudianteBundle:Estudiante');
+    	$estudiante = $repository->findOneBy(array('codigo' => $codigo));
+		
+		$subgrupo = $estudiante->getSubgrupo();
+		$encuentros = $subgrupo->getEncuentros();
+		
+		if (!$encuentros) {
+			$msgerr = array('descripcion'=>'No hay encuentros registrados!','id'=>'1');
+		}else{
+			$msgerr = array('descripcion'=>'','id'=>'0');
+		}
+		
+		return $this->render('IngenieriaEstudianteBundle:Default:encuentros.html.twig', array('estudiante' => $estudiante, 'encuentros'=>$encuentros, 'msgerr' => $msgerr));
+	}
 }
