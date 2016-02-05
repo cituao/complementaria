@@ -253,7 +253,7 @@
 .inputContainer h2, .inputContainer label {
   color: black;
   font-family: helveticaNBold;
-  font-size: 17px;
+  font-size: 13px;
   float: left;
   margin-top: 5px;
   margin-right: 15px;
@@ -554,7 +554,7 @@
   color: #242021;
   margin-left: 30px;
 }
-/* line 522, psass/sass/contentStyle.scss */
+/* line 521, psass/sass/contentStyle.scss */
 .inform textarea {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;

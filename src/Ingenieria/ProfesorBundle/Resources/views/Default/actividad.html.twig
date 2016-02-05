@@ -33,24 +33,6 @@ $( "#actividades h3" ).css("opacity","0.4");
 				<div>{{ form_errors(formulario) }}</div>
 
 				<div class="profileFormContainer">
-
-					<div class="inputContainer" style="width:450px;">	
-						<h2>{{ form_label(formulario.mentor) }}</h2>
-						<div class="input"> 
-							{{ form_widget(formulario.mentor, {'attr': {'class':'mediano'}} ) }}
-							{{ form_errors(formulario.mentor) }}
-						</div>
-					</div>
-
-
-					<div class="inputContainer" style="width:450px;">	
-						<h2>{{ form_label(formulario.email) }}</h2>
-						<div class="input"> 
-							{{ form_widget(formulario.email, {'attr': {'class':'mediano'}} ) }}
-							{{ form_errors(formulario.email) }}
-						</div>
-					</div>
-
 					<div class="inputContainer" style="width:450px;">	
 						<h2>{{ form_label(formulario.nombre) }}</h2>
 						<div class="input"> 
@@ -66,7 +48,6 @@ $( "#actividades h3" ).css("opacity","0.4");
 							{{ form_errors(formulario.proposito) }}
 						</div>
 					</div>
-
 
 					<div class="inputContainer" style="width:450px;">	
 						<h2>{{ form_label(formulario.dirigida) }}</h2>
@@ -84,6 +65,21 @@ $( "#actividades h3" ).css("opacity","0.4");
 							{{ form_errors(formulario.descripcion) }}
 						</div>
 					</div>
+					<div class="inputContainer" style="width:450px;">	
+						<h2>{{ form_label(formulario.mentor) }}</h2>
+						<div class="input"> 
+							{{ form_widget(formulario.mentor, {'attr': {'class':'mediano'}} ) }}
+							{{ form_errors(formulario.mentor) }}
+						</div>
+					</div>
+
+					<div class="inputContainer" style="width:450px;">	
+						<h2>{{ form_label(formulario.email) }}</h2>
+						<div class="input"> 
+							{{ form_widget(formulario.email, {'attr': {'class':'mediano'}} ) }}
+							{{ form_errors(formulario.email) }}
+						</div>
+					</div>
 
 					<div class="inputContainer" style="width:450px;">	
 						<h2>{{ form_label(formulario.horario) }}</h2>
@@ -93,6 +89,14 @@ $( "#actividades h3" ).css("opacity","0.4");
 						</div>
 					</div>
 
+          			<div class="inputContainer" style="width:450px;">	
+						<h2>{{ form_label(formulario.espacio) }}</h2>
+						<div class="input"> 
+							{{ form_widget(formulario.espacio, {'attr': {'class':'mediano'}} ) }}
+							{{ form_errors(formulario.espacio) }}
+						</div>
+					</div>
+                    
 					<div class="inputContainer" style="width:450px;">	
 						<h2>{{ form_label(formulario.url) }}</h2>
 						<div class="input"> 
@@ -208,6 +212,14 @@ $( "#actividades h3" ).css("opacity","0.4");
 						<div class="input">
 							{{ form_widget(formulario.honestidad, {'attr': {'class':'corto'}} ) }}
 							{{ form_errors(formulario.honestidad) }}
+						</div>
+					</div>
+                    
+                    <div class="inputContainer" style="width:600px;">	
+						<h2>{{ form_label(formulario.recomendacion) }}</h2>
+						<div class="input"> 
+							{{ form_widget(formulario.recomendacion, {'attr': {'class':'mediano'}} ) }}
+							{{ form_errors(formulario.recomendacion) }}
 						</div>
 					</div>
 				</div><!--profileForContainer -->

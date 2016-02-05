@@ -767,4 +767,60 @@ class Actividad
     {
         return $this->recomendacion;
     }
+    /**
+     * @var string
+     */
+    private $espacio;
+
+
+    /**
+     * Set espacio
+     *
+     * @param string $espacio
+     * @return Actividad
+     */
+    public function setEspacio($espacio)
+    {
+        $this->espacio = $espacio;
+
+        return $this;
+    }
+
+    /**
+     * Get espacio
+     *
+     * @return string 
+     */
+    public function getEspacio()
+    {
+        return $this->espacio;
+    }
+    /**
+     * @var boolean
+     */
+    private $comunicacion;
+
+
+    /**
+     * Set comunicacion
+     *
+     * @param boolean $comunicacion
+     * @return Actividad
+     */
+    public function setComunicacion($comunicacion)
+    {
+        $this->comunicacion = $comunicacion;
+
+        return $this;
+    }
+
+    /**
+     * Get comunicacion
+     *
+     * @return boolean 
+     */
+    public function getComunicacion()
+    {
+        return $this->comunicacion;
+    }
 }

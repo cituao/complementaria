@@ -40,6 +40,9 @@ Ingenieria\ProfesorBundle\Entity\Actividad:
         pensamiento:
             type: boolean
             nullable: true
+        comunicacion:
+            type: boolean
+            nullable: true
         autonomia:
             type: boolean
             nullable: true
@@ -68,6 +71,9 @@ Ingenieria\ProfesorBundle\Entity\Actividad:
             type: integer
             column: numero_cupos
         horario:
+            type: string
+            length: '100'
+        espacio:
             type: string
             length: '100'
         descripcion:
