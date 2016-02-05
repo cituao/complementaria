@@ -74,6 +74,10 @@ Ingenieria\ProfesorBundle\Entity\Actividad:
             type: text
             length: 1000
             nullable: true
+        recomendacion:
+            type: text
+            length: 1000
+            nullable: true
     manyToOne:
         categoria:
             targetEntity: Ingenieria\UsuarioBundle\Entity\Categoria

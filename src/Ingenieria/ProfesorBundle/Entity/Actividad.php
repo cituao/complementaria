@@ -739,4 +739,32 @@ class Actividad
     {
         return $this->subgrupos;
     }
+    /**
+     * @var string
+     */
+    private $recomendacion;
+
+
+    /**
+     * Set recomendacion
+     *
+     * @param string $recomendacion
+     * @return Actividad
+     */
+    public function setRecomendacion($recomendacion)
+    {
+        $this->recomendacion = $recomendacion;
+
+        return $this;
+    }
+
+    /**
+     * Get recomendacion
+     *
+     * @return string 
+     */
+    public function getRecomendacion()
+    {
+        return $this->recomendacion;
+    }
 }
