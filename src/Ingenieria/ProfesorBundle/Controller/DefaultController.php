@@ -422,7 +422,7 @@ class DefaultController extends Controller
 					$nusuario->setPassword($lider_nuevo->getCi());
 					$nusuario->setSalt(md5(time()));
 					$nusuario->addRole($role); //cargamos el rol de estudiante
-					$nusuario->setIsActive(true); //tener acceso
+					$nusuario->setIsActive(false); //tener acceso
 
 					$encoder = $this->get('security.encoder_factory')->getEncoder($nusuario);
 					$passwordCodificado = $encoder->encodePassword($nusuario->getPassword(), $nusuario->getSalt());
@@ -450,7 +450,7 @@ class DefaultController extends Controller
 					$nusuario->setPassword($lider_nuevo->getCi());
 					$nusuario->setSalt(md5(time()));
 					$nusuario->addRole($role); //cargamos el rol de estudiante
-					$nusuario->setIsActive(true); //tener acceso
+					$nusuario->setIsActive(false); //tener acceso
 
 					$encoder = $this->get('security.encoder_factory')->getEncoder($nusuario);
 					$passwordCodificado = $encoder->encodePassword($nusuario->getPassword(), $nusuario->getSalt());
