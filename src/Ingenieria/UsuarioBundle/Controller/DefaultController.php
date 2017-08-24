@@ -43,7 +43,7 @@ class DefaultController extends Controller
 	}
 	
     //para colocar en mantenimiento $msg = "M"  vacío para produccion $msg=""
-	$msg = "";
+    // $msg = "M";
 	
      return $this->render('IngenieriaUsuarioBundle:Default:portal.html.twig', array("error"=>array("message"=>$msg)));
     }
